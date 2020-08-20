@@ -1,0 +1,21 @@
+{
+  "name": "frontend",
+  "version": "0.0.1",
+  "description": "Configuracion de Frontend con Next",
+  "main": "index.js",
+  "scripts": {
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build"
+  },
+  "author": "FernandoTimo",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^9.5.2",
+    "node-fetch": "^2.6.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "socket.io-client": "^2.3.0",
+    "swr": "^0.2.3"
+  }
+}

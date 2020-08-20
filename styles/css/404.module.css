@@ -1,0 +1,31 @@
+.Title {
+  font-size: 5vh;
+  pointer-events: none;
+}
+.Path {
+  font-weight: 100;
+  width: 45vh;
+  height: 5vh;
+  border-radius: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  cursor: not-allowed;
+  tab-size: 1vh;
+}
+
+.Back {
+  margin-top: 2vh;
+  font-size: 4vh;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 20vh;
+}
+.Back:hover {
+  font-size: 4.3vh;
+}

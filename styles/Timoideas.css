@@ -1,0 +1,575 @@
+/* Global */
+/* Global */
+/* Global */
+/* Global */
+/* Global */
+/* Global */
+/* Global */
+/* Global */
+/* Global */
+/* Global */
+* {
+  box-sizing: border-box;
+}
+.c {
+  justify-content: center;
+  align-items: center;
+}
+.Body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.Section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Section::-webkit-scrollbar-thumb {
+  background: #000;
+}
+.Content {
+  background: #000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.Header {
+  display: flex;
+  position: fixed;
+  align-self: flex-start;
+  width: 100vw;
+}
+.Footer {
+  display: flex;
+  position: absolute;
+  align-self: flex-end;
+  width: 100vw;
+}
+
+.ModalsContainer {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+}
+.ModalContainer {
+  pointer-events: visible;
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+}
+/* Navigation */
+/* Navigation */
+/* Navigation */
+/* Navigation */
+/* Navigation */
+/* Navigation */
+/* Navigation */
+/* Navigation */
+/* Navigation */
+
+.NavigationContainer {
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  justify-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.NavigationLabel {
+  pointer-events: visible;
+  position: fixed;
+  cursor: pointer;
+  font-size: 2vh;
+  transition: 0.2s ease-out;
+  z-index: 2;
+  margin: 2vh 3vh;
+}
+.NavigationLabel:hover {
+  transform: scale(1.05);
+}
+/* ----- */
+
+.NavigateContainer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00000001;
+  animation: nav 0.3s forwards;
+  align-self: center;
+  justify-self: center;
+  transform-origin: center;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(1vh);
+  flex-direction: column;
+}
+@keyframes nav {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+/* --- */
+
+.HostNameRouter {
+  pointer-events: visible;
+  cursor: pointer;
+  margin-bottom: 6vh;
+  position: absolute;
+  z-index: 1;
+  width: 4.5vh;
+  font-weight: 400;
+  font-size: 1.5vh;
+  padding: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1vh;
+  transition: 0.1s;
+}
+.HostNameRouter:hover {
+  transform: scale(0.98);
+  font-size: 1.6vh;
+}
+.HostNameRouter:hover ~ .RouteInput {
+  transform: scale(0.98);
+}
+.HostNameRouter:hover > .RouterBox {
+  transform: scale(0.98);
+}
+.HostNameRouter:active ~ .RouteInput {
+  transform: scale(0.96);
+}
+.HostNameRouter:active {
+  transform: scale(0.96);
+}
+.HostNameRouter::selection {
+  background: transparent;
+}
+.RouterInputContainer {
+  border-radius: 1vh;
+  width: 50vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.RouteInput {
+  justify-self: flex-end;
+  width: 100%;
+  height: 8vh;
+  border-radius: 1vh;
+  text-align: center;
+  outline: none;
+  font-weight: 600;
+  padding: 0.5vh 0;
+  padding-top: 2vh;
+  font-size: 2.5vh;
+  pointer-events: visible;
+  transition: 0s;
+  border: none;
+  transition: 0.1s;
+}
+
+.RouterContainer {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  max-height: 70vh;
+  width: 50vh;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  pointer-events: visible;
+}
+.RouterContainer::-webkit-scrollbar {
+  display: none;
+}
+.RouterBoxContainer {
+  margin-top: 1vh;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 48vh;
+  border-radius: 1vh;
+}
+.RouterBoxContainer a {
+  width: 100%;
+}
+.RouterBox {
+  position: relative;
+  width: 95%;
+  height: 5vh;
+  border-radius: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: visible;
+  flex-direction: column;
+  margin: 0.5vh;
+  transition: 0.1s;
+}
+.RouterBox:hover {
+  margin: 0.2vh;
+  transform: scale(1.05);
+  background: #00dd93 !important;
+}
+.RouterBox:active {
+  opacity: 0.5;
+  /* display: none; */
+}
+/* .RouteContainer::-webkit-scrollbar {
+  display: none;
+} */
+/* Header */
+/* Header */
+/* Header */
+/* Header */
+/* Header */
+/* Header */
+/* Header */
+/* Header */
+/* Header */
+
+.ContainerH {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.LogoContainer {
+  align-self: flex-start;
+  position: relative;
+  top: -1vh;
+  background: #fafafa;
+  width: 6vh;
+  height: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 2vh 2vh;
+  pointer-events: visible;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 0 1vh #ddd;
+}
+.Logo::selection {
+  background: transparent;
+}
+.LogoContainer:hover {
+  padding-top: 0.2vh;
+}
+.LogoContainer:hover > .Logo {
+  transform: scale(1.05);
+}
+.LogoContainer:active > .Logo {
+  transform-origin: center;
+  transform: scale(0.95);
+}
+.Logo {
+  position: relative;
+  top: 0.3vh;
+  width: 2.4vh;
+  pointer-events: none;
+  transition: 0.1s;
+}
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* Inputs */
+/* -------------------------------------------------------- */
+
+.Card {
+  min-width: 30vw;
+  min-height: 40vh;
+  max-width: 95vw;
+  max-height: 90vh;
+  border-radius: 0.5vh;
+  background: #fff;
+  box-shadow: 0 0 1vh #ededed, inset 0.5vh 0.5vh 1vh #fff,
+    -0.2vh -0.2vh 1vh #fafafa;
+  display: flex;
+  margin: 1vh;
+}
+
+.Form {
+  box-sizing: border-box;
+  align-self: center;
+  justify-self: center;
+  width: 26vh;
+  height: auto;
+  margin: 1vh;
+  padding: 1vh;
+  max-height: 80vh;
+  border: 0.2vh solid springgreen;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+.TitleFormContainer {
+  margin: 1vh;
+  margin-bottom: 2vh;
+  box-sizing: border-box;
+  background: #111;
+  height: 4vh;
+  width: auto;
+  padding: 0 1.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5vh;
+  pointer-events: none;
+}
+.TitleForm {
+  font-size: 1.8vh;
+  color: #fafafa;
+}
+
+.input_1 {
+  box-sizing: content-box;
+  display: flex;
+  justify-content: center;
+  height: 5vh;
+  /* background: #000; */
+  width: 15vw;
+  padding: 0 1vw;
+  border-radius: 1vh;
+  overflow: hidden;
+  margin-top: 1.5vh;
+}
+.input_1 label {
+  position: absolute;
+  padding: 0 0.5vw;
+  border-radius: 0.5vh;
+  pointer-events: none;
+  align-self: center;
+  background: transparent;
+  font-size: 1.8vh;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s ease-in;
+}
+.input_1 input {
+  background: transparent;
+}
+.input_1 input:focus ~ label {
+  margin-top: -1vh;
+  background: #232323;
+  color: #fafafa;
+  font-size: 1.5vh;
+}
+.input_1 input:focus:invalid ~ label {
+  background: #ff7272;
+  color: #fafafa;
+  font-size: 1.2vh;
+}
+.input_1 input:valid ~ label {
+  background: #00e78e;
+  color: #fafafa;
+  font-size: 1.2vh;
+  align-self: start;
+}
+
+.input_1 input:focus ~ span {
+  width: 10vw;
+  height: 0.3vh;
+  position: absolute;
+  opacity: 1;
+}
+.input_1 input:focus:invalid ~ span {
+  background: #ff7272;
+  opacity: 1;
+}
+.input_1 input:valid ~ span {
+  background: #00e78e;
+  opacity: 1;
+}
+.input_1 input::-webkit-inner-spin-button {
+  appearance: none;
+}
+.input_1 input:focus ~ span {
+  width: 8vw;
+  height: 0.3vh;
+  margin-top: 0;
+}
+.input_1 input {
+  position: relative;
+  text-align: center;
+  align-self: flex-end;
+  min-width: 80%;
+  width: auto;
+  height: 3.5vh;
+  border: none;
+  outline: none;
+  font-size: 1.5vh;
+  font-weight: 600;
+  transition: 0.3s;
+  text-transform: capitalize;
+  top: -0.4vh;
+}
+.input_1 input:focus {
+  font-size: 1.8vh;
+  background: transparent;
+}
+.input_1 span {
+  margin-top: -0.5vh;
+  align-self: flex-end;
+  pointer-events: none;
+  position: absolute;
+  height: 0.2vh;
+  width: 6vw;
+  background: #555;
+  z-index: 2;
+  transition: 0.2s;
+}
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* Botones */
+/* -------------------------------------------------------- */
+.Boton_1 {
+  margin: 1vh;
+  margin-top: 3vh;
+  min-width: 10vh;
+  min-height: 4vh;
+  width: auto;
+  height: 2vh;
+  background: #000;
+  border-radius: 0.2vh;
+  border: none;
+  box-shadow: 0 0 1vh #ddd;
+  outline: none;
+  transition: 0.1s;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0 1vw;
+}
+.Boton_1:hover {
+  transform: scale(1.01);
+}
+.Boton_1:active {
+  box-shadow: 0 0 2vh #bbb;
+  transform: scale(0.99);
+}
+.Boton_1 div {
+  color: #fafafa;
+  font-weight: 600;
+  pointer-events: none;
+  font-size: 1.5vh;
+}
+.Boton_1 span {
+  position: absolute;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+@keyframes riples {
+  0% {
+    opacity: 0.4;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 50vh;
+    height: 50vh;
+  }
+}
+/* |||||||||||  |||||||||||  |||||||||||  ||||||  |||  |||||||||||  |||||||||||  |||||||||||
+   ||||||       |||||  ||||     |||||     ||||||| |||  ||||         |||||  ||||  ||||||
+   |||||||||||  |||||||||||     |||||     ||| ||| |||  |||||||||||  |||||||||||  |||||||||||
+        ||||||  ||||            |||||     ||| |||||||  ||||         |||  ||||         ||||||
+   |||||||||||  ||||         |||||||||||  |||  |||||   |||||||||||  |||    ||||  ||||||||||| */
+
+.SpinerContainer {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 7vh;
+  height: 7vh;
+  grid-template-rows: 1fr 1fr;
+  box-sizing: content-box;
+  animation: rotate linear infinite;
+  border-radius: 50%;
+}
+.Cabeza {
+  width: 7vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -0.4vh;
+  align-items: center;
+}
+.Falda {
+  position: relative;
+  top: -0.5vh;
+  width: 7vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 0.6vh;
+}
+.Elementos {
+  width: 3.3vh;
+  height: 3.3vh;
+  border-radius: 50%;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
