@@ -6,7 +6,7 @@ export default function Index() {
     <>
       <GlobalHead />
       <Body>
-        <Section size={1}>Hola Mundo!!</Section>
+        <Section size={1}>hola Mundo!!</Section>
       </Body>
     </>
   );
