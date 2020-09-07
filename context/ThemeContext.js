@@ -57,9 +57,7 @@ export function ThemeContextProvider({ children }) {
   };
   const [Theme, setMode] = useState(Light);
   const [isTheme, setIsTheme] = useState(true);
-
   const setTheme = () => {
-    // localStorage.Theme === 'Light'
     isTheme
       ? ((localStorage.Theme = 'Dark'), setMode(Dark), setIsTheme(false))
       : ((localStorage.Theme = 'Light'), setMode(Light), setIsTheme(true));

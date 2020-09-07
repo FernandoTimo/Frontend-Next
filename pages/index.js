@@ -3,9 +3,11 @@ import { GlobalHead } from 'heads/GlobalHead';
 import { Body, Section } from 'components/Timoideas';
 import { useSockets } from 'hooks/useSockets';
 import { useEffect } from 'react';
+import { useTheme } from 'hooks/useTheme';
 export default function Index() {
   useEffect();
   useSockets();
+  useTheme();
   return (
     <>
       <GlobalHead />
