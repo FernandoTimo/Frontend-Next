@@ -5,9 +5,8 @@ import { useState, useEffect } from 'react';
  * @param {number} [min] Valor inicial del contador 🔥 default value = 0
  * @param {boolean} [start]  🔥 default value = true
  */
-export default function useCounter(max, min, start) {
+export default function useCounter(max, min, start = true) {
   const [Counter, setCounter] = useState(min ? min : 0);
-  const animate = typeof start === 'boolean' ? start : true;
   const increment = (min ? max - min : max) / (14 * max.toString().length);
   if (!max) {
     throw new Error(
@@ -15,7 +14,7 @@ export default function useCounter(max, min, start) {
     );
   }
   useEffect(() => {
-    if (animate) {
+    if (start) {
       var currentCounter;
       if (Counter !== max) {
         currentCounter = setInterval(() => {
@@ -34,7 +33,7 @@ export default function useCounter(max, min, start) {
     } else {
       setCounter(min ? min : 0);
     }
-  }, [Counter, animate]);
+  }, [Counter, start]);
 
   return Math.round(Counter);
 }
