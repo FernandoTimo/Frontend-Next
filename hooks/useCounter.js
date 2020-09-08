@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 /**
- * ⚡ Hoook UseCounter ⚡ Devuelve los valores intermedios de el min-max en un intervalo de tiempo
+ * ⚡ Hoook UseCounter ⚡ Devuelve los valores intermedios de el min-max en un intérvalo de tiempo
  * @param {number} max Valor final del contador 🔥 requiered = true
  * @param {number} [min] Valor inicial del contador 🔥 default value = 0
  * @param {boolean} [start]  🔥 default value = true
