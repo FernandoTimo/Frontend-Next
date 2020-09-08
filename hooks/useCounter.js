@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export default function useCounter(min, max, speed) {
   const [Counter, setCounter] = useState(min);
-  console.log(max.toString()[3]);
+  // console.log(max.toString()[3]);
   useEffect(() => {
     var currentCounter;
     if (Counter < max) {
@@ -10,7 +10,7 @@ export default function useCounter(min, max, speed) {
         setCounter(Counter + 1);
       }, speed);
     }
-    // console.log(Counter);
+    console.log(Counter);
     return () => {
       clearInterval(currentCounter);
     };
