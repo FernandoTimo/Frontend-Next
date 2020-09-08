@@ -1,23 +1,22 @@
 import { useState, useEffect } from 'react';
 /**
  * ⚡ Hoook UseCounter ⚡ Devuelve los valores intermedios de el min-max en un intervalo de tiempo
- * @param {number} min Valor inicial del contador
  * @param {number} max Valor final del contador
- * @param {number} speed Valor del intérvalo-tiempo en milisegundos
+ * @param {number} [min] Valor inicial del contador 🔥 default value = 0
  */
-export default function useCounter(min, max, speed) {
-  const [Counter, setCounter] = useState(min);
+export default function useCounter(max, min) {
+  const [Counter, setCounter] = useState(min ? min : 0);
   useEffect(() => {
     var currentCounter;
     if (Counter < max) {
       currentCounter = setInterval(() => {
-        setCounter(Counter + speed * max.toString().length);
-      }, speed);
+        setCounter(Counter + max / (14 * max.toString().length));
+      }, 14);
     }
     return () => {
       clearInterval(currentCounter);
     };
   }, [Counter]);
 
-  return Counter;
+  return Math.round(Counter);
 }

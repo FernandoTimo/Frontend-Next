@@ -4,8 +4,8 @@ import { Body, Section } from 'components/Timoideas';
 import useCounter from 'hooks/useCounter';
 
 export default function Index() {
-  const numero = useCounter(5, 1545, 9);
-  useCounter(5, 15, 15);
+  let numero = useCounter(84);
+
   return (
     <>
       <GlobalHead />
