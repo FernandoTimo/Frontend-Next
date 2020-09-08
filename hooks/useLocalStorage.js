@@ -1,3 +1,24 @@
-export function useLocalStorage({ children }) {
-  return <div className="">{children}</div>;
+import { useEffect, useState } from 'react';
+/**
+ * ⚡ Hoook useLocalStorage ⚡ Maneja el localStorage del navegador
+ * @param {String} key Key del localStorage 🔥 requiered = true
+ * @param {(String|Number|Array)} [value] Valor con el que se actualizará el item
+ * @returns {String}
+ */
+export default function useLocalStorage(key, value) {
+  const [StorageValue, setStorageValue] = useState();
+  if (!key && key !== '') {
+    throw new Error(
+      '⚡ useLocalStorage => Proporciona un valor de tipo string como parámetro, ejemplo: useLocalStorage("Theme") ⚡'
+    );
+  }
+  useEffect(() => {
+    if (!value) {
+      setStorageValue(window.localStorage.getItem(key));
+    } else {
+      window.localStorage.setItem(key, value);
+      setStorageValue(window.localStorage.getItem(key));
+    }
+  }, [key, value]);
+  return StorageValue;
 }
