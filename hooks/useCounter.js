@@ -4,19 +4,34 @@ import { useState, useEffect } from 'react';
  * @param {number} max Valor final del contador
  * @param {number} [min] Valor inicial del contador 🔥 default value = 0
  */
-export default function useCounter(max, min) {
+export default function useCounter(max, min, start) {
   const [Counter, setCounter] = useState(min ? min : 0);
+
+  const increment = (min ? max - min : max) / (14 * max.toString().length);
+  if (!max) {
+    throw new Error(
+      '⚡ useCounter => Proporcionar un valor de tipo number como parámetro parametro, ejemplo: useCounter(4286) ⚡'
+    );
+  }
+
   useEffect(() => {
-    var currentCounter;
-    if (Counter < max) {
-      currentCounter = setInterval(() => {
-        setCounter(Counter + max / (14 * max.toString().length));
-      }, 14);
+    if (start) {
+      var currentCounter;
+      if (Counter < max) {
+        currentCounter = setInterval(() => {
+          setCounter(
+            Counter + (increment < max - Counter ? increment : max - Counter)
+          );
+        }, 14);
+      }
+      console.log(Counter);
+      return () => {
+        clearInterval(currentCounter);
+      };
+    } else {
+      setCounter(min ? min : 0);
     }
-    return () => {
-      clearInterval(currentCounter);
-    };
-  }, [Counter]);
+  }, [Counter, start]);
 
   return Math.round(Counter);
 }
