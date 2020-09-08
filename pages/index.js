@@ -6,14 +6,14 @@ import { useEffect, useState } from 'react';
 
 export default function Index() {
   const [Activ, setActive] = useState(false);
-  let numero = useCounter(490, 0, Activ);
+  let Counter = useCounter(-3);
 
   return (
     <>
       <GlobalHead />
       <Body>
         <Section size={1}>
-          <h1>{numero}</h1>
+          <h1>{Counter}</h1>
           <button
             onClick={() => {
               setActive(!Activ);
