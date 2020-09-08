@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 /**
  * ⚡ Hoook useDebounce ⚡ Devuelve el estado del string que no cambió durante el tiempo establecido
- * @param {string} value String que se suscribirá al escuchador de cambios
- * @param {number} [delay] Tiempoen el que el String deberá permanecer en en mismo estado antes de disparar el debounce value
+ * @param {string} value String que se suscribirá al escuchador de cambios.
+ * @param {number} [delay] Tiempo en el que el String deberá permanecer en en mismo estado.
  */
 export default function useDebounce(value, delay = 600) {
   const [DebouncedValue, setDebouncedValue] = useState('');
