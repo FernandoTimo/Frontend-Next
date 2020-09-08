@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react';
  * @param {number} [min] Valor inicial del contador 🔥 default value = 0
  * @param {boolean} [start]  🔥 default value = true
  */
-export default function useCounter(max, min, start = true) {
-  const [Counter, setCounter] = useState(min ? min : 0);
-  const increment = (min ? max - min : max) / (14 * max.toString().length);
+export default function useCounter(max, min = 0, start = true) {
+  const [Counter, setCounter] = useState(min);
+  const increment = (max - min) / (14 * max.toString().length);
   if (!max) {
     throw new Error(
       '⚡ useCounter => Proporcionar un valor de tipo number como parámetro, ejemplo: useCounter(4286) ⚡'
@@ -31,7 +31,7 @@ export default function useCounter(max, min, start = true) {
         clearInterval(currentCounter);
       };
     } else {
-      setCounter(min ? min : 0);
+      setCounter(min);
     }
   }, [Counter, start]);
 

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 export default function Index() {
   const [Activ, setActive] = useState(false);
-  let Counter = useCounter(-3, 80);
+  let Counter = useCounter(563, 80, Activ);
 
   return (
     <>
