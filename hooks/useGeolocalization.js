@@ -5,10 +5,17 @@ import { useEffect, useState } from 'react';
 export default function useGeolocalization() {
   const [Location, setLocation] = useState({});
   useEffect(() => {
-    fetch('http://ip-api.com/json')
-      .then((res) => res.json())
-      .then((data) => setLocation(data))
-      .catch((err) => console.log(err));
+    if (localStorage.Location) {
+      setLocation(JSON.parse(localStorage.Location));
+    } else {
+      fetch('http://ip-api.com/json')
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.Location = JSON.stringify(data);
+          setLocation(data);
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
 
   return {

@@ -9,7 +9,6 @@ import useGeolocalization from 'hooks/useGeolocalization';
 export default function Index() {
   const [State, setState] = useState('');
   const { Country, City, Region, Coordenadas } = useGeolocalization();
-  console.log(Coordenadas);
   return (
     <>
       <GlobalHead />
