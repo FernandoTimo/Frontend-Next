@@ -4,24 +4,14 @@ import { Body, Section, Content } from 'components/Timoideas';
 import { useEffect, useState } from 'react';
 import { useDevice } from 'hooks/useDevice';
 import useScroll from 'hooks/useScroll';
+import Store from 'hooks/useStore';
 export default function Index() {
-  const [State, setState] = useState('');
-  useScroll(() => {
-    console.log('500 papu');
-  }, [500]);
   return (
     <>
       <GlobalHead />
       <Body>
-        <Section size={3}>
-          <div style={{ position: 'fixed', top: 0, background: '#fa0' }}>
-            <input
-              type="text"
-              onChange={(e) => setState(e.target.value)}
-              placeholder="local"
-            />
-          </div>
-        </Section>
+        <Store Yape={{ numero: 966682190, nombre: 'Fernando Timo' }} />
+        <Section size={3}></Section>
       </Body>
     </>
   );

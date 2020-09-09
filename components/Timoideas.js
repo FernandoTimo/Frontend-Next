@@ -31,13 +31,22 @@ export function Section({ bg, children, size }) {
     </section>
   );
 }
-export function Content({ bg, row, flex, center, padding, children }) {
-  if (!children) {
-    console.warn('<Content></Content> sin contenido');
-  }
+export function Content({
+  bg,
+  row,
+  flex,
+  center,
+  padding,
+  children,
+  className,
+}) {
+  // if (!children) {
+  //   console.warn('<Content></Content> sin contenido');
+  // }
+  let clases = `Content ${!!center ? 'c' : ''} ${!!className ? className : ''}`;
   return (
     <div
-      className={center ? 'Content c' : 'Content'}
+      className={clases}
       style={{
         padding: padding ? padding + 'vh' : 0,
         flexDirection: row ? 'row' : 'column',
@@ -106,6 +115,13 @@ export function Footer({ bg, padding, height, children, center }) {
 export function Modals({ children }) {
   return <div className="ModalsContainer">{children}</div>;
 }
+export function Controls({ top, children }) {
+  return (
+    <div className="ControlsContainer" style={{ zIndex: top ? 2 : 1 }}>
+      {children}
+    </div>
+  );
+}
 
 export function Modal({ background, blur, center, children, active }) {
   const [show, setShow] = useState(true);
@@ -113,6 +129,7 @@ export function Modal({ background, blur, center, children, active }) {
     setShow(active);
   }, [active]);
   const CerrarModal = (e) => {
+    console.log(e.target.className);
     if (e.target.className === 'ModalContainer') setShow(false);
   };
 
@@ -130,6 +147,56 @@ export function Modal({ background, blur, center, children, active }) {
       }}
     >
       {children}
+    </div>
+  );
+}
+export function Carrousel({ speed, children }) {
+  const [Slider, setSlider] = useState(0);
+  const CarrouselContainerRef = useRef();
+  const CarrouselRef = useRef();
+  const [maxScroll, setmaxScroll] = useState();
+  useEffect(() => {
+    var CarrouselCotainerWidth = CarrouselContainerRef.current.clientWidth / 2;
+    var CarrouselWidth = CarrouselRef.current.clientWidth / 2;
+    // console.log(CarrouselCotainerWidth);
+    // console.log(CarrouselWidth);
+    setmaxScroll(CarrouselWidth + CarrouselCotainerWidth);
+  }, []);
+  const handleScroll = (e) => {
+    e.preventDefault();
+    let sliderValue = Math.abs(Slider);
+    let velocidad = speed ? speed : 350;
+    let mordisco = sliderValue > maxScroll - 350 ? maxScroll - sliderValue : 0;
+    console.log(mordisco);
+    let movimiento =
+      e.deltaY > 0
+        ? mordisco === 0
+          ? -velocidad
+          : -(mordisco + velocidad)
+        : mordisco === 0
+        ? velocidad
+        : mordisco + velocidad;
+    movimiento !== 0 && setSlider(Slider + movimiento);
+  };
+  console.log('----------');
+  console.log(maxScroll);
+  console.log(Slider);
+  // console.log(sliderValue) ;
+  console.log('----------');
+
+  return (
+    <div
+      className="CarrouselContainer"
+      onWheel={handleScroll}
+      ref={CarrouselContainerRef}
+    >
+      <div
+        className="Carrousel"
+        ref={CarrouselRef}
+        style={{ marginLeft: Slider + 'px' }}
+      >
+        {children}
+      </div>
     </div>
   );
 }

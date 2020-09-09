@@ -1,27 +1,9 @@
 import StoreContext from 'context/StoreContext';
 import { useState, useContext, useEffect } from 'react';
-export const useStore = () => {
+export const useStore = (Yape) => {
   const { Store, setStore, isStore, setIsStore } = useContext(StoreContext);
 
-  useEffect(() => {
-    if (isStore) {
-      const storeLocal = [
-        {
-          asd: 'asd',
-          qwe: 'qwe',
-        },
-        {
-          asd: 'asd',
-          asdqwe: 'qwe',
-        },
-      ];
-      localStorage.Store = JSON.stringify(storeLocal);
-    }
-  }, []);
-  // localStorage.Store = 'asd';
-  // setStore(localStorage.Store);
-  // console.log(localStorage.Store);
-
+  useEffect(() => {}, []);
   return {
     Store,
     setStore,
@@ -29,3 +11,12 @@ export const useStore = () => {
     setIsStore,
   };
 };
+
+function Store({ Yape }) {
+  return (
+    <div className="">
+      <h2>Store</h2>
+    </div>
+  );
+}
+export default Store;
