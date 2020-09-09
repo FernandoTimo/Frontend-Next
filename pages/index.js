@@ -3,21 +3,24 @@ import { GlobalHead } from 'heads/GlobalHead';
 import { Body, Section, Content } from 'components/Timoideas';
 import { useEffect, useState } from 'react';
 import { useDevice } from 'hooks/useDevice';
+import useScroll from 'hooks/useScroll';
 export default function Index() {
   const [State, setState] = useState('');
-  const { Device, Platform } = useDevice();
+  const { XScroll, YScroll } = useScroll();
   return (
     <>
       <GlobalHead />
       <Body>
-        <Section size={1}>
-          <h1>{Device}</h1>
-          <input
-            type="text"
-            onChange={(e) => setState(e.target.value)}
-            placeholder="local"
-          />
-          <h1>{Platform}</h1>
+        <Section size={10}>
+          <div style={{ position: 'fixed', top: 0 }}>
+            <h1>{XScroll}</h1>
+            <input
+              type="text"
+              onChange={(e) => setState(e.target.value)}
+              placeholder="local"
+            />
+            <h1>{YScroll}</h1>
+          </div>
         </Section>
       </Body>
     </>

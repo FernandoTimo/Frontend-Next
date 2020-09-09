@@ -1,49 +1,49 @@
-let { useState, useEffect } = require('react');
-let _throttle = require('lodash.throttle');
-import module from 'lodash';
-let supportsPassive = false;
-try {
-  var opts = Object.defineProperty({}, 'passive', {
-    get: function () {
-      supportsPassive = true;
-    },
-  });
-  window.addEventListener('testPassive', null, opts);
-  window.removeEventListener('testPassive', null, opts);
-} catch (e) {}
-
-let getPosition = () => ({
-  x: window.pageXOffset,
-  y: window.pageYOffset,
-});
-
-let defaultOptions = {
-  throttle: 100,
-};
-
-function useWindowScrollPosition(options) {
-  let opts = Object.assign({}, defaultOptions, options);
-
-  let [position, setPosition] = useState(getPosition());
-
+import { useEffect, useState } from 'react';
+export default function useScroll() {
+  const [XScroll, setXScroll] = useState();
+  const [YScroll, setYScroll] = useState();
   useEffect(() => {
-    let handleScroll = _throttle(() => {
-      setPosition(getPosition());
-    }, opts.throttle);
-
-    window.addEventListener(
-      'scroll',
-      handleScroll,
-      supportsPassive ? { passive: true } : false
-    );
+    const handlerScroll = (e) => {
+      setXScroll(Math.round(window.scrollX));
+      setYScroll(Math.round(window.scrollY));
+    };
+    window.addEventListener('scroll', handlerScroll);
 
     return () => {
-      handleScroll.cancel();
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handlerScroll);
     };
   }, []);
-
-  return position;
+  return { XScroll, YScroll };
 }
 
-export default useWindowScrollPosition;
+// let getPosition = () => ({
+//   x: window.pageXOffset,
+//   y: window.pageYOffset,
+// });
+
+// function useWindowScrollPosition(options) {
+//   let opts = Object.assign({}, defaultOptions, options);
+
+//   let [position, setPosition] = useState(getPosition());
+
+//   useEffect(() => {
+//     let handleScroll = _throttle(() => {
+//       setPosition(getPosition());
+//     }, opts.throttle);
+
+//     window.addEventListener(
+//       'scroll',
+//       handleScroll,
+//       supportsPassive ? { passive: true } : false
+//     );
+
+//     return () => {
+//       handleScroll.cancel();
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+//   return position;
+// }
+
+// export default useWindowScrollPosition;
