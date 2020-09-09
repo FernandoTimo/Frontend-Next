@@ -14,9 +14,7 @@ export const useStore = (Yape) => {
 
 function Store({ Yape }) {
   return (
-    <div className="">
-      <h2>Store</h2>
-    </div>
+    <Con
   );
 }
 export default Store;

@@ -51,6 +51,8 @@
 
 .ModalsContainer {
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 1;
   display: flex;
@@ -68,6 +70,15 @@
   height: 100vh;
   z-index: 99;
 }
+.ControlsContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: transparent;
+  pointer-events: none;
+  display: flex;
+  justify-content: flex-end;
+}
 /* Navigation */
 /* Navigation */
 /* Navigation */
@@ -79,7 +90,7 @@
 /* Navigation */
 
 .NavigationContainer {
-  z-index: 100;
+  z-index: 2;
   display: flex;
   justify-content: flex-end;
   justify-items: flex-start;
@@ -572,4 +583,29 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Carrousel */
+/* Carrousel */
+/* Carrousel */
+/* Carrousel */
+/* Carrousel */
+/* Carrousel */
+/* Carrousel */
+.CarrouselContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.Carrousel {
+  /* width: 100%; */
+  height: 100%;
+  position: relative;
+  /* left: 50%; */
+  display: flex;
+  background: #000;
+  border: 0.2vh solid #fa0;
 }
