@@ -77,7 +77,7 @@
   background: transparent;
   pointer-events: none;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 /* Navigation */
 /* Navigation */
