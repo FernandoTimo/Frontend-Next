@@ -6,20 +6,20 @@ import { useDevice } from 'hooks/useDevice';
 import useScroll from 'hooks/useScroll';
 export default function Index() {
   const [State, setState] = useState('');
-  const { XScroll, YScroll } = useScroll();
+  useScroll(() => {
+    console.log('500 papu');
+  }, [500]);
   return (
     <>
       <GlobalHead />
       <Body>
-        <Section size={10}>
-          <div style={{ position: 'fixed', top: 0 }}>
-            <h1>{XScroll}</h1>
+        <Section size={3}>
+          <div style={{ position: 'fixed', top: 0, background: '#fa0' }}>
             <input
               type="text"
               onChange={(e) => setState(e.target.value)}
               placeholder="local"
             />
-            <h1>{YScroll}</h1>
           </div>
         </Section>
       </Body>

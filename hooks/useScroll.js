@@ -1,49 +1,25 @@
 import { useEffect, useState } from 'react';
-export default function useScroll() {
-  const [XScroll, setXScroll] = useState();
-  const [YScroll, setYScroll] = useState();
+export default function useScroll(funcion, limits = [0, 0]) {
+  const [XScroll, setXScroll] = useState(0);
+  const [YScroll, setYScroll] = useState(0);
+
   useEffect(() => {
     const handlerScroll = (e) => {
+      e.preventDefault();
       setXScroll(Math.round(window.scrollX));
+      console.log(window.scrollY);
       setYScroll(Math.round(window.scrollY));
     };
-    window.addEventListener('scroll', handlerScroll);
-
+    window.addEventListener('scroll', handlerScroll, { passive: false });
     return () => {
       window.removeEventListener('scroll', handlerScroll);
     };
   }, []);
+  // YScroll < limits[0]
+  //   ? console.log('descendiendo')
+  //   : console.log('ascendiendo');
+  // ? limits[0] < YScroll && funcion()
+  // : limits[0] > YScroll && funcion();
+
   return { XScroll, YScroll };
 }
-
-// let getPosition = () => ({
-//   x: window.pageXOffset,
-//   y: window.pageYOffset,
-// });
-
-// function useWindowScrollPosition(options) {
-//   let opts = Object.assign({}, defaultOptions, options);
-
-//   let [position, setPosition] = useState(getPosition());
-
-//   useEffect(() => {
-//     let handleScroll = _throttle(() => {
-//       setPosition(getPosition());
-//     }, opts.throttle);
-
-//     window.addEventListener(
-//       'scroll',
-//       handleScroll,
-//       supportsPassive ? { passive: true } : false
-//     );
-
-//     return () => {
-//       handleScroll.cancel();
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
-
-//   return position;
-// }
-
-// export default useWindowScrollPosition;
