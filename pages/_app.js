@@ -2,12 +2,16 @@ import '../styles/Global.css';
 import '../styles/Timoideas.css';
 import '../styles/Timoideas.min.css';
 import { ThemeContextProvider } from 'context/ThemeContext';
+import { StoreContextProvider } from 'context/StoreContext';
+
 import { Navigation } from 'components/Timoideas';
 const App = ({ Component, pageProps }) => {
   return (
     <ThemeContextProvider>
-      <Navigation />
-      <Component {...pageProps} />
+      <StoreContextProvider>
+        <Navigation />
+        <Component {...pageProps} />
+      </StoreContextProvider>
     </ThemeContextProvider>
   );
 };
