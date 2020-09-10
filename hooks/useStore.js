@@ -1,6 +1,7 @@
 import StoreContext from 'context/StoreContext';
-import { useState, useContext, useEffect } from 'react';
-import { Controls, Content } from 'components/Timoideas';
+import { useState, useContext, useEffect, useRef } from 'react';
+import { Controls, Content } from 'components/Resources/Timoideas';
+import { useSockets } from './useSockets';
 export const useStore = (Yape) => {
   const {
     ListStore,
@@ -23,8 +24,13 @@ export const useStore = (Yape) => {
     setStepStore,
   };
 };
-
-export default function Store({ Yape }) {
+// LADO DEL CLIENTE -------------------------
+// LADO DEL CLIENTE -------------------------
+// LADO DEL CLIENTE -------------------------
+// LADO DEL CLIENTE -------------------------
+// LADO DEL CLIENTE -------------------------
+// LADO DEL CLIENTE -------------------------
+export function StoreClient({ Yape }) {
   const { ListStore, ShowStore, StepStore, setStepStore } = useStore(Yape);
   const ButtonMensaje = [
     'Yapear',
@@ -33,20 +39,69 @@ export default function Store({ Yape }) {
     'Comprobante Recivido',
     'Comprobante Validado',
   ];
-  useEffect(() => {}, ListStore);
-  console.log(ListStore, 'ListStore');
+
+  // SOOOOCKEEEEEETTTSSS ---------------------------------
+  // SOOOOCKEEEEEETTTSSS ---------------------------------
+  // SOOOOCKEEEEEETTTSSS ---------------------------------
+  const [Codigo, setCodigo] = useState('');
+  const socket = useSockets(() => {
+    socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
+      console.log(ComprobanteTimestamp);
+      setStepStore(3);
+    });
+    socket.on('store-comprobante_validado', (StoreCodigo) => {
+      setCodigo(StoreCodigo);
+      setStepStore(4);
+    });
+  });
+  // BUTTTTOOOOONNNN
+  // BUTTTTOOOOONNNN
+  // BUTTTTOOOOONNNN
   const handlerButtonStore = (e) => {
-    StepStore < 3 && setStepStore(StepStore + 1);
+    switch (StepStore) {
+      case 0:
+        setStepStore(StepStore + 1);
+        break;
+      case 1:
+        refStoreCompobanteInput.current.click();
+        break;
+      case 2:
+        socket.emit('store-comprobante', 'Nuevo Comprobante');
+        break;
+      default:
+        break;
+    }
   };
+
+  // RRRRRRRREEEEEEEEEEEEEEEFFFFFFFFFFFFF   INNNNPUUUUUUTTT
+  // RRRRRRRREEEEEEEEEEEEEEEFFFFFFFFFFFFF   INNNNPUUUUUUTTT
+  // RRRRRRRREEEEEEEEEEEEEEEFFFFFFFFFFFFF   INNNNPUUUUUUTTT
+  const [ComprobanteData, setComprobanteData] = useState();
+  let refStoreCompobanteInput = useRef();
+  const handlerComprobanteInput = (e) => {
+    setStepStore(StepStore + 1);
+  };
+
   return (
     <Controls top>
       <div className="Store">
         {ShowStore && (
           <div className="StoreContainer">
             <div className="StoreButtonContainer">
-              <button className="StoreButton" onClick={handlerButtonStore}>
+              <button
+                className="StoreButton"
+                onClick={handlerButtonStore}
+                style={{ pointerEvents: StepStore < 3 ? 'visible' : 'none' }}
+              >
                 {ButtonMensaje[StepStore]}
               </button>
+              <input
+                type="file"
+                accept="png,jpeg,jpg"
+                className="StoreCompobanteInput"
+                ref={refStoreCompobanteInput}
+                onChange={handlerComprobanteInput}
+              />
             </div>
             <Content center flex={1}>
               <Content
@@ -63,7 +118,7 @@ export default function Store({ Yape }) {
                 {StepStore === 1 && <FirstStepStore>{Yape}</FirstStepStore>}
                 {StepStore === 2 && <FirstStepStore>{Yape}</FirstStepStore>}
                 {StepStore === 3 && <SecondStepStore />}
-                {StepStore === 4 && <ThirdStepStore />}
+                {StepStore === 4 && <SecondStepStore codigo={Codigo} />}
               </Content>
 
               <Content className="StoreList" row flex={1}>
@@ -126,9 +181,39 @@ const FirstStepStore = ({ children }) => {
     </div>
   );
 };
-const SecondStepStore = () => {
-  return <div>Datos CLiente</div>;
+const SecondStepStore = ({ codigo }) => {
+  return (
+    <div>
+      Datos CLiente
+      {codigo && codigo}
+    </div>
+  );
 };
-const ThirdStepStore = () => {
-  return <div>Codigo de compra</div>;
-};
+
+// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+export function StoreAdmin({ children }) {
+  const [State, setState] = useState();
+  const socket = useSockets(() => {
+    socket.on('store-comprobante_recivido', (comprobante) => {
+      console.log(comprobante);
+      setState(comprobante);
+    });
+    socket.on('store-comprobante_validado', (codigo) => {
+      console.log(codigo);
+    });
+  });
+  const handlerComprobanteValidador = () => {
+    socket.emit('store-comprobante_validado', 'X8S5DQ');
+  };
+  return (
+    <div className="">
+      {State}
+      <button onClick={handlerComprobanteValidador}>Validar</button>
+    </div>
+  );
+}

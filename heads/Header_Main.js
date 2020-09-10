@@ -1,5 +1,5 @@
 import Head from 'next/head';
-export function GlobalHead() {
+export function Header_Main() {
   return (
     <Head>
       <link rel="icon" href="icons/favicon.ico" />

@@ -1,16 +1,16 @@
 import styleIndex from 'styles/css/Index.module.css';
-import { GlobalHead } from 'heads/GlobalHead';
-import { Body, Section, Content } from 'components/Timoideas';
+import { Header_Main } from 'heads/Header_Main';
+import { Body, Section, Content } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
 import { useDevice } from 'hooks/useDevice';
 import useScroll from 'hooks/useScroll';
-import Store from 'hooks/useStore';
+import { StoreClient, StoreAdmin } from 'hooks/useStore';
 export default function Index() {
   return (
     <>
-      <GlobalHead />
+      <Header_Main />
       <Body>
-        <Store Yape={{ numero: 966682190, nombre: 'Fernando Timo' }} />
+        <StoreClient Yape={{ numero: 966682190, nombre: 'Fernando Timo' }} />
         <Section size={3}></Section>
       </Body>
     </>

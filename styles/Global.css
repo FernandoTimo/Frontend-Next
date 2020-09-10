@@ -45,6 +45,7 @@ a {
   align-items: center;
 }
 /* StoreButtonContainer */
+
 .StoreButtonContainer {
   position: absolute;
   z-index: 1;
@@ -53,7 +54,9 @@ a {
   justify-content: center;
   align-items: center;
 }
-
+.StoreCompobanteInput {
+  display: none;
+}
 /* --- */
 .StoreStep {
   flex: 1;

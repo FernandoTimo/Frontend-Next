@@ -4,7 +4,7 @@ import '../styles/Timoideas.min.css';
 import { ThemeContextProvider } from 'context/ThemeContext';
 import { StoreContextProvider } from 'context/StoreContext';
 
-import { Navigation } from 'components/Timoideas';
+import { Navigation } from 'components/Resources/Timoideas';
 const App = ({ Component, pageProps }) => {
   return (
     <ThemeContextProvider>

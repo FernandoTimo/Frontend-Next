@@ -1,5 +1,5 @@
 import Head from 'next/head';
-export function ErrorHead() {
+export function Header_Error() {
   return (
     <Head>
       <link rel="icon" href="/icons/favicon.ico" />

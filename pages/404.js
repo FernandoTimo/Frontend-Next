@@ -1,6 +1,6 @@
-import { Section, Content } from '../components/Timoideas';
+import { Section, Content } from '../components/Resources/Timoideas';
 import styleError from '../styles/css/404.module.css';
-import { ErrorHead } from 'heads/ErrorHead';
+import { Header_Error } from 'heads/Header_Error';
 import { useTheme } from 'hooks/useTheme';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -9,7 +9,7 @@ export default function NotFound() {
   const { asPath } = useRouter();
   return (
     <>
-      <ErrorHead />
+      <Header_Error />
       <Section>
         <Content center flex={1} padding={0}>
           {/* <img
