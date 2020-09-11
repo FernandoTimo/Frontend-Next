@@ -11,8 +11,8 @@
   "author": "FernandoTimo",
   "license": "ISC",
   "dependencies": {
-    "next": "^9.5.2",
-    "node-fetch": "^2.6.0",
+    "next": "^9.5.3",
+    "node-fetch": "^2.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "socket.io-client": "^2.3.0",
