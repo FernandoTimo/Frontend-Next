@@ -88,12 +88,26 @@ export function StoreClient({ Yape }) {
         {ShowStore && (
           <div className="StoreContainer">
             <div className="StoreButtonContainer">
+              {/* BotonPrincipal ------------------------ */}
+              {/* -----------------  BotonPrincipal ------------------------ */}
+              {/* BotonPrincipal ------------------------ */}
               <button
-                className="StoreButton"
+                className={`StoreButton ${StepStore === 0 && 'YapeStep'} ${
+                  StepStore === 1 && 'AdjuntarStep'
+                } ${StepStore === 2 && 'EnviarStep'} 
+                } `}
                 onClick={handlerButtonStore}
                 style={{ pointerEvents: StepStore < 3 ? 'visible' : 'none' }}
               >
-                {ButtonMensaje[StepStore]}
+                {/* <label className="StoreButtonStateLabelTop">
+                  {ListStore.length}
+                </label> */}
+                {/* <label className={`StoreButtonStateLabelMid`}>
+                  {ButtonMensaje[StepStore]}
+                </label> */}
+                {/* <label className={`StoreButtonStateLabelBot`}>
+                  {'S/12.90'}
+                </label> */}
               </button>
               <input
                 type="file"
@@ -159,6 +173,9 @@ const ProductList = ({ index, children }) => {
         className="ControlCantidad"
         style={{ display: StepStore > 0 ? 'none' : 'flex' }}
       >
+        <div className="ItemCantidadContainer">
+          <label className="ItemCantidad">{Cantidad}</label>
+        </div>
         <div onClick={handlerIncrement}></div>
         <div onClick={handlerDecrement} />
       </div>
