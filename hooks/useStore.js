@@ -26,8 +26,8 @@ export const useStore = (Yape) => {
 };
 // LADO DEL CLIENTE -------------------------
 // LADO DEL CLIENTE -------------------------
-// LADO DEL CLIENTE -------------------------
-// LADO DEL CLIENTE -------------------------
+// ------------------------------------------- LADO DEL CLIENTE -------------------------
+// ------------------------------------------- LADO DEL CLIENTE -------------------------
 // LADO DEL CLIENTE -------------------------
 // LADO DEL CLIENTE -------------------------
 export function StoreClient({ Yape }) {
@@ -131,18 +131,19 @@ export function StoreClient({ Yape }) {
                         opacity: 0.8,
                       }}
                     />
+                    {StepStore === 3 && <span>🔥</span>}
                     <img
                       alt="Check"
                       className="StoreButtonCheck"
                       src="assets/Check.png"
                       style={{
+                        display: StepStore === 3 ? 'none' : 'flex',
                         height: (StepStore === 2 || StepStore === 3) && '2.3vh',
                         filter: StepStore > 3 && 'grayScale(0)',
                         opacity: StepStore > 1 && 0.8,
                       }}
                     />
                     {StepStore === 4 && <span>🔥</span>}
-
                     <img
                       alt="Check"
                       className="StoreButtonCheck"
@@ -169,7 +170,11 @@ export function StoreClient({ Yape }) {
               {/* Label BOT ---------------------------------------------------------- */}
               {/* --------------------- Label BOT ------------------------------------- */}
               {/* Label BOT ---------------------------------------------------------- */}
-              <label className={`StoreButtonStateLabelBot`}>{'S/12.90'}</label>
+              {StepStore === 0 && (
+                <label className={`StoreButtonStateLabelBot`}>
+                  {'S/12.90'}
+                </label>
+              )}
             </button>
             <div className="StoreButtonContainer"></div>
             <Content center flex={1}>
