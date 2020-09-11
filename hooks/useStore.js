@@ -33,11 +33,12 @@ export const useStore = (Yape) => {
 export function StoreClient({ Yape }) {
   const { ListStore, ShowStore, StepStore, setStepStore } = useStore(Yape);
   const ButtonMensaje = [
-    'Yapear',
-    'Adjuntar Comprobante',
-    'Enviar Comprobante',
-    'Comprobante Recivido',
-    'Comprobante Validado',
+    'Yapear 0',
+    'Adjuntar Comprobante 1',
+    'Enviar Comprobante 2',
+    'Enviando 3',
+    'Comprobante Recivido 4',
+    'Comprobante Validado 6',
   ];
 
   // SOOOOCKEEEEEETTTSSS ---------------------------------
@@ -47,11 +48,11 @@ export function StoreClient({ Yape }) {
   const socket = useSockets(() => {
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
-      setStepStore(3);
+      setStepStore(4);
     });
     socket.on('store-comprobante_validado', (StoreCodigo) => {
       setCodigo(StoreCodigo);
-      setStepStore(4);
+      setStepStore(5);
     });
   });
   // BUTTTTOOOOONNNN
@@ -67,7 +68,11 @@ export function StoreClient({ Yape }) {
         break;
       case 2:
         socket.emit('store-comprobante', 'Nuevo Comprobante');
+        setStepStore(StepStore + 1);
         break;
+      case 4:
+        setStepStore(StepStore + 1);
+
       default:
         break;
     }
@@ -87,36 +92,86 @@ export function StoreClient({ Yape }) {
       <div className="Store">
         {ShowStore && (
           <div className="StoreContainer">
-            <div className="StoreButtonContainer">
-              {/* BotonPrincipal ------------------------ */}
-              {/* -----------------  BotonPrincipal ------------------------ */}
-              {/* BotonPrincipal ------------------------ */}
-              <button
-                className={`StoreButton ${StepStore === 0 && 'YapeStep'} ${
-                  StepStore === 1 && 'AdjuntarStep'
-                } ${StepStore === 2 && 'EnviarStep'} 
+            {/* BotonPrincipal ------------------------ */}
+            {/* -----------------  BotonPrincipal ------------------------ */}
+            {/* BotonPrincipal ------------------------ */}
+            <input
+              type="file"
+              accept="png,jpeg,jpg"
+              className="StoreCompobanteInput"
+              ref={refStoreCompobanteInput}
+              onChange={handlerComprobanteInput}
+            />
+            <button
+              className={`StoreButton ${StepStore === 0 && 'YapeStep'} ${
+                StepStore === 1 && 'AdjuntarStep'
+              } ${StepStore === 2 && 'EnviarStep'} 
                 } `}
-                onClick={handlerButtonStore}
-                style={{ pointerEvents: StepStore < 3 ? 'visible' : 'none' }}
-              >
-                {/* <label className="StoreButtonStateLabelTop">
-                  {ListStore.length}
-                </label> */}
-                {/* <label className={`StoreButtonStateLabelMid`}>
-                  {ButtonMensaje[StepStore]}
-                </label> */}
-                {/* <label className={`StoreButtonStateLabelBot`}>
-                  {'S/12.90'}
-                </label> */}
-              </button>
-              <input
-                type="file"
-                accept="png,jpeg,jpg"
-                className="StoreCompobanteInput"
-                ref={refStoreCompobanteInput}
-                onChange={handlerComprobanteInput}
-              />
-            </div>
+              onClick={handlerButtonStore}
+              style={{ pointerEvents: StepStore < 3 ? 'visible' : 'none' }}
+            >
+              {/* Label TOP ---------------------------------------------------------- */}
+              {/* --------------------- Label TOP ------------------------------------- */}
+              {/* Label TOP ---------------------------------------------------------- */}
+              <label className="StoreButtonStateLabelTop">
+                {StepStore === 0 && (
+                  <div className="StoreButtonCheckProductsCounter">
+                    {ListStore.length}
+                  </div>
+                )}
+                {StepStore > 0 && (
+                  <div className="StoreButtonCheckContainer">
+                    <img
+                      alt="Check"
+                      className="StoreButtonCheck"
+                      src="assets/Check.png"
+                      style={{
+                        height: StepStore === 1 && '2.3vh',
+                        filter: StepStore > 1 && 'grayScale(0)',
+                        opacity: 0.8,
+                      }}
+                    />
+                    <img
+                      alt="Check"
+                      className="StoreButtonCheck"
+                      src="assets/Check.png"
+                      style={{
+                        height: (StepStore === 2 || StepStore === 3) && '2.3vh',
+                        filter: StepStore > 3 && 'grayScale(0)',
+                        opacity: StepStore > 1 && 0.8,
+                      }}
+                    />
+                    {StepStore === 4 && <span>🔥</span>}
+
+                    <img
+                      alt="Check"
+                      className="StoreButtonCheck"
+                      src="assets/Check.png"
+                      style={{
+                        display: StepStore === 4 ? 'none' : 'flex',
+                        height: StepStore === 3 && '1.5vh',
+                        filter: StepStore === 5 && 'grayScale(0)',
+                        opacity: StepStore > 2 && 0.8,
+                      }}
+                    />
+                  </div>
+                )}
+                {/* {StepStore === 2 && ListStore.length}
+                {StepStore === 3 && ListStore.length} */}
+              </label>
+              {/* Label MID ---------------------------------------------------------- */}
+              {/* --------------------- Label MID ------------------------------------- */}
+              {/* Label MID ---------------------------------------------------------- */}
+              <label className={`StoreButtonStateLabelMid`}>
+                {ButtonMensaje[StepStore]}
+                {StepStore === 4 && <div>Validando</div>}
+              </label>
+              {/* Label BOT ---------------------------------------------------------- */}
+              {/* --------------------- Label BOT ------------------------------------- */}
+              {/* Label BOT ---------------------------------------------------------- */}
+              <label className={`StoreButtonStateLabelBot`}>{'S/12.90'}</label>
+            </button>
+            <div className="StoreButtonContainer"></div>
             <Content center flex={1}>
               <Content
                 flex={StepStore > 0 ? 9 : 0.1}
@@ -128,7 +183,7 @@ export function StoreClient({ Yape }) {
                 {/* SSSSSSTTTTTTTTTTTTEEEEEEEEEEPPPPPPPPPSSSSSSSSSSSSSSSSSS --------------*/}
                 {/* SSSSSSTTTTTTTTTTTTEEEEEEEEEEPPPPPPPPPSSSSSSSSSSSSSSSSSS --------------*/}
 
-                {StepStore === 0 && <div style={{ height: 0 }}></div>}
+                {StepStore === 0 && <div style={{}}></div>}
                 {StepStore === 1 && <FirstStepStore>{Yape}</FirstStepStore>}
                 {StepStore === 2 && <FirstStepStore>{Yape}</FirstStepStore>}
                 {StepStore === 3 && <SecondStepStore />}
