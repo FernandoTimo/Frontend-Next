@@ -53,6 +53,9 @@ a {
   justify-content: center;
   align-items: center;
 }
+.StoreButton:hover {
+  transform: scale(0.9);
+}
 .StoreButton {
   margin-top: -12.5vh;
   position: absolute;
@@ -72,9 +75,9 @@ a {
 
 .YapeStep {
   background: linear-gradient(45deg, #a105d4, #600b72);
-  border-left: 1vh solid #f44551;
-  border-top: 1vh solid #f44551;
-  border-right: 1vh solid #f44551;
+  border-left: 1.8vh solid #f44551;
+  border-top: 1.8vh solid #f44551;
+  border-right: 1.8vh solid #f44551;
 }
 .AdjuntarStep {
   background: linear-gradient(45deg, #0588d4, #8102aa);
@@ -195,7 +198,10 @@ a {
 }
 .ControlCantidad div {
   flex: 1;
+  cursor: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png'),
+    auto;
 }
+
 .ItemCantidadContainer {
   display: flex;
   justify-content: center;

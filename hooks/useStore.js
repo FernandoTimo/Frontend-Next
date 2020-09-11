@@ -2,6 +2,7 @@ import StoreContext from 'context/StoreContext';
 import { useState, useContext, useEffect, useRef } from 'react';
 import { Controls, Content } from 'components/Resources/Timoideas';
 import { useSockets } from './useSockets';
+import useDelay from './useDelay';
 export const useStore = (Yape) => {
   const {
     ListStore,
@@ -209,12 +210,26 @@ export function StoreClient({ Yape }) {
     </Controls>
   );
 }
+// LADO DEL ADMIN -------------------------
+// LADO DEL ADMIN -------------------------
+// ------------------------------------------- LADO DEL ADMIN -------------------------
+// ------------------------------------------- LADO DEL ADMIN -------------------------
+// LADO DEL ADMIN -------------------------
+// LADO DEL ADMIN -------------------------
 const ProductList = ({ index, children }) => {
   const { ListStore, setListStore, setShowStore, StepStore } = useStore();
+  const [ShowItem, setShowItem] = useState(true);
   const [Cantidad, setCantidad] = useState(1);
   const handlerIncrement = () => {
     setCantidad(Cantidad + 1);
   };
+  useDelay(
+    () => {
+      setShowItem(false);
+    },
+    1000,
+    ShowItem
+  );
   const handlerDecrement = () => {
     Cantidad === 1 && setListStore.removeItem(index);
     setCantidad(Cantidad - 1);
