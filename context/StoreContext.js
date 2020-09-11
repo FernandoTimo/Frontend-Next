@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 const Context = createContext();
 export const StoreContextProvider = ({ children }) => {
   const [ListStore, setStore] = useState([1, 8, 4, 7, 5, 5, 8]);
-  const [isStore, setinStore] = useState(false);
+  const [isStore, setinStore] = useState(true);
   const [ShowStore, setToggleStore] = useState(true);
   const [StepStore, setStep] = useState(0);
   useEffect(() => {

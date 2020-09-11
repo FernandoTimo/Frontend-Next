@@ -42,6 +42,7 @@ a {
   position: relative;
   justify-content: center;
   align-items: center;
+  padding: 0 1vh;
 }
 /* StoreButtonContainer ------------------------------------ */
 /* ------------------------------------ StoreButtonContainer */
@@ -53,9 +54,9 @@ a {
   justify-content: center;
   align-items: center;
 }
-.StoreButton:hover {
+/* .StoreButton:hover {
   transform: scale(0.9);
-}
+} */
 .StoreButton {
   margin-top: -12.5vh;
   position: absolute;
@@ -74,10 +75,21 @@ a {
 }
 
 .YapeStep {
-  background: linear-gradient(45deg, #a105d4, #600b72);
+  /* background: linear-gradient(45deg, #a105d4, #600b72); */
+  background: #fafafa;
   border-left: 1.8vh solid #f44551;
   border-top: 1.8vh solid #f44551;
   border-right: 1.8vh solid #f44551;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.YapeStep * {
+  cursor: pointer;
+}
+.YapeStep:hover {
+  border-left-width: 1.2vh;
+  border-top-width: 1.2vh;
+  border-right-width: 1.2vh;
 }
 .AdjuntarStep {
   background: linear-gradient(45deg, #0588d4, #8102aa);
@@ -90,8 +102,8 @@ a {
 /* StoreButtomLabel TOP --------------------------------------------- */
 
 .StoreButtonStateLabelTop {
+  bottom: 3.5vh;
   position: absolute;
-  margin-top: -3vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,6 +111,7 @@ a {
 }
 /* ------------------------ Step 0 */
 .StoreButtonCheckProductsCounter {
+  position: absolute;
   font-weight: 700;
   font-size: 1.3vh;
   display: flex;
@@ -109,6 +122,11 @@ a {
   width: 2.5vh;
   height: 2.5vh;
   background: #f6c421;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.StoreButtonCheckProductsCounter:hover {
+  transform: scale(1.2);
 }
 /* ------------------------ Step 1 */
 .StoreButtonCheckContainer {
@@ -142,7 +160,7 @@ a {
   font-size: 1.3vh;
   font-weight: 700;
   position: absolute;
-  margin-top: 3.1vh;
+  bottom: -2.3vh;
   padding: 0.4vh 0.7vh;
   display: flex;
   justify-content: center;
@@ -151,6 +169,7 @@ a {
   color: #8102aa;
   font-weight: 700;
   border-radius: 0 0 1vh 1vh;
+  pointer-events: none;
 }
 .StoreCompobanteInput {
   display: none;

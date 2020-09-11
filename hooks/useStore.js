@@ -32,7 +32,14 @@ export const useStore = (Yape) => {
 // LADO DEL CLIENTE -------------------------
 // LADO DEL CLIENTE -------------------------
 export function StoreClient({ Yape }) {
-  const { ListStore, ShowStore, StepStore, setStepStore } = useStore(Yape);
+  const {
+    ListStore,
+    ShowStore,
+    StepStore,
+    setStepStore,
+    isStore,
+    setIsStore,
+  } = useStore(Yape);
   const ButtonMensaje = [
     'Yapear 0',
     'Adjuntar Comprobante 1',
@@ -79,20 +86,23 @@ export function StoreClient({ Yape }) {
     }
   };
 
-  // RRRRRRRREEEEEEEEEEEEEEEFFFFFFFFFFFFF   INNNNPUUUUUUTTT
-  // RRRRRRRREEEEEEEEEEEEEEEFFFFFFFFFFFFF   INNNNPUUUUUUTTT
-  // RRRRRRRREEEEEEEEEEEEEEEFFFFFFFFFFFFF   INNNNPUUUUUUTTT
+  // REF INPUT ---------------------------
+  // -------------------------------------  REF  INPUT --------------------
+  // REF INPUT ---------------------------
   const [ComprobanteData, setComprobanteData] = useState();
   let refStoreCompobanteInput = useRef();
   const handlerComprobanteInput = (e) => {
     setStepStore(StepStore + 1);
   };
-
+  console.log(ListStore, '------------------------------');
   return (
     <Controls top>
       <div className="Store">
         {ShowStore && (
-          <div className="StoreContainer">
+          <div
+            className="StoreContainer"
+            style={{ marginTop: !isStore && '25vh' }}
+          >
             {/* BotonPrincipal ------------------------ */}
             {/* -----------------  BotonPrincipal ------------------------ */}
             {/* BotonPrincipal ------------------------ */}
@@ -116,7 +126,17 @@ export function StoreClient({ Yape }) {
               {/* Label TOP ---------------------------------------------------------- */}
               <label className="StoreButtonStateLabelTop">
                 {StepStore === 0 && (
-                  <div className="StoreButtonCheckProductsCounter">
+                  <div
+                    className="StoreButtonCheckProductsCounter"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsStore();
+                    }}
+                    style={{
+                      transform: !isStore && 'scale(1.5)',
+                      bottom: !isStore && '-.3vh',
+                    }}
+                  >
                     {ListStore.length}
                   </div>
                 )}
@@ -218,20 +238,14 @@ export function StoreClient({ Yape }) {
 // LADO DEL ADMIN -------------------------
 const ProductList = ({ index, children }) => {
   const { ListStore, setListStore, setShowStore, StepStore } = useStore();
-  const [ShowItem, setShowItem] = useState(true);
   const [Cantidad, setCantidad] = useState(1);
+  const [_1000, set_1000] = useState(false);
   const handlerIncrement = () => {
     setCantidad(Cantidad + 1);
   };
-  useDelay(
-    () => {
-      setShowItem(false);
-    },
-    1000,
-    ShowItem
-  );
+  let D1000 = useDelay(300, _1000);
   const handlerDecrement = () => {
-    Cantidad === 1 && setListStore.removeItem(index);
+    Cantidad === 1 && (setListStore.removeItem(index), set_1000(true));
     setCantidad(Cantidad - 1);
     console.log(Cantidad, 'Cantidad');
     ListStore.length === 0 && setShowStore(false);
@@ -242,6 +256,7 @@ const ProductList = ({ index, children }) => {
       className="ProductList"
       style={{
         animation: Cantidad === 0 && 'itemsStore .3s reverse forwards',
+        display: D1000 ? 'none' : 'flex',
       }}
     >
       <div
