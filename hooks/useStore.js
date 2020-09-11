@@ -129,7 +129,7 @@ export function StoreClient({ Yape }) {
                   <div
                     className="StoreButtonCheckProductsCounter"
                     onClick={(e) => {
-                      e.preventDefault();
+                      // e.preventDefault();
                       setIsStore();
                     }}
                     style={{
