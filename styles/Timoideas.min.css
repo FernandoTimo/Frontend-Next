@@ -27,8 +27,8 @@
   background: gold;
 }
 ::-webkit-scrollbar {
-  width: 1vh;
-  height: 1vh;
+  width: 0.5vh;
+  height: 0.5vh;
   background: transparent;
 }
 ::-webkit-scrollbar-track {
