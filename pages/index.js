@@ -1,11 +1,6 @@
 import styleIndex from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
-import {
-  Body,
-  Section,
-  Content,
-  Carrousel,
-} from 'components/Resources/Timoideas';
+import { Body, Section, Content } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
 import { useDevice } from 'hooks/useDevice';
 import useScroll from 'hooks/useScroll';
@@ -15,16 +10,10 @@ export default function Index() {
     <>
       <Header_Main />
       <Body>
-        {/* <StoreClient Yape={{ numero: 966682190, nombre: 'Fernando Timo' }} /> */}
+        <StoreClient Yape={{ numero: 966682190, nombre: 'Fernando Timo' }} />
         <Section size={1}>
           <Content center flex={0.5}>
-            <Content center flex={0.5}>
-              <Carrousel bg height={'50vh'}>
-                <div className={styleIndex.Carrousela}>
-                  // setmaxScroll(CarrouselWidth + CarrouselCotainerWidth);
-                </div>
-              </Carrousel>
-            </Content>
+            <Content center flex={0.5}></Content>
           </Content>
         </Section>
       </Body>

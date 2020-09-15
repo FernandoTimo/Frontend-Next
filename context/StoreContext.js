@@ -5,11 +5,28 @@ export const StoreContextProvider = ({ children }) => {
   const [isStore, setinStore] = useState(true);
   const [ShowStore, setToggleStore] = useState(true);
   const [StepStore, setStep] = useState(0);
+  //            <--=========================================================== [ UseEffect ]
+  //             -----------------------------  [ UseEffect ]  -----------------------------
+  //            <--=========================================================== [ UseEffect ]
+  const handleWindowVisibility = () => {
+    document.hidden && setStep(Number(localStorage.Step));
+  };
   useEffect(() => {
     if (ListStore.length > 0) {
       setToggleStore(true);
     }
+    localStorage.Step
+      ? // ? setStep(Number(localStorage.Step))
+        setStep(0)
+      : (localStorage.Step = 0);
+    document.addEventListener('visibilitychange', handleWindowVisibility);
+    return () => {
+      document.removeEventListener('visibilitychange', handleWindowVisibility);
+    };
   }, []);
+  //            <--=========================================================== [ ShowStore ]
+  //             -----------------------------  [ ShowStore ]  -----------------------------
+  //            <--=========================================================== [ ShowStore ]
   const setShowStore = () => {
     setToggleStore(!ShowStore);
   };
@@ -18,13 +35,9 @@ export const StoreContextProvider = ({ children }) => {
     if (ListStore.length < 1) {
       setShowStore(false);
     }
-    console.log(index, 'index');
-    console.log(ListStore.length);
     let currentList = ListStore;
     currentList.splice(index, 1);
     setStore(currentList.length > 0 ? currentList : []);
-    console.log(ListStore, 'ListStore');
-    console.log(currentList, 'currentList');
   };
   const setIsStore = (value) => {
     setinStore(typeof value === Boolean ? value : !isStore);
@@ -33,6 +46,7 @@ export const StoreContextProvider = ({ children }) => {
     removeItem,
   };
   const setStepStore = (step) => {
+    localStorage.Step = step;
     setStep(step);
   };
   return (

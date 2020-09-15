@@ -94,7 +94,6 @@ export function StoreClient({ Yape }) {
   const handlerComprobanteInput = (e) => {
     setStepStore(StepStore + 1);
   };
-  console.log(ListStore, '------------------------------');
   return (
     <Controls top>
       <div className="Store">
@@ -246,9 +245,7 @@ const ProductList = ({ index, children }) => {
   const handlerDecrement = () => {
     Cantidad === 1 && (setListStore.removeItem(index), set_1000(true));
     setCantidad(Cantidad - 1);
-    console.log(Cantidad, 'Cantidad');
     ListStore.length === 0 && setShowStore(false);
-    console.log(ListStore.length, 'list');
   };
   return (
     <div
