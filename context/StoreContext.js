@@ -53,4 +53,3 @@ export const StoreContextProvider = ({ children }) => {
   );
 };
 export default Context;
-// Prueba git
