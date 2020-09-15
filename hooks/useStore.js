@@ -72,7 +72,6 @@ export function StoreClient({ Yape }) {
         setStepStore(StepStore + 1);
         break;
       case 1:
-        refStoreCompobanteInput.current.click();
         break;
       case 2:
         socket.emit('store-comprobante', 'Nuevo Comprobante');
@@ -86,14 +85,6 @@ export function StoreClient({ Yape }) {
     }
   };
 
-  // REF INPUT ---------------------------
-  // -------------------------------------  REF  INPUT --------------------
-  // REF INPUT ---------------------------
-  const [ComprobanteData, setComprobanteData] = useState();
-  let refStoreCompobanteInput = useRef();
-  const handlerComprobanteInput = (e) => {
-    setStepStore(StepStore + 1);
-  };
   return (
     <Controls top>
       <div className="Store">
@@ -105,13 +96,7 @@ export function StoreClient({ Yape }) {
             {/* BotonPrincipal ------------------------ */}
             {/* -----------------  BotonPrincipal ------------------------ */}
             {/* BotonPrincipal ------------------------ */}
-            <input
-              type="file"
-              accept="png,jpeg,jpg"
-              className="StoreCompobanteInput"
-              ref={refStoreCompobanteInput}
-              onChange={handlerComprobanteInput}
-            />
+
             <button
               className={`StoreButton ${StepStore === 0 && 'YapeStep'} ${
                 StepStore === 1 && 'AdjuntarStep'
@@ -198,7 +183,7 @@ export function StoreClient({ Yape }) {
             <div className="StoreButtonContainer"></div>
             <Content center flex={1}>
               <Content
-                flex={StepStore > 0 ? 9 : 0.1}
+                flex={StepStore === 0 ? 0.1 : 9}
                 center
                 className="StoreStep"
               >
@@ -207,9 +192,10 @@ export function StoreClient({ Yape }) {
                 {/* SSSSSSTTTTTTTTTTTTEEEEEEEEEEPPPPPPPPPSSSSSSSSSSSSSSSSSS --------------*/}
                 {/* SSSSSSTTTTTTTTTTTTEEEEEEEEEEPPPPPPPPPSSSSSSSSSSSSSSSSSS --------------*/}
 
-                {StepStore === 0 && <div style={{}}></div>}
-                {StepStore === 1 && <FirstStepStore>{Yape}</FirstStepStore>}
-                {StepStore === 2 && <FirstStepStore>{Yape}</FirstStepStore>}
+                {StepStore === 0 && <div></div>}
+                {(StepStore === 1 || StepStore === 2) && (
+                  <FirstStepStore>{Yape}</FirstStepStore>
+                )}
                 {StepStore === 3 && <SecondStepStore />}
                 {StepStore === 4 && <SecondStepStore codigo={Codigo} />}
               </Content>
@@ -268,22 +254,66 @@ const ProductList = ({ index, children }) => {
     </div>
   );
 };
+//  ---------------------------------------------------------     ////////
+//  ---------------------------------------------------------    /////////
+//  ---------------------------------------------------------  ////  /////
+//  ---------------------------------------------------------        /////
+//  ---------------------------------------------------------        /////
+//  ---------------------------------------------------------        /////
+//  ---------------------------------------------------------        /////
+//  ---------------------------------------------------------        /////
+//  ---------------------------------------------------------        /////
 const FirstStepStore = ({ children }) => {
-  const { setStepStore } = useStore();
+  const { StepStore, setStepStore } = useStore();
+
+  // REF INPUT ---------------------------
+  // -------------------------------------  REF  INPUT --------------------
+  // REF INPUT ---------------------------
+  const [ComprobanteData, setComprobanteData] = useState();
+  let refStoreCompobanteInput = useRef();
+  const handlerComprobanteInput = (e) => {
+    setStepStore(StepStore + 1);
+  };
   return (
     <div className="YapeInfoContainer">
-      <p>{children.numero}</p>
-      <p>{children.nombre}</p>
+      <p className="YapeInfoTitle">S/15.30</p>
+      <p className="YapeInfoNumero">{children.numero}</p>
+      <p className="YapeInfoNombre">{children.nombre}</p>
       <button
+        className="YapeInfoAdd"
         onClick={() => {
           setStepStore(0);
         }}
       >
-        Agregar más productos
+        Agregar +
       </button>
+      <button
+        className="YapeInfoVoucher"
+        onClick={() => {
+          refStoreCompobanteInput.current.click();
+        }}
+      >
+        Adjuntar Voucher
+      </button>
+      <input
+        type="file"
+        accept="png,jpeg,jpg"
+        className="StoreCompobanteInput"
+        ref={refStoreCompobanteInput}
+        onChange={handlerComprobanteInput}
+      />
     </div>
   );
 };
+//  ---------------------------------------------------------      ///////
+//  ---------------------------------------------------------    //////////
+//  ---------------------------------------------------------  ////   /////
+//  ---------------------------------------------------------          /////
+//  ---------------------------------------------------------         /////
+//  ---------------------------------------------------------        /////
+//  ---------------------------------------------------------       /////
+//  ---------------------------------------------------------     ////////////
+//  ---------------------------------------------------------    /////////////
 const SecondStepStore = ({ codigo }) => {
   return (
     <div>

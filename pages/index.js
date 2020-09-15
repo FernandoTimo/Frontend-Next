@@ -10,7 +10,7 @@ export default function Index() {
     <>
       <Header_Main />
       <Body>
-        <StoreClient Yape={{ numero: 966682190, nombre: 'Fernando Timo' }} />
+        <StoreClient Yape={{ numero: '966682190', nombre: 'Captivant' }} />
         <Section size={1}>
           <Content center flex={0.5}>
             <Content center flex={0.5}></Content>
