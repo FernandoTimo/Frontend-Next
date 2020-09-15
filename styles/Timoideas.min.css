@@ -26,9 +26,31 @@
 ::selection {
   background: gold;
 }
-/* ::-webkit-scrollbar {
-  display: none;
-} */
+::-webkit-scrollbar {
+  width: 1vh;
+  height: 1vh;
+  background: transparent;
+}
+::-webkit-scrollbar-track {
+  /* background: #0003; */
+  filter: invert(1);
+  border-radius: 0.5vh;
+}
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 0.8vh;
+  box-shadow: inset 0 0 0.4vh #0002;
+  width: 50px;
+  height: 50px !important;
+}
+::-webkit-scrollbar-button {
+  height: 2vh;
+  width: 2vh;
+  pointer-events: none;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
 
 /* FONTS
 @font-face{font-family:TF001;src:url(Fonts/TF11.otf)}@font-face{font-family:TF002;src:url(Fonts/TF110.otf)}@font-face{font-family:TF003;src:url(Fonts/TF111.otf)}@font-face{font-family:TF004;src:url(Fonts/TF112.otf)}@font-face{font-family:TF005;src:url(Fonts/TF113.otf)}@font-face{font-family:TF006;src:url(Fonts/TF114.otf)}@font-face{font-family:TF007;src:url(Fonts/TF115.otf)}@font-face{font-family:TF008;src:url(Fonts/TF116.otf)}@font-face{font-family:TF009;src:url(Fonts/TF117.otf)}@font-face{font-family:TF010;src:url(Fonts/TF118.otf)}@font-face{font-family:TF011;src:url(Fonts/TF119.otf)}@font-face{font-family:TF012;src:url(Fonts/TF120.otf)}@font-face{font-family:TF013;src:url(Fonts/TF121.otf)}@font-face{font-family:TF014;src:url(Fonts/TF122.otf)}@font-face{font-family:TF015;src:url(Fonts/TF123.otf)}@font-face{font-family:TF016;src:url(Fonts/TF124.otf)}@font-face{font-family:TF017;src:url(Fonts/TF13.otf)}@font-face{font-family:TF018;src:url(Fonts/TF14.otf)}@font-face{font-family:TF019;src:url(Fonts/TF15.otf)}@font-face{font-family:TF020;src:url(Fonts/TF16.otf)}@font-face{font-family:TF021;src:url(Fonts/TF17.otf)}@font-face{font-family:TF022;src:url(Fonts/TF18.otf)}@font-face{font-family:TF023;src:url(Fonts/TF19.otf)}@font-face{font-family:TF024;src:url(Fonts/TF21.ttf)}@font-face{font-family:TF025;src:url(Fonts/TF210.ttf)}@font-face{font-family:TF026;src:url(Fonts/TF211.ttf)}@font-face{font-family:TF027;src:url(Fonts/TF212.ttf)}@font-face{font-family:TF028;src:url(Fonts/TF213.ttf)}@font-face{font-family:TF029;src:url(Fonts/TF214.ttf)}@font-face{font-family:TF030;src:url(Fonts/TF215.ttf)}@font-face{font-family:TF031;src:url(Fonts/TF216.TTF)}@font-face{font-family:TF032;src:url(Fonts/TF217.TTF)}@font-face{font-family:TF033;src:url(Fonts/TF218.ttf)}@font-face{font-family:TF034;src:url(Fonts/TF219.ttf)}@font-face{font-family:TF035;src:url(Fonts/TF22.ttf)}@font-face{font-family:TF036;src:url(Fonts/TF220.ttf)}@font-face{font-family:TF037;src:url(Fonts/TF221.ttf)}@font-face{font-family:TF038;src:url(Fonts/TF222.ttf)}@font-face{font-family:TF039;src:url(Fonts/TF223.ttf)}@font-face{font-family:TF040;src:url(Fonts/TF224.ttf)}@font-face{font-family:TF041;src:url(Fonts/TF23.ttf)}@font-face{font-family:TF042;src:url(Fonts/TF24.ttf)}@font-face{font-family:TF043;src:url(Fonts/TF25.ttf)}@font-face{font-family:TF044;src:url(Fonts/TF26.ttf)}@font-face{font-family:TF045;src:url(Fonts/TF27.ttf)}@font-face{font-family:TF046;src:url(Fonts/TF28.ttf)}@font-face{font-family:TF047;src:url(Fonts/TF29.ttf)}@font-face{font-family:TF048;src:url(Fonts/TF41.ttf)}@font-face{font-family:TF049;src:url(Fonts/TF410.ttf)}@font-face{font-family:TF050;src:url(Fonts/TF410.ttf)}@font-face{font-family:TF051;src:url(Fonts/TF411.ttf)}@font-face{font-family:TF052;src:url(Fonts/TF412.ttf)}@font-face{font-family:TF053;src:url(Fonts/TF413.ttf)}@font-face{font-family:TF054;src:url(Fonts/TF414.ttf)}@font-face{font-family:TF055;src:url(Fonts/TF415.ttf)}@font-face{font-family:TF056;src:url(Fonts/TF416.ttf)}@font-face{font-family:TF057;src:url(Fonts/TF417.ttf)}@font-face{font-family:TF058;src:url(Fonts/TF418.ttf)}@font-face{font-family:TF059;src:url(Fonts/TF419.ttf)}@font-face{font-family:TF060;src:url(Fonts/TF42.ttf)}@font-face{font-family:TF061;src:url(Fonts/TF420.ttf)}@font-face{font-family:TF062;src:url(Fonts/TF421.ttf)}@font-face{font-family:TF063;src:url(Fonts/TF43.ttf)}@font-face{font-family:TF064;src:url(Fonts/TF44.ttf)}@font-face{font-family:TF065;src:url(Fonts/TF45.ttf)}@font-face{font-family:TF066;src:url(Fonts/TF46.ttf)}@font-face{font-family:TF067;src:url(Fonts/TF47.ttf)}@font-face{font-family:TF068;src:url(Fonts/TF48.ttf)}@font-face{font-family:TF069;src:url(Fonts/TF49.ttf)}.ff001{font-family:TF001}.ff002{font-family:TF002}.ff003{font-family:TF003}.ff004{font-family:TF004}.ff005{font-family:TF005}.ff006{font-family:TF006}.ff007{font-family:TF007}.ff008{font-family:TF008}.ff009{font-family:TF009}.ff010{font-family:TF010}.ff011{font-family:TF011}.ff012{font-family:TF012}.ff013{font-family:TF013}.ff014{font-family:TF014}.ff015{font-family:TF015}.ff016{font-family:TF016}.ff017{font-family:TF017}.ff018{font-family:TF018}.ff019{font-family:TF019}.ff020{font-family:TF020}.ff021{font-family:TF021}.ff022{font-family:TF022}.ff023{font-family:TF023}.ff024{font-family:TF024}.ff025{font-family:TF025}.ff026{font-family:TF026}.ff027{font-family:TF027}.ff028{font-family:TF028}.ff029{font-family:TF029}.ff030{font-family:TF030}.ff031{font-family:TF031}.ff032{font-family:TF032}.ff033{font-family:TF033}.ff034{font-family:TF034}.ff035{font-family:TF035}.ff036{font-family:TF036}.ff037{font-family:TF037}.ff038{font-family:TF038}.ff039{font-family:TF039}.ff040{font-family:TF040}.ff041{font-family:TF041}.ff042{font-family:TF042}.ff043{font-family:TF043}.ff044{font-family:TF044}.ff045{font-family:TF045}.ff046{font-family:TF046}.ff047{font-family:TF047}.ff048{font-family:TF048}.ff049{font-family:TF049}.ff050{font-family:TF050}.ff051{font-family:TF051}.ff052{font-family:TF052}.ff053{font-family:TF053}.ff054{font-family:TF054}.ff055{font-family:TF055}.ff056{font-family:TF056}.ff057{font-family:TF057}.ff058{font-family:TF058}.ff059{font-family:TF059}.ff060{font-family:TF060}.ff061{font-family:TF061}.ff062{font-family:TF062}.ff063{font-family:TF063}.ff064{font-family:TF064}.ff065{font-family:TF065}.ff066{font-family:TF066}.ff067{font-family:TF067}.ff068{font-family:TF068}.ff069{font-family:TF069} */

@@ -593,19 +593,23 @@
 /* Carrousel */
 /* Carrousel */
 .CarrouselContainer {
-  width: 100%;
+  /* max-width: 100%; */
+  width: 50vw;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  flex-direction: row;
 }
 .Carrousel {
-  /* width: 100%; */
+  width: 500vw;
+  overflow-x: scroll;
   height: 100%;
-  position: relative;
-  /* left: 50%; */
   display: flex;
-  background: #000;
-  border: 0.2vh solid #fa0;
+  background: #ff6565;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

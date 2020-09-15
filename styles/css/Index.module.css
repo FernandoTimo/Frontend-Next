@@ -47,3 +47,11 @@
   justify-self: flex-end;
   background: #000;
 }
+.Carrousela {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200vw;
+  margin: 1vh;
+  /* height: 15vh; */
+}

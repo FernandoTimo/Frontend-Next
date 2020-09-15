@@ -150,50 +150,48 @@ export function Modal({ background, blur, center, children, active }) {
     </div>
   );
 }
-export function Carrousel({ speed, children }) {
-  const [Slider, setSlider] = useState(0);
-  const CarrouselContainerRef = useRef();
-  const CarrouselRef = useRef();
-  const [maxScroll, setmaxScroll] = useState();
-  useEffect(() => {
-    var CarrouselCotainerWidth = CarrouselContainerRef.current.clientWidth / 2;
-    var CarrouselWidth = CarrouselRef.current.clientWidth / 2;
-    // console.log(CarrouselCotainerWidth);
-    // console.log(CarrouselWidth);
-    setmaxScroll(CarrouselWidth + CarrouselCotainerWidth);
-  }, []);
-  const handleScroll = (e) => {
-    e.preventDefault();
-    let sliderValue = Math.abs(Slider);
-    let velocidad = speed ? speed : 350;
-    let mordisco = sliderValue > maxScroll - 350 ? maxScroll - sliderValue : 0;
-    console.log(mordisco);
-    let movimiento =
-      e.deltaY > 0
-        ? mordisco === 0
-          ? -velocidad
-          : -(mordisco + velocidad)
-        : mordisco === 0
-        ? velocidad
-        : mordisco + velocidad;
-    movimiento !== 0 && setSlider(Slider + movimiento);
-  };
-  console.log('----------');
-  console.log(maxScroll);
-  console.log(Slider);
-  // console.log(sliderValue) ;
-  console.log('----------');
+export function Carrousel({ bg, speed, width, height, children }) {
+  // const [Slider, setSlider] = useState(0);
+  // const CarrouselContainerRef = useRef();
+  // const CarrouselRef = useRef();
+  // const [maxScroll, setmaxScroll] = useState();
+  // useEffect(() => {
+  //   var CarrouselCotainerWidth = CarrouselContainerRef.current.clientWidth / 2;
+  //   var CarrouselWidth = CarrouselRef.current.clientWidth / 2;
+  //   // console.log(CarrouselCotainerWidth);
+  //   // console.log(CarrouselWidth);
+  //   setmaxScroll(CarrouselWidth + CarrouselCotainerWidth);
+  // }, []);
+  // const handleScroll = (e) => {
+  //   e.preventDefault();
+  //   let sliderValue = Math.abs(Slider);
+  //   let velocidad = speed ? speed : 350;
+  //   let mordisco = sliderValue > maxScroll - 350 ? maxScroll - sliderValue : 0;
+  //   let movimiento =
+  //     e.deltaY > 0
+  //       ? mordisco === 0
+  //         ? -velocidad
+  //         : -(mordisco + velocidad)
+  //       : mordisco === 0
+  //       ? velocidad
+  //       : mordisco + velocidad;
+  //   movimiento !== 0 && setSlider(Slider + movimiento);
+  // };
 
   return (
     <div
       className="CarrouselContainer"
-      onWheel={handleScroll}
-      ref={CarrouselContainerRef}
+      // onWheel={handleScroll}
+      // ref={CarrouselContainerRef}
     >
       <div
         className="Carrousel"
-        ref={CarrouselRef}
-        style={{ marginLeft: Slider + 'px' }}
+        style={{
+          width: width ? width : 'auto',
+          height: height ? height : 'auto',
+          background: bg ? randomBG() : '#fafafa',
+        }}
+        // ref={CarrouselRef}
       >
         {children}
       </div>
