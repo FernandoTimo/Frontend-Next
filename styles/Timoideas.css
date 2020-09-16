@@ -584,7 +584,32 @@
     transform: rotate(360deg);
   }
 }
-
+/*--------------------------------------------------------------------------------------------------*/
+.SpinnerRainbowContainer {
+  background: linear-gradient(
+    #fc5,
+    #f70,
+    #f35,
+    #d633ff,
+    #8422aa,
+    #23a,
+    #18a,
+    #6fc,
+    #df5
+  );
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotate linear infinite;
+  /* filter: saturate(2); */
+}
+.SpinnerRainbowContainer span {
+  width: 60%;
+  height: 60%;
+  background: #fff;
+  border-radius: 50%;
+}
 /* Carrousel */
 /* Carrousel */
 /* Carrousel */

@@ -437,13 +437,13 @@ export default Navigation;
 // verificar si la ruta ya esta en el arreglo andes de grergar a la lsita de Routues
 // Agregar autocompletado
 
-//            |||||||||||  |||||||||||  |||||||||||  ||||||  |||  |||||||||||  |||||||||||  |||||||||||
-//            ||||||       |||||  ||||     |||||     ||||||| |||  ||||         |||||  ||||  ||||||
-//            |||||||||||  |||||||||||     |||||     ||| ||| |||  |||||||||||  |||||||||||  |||||||||||
-//                 ||||||  ||||            |||||     ||| |||||||  ||||         |||  ||||         ||||||
-//            |||||||||||  ||||         |||||||||||  |||  |||||   |||||||||||  |||    ||||  |||||||||||
+//            |||||||||||  |||||||||||  |||||||||||  ||||||  |||  ||||||  |||  |||||||||||  |||||||||||  |||||||||||
+//            ||||||       |||||  ||||     |||||     ||||||| |||  ||||||| |||  ||||         |||||  ||||  ||||||
+//            |||||||||||  |||||||||||     |||||     ||| ||| |||  ||| ||| |||  |||||||||||  |||||||||||  |||||||||||
+//                 ||||||  ||||            |||||     ||| |||||||  ||| |||||||  ||||         |||  ||||         ||||||
+//            |||||||||||  ||||         |||||||||||  |||  |||||   |||  |||||   |||||||||||  |||    ||||  |||||||||||
 
-export function Spiner({ speed, size, background }) {
+export function Spinner_Trino({ speed, size, background }) {
   const { Theme } = useTheme();
   const Elemento = (
     <div
@@ -456,7 +456,7 @@ export function Spiner({ speed, size, background }) {
   );
   return (
     <div
-      className="SpinerContainer"
+      className="SpinnerContainer"
       style={{
         animationDuration: speed ? `${speed}s` : '1s',
         // transform: `scale(8)`,
@@ -467,6 +467,30 @@ export function Spiner({ speed, size, background }) {
         {Elemento}
         {Elemento}
       </div>
+    </div>
+  );
+}
+export function Spinner_Rainbow({ size = 1.5, speed = 0.3, children }) {
+  return (
+    <div
+      className="SpinnerRainbowContainer"
+      style={{
+        width: size + 'vh',
+        height: size + 'vh',
+        boxShadow: `0 0 ${Math.round(size / 15)}vh #0003,       
+           inset 0 0 ${Math.round(size / 35)}vh #0004`,
+        border: `${size / 60}vh solid #fafafa`,
+        animationDuration: `${speed}s`,
+      }}
+    >
+      <span
+        style={{
+          border: `${size / 60}vh solid #fafafa`,
+          boxShadow: `0 0 ${Math.round(size / 15)}vh #0003,       
+           inset 0 0 ${Math.round(size / 35)}vh #0004`,
+          border: `${size / 60}vh solid #fafafa`,
+        }}
+      ></span>
     </div>
   );
 }
