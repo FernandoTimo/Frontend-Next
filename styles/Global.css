@@ -314,7 +314,8 @@ a {
 /*  ---------------------------------------------------------     ////////////
 /*  ---------------------------------------------------------    /////////////*/
 .SecondStepStore {
-  width: 100%;
+  width: 80%;
+  background: #c47c7c;
   animation: YapeInfoContainer 0.5s ease-in forwards;
   opacity: 0;
   display: flex;
@@ -337,14 +338,20 @@ a {
   background: transparent;
   border: none;
   outline: none;
-  align-self: center;
-  justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 50%;
   pointer-events: none;
   z-index: 1;
+  background: #000;
+}
+.SecondStepStoreSubmit img {
+  width: 2vh;
+  margin-top: 1vh;
+  cursor: pointer;
+  transform: rotate(-90deg);
+  transition: 0.2s;
 }
 .SecondStepStoreSubmit img:hover {
   transform: rotate(-90deg) scale(1.1);
@@ -358,19 +365,18 @@ a {
   display: flex;
   overflow: scroll;
   height: 4.7vh;
+  width: 40%;
+  background: #000;
+  justify-content: center;
+  align-items: center;
 }
 .SecondStepStoreForm {
   display: flex;
   /* overflow-y: scroll; */
-  /* background: #000; */
+  background: linear-gradient(45deg, #41e, #f10);
   flex-direction: column;
-}
-.SecondStepStoreSubmit img {
-  width: 2vh;
-  margin-top: 1vh;
-  cursor: pointer;
-  transform: rotate(-90deg);
-  transition: 0.2s;
+  border: 0.5vh solid #fff;
+  width: 100%;
 }
 .SecondStepStoreForm div {
   display: flex;
@@ -380,7 +386,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 4.7vh;
+  height: 4.2vh;
   border: 0.2vh solid #000;
 }
 .SecondStepStoreForm div div label {
@@ -408,8 +414,5 @@ a {
 @media only screen and (min-width: 600px) {
   .SecondStepStoreForm {
     flex-direction: row;
-  }
-  .SecondStepStoreSubmit {
-    width: 3vh;
   }
 }

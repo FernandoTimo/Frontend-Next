@@ -341,7 +341,7 @@ const SecondStepStore = ({ codigo }) => {
           </button>
           <div>
             <div>
-              <input type="text" autoFocus />
+              <input type="text" />
               <label>Nombre</label>
             </div>
             <div>
