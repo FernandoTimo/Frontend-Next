@@ -3,6 +3,7 @@ import { useState, useContext, useEffect, useRef } from 'react';
 import { Controls, Content } from 'components/Resources/Timoideas';
 import { useSockets } from './useSockets';
 import useDelay from './useDelay';
+import { socket } from 'sockets/socket';
 export const useStore = (Yape) => {
   const {
     ListStore,
@@ -265,15 +266,14 @@ const ProductList = ({ index, children }) => {
 //  ---------------------------------------------------------        /////
 const FirstStepStore = ({ children }) => {
   const { StepStore, setStepStore } = useStore();
-
-  // REF INPUT ---------------------------
-  // -------------------------------------  REF  INPUT --------------------
-  // REF INPUT ---------------------------
+  // ----------------------------- <--=============== Input type File ===============--> -----------------------------
   const [ComprobanteData, setComprobanteData] = useState();
   let refStoreCompobanteInput = useRef();
   const handlerComprobanteInput = (e) => {
     setStepStore(StepStore + 1);
+    socket.emit('store-comprobante', 'Nuevo Comprobante');
   };
+
   return (
     <div className="YapeInfoContainer">
       <p className="YapeInfoTitle">S/15.30</p>
@@ -297,7 +297,7 @@ const FirstStepStore = ({ children }) => {
       </button>
       <input
         type="file"
-        accept="png,jpeg,jpg"
+        accept=".png,.jpeg,.jpg"
         className="StoreCompobanteInput"
         ref={refStoreCompobanteInput}
         onChange={handlerComprobanteInput}
@@ -315,9 +315,72 @@ const FirstStepStore = ({ children }) => {
 //  ---------------------------------------------------------     ////////////
 //  ---------------------------------------------------------    /////////////
 const SecondStepStore = ({ codigo }) => {
+  const [CanSubmit, setCanSubmit] = useState(false);
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+    CanSubmit ? alert('enviado') : alert('POr favor llena todos los espacios');
+  };
   return (
-    <div>
-      Datos CLiente
+    <div className="SecondStepStore">
+      {/* <div className="SecondStepStoreTitle">¡Gracias por tu preferencia!</div> */}
+      <div className="SecondStepStoreMessage">
+        Por favor, brindanos la siguiente información
+      </div>
+      <div className="SecondStepStoreFormContainer">
+        <form className="SecondStepStoreForm" onSubmit={handlerSubmit}>
+          <button className={`SecondStepStoreSubmit`}>
+            <img
+              alt="Ok"
+              // onMouseOver={() => alert('asd')}
+              style={{
+                pointerEvents: CanSubmit ? 'visible' : 'none',
+                filter: CanSubmit ? 'grayScale(0)' : 'grayScale(1)',
+              }}
+              src="assets/Submit.png"
+            />
+          </button>
+          <div>
+            <div>
+              <input type="text" autoFocus />
+              <label>Nombre</label>
+            </div>
+            <div>
+              <input type="text" />
+              <label>Teléfono</label>
+            </div>
+          </div>
+          <div>
+            <div>
+              <input type="text" />
+              <label>Hoy 15</label>
+            </div>
+            <div>
+              <input type="text" />
+              <label>10:30 am</label>
+            </div>
+          </div>
+          <div>
+            <div>
+              <input type="text" />
+              <label>Ciudad</label>
+            </div>
+            <div>
+              <input type="text" />
+              <label>Distrito</label>
+            </div>
+          </div>
+          <div>
+            <div>
+              <input type="text" />
+              <label>Calle</label>
+            </div>
+            <div>
+              <input type="text" />
+              <label>Numero</label>
+            </div>
+          </div>
+        </form>
+      </div>
       {codigo && codigo}
     </div>
   );

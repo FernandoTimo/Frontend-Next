@@ -170,6 +170,7 @@ a {
 .StoreStep {
   flex: 1;
   display: none;
+  overflow: hidden;
 }
 .StoreList {
   display: flex;
@@ -179,13 +180,14 @@ a {
 .ProductList {
   display: flex;
   position: relative;
-  width: 6vh;
+  width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
   border-radius: 0.5vh 0.5vh 0 0;
   box-shadow: 0 0 1vh #0002;
   animation: itemStore 0.2s ease-in 0.5s forwards;
+  background: #000;
 }
 @keyframes itemsStore {
   0% {
@@ -249,12 +251,10 @@ a {
   0% {
     opacity: 0;
     display: none;
-    height: 0vh;
   }
   100% {
     opacity: 1;
     display: flex;
-    height: 6.5vh;
   }
 }
 
@@ -303,4 +303,113 @@ a {
 }
 .YapeInfoVoucher {
   margin-left: 25vh;
+}
+/*  ---------------------------------------------------------      ///////
+/*  ---------------------------------------------------------    //////////
+/*  ---------------------------------------------------------  ////   /////
+/*  ---------------------------------------------------------          /////
+/*  ---------------------------------------------------------         /////
+/*  ---------------------------------------------------------        /////
+/*  ---------------------------------------------------------       /////
+/*  ---------------------------------------------------------     ////////////
+/*  ---------------------------------------------------------    /////////////*/
+.SecondStepStore {
+  width: 100%;
+  animation: YapeInfoContainer 0.5s ease-in forwards;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+}
+.SecondStepStoreTitle {
+  font-size: 1.7vh;
+  font-weight: 700;
+  pointer-events: none;
+}
+.SecondStepStoreMessage {
+  font-size: 1.5vh;
+  pointer-events: none;
+}
+.SecondStepStoreSubmit {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.SecondStepStoreSubmit img:hover {
+  transform: rotate(-90deg) scale(1.1);
+  filter: drop-shadow(0 0 0.4vh #ff7777);
+}
+.SecondStepStoreSubmit img:active {
+  transform: rotate(-90deg) scale(1);
+  filter: drop-shadow(0 0 0.4vh #ff7777);
+}
+.SecondStepStoreFormContainer {
+  display: flex;
+  overflow: scroll;
+  height: 4.7vh;
+}
+.SecondStepStoreForm {
+  display: flex;
+  /* overflow-y: scroll; */
+  /* background: #000; */
+  flex-direction: column;
+}
+.SecondStepStoreSubmit img {
+  width: 2vh;
+  margin-top: 1vh;
+  cursor: pointer;
+  transform: rotate(-90deg);
+  transition: 0.2s;
+}
+.SecondStepStoreForm div {
+  display: flex;
+  position: relative;
+}
+.SecondStepStoreForm div div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4.7vh;
+  border: 0.2vh solid #000;
+}
+.SecondStepStoreForm div div label {
+  position: absolute;
+  pointer-events: none;
+  font-size: 1.8vh;
+  font-weight: 700;
+}
+.SecondStepStoreForm div div input {
+  background: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 1.8vh;
+  font-weight: 700;
+}
+.SecondStepStoreForm div div input:focus + label {
+  background: #000;
+  bottom: 1vh;
+  padding: 0.2vh 1vh;
+  border-radius: 0.5vh;
+  font-size: 1vh;
+  color: #fafafa;
+}
+@media only screen and (min-width: 600px) {
+  .SecondStepStoreForm {
+    flex-direction: row;
+  }
+  .SecondStepStoreSubmit {
+    width: 3vh;
+  }
 }
