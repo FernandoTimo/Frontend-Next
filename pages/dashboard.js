@@ -32,18 +32,6 @@ export default function Dashboard() {
                         <Content s center flex={1}>
                           <div className={styleDashboard.VerifyOrdersContainer}>
                             <StoreAdmin />
-                            <div
-                              className={
-                                styleDashboard.VerifyOrdersTurnoContainer
-                              }
-                            >
-                              <label>Proxima Salida</label>
-                              <input
-                                type="tel"
-                                placeholder="No designado"
-                                className={styleDashboard.DeliveryInput}
-                              />
-                            </div>
                           </div>
                         </Content>
                       )) ||

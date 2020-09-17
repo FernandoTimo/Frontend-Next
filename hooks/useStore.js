@@ -445,9 +445,32 @@ export function StoreAdmin({ children }) {
     socket.emit('store-comprobante_validado', 'X8S5DQ');
   };
   return (
-    <div className="VerifyOrdersControlContainer">
-      {State}
-      <button onClick={handlerComprobanteValidador}>Validar</button>
+    <div className="StoreVerifyOrdersContainer">
+      {/*/            <--================================================================================================ [ Store HEADER Controls Activity ]
+      //            <--================================================================================================ [ Store HEADER Controls Activity ]
+      //             --------=====================================---------------------  [ Store HEADER Controls Activity ]  -----------------------------
+      //            <--================================================================================================ [ Store HEADER Controls Activity ]
+      //            <--================================================================================================ [ Store HEADER Controls Activity ]*/}
+      <div className="VerifyOrdersControlContainer">
+        {State}
+        <StoreCardOrderVerify />
+      </div>
+      {/*/            <--================================================================================================ [ Store FOOTER Controls Activity ]
+      //            <--================================================================================================ [ Store FOOTER Controls Activity ]
+      //             --------=====================================---------------------  [ Store FOOTER Controls Activity ]  -----------------------------
+      //            <--================================================================================================ [ Store FOOTER Controls Activity ]
+      //            <--================================================================================================ [ Store FOOTER Controls Activity ]*/}
+      <div className="VerifyOrdersActivityContainer">
+        <div>
+          <label>An</label>
+        </div>
+        <div>
+          <label>Va</label>
+        </div>
+        <div>
+          <label>Po</label>
+        </div>
+      </div>
     </div>
   );
 }
@@ -457,3 +480,23 @@ export function StoreAdmin({ children }) {
 //             --------=====================================---------------------  [ Card Verify Component ]  -----------------------------
 //            <--================================================================================================ [ Card Verify Component ]
 //            <--================================================================================================ [ Card Verify Component ]
+const StoreCardOrderVerify = () => {
+  return (
+    <div>
+      <div className="StoreCardOrderVerifyContainer">
+        <label>Fernando</label>
+        <label>S/14.20</label>
+        <label>D6R1W</label>
+        <label>96668218</label>
+        <div>
+          <label>Paucarpata</label>
+          <label>Av. Jesus</label>
+          <label>484</label>
+        </div>
+        <label>Mañana</label>
+        <label>hace 2min</label>
+        <button>Validar</button>
+      </div>
+    </div>
+  );
+};
