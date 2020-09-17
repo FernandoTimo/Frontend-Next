@@ -17,7 +17,11 @@ export default function Dashboard() {
 
       <Body>
         <Section size={1}>
-          <Content center flex={1}>
+          <Content
+            className={styleDashboard.DashboardContainer}
+            center
+            flex={1}
+          >
             <div className={styleDashboard.BrandContainer}>Logo</div>
             <Content center flex={10} row>
               <Content center row flex={1}>
@@ -26,13 +30,20 @@ export default function Dashboard() {
                     {(Active === -1 && <div>Stories</div>) ||
                       (Active === 0 && (
                         <Content s center flex={1}>
-                          <div className={styleDashboard.DeliveryContainer}>
-                            <label>Proxima Salida</label>
-                            <input
-                              type="tel"
-                              placeholder="No designado"
-                              className={styleDashboard.DeliveryInput}
-                            />
+                          <div className={styleDashboard.VerifyOrdersContainer}>
+                            <StoreAdmin />
+                            <div
+                              className={
+                                styleDashboard.VerifyOrdersTurnoContainer
+                              }
+                            >
+                              <label>Proxima Salida</label>
+                              <input
+                                type="tel"
+                                placeholder="No designado"
+                                className={styleDashboard.DeliveryInput}
+                              />
+                            </div>
                           </div>
                         </Content>
                       )) ||
@@ -68,7 +79,7 @@ export default function Dashboard() {
                     setActive(0);
                   }}
                 >
-                  <StoreAdmin />
+                  Store
                 </div>
                 <div
                   className={styleDashboard.ControlsStock}

@@ -445,9 +445,15 @@ export function StoreAdmin({ children }) {
     socket.emit('store-comprobante_validado', 'X8S5DQ');
   };
   return (
-    <div className="">
+    <div className="VerifyOrdersControlContainer">
       {State}
       <button onClick={handlerComprobanteValidador}>Validar</button>
     </div>
   );
 }
+
+//            <--================================================================================================ [ Card Verify Component ]
+//            <--================================================================================================ [ Card Verify Component ]
+//             --------=====================================---------------------  [ Card Verify Component ]  -----------------------------
+//            <--================================================================================================ [ Card Verify Component ]
+//            <--================================================================================================ [ Card Verify Component ]
