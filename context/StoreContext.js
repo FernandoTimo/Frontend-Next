@@ -15,10 +15,8 @@ export const StoreContextProvider = ({ children }) => {
     if (ListStore.length > 0) {
       setToggleStore(true);
     }
-    localStorage.Step
-      ? setStep(Number(localStorage.Step))
-      : // setStep(0)
-        (localStorage.Step = 0);
+    // ? setStep(Number(localStorage.Step))
+    localStorage.Step ? setStep(0) : (localStorage.Step = 0);
     document.addEventListener('visibilitychange', handleWindowVisibility);
     return () => {
       document.removeEventListener('visibilitychange', handleWindowVisibility);
@@ -30,7 +28,10 @@ export const StoreContextProvider = ({ children }) => {
   const setShowStore = () => {
     setToggleStore(!ShowStore);
   };
-
+  //            <--=========================================================== [ ListItems ]
+  //             -----------------------------  [ ListItems ]  -----------------------------
+  //            <--=========================================================== [ ListItems ]
+  // ----------------------------- <--=============== Remove ===============--> -----------------------------
   const removeItem = (index) => {
     if (ListStore.length < 1) {
       setShowStore(false);

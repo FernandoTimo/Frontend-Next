@@ -1,6 +1,10 @@
 import StoreContext from 'context/StoreContext';
 import { useState, useContext, useEffect, useRef } from 'react';
-import { Controls, Content } from 'components/Resources/Timoideas';
+import {
+  Controls,
+  Content,
+  Spinner_Rainbow,
+} from 'components/Resources/Timoideas';
 import { useSockets } from './useSockets';
 import useDelay from './useDelay';
 import { socket } from 'sockets/socket';
@@ -94,10 +98,9 @@ export function StoreClient({ Yape }) {
             className="StoreContainer"
             style={{ marginTop: !isStore && '25vh' }}
           >
-            {/* BotonPrincipal ------------------------ */}
-            {/* -----------------  BotonPrincipal ------------------------ */}
-            {/* BotonPrincipal ------------------------ */}
-
+            {/*            <--=========================================================== [ BotonPrincipal ]*/}
+            {/*             -----------------------------  [ BotonPrincipal ]  -----------------------------*/}
+            {/*            <--=========================================================== [ BotonPrincipal ]*/}
             <button
               className={`StoreButton ${StepStore === 0 && 'YapeStep'} ${
                 StepStore === 1 && 'AdjuntarStep'
@@ -106,9 +109,7 @@ export function StoreClient({ Yape }) {
               onClick={handlerButtonStore}
               style={{ pointerEvents: StepStore < 3 ? 'visible' : 'none' }}
             >
-              {/* Label TOP ---------------------------------------------------------- */}
-              {/* --------------------- Label TOP ------------------------------------- */}
-              {/* Label TOP ---------------------------------------------------------- */}
+              {/*                               <--=============== Label TOP ===============-->                              */}
               <label className="StoreButtonStateLabelTop">
                 {StepStore === 0 && (
                   <div
@@ -165,34 +166,28 @@ export function StoreClient({ Yape }) {
                 {/* {StepStore === 2 && ListStore.length}
                 {StepStore === 3 && ListStore.length} */}
               </label>
-              {/* Label MID ---------------------------------------------------------- */}
-              {/* --------------------- Label MID ------------------------------------- */}
-              {/* Label MID ---------------------------------------------------------- */}
+              {/*                               <--=============== Label MID ===============-->                              */}
               <label className={`StoreButtonStateLabelMid`}>
                 {ButtonMensaje[StepStore]}
                 {StepStore === 4 && <div>Validando</div>}
               </label>
-              {/* Label BOT ---------------------------------------------------------- */}
-              {/* --------------------- Label BOT ------------------------------------- */}
-              {/* Label BOT ---------------------------------------------------------- */}
+              {/*                               <--=============== Label BOT ===============-->                              */}
               {StepStore === 0 && (
                 <label className={`StoreButtonStateLabelBot`}>
                   {'S/12.90'}
                 </label>
               )}
             </button>
-            <div className="StoreButtonContainer"></div>
+            {/*            <--=========================================================== [ StoreProductsList ]*/}
+            {/*             -----------------------------  [ StoreProductsList ]  -----------------------------*/}
+            {/*            <--=========================================================== [ StoreProductsList ]*/}
             <Content center flex={1}>
+              {/*                                <--=============== StepsStoreComponents ===============-->                                */}
               <Content
                 flex={StepStore === 0 ? 0.1 : 9}
                 center
                 className="StoreStep"
               >
-                {/* SSSSSSTTTTTTTTTTTTEEEEEEEEEEPPPPPPPPPSSSSSSSSSSSSSSSSSS --------------*/}
-                {/* SSSSSSTTTTTTTTTTTTEEEEEEEEEEPPPPPPPPPSSSSSSSSSSSSSSSSSS --------------*/}
-                {/* SSSSSSTTTTTTTTTTTTEEEEEEEEEEPPPPPPPPPSSSSSSSSSSSSSSSSSS --------------*/}
-                {/* SSSSSSTTTTTTTTTTTTEEEEEEEEEEPPPPPPPPPSSSSSSSSSSSSSSSSSS --------------*/}
-
                 {StepStore === 0 && <div></div>}
                 {(StepStore === 1 || StepStore === 2) && (
                   <FirstStepStore>{Yape}</FirstStepStore>
@@ -200,7 +195,7 @@ export function StoreClient({ Yape }) {
                 {StepStore === 3 && <SecondStepStore />}
                 {StepStore === 4 && <SecondStepStore codigo={Codigo} />}
               </Content>
-
+              {/*                                <--=============== StoreProductsListCards ===============-->                                */}
               <Content className="StoreList" row flex={1}>
                 {ListStore.map((ItemList, index) => (
                   <ProductList key={index} index={index}>
@@ -215,12 +210,10 @@ export function StoreClient({ Yape }) {
     </Controls>
   );
 }
-// LADO DEL ADMIN -------------------------
-// LADO DEL ADMIN -------------------------
-// ------------------------------------------- LADO DEL ADMIN -------------------------
-// ------------------------------------------- LADO DEL ADMIN -------------------------
-// LADO DEL ADMIN -------------------------
-// LADO DEL ADMIN -------------------------
+//            <--=========================================================== [ Top Component ]
+//             -----------------------------  [ Top Component ]  -----------------------------
+//            <--=========================================================== [ Top Component ]
+
 const ProductList = ({ index, children }) => {
   const { ListStore, setListStore, setShowStore, StepStore } = useStore();
   const [Cantidad, setCantidad] = useState(1);
@@ -314,12 +307,13 @@ const FirstStepStore = ({ children }) => {
 //  ---------------------------------------------------------       /////
 //  ---------------------------------------------------------     ////////////
 //  ---------------------------------------------------------    /////////////
-const SecondStepStore = ({ codigo }) => {
+const SecondStepStore = ({ codigo = 'asd2' }) => {
   const [CanSubmit, setCanSubmit] = useState(false);
   const handlerSubmit = (e) => {
     e.preventDefault();
     CanSubmit ? alert('enviado') : alert('POr favor llena todos los espacios');
   };
+
   return (
     <div className="SecondStepStore">
       {/* <div className="SecondStepStoreTitle">¡Gracias por tu preferencia!</div> */}
@@ -381,17 +375,29 @@ const SecondStepStore = ({ codigo }) => {
           </div>
         </form>
       </div>
-      {codigo && codigo}
+      <div className="SecondStepStoreCodeContainer">
+        <div className="SecondStepStoreCode">
+          <label>Código</label>
+          <b>:</b>
+          <span>
+            {codigo ? (
+              <label className="SecondStepStoreCodeValue">
+                {codigo.toUpperCase()}
+              </label>
+            ) : (
+              <Spinner_Rainbow />
+            )}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
-
-// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// LADO DEL ADMINISTRADOR -------------------------|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//            <--=========================================================== [ ADMIN COMPONENT ]
+//            <--=========================================================== [ ADMIN COMPONENT ]
+//             -----------------------------  [ ADMIN COMPONENT ]  -----------------------------
+//            <--=========================================================== [ ADMIN COMPONENT ]
+//            <--=========================================================== [ ADMIN COMPONENT ]
 export function StoreAdmin({ children }) {
   const [State, setState] = useState();
   const socket = useSockets(() => {

@@ -48,12 +48,6 @@ a {
 /* ------------------------------------ StoreButtonContainer */
 /* StoreButtonContainer ------------------------------------ */
 
-.StoreButtonContainer {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 /* .StoreButton:hover {
   transform: scale(0.9);
 } */
@@ -314,8 +308,7 @@ a {
 /*  ---------------------------------------------------------     ////////////
 /*  ---------------------------------------------------------    /////////////*/
 .SecondStepStore {
-  width: 80%;
-  background: #c47c7c;
+  width: 100%;
   animation: YapeInfoContainer 0.5s ease-in forwards;
   opacity: 0;
   display: flex;
@@ -331,7 +324,9 @@ a {
 }
 .SecondStepStoreMessage {
   font-size: 1.5vh;
+  margin-top: 0.5vh;
   pointer-events: none;
+  font-weight: 700;
 }
 .SecondStepStoreSubmit {
   position: absolute;
@@ -341,10 +336,9 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
   pointer-events: none;
   z-index: 1;
-  background: #000;
 }
 .SecondStepStoreSubmit img {
   width: 2vh;
@@ -366,36 +360,32 @@ a {
   overflow: scroll;
   height: 4.7vh;
   width: 40%;
-  background: #000;
   justify-content: center;
   align-items: center;
 }
 .SecondStepStoreForm {
   display: flex;
-  /* overflow-y: scroll; */
-  background: linear-gradient(45deg, #41e, #f10);
   flex-direction: column;
   border: 0.5vh solid #fff;
   width: 100%;
 }
-.SecondStepStoreForm div {
+.SecondStepStoreForm > div {
   display: flex;
   position: relative;
 }
-.SecondStepStoreForm div div {
+.SecondStepStoreForm > div div {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 4.2vh;
-  border: 0.2vh solid #000;
 }
-.SecondStepStoreForm div div label {
+.SecondStepStoreForm > div div label {
   position: absolute;
   pointer-events: none;
   font-size: 1.8vh;
   font-weight: 700;
 }
-.SecondStepStoreForm div div input {
+.SecondStepStoreForm > div div input {
   background: transparent;
   border: none;
   outline: none;
@@ -403,7 +393,7 @@ a {
   font-size: 1.8vh;
   font-weight: 700;
 }
-.SecondStepStoreForm div div input:focus + label {
+.SecondStepStoreForm > div div input:focus + label {
   background: #000;
   bottom: 1vh;
   padding: 0.2vh 1vh;
@@ -415,4 +405,38 @@ a {
   .SecondStepStoreForm {
     flex-direction: row;
   }
+  .SecondStepStoreFormContainer {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+/* Code Store */
+.SecondStepStoreCode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.SecondStepStoreCode label::selection {
+  background: transparent;
+}
+.SecondStepStoreCode label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vh;
+  font-weight: 700;
+}
+.SecondStepStoreCode b {
+  margin: 0 2vh;
+  font-size: 2vh;
+  text-shadow: 0 0 1v #0003;
+  pointer-events: none;
+}
+.SecondStepStoreCodeValue {
+  background: linear-gradient(45deg, #fa0, #f2a);
+  font-weight: 900 !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
