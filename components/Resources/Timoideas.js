@@ -470,7 +470,7 @@ export function Spinner_Trino({ speed, size, background }) {
     </div>
   );
 }
-export function Spinner_Rainbow({ size = 1.5, speed = 0.3, children }) {
+export function Spinner_Rainbow({ size = 1.5, speed = 0.3 }) {
   return (
     <div
       className="SpinnerRainbowContainer"
@@ -490,7 +490,7 @@ export function Spinner_Rainbow({ size = 1.5, speed = 0.3, children }) {
            inset 0 0 ${Math.round(size / 35)}vh #0004`,
           border: `${size / 60}vh solid #fafafa`,
         }}
-      ></span>
+      />
     </div>
   );
 }
