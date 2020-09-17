@@ -10,8 +10,8 @@ import useDelay from './useDelay';
 import { socket } from 'sockets/socket';
 export const useStore = (Yape) => {
   const {
-    ListStore,
-    setListStore,
+    InvoiceStore,
+    setInvoiceStore,
     isStore,
     setIsStore,
     ShowStore,
@@ -20,8 +20,8 @@ export const useStore = (Yape) => {
     setStepStore,
   } = useContext(StoreContext);
   return {
-    ListStore,
-    setListStore,
+    InvoiceStore,
+    setInvoiceStore,
     isStore,
     setIsStore,
     ShowStore,
@@ -38,7 +38,7 @@ export const useStore = (Yape) => {
 // LADO DEL CLIENTE -------------------------
 export function StoreClient({ Yape }) {
   const {
-    ListStore,
+    InvoiceStore,
     ShowStore,
     StepStore,
     setStepStore,
@@ -122,7 +122,7 @@ export function StoreClient({ Yape }) {
                       bottom: !isStore && '-.3vh',
                     }}
                   >
-                    {ListStore.length}
+                    {InvoiceStore.productos.length}
                   </div>
                 )}
                 {StepStore > 0 && (
@@ -197,7 +197,7 @@ export function StoreClient({ Yape }) {
               </Content>
               {/*                                <--=============== StoreProductsListCards ===============-->                                */}
               <Content className="StoreList" row flex={1}>
-                {ListStore.map((ItemList, index) => (
+                {InvoiceStore.productos.map((ItemList, index) => (
                   <ProductList key={index} index={index}>
                     {ItemList}
                   </ProductList>
@@ -217,7 +217,7 @@ export function StoreClient({ Yape }) {
 const ProductList = ({ index, children }) => {
   const {
     ListStore,
-    setListStore,
+    setInvoiceStore,
     setShowStore,
     StepStore,
     setStepStore,
@@ -229,7 +229,7 @@ const ProductList = ({ index, children }) => {
   };
   let D1000 = useDelay(300, _1000);
   const handlerDecrement = () => {
-    Cantidad === 1 && (setListStore.removeItem(index), set_1000(true));
+    Cantidad === 1 && (setInvoiceStore.removeItem(index), set_1000(true));
     setCantidad(Cantidad - 1);
     ListStore.length === 0 && setShowStore(false);
   };
