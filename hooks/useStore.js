@@ -196,7 +196,7 @@ export function StoreClient({ Yape }) {
                     <FirstStepStore>{Yape}</FirstStepStore>
                   )}
                   {StepStore === 3 && <SecondStepStore />}
-                  {StepStore === 4 && <SecondStepStore codigo={Codigo} />}
+                  {StepStore > 3 && <SecondStepStore codigo={Codigo} />}
                 </Content>
                 {/*                                <--=============== StoreProductsListCards ===============-->                                */}
                 <Content
@@ -249,11 +249,11 @@ const ProductList = ({ index, children }) => {
       style={{
         animation: Cantidad === 0 && 'itemsStore .3s reverse forwards',
         display: D1000 ? 'none' : 'flex',
-        cursor: StepStore !== 0 && 'pointer',
+        cursor: StepStore < 2 && 'pointer',
         background: `url(${children.producto.cover})`,
       }}
       onClick={() => {
-        StepStore !== 0 && setStepStore(0);
+        StepStore === 1 && setStepStore(0);
       }}
     >
       <div
@@ -295,31 +295,36 @@ const FirstStepStore = ({ children }) => {
 
   return (
     <div className="YapeInfoContainer">
-      <p className="YapeInfoNumero">{children.numero}</p>
-      <p className="YapeInfoNombre">{children.nombre}</p>
-      <button
-        className="YapeInfoAdd"
-        onClick={() => {
-          setStepStore(0);
-        }}
-      >
-        Agregar +
-      </button>
-      <button
-        className="YapeInfoVoucher"
-        onClick={() => {
-          refStoreCompobanteInput.current.click();
-        }}
-      >
-        Adjuntar Voucher
-      </button>
-      <input
-        type="file"
-        accept=".png,.jpeg,.jpg"
-        className="StoreCompobanteInput"
-        ref={refStoreCompobanteInput}
-        onChange={handlerComprobanteInput}
-      />
+      {StepStore === 1 && (
+        <>
+          <p className="YapeInfoNumero">{children.numero}</p>
+          <p className="YapeInfoNombre">{children.nombre}</p>
+          <button
+            className="YapeInfoAdd"
+            onClick={() => {
+              setStepStore(0);
+            }}
+          >
+            Agregar +
+          </button>
+          <button
+            className="YapeInfoVoucher"
+            onClick={() => {
+              refStoreCompobanteInput.current.click();
+            }}
+          >
+            Adjuntar Voucher
+          </button>
+          <input
+            type="file"
+            accept=".png,.jpeg,.jpg"
+            className="StoreCompobanteInput"
+            ref={refStoreCompobanteInput}
+            onChange={handlerComprobanteInput}
+          />
+        </>
+      )}
+      {StepStore == 2 && <div className="EnviandoDatos">Enviando Datos...</div>}
     </div>
   );
 };
