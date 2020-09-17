@@ -1,7 +1,22 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useReducer } from 'react';
 const Context = createContext();
+const InvoiceReducer = () => {};
 export const StoreContextProvider = ({ children }) => {
-  const [ListStore, setStore] = useState([1, 8, 4, 7, 5, 5, 8]);
+  const [InvoiceStore, setInvoice] = useReducer(InvoiceReducer, {
+    usuario: '',
+    boleta: '',
+    productos: [],
+    telefono,
+    direccion: {
+      ciudad: 'Arequipa',
+      distrito,
+      calle: '',
+      referencia: '',
+    },
+    turno,
+    date,
+    total,
+  });
   const [isStore, setinStore] = useState(true);
   const [ShowStore, setToggleStore] = useState(true);
   const [StepStore, setStep] = useState(0);
@@ -12,7 +27,7 @@ export const StoreContextProvider = ({ children }) => {
     document.hidden && setStep(Number(localStorage.Step));
   };
   useEffect(() => {
-    if (ListStore.length > 0) {
+    if (InvoiceStore.length > 0) {
       setToggleStore(true);
     }
     // ? setStep(Number(localStorage.Step))
@@ -33,12 +48,12 @@ export const StoreContextProvider = ({ children }) => {
   //            <--=========================================================== [ ListItems ]
   // ----------------------------- <--=============== Remove ===============--> -----------------------------
   const removeItem = (index) => {
-    if (ListStore.length < 1) {
+    if (InvoiceStore.length < 1) {
       setShowStore(false);
     }
-    let currentList = ListStore;
+    let currentList = InvoiceStore;
     currentList.splice(index, 1);
-    setStore(currentList.length > 0 ? currentList : []);
+    setInvoice(currentList.length > 0 ? currentList : []);
   };
   const setIsStore = (value) => {
     setinStore(typeof value === Boolean ? value : !isStore);
@@ -53,7 +68,7 @@ export const StoreContextProvider = ({ children }) => {
   return (
     <Context.Provider
       value={{
-        ListStore,
+        ListStore: InvoiceStore,
         setListStore,
         isStore,
         setIsStore,
