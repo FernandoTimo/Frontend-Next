@@ -39,6 +39,7 @@ export function Content({
   padding,
   children,
   className,
+  style,
 }) {
   // if (!children) {
   //   console.warn('<Content></Content> sin contenido');
@@ -52,6 +53,7 @@ export function Content({
         flexDirection: row ? 'row' : 'column',
         background: bg ? randomBG() : 'transparent',
         flex: flex || 1,
+        ...style,
       }}
     >
       {children}
@@ -115,9 +117,12 @@ export function Footer({ bg, padding, height, children, center }) {
 export function Modals({ children }) {
   return <div className="ModalsContainer">{children}</div>;
 }
-export function Controls({ top, children }) {
+export function Controls({ top, row = 'column', children }) {
   return (
-    <div className="ControlsContainer" style={{ zIndex: top ? 2 : 1 }}>
+    <div
+      className="ControlsContainer"
+      style={{ zIndex: top ? 2 : 1, flexDirection: row }}
+    >
       {children}
     </div>
   );

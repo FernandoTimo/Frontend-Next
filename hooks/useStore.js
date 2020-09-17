@@ -44,14 +44,8 @@ export function StoreClient({ Yape }) {
     isStore,
     setIsStore,
   } = useStore(Yape);
-  const ButtonMensaje = [
-    'Yapear 0',
-    'Adjuntar Comprobante 1',
-    'Enviar Comprobante 2',
-    'Enviando 3',
-    'Comprobante Recivido 4',
-    'Comprobante Validado 6',
-  ];
+  const [isHelp, setisHelp] = useState(false);
+
   //            <--=========================================================== [ Socket ]
   //             -----------------------------  [ Socket ]  -----------------------------
   //            <--=========================================================== [ Socket ]
@@ -59,11 +53,11 @@ export function StoreClient({ Yape }) {
   const socket = useSockets(() => {
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
-      setStepStore(4);
+      setStepStore(3);
     });
     socket.on('store-comprobante_validado', (StoreCodigo) => {
       setCodigo(StoreCodigo);
-      setStepStore(5);
+      setStepStore(6);
     });
   });
   //            <--=========================================================== [ Boton Top ]
@@ -87,116 +81,140 @@ export function StoreClient({ Yape }) {
         break;
     }
   };
-
+  console.log(StepStore);
   return (
     <Controls top>
+      <div className="Help">
+        <div
+          className="HelpContainer"
+          style={{ display: isHelp ? 'flex' : 'none' }}
+        >
+          ¿No sé pagar con Yape!
+        </div>
+      </div>
       <div className="Store">
         {ShowStore && (
-          <div
-            className="StoreContainer"
-            style={{ marginTop: !isStore && '25vh' }}
-          >
-            {/*            <--=========================================================== [ BotonPrincipal ]*/}
-            {/*             -----------------------------  [ BotonPrincipal ]  -----------------------------*/}
-            {/*            <--=========================================================== [ BotonPrincipal ]*/}
-            <button
-              className={`StoreButton ${StepStore === 0 && 'YapeStep'} ${
-                StepStore === 1 && 'AdjuntarStep'
-              } ${StepStore === 2 && 'EnviarStep'} 
-                } `}
-              onClick={handlerButtonStore}
-              style={{ pointerEvents: StepStore < 3 ? 'visible' : 'none' }}
-            >
-              {/*                               <--=============== Label TOP ===============-->                              */}
-              <label className="StoreButtonStateLabelTop">
-                {StepStore === 0 && (
-                  <div
-                    className="StoreButtonCheckProductsCounter"
+          <>
+            {/*//                        <--************************************************************************************************ [ Store CONTAINER ]
+            //                 <--************************************************************************************************** [ Store CONTAINER ]
+            //            <--************************************************************************************************** [ Store CONTAINER ]
+            //         <===                                                        [ Store CONTAINER ]
+            //            <--************************************************************************************************** [ Store CONTAINER ]
+            //                 <--************************************************************************************************** [ Store CONTAINER ]
+            //                        <--************************************************************************************************ [ Store CONTAINER ]*/}
+
+            <div className="StoreHeaderContainer">
+              {StepStore < 2 && (
+                <>
+                  <label
+                    className={`StoreButtonCheckProductsCounter ${
+                      StepStore === 1 && 'YapeInfoTitle'
+                    }`}
                     onClick={(e) => {
-                      setIsStore();
+                      setStepStore(0);
                     }}
-                    style={{
-                      transform: !isStore && 'scale(1.5)',
-                      bottom: !isStore && '-.3vh',
-                    }}
+                    // style={{
+                    // }}
                   >
                     S/{InvoiceStore.total}
-                  </div>
-                )}
-                {StepStore > 0 && (
+                  </label>
+                  {StepStore === 0 && (
+                    <button
+                      className="StoreButton"
+                      onClick={handlerButtonStore}
+                      style={{
+                        pointerEvents: StepStore < 3 ? 'visible' : 'none',
+                      }}
+                    >
+                      {/*                               <--=============== Label MID ===============-->  */}
+                      <label className={`StoreButtonStateLabelMid`}>
+                        Yapear
+                      </label>
+                    </button>
+                  )}
+                </>
+              )}
+              {StepStore > 0 && (
+                <label className="StoreButtonStateLabelTop">
                   <div className="StoreButtonCheckContainer">
+                    {StepStore === 2 && <Spinner_Rainbow />}
                     <img
                       alt="Check"
                       className="StoreButtonCheck"
                       src="assets/Check.png"
                       style={{
+                        display: StepStore === 2 ? 'none' : 'flex',
                         height: StepStore === 1 && '2.3vh',
                         filter: StepStore > 1 && 'grayScale(0)',
                         opacity: 0.8,
                       }}
                     />
-                    {StepStore === 3 && <span>🔥</span>}
+                    {StepStore === 5 && <Spinner_Rainbow />}
                     <img
                       alt="Check"
                       className="StoreButtonCheck"
                       src="assets/Check.png"
                       style={{
-                        display: StepStore === 3 ? 'none' : 'flex',
-                        height: (StepStore === 2 || StepStore === 3) && '2.3vh',
+                        display: StepStore === 5 ? 'none' : 'flex',
+                        height: (StepStore === 3 || StepStore === 4) && '2.3vh',
                         filter: StepStore > 3 && 'grayScale(0)',
-                        opacity: StepStore > 1 && 0.8,
+                        opacity: StepStore > 2 && 0.8,
                       }}
                     />
-                    {StepStore === 4 && <span>🔥</span>}
                     <img
                       alt="Check"
                       className="StoreButtonCheck"
                       src="assets/Check.png"
                       style={{
-                        display: StepStore === 4 ? 'none' : 'flex',
-                        height: StepStore === 3 && '1.5vh',
-                        filter: StepStore === 5 && 'grayScale(0)',
+                        height: StepStore === 6 && '2.3vh',
+                        filter: StepStore === 6 && 'grayScale(0)',
                         opacity: StepStore > 2 && 0.8,
                       }}
                     />
                   </div>
-                )}
-                {/* {StepStore === 2 && InvoiceStore.length}
-                {StepStore === 3 && InvoiceStore.length} */}
-              </label>
-              {/*                               <--=============== Label MID ===============-->                              */}
-              <label className={`StoreButtonStateLabelMid`}>
-                {ButtonMensaje[StepStore]}
-                {StepStore === 4 && <div>Validando</div>}
-              </label>
-            </button>
-            {/*            <--=========================================================== [ StoreProductsList ]*/}
-            {/*             -----------------------------  [ StoreProductsList ]  -----------------------------*/}
-            {/*            <--=========================================================== [ StoreProductsList ]*/}
-            <Content center flex={1}>
-              {/*                                <--=============== StepsStoreComponents ===============-->                                */}
-              <Content
-                flex={StepStore === 0 ? 0.1 : 9}
-                center
-                className="StoreStep"
-              >
-                {StepStore === 0 && <div></div>}
-                {(StepStore === 1 || StepStore === 2) && (
-                  <FirstStepStore>{Yape}</FirstStepStore>
-                )}
-                {StepStore === 3 && <SecondStepStore />}
-                {StepStore === 4 && <SecondStepStore codigo={Codigo} />}
+                </label>
+              )}
+              {/*                               <--=============== Label TOP ===============-->    */}
+            </div>
+            {/*//                        <--************************************************************************************************ [ Store CONTAINER ]
+            //                 <--************************************************************************************************** [ Store CONTAINER ]
+            //            <--************************************************************************************************** [ Store CONTAINER ]
+            //         <===                                                        [ Store CONTAINER ]
+            //            <--************************************************************************************************** [ Store CONTAINER ]
+            //                 <--************************************************************************************************** [ Store CONTAINER ]
+            //                        <--************************************************************************************************ [ Store CONTAINER ]*/}
+            <div className="StoreContainer">
+              <Content center flex={1}>
+                {/*                                <--=============== StepsStoreComponents ===============-->                                */}
+                <Content
+                  flex={StepStore === 0 ? 0.1 : 9}
+                  center
+                  className="StoreStep"
+                >
+                  {StepStore === 0 && <div></div>}
+                  {(StepStore === 1 || StepStore === 2) && (
+                    <FirstStepStore>{Yape}</FirstStepStore>
+                  )}
+                  {StepStore === 3 && <SecondStepStore />}
+                  {StepStore === 4 && <SecondStepStore codigo={Codigo} />}
+                </Content>
+                {/*                                <--=============== StoreProductsListCards ===============-->                                */}
+                <Content
+                  className={`StoreList ${
+                    StepStore === 1 && 'StoreListReduced'
+                  }`}
+                  row
+                  flex={1}
+                >
+                  {InvoiceStore.productos.map((ItemList, index) => (
+                    <ProductList key={index} index={index}>
+                      {ItemList}
+                    </ProductList>
+                  ))}
+                </Content>
               </Content>
-              {/*                                <--=============== StoreProductsListCards ===============-->                                */}
-              <Content className="StoreList" row flex={1}>
-                {InvoiceStore.productos.map((ItemList, index) => (
-                  <ProductList key={index} index={index}>
-                    {ItemList}
-                  </ProductList>
-                ))}
-              </Content>
-            </Content>
-          </div>
+            </div>
+          </>
         )}
       </div>
     </Controls>
@@ -277,7 +295,6 @@ const FirstStepStore = ({ children }) => {
 
   return (
     <div className="YapeInfoContainer">
-      <p className="YapeInfoTitle">S/15.30</p>
       <p className="YapeInfoNumero">{children.numero}</p>
       <p className="YapeInfoNombre">{children.nombre}</p>
       <button
@@ -316,10 +333,11 @@ const FirstStepStore = ({ children }) => {
 //  ---------------------------------------------------------     ////////////
 //  ---------------------------------------------------------    /////////////
 const SecondStepStore = ({ codigo = 'asd2' }) => {
-  const [CanSubmit, setCanSubmit] = useState(false);
+  const { setStepStore } = useStore();
+  const [CanSubmit, setCanSubmit] = useState(true);
   const handlerSubmit = (e) => {
     e.preventDefault();
-    CanSubmit ? alert('enviado') : alert('POr favor llena todos los espacios');
+    CanSubmit ? setStepStore(5) : alert('POr favor llena todos los espacios');
   };
 
   return (

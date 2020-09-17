@@ -19,7 +19,34 @@ a {
   font-weight: 700;
 }
 /* Store - useStore*/
-
+.Help {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.HelpContainer {
+  width: 95vw;
+  height: 82%;
+  background: #fafafa;
+  border-radius: 1vh;
+  box-shadow: 0 0 1vh #0005;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  pointer-events: visible;
+  opacity: 0;
+  animation: helpStore 0.5s forwards;
+}
+@keyframes helpStore {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .Store {
   width: 100%;
   display: flex;
@@ -28,12 +55,24 @@ a {
   height: 8vh;
   align-self: flex-end;
 }
+.StoreHeaderContainer {
+  position: absolute;
+  pointer-events: visible;
+  width: 15vh;
+  margin-top: -13vh;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  /* place-content: center; */
+  /* place-items: center; */
+  align-items: flex-end;
+}
 .StoreContainer {
   display: flex;
   flex-direction: column;
   height: 100%;
   border-radius: 1vh 1vh 0 0;
-  background: #fafafa;
+  background: #ffb3b3;
   box-shadow: 0 0 1vh #dadadaaa;
   width: auto;
   pointer-events: visible;
@@ -52,12 +91,10 @@ a {
   transform: scale(0.9);
 } */
 .StoreButton {
-  margin-top: -12.5vh;
-  position: absolute;
   width: 15vh;
   height: 4vh;
   border: none;
-  border-radius: 3vh 3vh 0 0;
+  border-radius: 1vh 1vh 0 0;
   color: #000000;
   box-shadow: 0 0 1vh #0005;
   display: flex;
@@ -66,6 +103,8 @@ a {
   outline: none;
   flex-direction: column;
   z-index: 1;
+  background: #600b72;
+  cursor: pointer;
 }
 
 .YapeStep {
@@ -88,8 +127,6 @@ a {
 /* StoreButtomLabel TOP --------------------------------------------- */
 
 .StoreButtonStateLabelTop {
-  bottom: 3.5vh;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,9 +148,7 @@ a {
   background: #00dbc0;
   color: #8102aa;
   padding: 0 1vh;
-}
-.StoreButtonCheckProductsCounter:hover {
-  transform: scale(1.2);
+  bottom: 3vh;
 }
 /* ------------------------ Step 1 */
 .StoreButtonCheckContainer {
@@ -125,6 +160,21 @@ a {
   background: #fafafa;
   box-shadow: 0 0 1vh #0005;
   border-radius: 1vh;
+  cursor: pointer;
+}
+.YapeInfoTitle {
+  font-size: 1.5vh;
+  font-weight: 700;
+  background: #000;
+  color: #fafafa;
+  padding: 0.1vh 0.8vh;
+  border-radius: 0.5vh 0.5vh 0 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  bottom: -7.3vh;
+  height: 2vh;
+  z-index: -3;
 }
 .StoreButtonCheck {
   height: 1.5vh;
@@ -152,6 +202,13 @@ a {
   display: flex;
   gap: 0 0.2vh;
   background: #fa0;
+  border-radius: 1vh;
+}
+.StoreListReduced {
+  border-top: 0.6vh solid #000;
+  border-left: 0.6vh solid #000;
+  border-right: 0.6vh solid #000;
+  background: #000 !important;
 }
 .ProductList {
   display: flex;
@@ -241,21 +298,6 @@ a {
     opacity: 1;
     display: flex;
   }
-}
-
-.YapeInfoTitle {
-  font-size: 1.2vh;
-  margin: 0;
-  font-weight: 700;
-  background: #000;
-  color: #fafafa;
-  padding: 0.4vh 0.8vh;
-  margin-bottom: 0.4vh;
-  line-height: 1.3vh;
-  border-radius: 0 0 1vh 1vh;
-  display: flex;
-  justify-content: center;
-  text-align: center;
 }
 .YapeInfoNumero {
   font-size: 2.2vh;
