@@ -1,0 +1,86 @@
+.BrandContainer {
+  width: 3%;
+  height: 6vh;
+  background: #fafafa;
+  box-shadow: 0 0 1vh #0001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3.5vh;
+  position: absolute;
+  left: 48.5%;
+  top: 1.5vh;
+  pointer-events: visible;
+  cursor: pointer;
+  z-index: 2;
+}
+.Dashboard {
+  display: flex;
+  width: 80%;
+  height: 95%;
+  border-radius: 2vh 2vh 10vh 10vh;
+  background: #fff;
+  position: relative;
+  bottom: 0;
+  align-self: flex-end;
+  box-shadow: 0 0 3vh #ddd4;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+}
+.DashboardContent {
+  background: #0005;
+  width: 97%;
+  height: 95%;
+  border-radius: 1.5vh 1.5vh 9vh 9vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.DashboardNavigation {
+  position: absolute;
+  display: flex;
+  width: 10%;
+  height: 50%;
+  border-radius: 0 0 15vh 15vh;
+  background: rgb(255, 206, 206);
+  position: relative;
+  bottom: 0;
+  align-self: flex-start;
+  box-shadow: 0 0 3vh #ddd4;
+  z-index: 0;
+}
+.DashboardNavigationControls {
+  border-radius: 0 0 15vh 15vh;
+  display: flex;
+  position: absolute;
+  width: 30%;
+  height: 4vh;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+.DashboardNavigationControls div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* STORE */
+.DeliveryContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 2vh;
+  flex-direction: column;
+}
+.DeliveryInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
