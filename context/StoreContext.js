@@ -6,16 +6,15 @@ export const StoreContextProvider = ({ children }) => {
     usuario: '',
     boleta: '',
     productos: [],
-    telefono,
+    telefono: null,
     direccion: {
       ciudad: 'Arequipa',
-      distrito,
+      distrito: '',
       calle: '',
       referencia: '',
     },
-    turno,
-    date,
-    total,
+    turno: 'Tarde',
+    total: 0,
   });
   const [isStore, setinStore] = useState(true);
   const [ShowStore, setToggleStore] = useState(true);
