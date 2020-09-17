@@ -210,12 +210,18 @@ export function StoreClient({ Yape }) {
     </Controls>
   );
 }
-//            <--=========================================================== [ Top Component ]
-//             -----------------------------  [ Top Component ]  -----------------------------
-//            <--=========================================================== [ Top Component ]
+//            <--=========================================================== [ Products List Cards Component  ]
+//             -----------------------------  [ Products List Cards Component ]  -----------------------------
+//            <--=========================================================== [ Products List Cards Component ]
 
 const ProductList = ({ index, children }) => {
-  const { ListStore, setListStore, setShowStore, StepStore } = useStore();
+  const {
+    ListStore,
+    setListStore,
+    setShowStore,
+    StepStore,
+    setStepStore,
+  } = useStore();
   const [Cantidad, setCantidad] = useState(1);
   const [_1000, set_1000] = useState(false);
   const handlerIncrement = () => {
@@ -233,6 +239,11 @@ const ProductList = ({ index, children }) => {
       style={{
         animation: Cantidad === 0 && 'itemsStore .3s reverse forwards',
         display: D1000 ? 'none' : 'flex',
+        cursor: StepStore !== 0 && 'pointer',
+        background: `url('https://i.ibb.co/vPBkZMp/Jay-Alvarrez.jpg')`,
+      }}
+      onClick={() => {
+        StepStore !== 0 && setStepStore(0);
       }}
     >
       <div
@@ -242,7 +253,7 @@ const ProductList = ({ index, children }) => {
         <div className="ItemCantidadContainer">
           <label className="ItemCantidad">{Cantidad}</label>
         </div>
-        <div onClick={handlerIncrement}></div>
+        <div onClick={handlerIncrement} />
         <div onClick={handlerDecrement} />
       </div>
     </div>
@@ -398,6 +409,7 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
 //             -----------------------------  [ ADMIN COMPONENT ]  -----------------------------
 //            <--=========================================================== [ ADMIN COMPONENT ]
 //            <--=========================================================== [ ADMIN COMPONENT ]
+
 export function StoreAdmin({ children }) {
   const [State, setState] = useState();
   const socket = useSockets(() => {
