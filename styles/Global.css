@@ -104,12 +104,13 @@ a {
   justify-content: center;
   align-items: center;
   color: #000;
-  border-radius: 50%;
-  width: 2.5vh;
+  border-radius: 0.3vh;
   height: 2.5vh;
-  background: #f6c421;
   cursor: pointer;
   transition: 0.3s;
+  background: #00dbc0;
+  color: #8102aa;
+  padding: 0 1vh;
 }
 .StoreButtonCheckProductsCounter:hover {
   transform: scale(1.2);
@@ -137,25 +138,6 @@ a {
 .StoreButtonStateLabelMid {
   font-size: 1.3vh;
   font-weight: 700;
-}
-/* StoreButtomLabel BOT --------------------------------------------- */
-/* --------------------- StoreButtomLabel BOT ----------------------- */
-/* StoreButtomLabel BOT --------------------------------------------- */
-
-.StoreButtonStateLabelBot {
-  font-size: 1.3vh;
-  font-weight: 700;
-  position: absolute;
-  bottom: -2.3vh;
-  padding: 0.4vh 0.7vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #00dbc0;
-  color: #8102aa;
-  font-weight: 700;
-  border-radius: 0 0 1vh 1vh;
-  pointer-events: none;
 }
 .StoreCompobanteInput {
   display: none;

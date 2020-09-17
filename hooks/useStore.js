@@ -30,12 +30,11 @@ export const useStore = (Yape) => {
     setStepStore,
   };
 };
-// LADO DEL CLIENTE -------------------------
-// LADO DEL CLIENTE -------------------------
-// ------------------------------------------- LADO DEL CLIENTE -------------------------
-// ------------------------------------------- LADO DEL CLIENTE -------------------------
-// LADO DEL CLIENTE -------------------------
-// LADO DEL CLIENTE -------------------------
+//            <--=========================================================== [ Client Component ]
+//            <--=========================================================== [ Client Component ]
+//             -----------------------------  [ Client Component ]  -----------------------------
+//            <--=========================================================== [ Client Component ]
+//            <--=========================================================== [ Client Component ]
 export function StoreClient({ Yape }) {
   const {
     InvoiceStore,
@@ -53,10 +52,9 @@ export function StoreClient({ Yape }) {
     'Comprobante Recivido 4',
     'Comprobante Validado 6',
   ];
-
-  // SOOOOCKEEEEEETTTSSS ---------------------------------
-  // SOOOOCKEEEEEETTTSSS ---------------------------------
-  // SOOOOCKEEEEEETTTSSS ---------------------------------
+  //            <--=========================================================== [ Socket ]
+  //             -----------------------------  [ Socket ]  -----------------------------
+  //            <--=========================================================== [ Socket ]
   const [Codigo, setCodigo] = useState('');
   const socket = useSockets(() => {
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
@@ -68,9 +66,9 @@ export function StoreClient({ Yape }) {
       setStepStore(5);
     });
   });
-  // BUTTTTOOOOONNNN
-  // BUTTTTOOOOONNNN
-  // BUTTTTOOOOONNNN
+  //            <--=========================================================== [ Boton Top ]
+  //             -----------------------------  [ Boton Top ]  -----------------------------
+  //            <--=========================================================== [ Boton Top ]
   const handlerButtonStore = (e) => {
     switch (StepStore) {
       case 0:
@@ -122,7 +120,7 @@ export function StoreClient({ Yape }) {
                       bottom: !isStore && '-.3vh',
                     }}
                   >
-                    {InvoiceStore.productos.length}
+                    S/{InvoiceStore.total}
                   </div>
                 )}
                 {StepStore > 0 && (
@@ -163,20 +161,14 @@ export function StoreClient({ Yape }) {
                     />
                   </div>
                 )}
-                {/* {StepStore === 2 && ListStore.length}
-                {StepStore === 3 && ListStore.length} */}
+                {/* {StepStore === 2 && InvoiceStore.length}
+                {StepStore === 3 && InvoiceStore.length} */}
               </label>
               {/*                               <--=============== Label MID ===============-->                              */}
               <label className={`StoreButtonStateLabelMid`}>
                 {ButtonMensaje[StepStore]}
                 {StepStore === 4 && <div>Validando</div>}
               </label>
-              {/*                               <--=============== Label BOT ===============-->                              */}
-              {StepStore === 0 && (
-                <label className={`StoreButtonStateLabelBot`}>
-                  {'S/12.90'}
-                </label>
-              )}
             </button>
             {/*            <--=========================================================== [ StoreProductsList ]*/}
             {/*             -----------------------------  [ StoreProductsList ]  -----------------------------*/}
@@ -216,7 +208,7 @@ export function StoreClient({ Yape }) {
 
 const ProductList = ({ index, children }) => {
   const {
-    ListStore,
+    InvoiceStore,
     setInvoiceStore,
     setShowStore,
     StepStore,
@@ -231,7 +223,7 @@ const ProductList = ({ index, children }) => {
   const handlerDecrement = () => {
     Cantidad === 1 && (setInvoiceStore.removeItem(index), set_1000(true));
     setCantidad(Cantidad - 1);
-    ListStore.length === 0 && setShowStore(false);
+    InvoiceStore.length === 0 && setShowStore(false);
   };
   return (
     <div
@@ -240,7 +232,7 @@ const ProductList = ({ index, children }) => {
         animation: Cantidad === 0 && 'itemsStore .3s reverse forwards',
         display: D1000 ? 'none' : 'flex',
         cursor: StepStore !== 0 && 'pointer',
-        background: `url('https://i.ibb.co/vPBkZMp/Jay-Alvarrez.jpg')`,
+        background: `url(${children.producto.cover})`,
       }}
       onClick={() => {
         StepStore !== 0 && setStepStore(0);
@@ -251,7 +243,12 @@ const ProductList = ({ index, children }) => {
         style={{ display: StepStore > 0 ? 'none' : 'flex' }}
       >
         <div className="ItemCantidadContainer">
-          <label className="ItemCantidad">{Cantidad}</label>
+          <label
+            className="ItemCantidad"
+            style={{ animation: `rotate 0.${Cantidad}s` }}
+          >
+            x{Cantidad}
+          </label>
         </div>
         <div onClick={handlerIncrement} />
         <div onClick={handlerDecrement} />
