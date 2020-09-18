@@ -484,10 +484,10 @@ const StoreCardOrderVerify = () => {
   return (
     <div>
       <div className="StoreCardOrderVerifyContainer">
-        <label>Fernando</label>
-        <label>S/14.20</label>
-        <label>D6R1W</label>
-        <label>96668218</label>
+        <label className="n12">Fernando</label>
+        <label className="h7">S/14.20</label>
+        <label className="h7">D6R1W</label>
+        <label className="h9">96668218</label>
         <div>
           <label>Paucarpata</label>
           <label>Av. Jesus</label>
@@ -496,6 +496,17 @@ const StoreCardOrderVerify = () => {
         <label>Mañana</label>
         <label>hace 2min</label>
         <button>Validar</button>
+        <button
+          onClick={() => {
+            window.open(
+              `https://api.whatsapp.com/send?phone=${'966682190'}&text=Hola%20${'Fernamdo'}%20Soy%20de%20Arequipa%20estoy%20interesado%20en%20la%20tableta,%20aun%20disponible?`,
+              'newwindow',
+              'width=700,height=800,menubar=no,scrollbars=no,titlebar=0, top=100,left=500'
+            );
+          }}
+        >
+          Whatsapp
+        </button>
       </div>
     </div>
   );
