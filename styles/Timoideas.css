@@ -638,3 +638,44 @@
   justify-content: center;
   align-items: center;
 }
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+.RainbowContainerBase {
+  background: linear-gradient(45deg, red, orange);
+}
+.RainbowContainer {
+  background: linear-gradient(45deg, red, orange);
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Rainbow {
+  mix-blend-mode: screen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #00c853, #b2ff59);
+  border-radius: 1vh; */
+}
+.Rainbow * {
+  /* background: linear-gradient(45deg, red, orange);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  display: block; */
+}

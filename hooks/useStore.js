@@ -4,6 +4,7 @@ import {
   Controls,
   Content,
   Spinner_Rainbow,
+  Rainbow,
 } from 'components/Resources/Timoideas';
 import { useSockets } from './useSockets';
 import useDelay from './useDelay';
@@ -484,14 +485,17 @@ const StoreCardOrderVerify = () => {
   return (
     <div>
       <div className="StoreCardOrderVerifyContainer">
-        <label className="n12">Fernando</label>
+        <Rainbow>
+          <label className="h12">Fernando</label>
+        </Rainbow>
+
         <label className="h7">S/14.20</label>
         <label className="h7">D6R1W</label>
         <label className="h9">96668218</label>
         <div>
-          <label>Paucarpata</label>
-          <label>Av. Jesus</label>
-          <label>484</label>
+          <label className="n6">Paucarpata</label>
+          <label className="n6">Av. Jesus</label>
+          <label className="n6">484</label>
         </div>
         <label>Mañana</label>
         <label>hace 2min</label>

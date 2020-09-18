@@ -499,3 +499,39 @@ export function Spinner_Rainbow({ size = 1.5, speed = 0.3 }) {
     </div>
   );
 }
+
+//                        <--************************************************************************************************ [ Containers ]
+//                 <--************************************************************************************************** [ Containers ]
+//            <--************************************************************************************************** [ Containers ]
+//         <===                                                        [ Containers ]
+//            <--************************************************************************************************** [ Containers ]
+//                 <--************************************************************************************************** [ Containers ]
+//                        <--************************************************************************************************ [ Containers ]
+
+export function Rainbow({
+  padding = '.5vh 2vh',
+  size = 0.4,
+  bg = '#222',
+  border = 1.3,
+  children,
+}) {
+  return (
+    <div className="RainbowContainerBase">
+      <div
+        className="RainbowContainer"
+        style={{ padding: `${size}vh ${size}vh`, borderRadius: `${border}vh` }}
+      >
+        <div
+          className="Rainbow"
+          style={{
+            padding: padding,
+            background: bg,
+            borderRadius: `${border * 0.6}vh`,
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
