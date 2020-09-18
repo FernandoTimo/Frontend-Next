@@ -486,7 +486,12 @@ const StoreCardOrderVerify = () => {
     <div>
       <div className="StoreCardOrderVerifyContainer">
         <Rainbow>
-          <label className="h12">Fernando</label>
+          <label
+            className="h12 StoreCardOrderVerifyContainerTitle"
+            style={{ color: '#fafafa !important' }}
+          >
+            Fernando
+          </label>
         </Rainbow>
 
         <label className="h7">S/14.20</label>

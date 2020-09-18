@@ -503,7 +503,7 @@ a {
   flex: 1;
   width: 100%;
   height: 100%;
-  background: #d2fcff;
+  background: #1a1a1a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -544,4 +544,7 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.StoreCardOrderVerifyContainerTitle {
+  color: #fff !important;
 }
