@@ -82,7 +82,6 @@ export function StoreClient({ Yape }) {
         break;
     }
   };
-  console.log(StepStore);
   return (
     <Controls top>
       <div className="Help">
