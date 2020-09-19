@@ -51,7 +51,7 @@ export function StoreClient({ Yape }) {
   //             -----------------------------  [ Socket ]  -----------------------------
   //            <--=========================================================== [ Socket ]
   const [Codigo, setCodigo] = useState('');
-  const socket = useSockets(() => {
+  useEffect(() => {
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
       setStepStore(3);
@@ -60,7 +60,7 @@ export function StoreClient({ Yape }) {
       setCodigo(StoreCodigo);
       setStepStore(6);
     });
-  });
+  }, []);
   //            <--=========================================================== [ Boton Top ]
   //             -----------------------------  [ Boton Top ]  -----------------------------
   //            <--=========================================================== [ Boton Top ]
