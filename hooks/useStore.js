@@ -432,7 +432,7 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
 
 export function StoreAdmin({ children }) {
   const [State, setState] = useState();
-  const socket = useSockets(() => {
+  useEffect(() => {
     socket.on('store-comprobante_recivido', (comprobante) => {
       console.log(comprobante);
       setState(comprobante);
@@ -440,7 +440,7 @@ export function StoreAdmin({ children }) {
     socket.on('store-comprobante_validado', (codigo) => {
       console.log(codigo);
     });
-  });
+  }, []);
   const handlerComprobanteValidador = () => {
     socket.emit('store-comprobante_validado', 'X8S5DQ');
   };
