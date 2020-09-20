@@ -114,9 +114,7 @@ export function StoreClient({ Yape }) {
                         pointerEvents: StepStore < 3 ? 'visible' : 'none',
                       }}
                     >
-                      <label className={`StoreButtonStateLabelMid`}>
-                        Yapear
-                      </label>
+                      <h2 className="h4 StoreButtonStateLabelMid">Yapear</h2>
                     </button>
                   )}
                 </>
