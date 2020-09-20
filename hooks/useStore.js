@@ -146,16 +146,6 @@ export function StoreClient({ Yape }) {
                         opacity: StepStore > 2 && 0.8,
                       }}
                     />
-                    <img
-                      alt="Check"
-                      className="StoreButtonCheck"
-                      src="assets/Check.png"
-                      style={{
-                        height: StepStore === 6 && '2.3vh',
-                        filter: StepStore === 6 && 'grayScale(0)',
-                        opacity: StepStore > 2 && 0.8,
-                      }}
-                    />
                   </div>
                 </label>
               )}
@@ -270,21 +260,33 @@ const ProductList = ({ index, children }) => {
 //  ---------------------------------------------------------        /////
 const FirstStepStore = ({ children }) => {
   const { StepStore, setStepStore } = useStore();
+  const [urlComprobante, seturlComprobante] = useState('');
   // ----------------------------- <--=============== Input type File ===============--> -----------------------------
   const [ComprobanteData, setComprobanteData] = useState();
   let refStoreCompobanteInput = useRef();
   const handlerComprobanteInput = (e) => {
     // se abre ventana de adjuntar comprobante
     // se valida que tenga datos
+    let comprobante = e.target.files[0];
+    let srcComprobante = URL.createObjectURL(comprobante);
+    seturlComprobante(srcComprobante);
     // se envia el comprobante
     socket.emit('store-comprobante', 'Nuevo Comprobante');
-
     // se espera una respuesta
   };
 
   return (
     <div className="YapeInfoContainer">
-      {StepStore === 1 && (
+      {urlComprobante ? (
+        <>
+          <img
+            alt="Comprobante Yape"
+            src={urlComprobante}
+            className="YapeInfoComprobanteImg"
+          />
+          <h1 className="h5">Enviando</h1>
+        </>
+      ) : (
         <>
           <p className="YapeInfoNumero">{children.numero}</p>
           <p className="YapeInfoNombre">{children.nombre}</p>
@@ -305,6 +307,7 @@ const FirstStepStore = ({ children }) => {
             Adjuntar Voucher
           </button>
           <input
+            name="comprobante"
             type="file"
             accept=".png,.jpeg,.jpg"
             className="StoreCompobanteInput"
