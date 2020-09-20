@@ -171,6 +171,7 @@ a {
   pointer-events: visible;
   box-sizing: border-box;
   animation: itemsStore 0.5s forwards;
+  transition: 0.3s !important;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -249,6 +250,7 @@ a {
   overflow: hidden;
   background-size: cover;
   background-position: center;
+  transition: 0.2s;
 }
 .ProductList img {
   width: 7vh;
@@ -357,14 +359,16 @@ a {
 }
 .PaymentSvgBackground {
   position: absolute;
-  height: 5vh;
+  height: 6vh;
+  z-index: 1;
+  cursor: pointer;
 }
 .YapeInfoNumero {
   font-size: 2.2vh;
   font-weight: 700;
   margin: 0;
   line-height: 1.5vh;
-  z-index: 1;
+  z-index: 2;
   color: #fafafa;
   cursor: pointer;
 }
@@ -373,29 +377,38 @@ a {
   font-size: 1.7vh;
   margin: 0;
   line-height: 1.7vh;
-  z-index: 1;
+  z-index: 2;
   color: #fafafa;
   cursor: pointer;
 }
+.SwitchStepsContainer {
+  display: flex;
+  height: 6vh;
+  border: 0.2vh solid #000;
+}
 .YapeInfoAdd,
 .YapeInfoVoucher {
-  padding: 0 1vh;
-  position: absolute;
+  flex: 1;
+  height: 4vh;
   border: none;
   font-size: 1.4vh;
   background: transparent;
   cursor: pointer;
   transition: 0s;
+  align-self: flex-end;
+  width: 20vh;
+  display: flex;
+  align-items: center;
 }
-.YapeInfoAdd:hover {
+.YapeInfoAdd:hover,
+.YapeInfoVoucher:hover {
   opacity: 0.8;
 }
-
 .YapeInfoAdd {
-  margin-right: 25vh;
+  justify-content: flex-start;
 }
 .YapeInfoVoucher {
-  margin-left: 25vh;
+  justify-content: flex-end;
 }
 .YapeInfoComprobanteImg {
   height: 2vh;

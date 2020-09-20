@@ -262,22 +262,24 @@ const FirstStepStore = ({ children }) => {
               className="PaymentSvgBackground"
             />
           </div>
-          <button
-            className="YapeInfoAdd"
-            onClick={() => {
-              setStepStore(0);
-            }}
-          >
-            Agregar +
-          </button>
-          <button
-            className="YapeInfoVoucher"
-            onClick={() => {
-              refStoreCompobanteInput.current.click();
-            }}
-          >
-            Adjuntar Voucher
-          </button>
+          <div className="SwitchStepsContainer">
+            <label
+              className="YapeInfoAdd"
+              onClick={() => {
+                setStepStore(0);
+              }}
+            >
+              Agregar +
+            </label>
+            <label
+              className="YapeInfoVoucher"
+              onClick={() => {
+                refStoreCompobanteInput.current.click();
+              }}
+            >
+              Adjuntar Voucher
+            </label>
+          </div>
           <input
             name="comprobante"
             type="file"
