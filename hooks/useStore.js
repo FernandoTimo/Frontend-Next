@@ -238,7 +238,9 @@ const FirstStepStore = ({ children }) => {
           </div>
           <div className="StepTwoMessage">
             <label className="h4">¡Gracias por tu preferencia!</label>
-            <label className="n3">Enviando</label>
+            <label className="n2">
+              Enviando Comprobante: Esto no tardará mas de 5min
+            </label>
           </div>
         </div>
       ) : (

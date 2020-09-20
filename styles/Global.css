@@ -314,6 +314,7 @@ a {
   gap: 1vh;
   height: 6vh;
   width: 100%;
+  padding: 0 1vh;
 }
 .StepTwoMessage {
   display: flex;
