@@ -67,23 +67,6 @@ a {
   /* place-items: center; */
   align-items: flex-end;
 }
-.StoreButton {
-  width: 10vh;
-  height: 4.5vh;
-  border: none;
-  border-radius: 1vh;
-  color: #000000;
-  border: 0.3vh solid #600b72;
-  box-shadow: 0 0 1vh #faa9, inset 0 0 0.5vh #faa9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-  flex-direction: column;
-  z-index: 1;
-  background: #fff;
-  cursor: pointer;
-}
 .StoreButtonCheckProductsCounter {
   position: absolute;
   padding: 0.4vh 0.8vh;
@@ -102,13 +85,30 @@ a {
   cursor: pointer;
   z-index: 2;
 }
+.StoreButton {
+  width: 10vh;
+  height: 4.5vh;
+  border: none;
+  border-radius: 1vh;
+  border: 0.3vh solid #fafafa;
+  box-shadow: 0 0 1vh #0003, inset 0 0 0.5vh #0003;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  flex-direction: column;
+  z-index: 1;
+  background: #1a1a1a;
+  cursor: pointer;
+}
 .StoreButtonStateLabelMid {
   opacity: 0;
   animation: amanecer 0.8s 0.3s forwards;
   cursor: pointer;
-  color: #600b72;
+  color: #fafafa;
   padding-top: 1vh;
 }
+
 .StoreContainer {
   display: flex;
   flex-direction: column;
