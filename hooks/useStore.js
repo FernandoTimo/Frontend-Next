@@ -60,9 +60,7 @@ export function StoreClient({ Yape }) {
       setStepStore(2);
     });
   }, []);
-  //            <--=========================================================== [ Boton Top ]
-  //             -----------------------------  [ Boton Top ]  -----------------------------
-  //            <--=========================================================== [ Boton Top ]
+  //            <--=========================================================== [ Handlers]
   const handlerButtonStore = (e) => {
     setStepStore(StepStore + 1);
     socket.emit('store-init', 'Nuevo Cliente');
