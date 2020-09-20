@@ -253,8 +253,15 @@ const FirstStepStore = ({ children }) => {
       ) : (
         <>
           {/*                                         (1) JSX [ FIRST|YAPE === Payment-Info [~ urlComprobante] ] */}
-          <p className="YapeInfoNumero">{children.numero}</p>
-          <p className="YapeInfoNombre">{children.nombre}</p>
+          <div className="PaymentInfoContainer">
+            <p className="YapeInfoNumero">{children.numero}</p>
+            <p className="YapeInfoNombre">{children.nombre}</p>
+            <img
+              alt="Yape"
+              src="assets/YapePayment.png"
+              className="PaymentSvgBackground"
+            />
+          </div>
           <button
             className="YapeInfoAdd"
             onClick={() => {
