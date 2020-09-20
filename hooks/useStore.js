@@ -227,16 +227,20 @@ const FirstStepStore = ({ children }) => {
   return (
     <div className="YapeInfoContainer">
       {urlComprobante ? (
-        <>
+        <div className="StepTwoState">
           {/*                                         (1) JSX [ FIRST|IMG === Comprobante [~ urlComprobante] ] */}
-          <img
-            alt="Comprobante Yape"
-            src={urlComprobante}
-            className="YapeInfoComprobanteImg"
-          />
-          <h2>¡Gracias por tu preferencia!</h2>
-          <h1 className="h5">Enviando</h1>
-        </>
+          <div className="ComprobanteCard">
+            <img
+              alt="Comprobante Yape"
+              src={urlComprobante}
+              className="YapeInfoComprobanteImg"
+            />
+          </div>
+          <div className="StepTwoMessage">
+            <h2 className="h2">¡Gracias por tu preferencia!</h2>
+            <h1 className="h5">Enviando</h1>
+          </div>
+        </div>
       ) : (
         <>
           {/*                                         (1) JSX [ FIRST|YAPE === Payment-Info [~ urlComprobante] ] */}

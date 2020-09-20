@@ -307,6 +307,21 @@ a {
     display: flex;
   }
 }
+.StepTwoState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+}
+.ComprobanteCard {
+  width: 3vh;
+  height: 4.5vh;
+  border-radius: 0.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 1vh #dadada;
+}
 .YapeInfoNumero {
   font-size: 2.2vh;
   font-weight: 700;
