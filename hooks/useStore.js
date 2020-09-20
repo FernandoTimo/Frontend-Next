@@ -126,7 +126,7 @@ export function StoreClient({ Yape }) {
                   <div
                     className="StoreButtonCheckContainer"
                     style={{
-                      gap: (StepStore === 2 || StepStore === 5) && '0.2vh',
+                      gap: (StepStore === 2 || StepStore === 5) && '0.1vh',
                     }}
                   >
                     {/*                                                  (4) JSX [ CHECKS === First-Step [~] ] */}
@@ -150,7 +150,7 @@ export function StoreClient({ Yape }) {
                       src="assets/Check.png"
                       style={{
                         display: StepStore === 5 ? 'none' : 'flex',
-                        height: StepStore >= 2 && '2.3vh',
+                        height: StepStore >= 3 && '2.3vh',
                         filter: StepStore > 3 && 'grayScale(0)',
                         opacity: StepStore > 2 && 0.8,
                       }}
