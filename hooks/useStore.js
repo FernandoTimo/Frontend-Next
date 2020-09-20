@@ -155,10 +155,10 @@ export function StoreClient({ Yape }) {
                 </label>
               )}
             </div>
-            {/*                                            (2) JSX [ TIENDA|PRODUCTOS = Container [! Siempre] ] */}
+            {/*                                            (2) JSX [ PRODUCTOS = Container [! Siempre] ] */}
             <div className="StoreContainer">
               <Content center flex={1}>
-                {/*                                               (3) JSX [ TIENDA|PRODUCTOS|TOP === Componentes-Indicaciones [~Steps] ] */}
+                {/*                                               (3) JSX [ PRODUCTLIST|TOP === Componentes-Indicaciones [~Steps] ] */}
                 <Content
                   flex={StepStore === 0 ? 0.1 : 9}
                   center
@@ -171,7 +171,7 @@ export function StoreClient({ Yape }) {
                   {StepStore === 3 && <SecondStepStore />}
                   {StepStore > 3 && <SecondStepStore codigo={Codigo} />}
                 </Content>
-                {/*                                               (3) JSX [ TIENDA|PRODUCTOS|BOT === Productos [!] ] */}
+                {/*                                               (3) JSX [ PRODUCTLIST|BOT === Productos [!] ] */}
                 <Content
                   className={`StoreList ${
                     StepStore === 1 && 'StoreListReduced'
