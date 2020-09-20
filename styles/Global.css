@@ -312,7 +312,8 @@ a {
   justify-content: center;
   align-items: center;
   gap: 1vh;
-  height: 100%;
+  height: 6vh;
+  width: 100%;
 }
 .StepTwoMessage {
   display: flex;
