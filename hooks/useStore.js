@@ -53,11 +53,11 @@ export function StoreClient({ Yape }) {
   useEffect(() => {
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
-      setStepStore(3);
+      console.log('Comprobante Recivido en el Server');
     });
     socket.on('store-comprobante_validado', (StoreCodigo) => {
       setCodigo(StoreCodigo);
-      setStepStore(6);
+      setStepStore(2);
     });
   }, []);
   //            <--=========================================================== [ Boton Top ]
@@ -70,14 +70,15 @@ export function StoreClient({ Yape }) {
         socket.emit('store-init', 'Nuevo Cliente');
         break;
       case 1:
+        // se abre ventana de adjuntar comprobante
+        // se valida que tenga datos
+        // se envia el comprobante
+        socket.emit('store-comprobante', 'Nuevo Comprobante');
+        // se espera una respuesta
         break;
       case 2:
-        socket.emit('store-comprobante', 'Nuevo Comprobante');
         setStepStore(StepStore + 1);
         break;
-      case 4:
-        setStepStore(StepStore + 1);
-
       default:
         break;
     }
