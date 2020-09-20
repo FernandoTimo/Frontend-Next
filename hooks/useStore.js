@@ -234,6 +234,7 @@ const FirstStepStore = ({ children }) => {
             src={urlComprobante}
             className="YapeInfoComprobanteImg"
           />
+          <h2>¡Gracias por tu preferencia!</h2>
           <h1 className="h5">Enviando</h1>
         </>
       ) : (
@@ -267,7 +268,6 @@ const FirstStepStore = ({ children }) => {
           />
         </>
       )}
-      {StepStore == 2 && <div className="EnviandoDatos">Enviando Datos...</div>}
     </div>
   );
 };
