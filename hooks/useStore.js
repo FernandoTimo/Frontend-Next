@@ -100,10 +100,8 @@ export function StoreClient({ Yape }) {
                     onClick={(e) => {
                       setStepStore(0);
                     }}
-                    // style={{
-                    // }}
                   >
-                    S/{InvoiceStore.total}
+                    Yapear
                   </label>
                   {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
                   {StepStore === 0 && (
@@ -114,7 +112,9 @@ export function StoreClient({ Yape }) {
                         pointerEvents: StepStore < 3 ? 'visible' : 'none',
                       }}
                     >
-                      <h2 className="h4 StoreButtonStateLabelMid">Yapear</h2>
+                      <h2 className="h6 StoreButtonStateLabelMid">
+                        S/{InvoiceStore.total}
+                      </h2>
                     </button>
                   )}
                 </>
