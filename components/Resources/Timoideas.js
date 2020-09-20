@@ -41,6 +41,7 @@ export function Content({
   className,
   style,
 }) {
+  const { Theme } = useTheme();
   // if (!children) {
   //   console.warn('<Content></Content> sin contenido');
   // }
@@ -49,6 +50,7 @@ export function Content({
     <div
       className={clases}
       style={{
+        color: Theme._20,
         padding: padding ? padding + 'vh' : 0,
         flexDirection: row ? 'row' : 'column',
         background: bg ? randomBG() : 'transparent',
