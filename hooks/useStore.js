@@ -94,14 +94,14 @@ export function StoreClient({ Yape }) {
                 <>
                   {/*                                                  (4) JSX [ CABECERA === Precio [~ Steps: 0, 1] ] */}
                   <label
-                    className={`StoreButtonCheckProductsCounter ${
-                      StepStore === 1 && 'YapeInfoTitle'
+                    className={`YapeInit ${
+                      StepStore === 1 && 'TotalPriceStore'
                     }`}
                     onClick={(e) => {
                       setStepStore(0);
                     }}
                   >
-                    Yapear
+                    {StepStore === 0 ? 'Yapear' : InvoiceStore.total}
                   </label>
                   {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
                   {StepStore === 0 && (
@@ -176,6 +176,8 @@ export function StoreClient({ Yape }) {
                   }`}
                   row
                   flex={1}
+                  onClick={() => setStepStore(0)}
+                  style={{ pointerEvents: StepStore < 2 ? 'visible' : 'none' }}
                 >
                   {InvoiceStore.productos.map((ItemList, index) => (
                     <ProductList key={index} index={index}>

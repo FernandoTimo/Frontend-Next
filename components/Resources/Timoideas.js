@@ -39,6 +39,7 @@ export function Content({
   padding,
   children,
   className,
+  onClick,
   style,
 }) {
   const { Theme } = useTheme();
@@ -57,6 +58,7 @@ export function Content({
         flex: flex || 1,
         ...style,
       }}
+      onClick={onClick}
     >
       {children}
     </div>

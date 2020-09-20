@@ -67,7 +67,7 @@ a {
   /* place-items: center; */
   align-items: flex-end;
 }
-.StoreButtonCheckProductsCounter {
+.YapeInit {
   position: absolute;
   padding: 0.4vh 0.8vh;
   display: flex;
@@ -81,9 +81,38 @@ a {
   box-shadow: 0 0 1vh #0001, inset 0 0 0.5vh #0002;
   border-radius: 0.8vh;
   margin-bottom: 2.8vh;
-  transition: 0.3s;
+  transition: 0.3s ease-out;
   cursor: pointer;
   z-index: 2;
+}
+.StoreButtonCheckContainer {
+  padding: 0.3vh 0.5vh;
+  height: 3.5vh;
+  width: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background: #fafafa;
+  box-shadow: 0 0 1vh #0002;
+  border-radius: 1vh;
+  cursor: pointer;
+}
+
+.TotalPriceStore {
+  font-size: 1.5vh;
+  font-weight: 700;
+  background: #000;
+  color: #fafafa;
+  padding: 0.1vh 0.8vh;
+  border-radius: 0.5vh 0.5vh 0 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: -6.5vh;
+  border: none;
+  height: 2vh;
+  z-index: -3;
 }
 .StoreButton {
   width: 10vh;
@@ -108,7 +137,6 @@ a {
   color: #fafafa;
   padding-top: 1vh;
 }
-
 .StoreContainer {
   display: flex;
   flex-direction: column;
@@ -160,31 +188,7 @@ a {
 /* ------------------------ Step 0 */
 
 /* ------------------------ Step 1 */
-.StoreButtonCheckContainer {
-  padding: 0.3vh 0.5vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  background: #fafafa;
-  box-shadow: 0 0 1vh #0005;
-  border-radius: 1vh;
-  cursor: pointer;
-}
-.YapeInfoTitle {
-  font-size: 1.5vh;
-  font-weight: 700;
-  background: #000;
-  color: #fafafa;
-  padding: 0.1vh 0.8vh;
-  border-radius: 0.5vh 0.5vh 0 0;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  bottom: -7.3vh;
-  height: 2vh;
-  z-index: -3;
-}
+
 .StoreButtonCheck {
   height: 1.5vh;
   filter: grayscale(100);
@@ -212,6 +216,7 @@ a {
   border-left: 0.6vh solid #000;
   border-right: 0.6vh solid #000;
   background: #000 !important;
+  cursor: pointer;
 }
 .ProductList {
   display: flex;
