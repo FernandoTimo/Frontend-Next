@@ -11,6 +11,14 @@ import { useDevice } from 'hooks/useDevice';
 import useScroll from 'hooks/useScroll';
 import { StoreClient, StoreAdmin } from 'hooks/useStore';
 export default function Index() {
+  useEffect(() => {
+    setTimeout(function () {
+      // Already scrolled?
+      if (window.pageYOffset === 0) {
+        window.scrollTo(0, 800);
+      }
+    }, 1000);
+  }, []);
   return (
     <>
       <Header_Main />

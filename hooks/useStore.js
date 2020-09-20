@@ -52,6 +52,7 @@ export function StoreClient({ Yape }) {
   const [isHelp, setisHelp] = useState(false);
   const [Codigo, setCodigo] = useState('');
   //            <--=========================================================== [ Sockets Effect ]
+
   useEffect(() => {
     //                             2 ==>
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
