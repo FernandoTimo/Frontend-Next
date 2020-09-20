@@ -312,6 +312,14 @@ a {
   justify-content: center;
   align-items: center;
   gap: 1vh;
+  height: 100%;
+}
+.StepTwoMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0;
 }
 .ComprobanteCard {
   width: 3vh;
