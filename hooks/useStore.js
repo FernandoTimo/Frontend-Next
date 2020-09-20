@@ -71,7 +71,9 @@ export function StoreClient({ Yape }) {
   //            <===   *************************** [ JSX COMPONENT = Client ] *************************** [  JSX COMPONENT = Client ]
   return (
     <Controls top>
+      {/*                   1 = JSX Component */}
       <div className="Help">
+        {/*                   2 = JSX Container */}
         <div
           className="HelpContainer"
           style={{ display: isHelp ? 'flex' : 'none' }}
@@ -80,6 +82,7 @@ export function StoreClient({ Yape }) {
         </div>
       </div>
       <div className="Store">
+        {/*                   2 = JSX Container */}
         {ShowStore && (
           <>
             {/*//                        <--************************************************************************************************ [ Store CONTAINER ]
