@@ -44,12 +44,11 @@ export function StoreClient({ Yape }) {
     isStore,
     setIsStore,
   } = useStore(Yape);
-  const [isHelp, setisHelp] = useState(false);
 
-  //            <--=========================================================== [ Socket ]
-  //             -----------------------------  [ Socket ]  -----------------------------
-  //            <--=========================================================== [ Socket ]
+  //            <--=========================================================== [ States ]
+  const [isHelp, setisHelp] = useState(false);
   const [Codigo, setCodigo] = useState('');
+  //            <--=========================================================== [ Sockets Effect ]
   useEffect(() => {
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
