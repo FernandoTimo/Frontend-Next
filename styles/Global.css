@@ -88,7 +88,7 @@ a {
 .StoreButtonCheckContainer {
   padding: 0.3vh 0.5vh;
   height: 3.5vh;
-  width: 5vh;
+  width: 5.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,7 +190,7 @@ a {
 /* ------------------------ Step 1 */
 
 .StoreButtonCheck {
-  height: 1.5vh;
+  height: 1.8vh;
   filter: grayscale(100);
   opacity: 0.3;
   margin: 0 0.1vh;

@@ -63,7 +63,7 @@ export function StoreClient({ Yape }) {
     //                             2 ==>
     socket.on('store-comprobante_validado', (StoreCodigo) => {
       setCodigo(StoreCodigo);
-      setStepStore(2);
+      setStepStore(6);
     });
   }, []);
   //            <--=========================================================== [ Handlers]
@@ -98,7 +98,7 @@ export function StoreClient({ Yape }) {
                     className={`YapeInit ${
                       StepStore === 1 && 'TotalPriceStore'
                     }`}
-                    onClick={(e) => {
+                    onClick={() => {
                       setStepStore(0);
                     }}
                   >
@@ -123,29 +123,34 @@ export function StoreClient({ Yape }) {
               {/*                                               (3) JSX [ CABECERA === Check-Steps [~ Steps>0] ] */}
               {StepStore > 0 && (
                 <label className="StoreButtonStateLabelTop">
-                  <div className="StoreButtonCheckContainer">
+                  <div
+                    className="StoreButtonCheckContainer"
+                    style={{
+                      gap: (StepStore === 2 || StepStore === 5) && '0.2vh',
+                    }}
+                  >
                     {/*                                                  (4) JSX [ CHECKS === First-Step [~] ] */}
-                    {StepStore === 2 && <Spinner_Rainbow />}
+                    {StepStore === 2 && <Spinner_Rainbow size={2.3} />}
                     <img
                       alt="Check"
                       className="StoreButtonCheck"
                       src="assets/Check.png"
                       style={{
                         display: StepStore === 2 ? 'none' : 'flex',
-                        height: StepStore === 1 && '2.3vh',
+                        height: (StepStore === 1 || StepStore === 6) && '2.3vh',
                         filter: StepStore > 1 && 'grayScale(0)',
                         opacity: 0.8,
                       }}
                     />
                     {/*                                                  (4) JSX [ CHECKS === Second-Step [~] ] */}
-                    {StepStore === 5 && <Spinner_Rainbow />}
+                    {StepStore === 5 && <Spinner_Rainbow size={2.3} />}
                     <img
                       alt="Check"
                       className="StoreButtonCheck"
                       src="assets/Check.png"
                       style={{
                         display: StepStore === 5 ? 'none' : 'flex',
-                        height: (StepStore === 3 || StepStore === 4) && '2.3vh',
+                        height: StepStore >= 2 && '2.3vh',
                         filter: StepStore > 3 && 'grayScale(0)',
                         opacity: StepStore > 2 && 0.8,
                       }}
@@ -455,9 +460,7 @@ export function StoreAdmin({ children }) {
   }, []);
   //            <--=========================================================== [ Handlers ]
   //                                   1 ==>
-  const handlerComprobanteValidador = () => {
-    socket.emit('store-comprobante_validado', 'X8S5DQ');
-  };
+
   //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|ADMIN ]
   return (
     <div className="StoreVerifyOrdersContainer">
@@ -486,6 +489,9 @@ export function StoreAdmin({ children }) {
 //            <--================================================================================================ [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]
 //            <--================================================================================================ [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]
 const StoreCardOrderVerify = () => {
+  const handlerComprobanteValidador = () => {
+    socket.emit('store-comprobante_validado', 'X8S5DQ');
+  };
   return (
     <div>
       <div className="StoreCardOrderVerifyContainer">
@@ -508,7 +514,7 @@ const StoreCardOrderVerify = () => {
         </div>
         <label>Mañana</label>
         <label>hace 2min</label>
-        <button>Validar</button>
+        <button onClick={handlerComprobanteValidador}>Validar</button>
         <button
           onClick={() => {
             window.open(
