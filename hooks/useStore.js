@@ -427,7 +427,9 @@ const ProductList = ({ index, children }) => {
         animation: Cantidad === 0 && 'itemsStore .3s reverse forwards',
         display: D1000 ? 'none' : 'flex',
         cursor: StepStore < 2 && 'pointer',
-        background: `url(${children.producto.cover})`,
+        background: `url('${children.producto.cover}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
       onClick={() => {
         StepStore === 1 && setStepStore(0);

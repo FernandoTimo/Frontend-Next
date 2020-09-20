@@ -251,8 +251,6 @@ a {
   box-shadow: 0 0 1vh #0002;
   animation: itemStore 0.2s ease-in 0.5s forwards;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
   transition: 0.2s;
 }
 .ProductList img {
