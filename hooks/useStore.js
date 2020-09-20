@@ -54,6 +54,7 @@ export function StoreClient({ Yape }) {
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
       console.log('Comprobante Recivido en el Server');
+      setStepStore(3);
     });
     socket.on('store-comprobante_validado', (StoreCodigo) => {
       setCodigo(StoreCodigo);
@@ -272,6 +273,7 @@ const FirstStepStore = ({ children }) => {
     seturlComprobante(srcComprobante);
     // se envia el comprobante
     socket.emit('store-comprobante', 'Nuevo Comprobante');
+    setStepStore(2);
     // se espera una respuesta
   };
 
