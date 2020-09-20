@@ -74,7 +74,7 @@ export function StoreClient({ Yape }) {
   //            <===   *************************** [ JSX COMPONENT = Client ] *************************** [  JSX COMPONENT = Client ]
   return (
     <Controls top>
-      {/*                                            (1) JSX [ AYUDA = Container [~] ] */}
+      {/*                                         (1) JSX [ AYUDA = Container [~ isHelp] ] */}
       <div className="Help">
         <div
           className="HelpContainer"
@@ -83,15 +83,17 @@ export function StoreClient({ Yape }) {
           ¿No sé pagar con Yape!
         </div>
       </div>
-      {/*                                            (1) JSX [ TIENDA = Container principal [~] ] */}
+      {/*                                         (1) JSX [ TIENDA = Container principal [~ showStore] ] */}
       <div className="Store">
         {ShowStore && (
           <>
-            {/*                                                         (2) JSX [ TIENDA - Cabezera = Container [!] ] */}
+            {/*                                            (2) JSX [ TIENDA - Cabezera = Container [! Steps] ] */}
             <div className="StoreHeaderContainer">
+              {/*                                               (3) JSX [ TIENDA - Cabezera = Yapear - Precio [~ Steps: 0,1] ] */}
+              *3
               {StepStore < 2 && (
                 <>
-                  {/*                                                                (3) JSX [ TIENDA - Cabezera - PrecioTotal = Label [~ Steps: 0, 1] ] */}
+                  {/*                                                  (4) JSX [ TIENDA - Cabezera - PrecioTotal = Label [~ Steps: 0, 1] ] */}
                   <label
                     className={`StoreButtonCheckProductsCounter ${
                       StepStore === 1 && 'YapeInfoTitle'
@@ -104,6 +106,7 @@ export function StoreClient({ Yape }) {
                   >
                     S/{InvoiceStore.total}
                   </label>
+                  {/*                                                  (4) JSX [ TIENDA - Cabezera - Yapear init = Label [~ Steps: 0] ]*/}
                   {StepStore === 0 && (
                     <button
                       className="StoreButton"
