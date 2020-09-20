@@ -8,7 +8,7 @@ import {
 } from 'components/Resources/Timoideas';
 import useDelay from './useDelay';
 import { socket } from 'sockets/socket';
-export const useStore = (Yape) => {
+export const useStore = () => {
   const {
     InvoiceStore,
     setInvoiceStore,
