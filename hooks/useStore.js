@@ -30,13 +30,13 @@ export const useStore = () => {
     setStepStore,
   };
 };
-//                        <--************************************************************************************************ [ Client Component ]
-//                 <--************************************************************************************************** [ Client Component ]
-//            <--************************************************************************************************** [ Client Component ]
-//         <===                                                        [ Client Component ]
-//            <--************************************************************************************************** [ Client Component ]
-//                 <--************************************************************************************************** [ Client Component ]
-//                        <--************************************************************************************************ [ Client Component ]
+//                        <--************************************************************************************************ [ TIENDA|COMPONENTE|CLIENTE ]
+//                 <--************************************************************************************************** [ TIENDA|COMPONENTE|CLIENTE ]
+//            <--************************************************************************************************** [ TIENDA|COMPONENTE|CLIENTE ]
+//         <===                                                        [ TIENDA|COMPONENTE|CLIENTE ]
+//            <--************************************************************************************************** [ TIENDA|COMPONENTE|CLIENTE ]
+//                 <--************************************************************************************************** [ TIENDA|COMPONENTE|CLIENTE ]
+//                        <--************************************************************************************************ [ TIENDA|COMPONENTE|CLIENTE ]
 export function StoreClient({ Yape }) {
   //            <--=========================================================== [ Hooks ]
   const {
@@ -83,17 +83,16 @@ export function StoreClient({ Yape }) {
           ¿No sé pagar con Yape!
         </div>
       </div>
-      {/*                                         (1) JSX [ TIENDA = Container principal [~ showStore] ] */}
+      {/*                                         (1) JSX [ TIENDA === Container principal [~ showStore] ] */}
       <div className="Store">
         {ShowStore && (
           <>
-            {/*                                            (2) JSX [ TIENDA - Cabezera = Container [! Steps] ] */}
+            {/*                                            (2) JSX [ TIENDA|CABECERA === Container [! Steps] ] */}
             <div className="StoreHeaderContainer">
-              {/*                                               (3) JSX [ TIENDA - Cabezera = Yapear - Precio [~ Steps: 0,1] ] */}
-              *3
+              {/*                                               (3) JSX [ TIENDA|CABECERA === Yapear-Precio [~ Steps: 0,1] ] */}
               {StepStore < 2 && (
                 <>
-                  {/*                                                  (4) JSX [ TIENDA - Cabezera - PrecioTotal = Label [~ Steps: 0, 1] ] */}
+                  {/*                                                  (4) JSX [ TIENDA|CABECERA === Precio [~ Steps: 0, 1] ] */}
                   <label
                     className={`StoreButtonCheckProductsCounter ${
                       StepStore === 1 && 'YapeInfoTitle'
@@ -106,7 +105,7 @@ export function StoreClient({ Yape }) {
                   >
                     S/{InvoiceStore.total}
                   </label>
-                  {/*                                                  (4) JSX [ TIENDA - Cabezera - Yapear init = Label [~ Steps: 0] ]*/}
+                  {/*                                                  (4) JSX [ TIENDA|CABECERA === Yapear [~ Steps: 0] ]*/}
                   {StepStore === 0 && (
                     <button
                       className="StoreButton"
@@ -115,7 +114,6 @@ export function StoreClient({ Yape }) {
                         pointerEvents: StepStore < 3 ? 'visible' : 'none',
                       }}
                     >
-                      {/*                               <--=============== Label MID ===============-->  */}
                       <label className={`StoreButtonStateLabelMid`}>
                         Yapear
                       </label>
@@ -123,9 +121,11 @@ export function StoreClient({ Yape }) {
                   )}
                 </>
               )}
+              {/*                                               (3) JSX [ TIENDA|CABECERA === Check-Steps [~ Steps>0] ] */}
               {StepStore > 0 && (
                 <label className="StoreButtonStateLabelTop">
                   <div className="StoreButtonCheckContainer">
+                    {/*                                                  (4) JSX [ TIENDA|CABECERA|CHECKS === First-Step [~] ] */}
                     {StepStore === 2 && <Spinner_Rainbow />}
                     <img
                       alt="Check"
@@ -138,6 +138,7 @@ export function StoreClient({ Yape }) {
                         opacity: 0.8,
                       }}
                     />
+                    {/*                                                  (4) JSX [ TIENDA|CABECERA|CHECKS === Second-Step [~] ] */}
                     {StepStore === 5 && <Spinner_Rainbow />}
                     <img
                       alt="Check"
@@ -154,10 +155,10 @@ export function StoreClient({ Yape }) {
                 </label>
               )}
             </div>
-            {/*                                                         2 JSX [ Cuadro de Productos - TIENDA = Container ] */}
+            {/*                                            (2) JSX [ TIENDA|PRODUCTOS = Container [! Siempre] ] */}
             <div className="StoreContainer">
               <Content center flex={1}>
-                {/*                                <--=============== StepsStoreComponents ===============-->                                */}
+                {/*                                               (3) JSX [ TIENDA|PRODUCTOS|TOP === Componentes-Indicaciones [~Steps] ] */}
                 <Content
                   flex={StepStore === 0 ? 0.1 : 9}
                   center
@@ -170,7 +171,7 @@ export function StoreClient({ Yape }) {
                   {StepStore === 3 && <SecondStepStore />}
                   {StepStore > 3 && <SecondStepStore codigo={Codigo} />}
                 </Content>
-                {/*                                <--=============== StoreProductsListCards ===============-->                                */}
+                {/*                                               (3) JSX [ TIENDA|PRODUCTOS|BOT === Productos [!] ] */}
                 <Content
                   className={`StoreList ${
                     StepStore === 1 && 'StoreListReduced'
@@ -192,69 +193,16 @@ export function StoreClient({ Yape }) {
     </Controls>
   );
 }
-//            <--=========================================================== [ Products List Cards Component  ]
-//             -----------------------------  [ Products List Cards Component ]  -----------------------------
-//            <--=========================================================== [ Products List Cards Component ]
 
-const ProductList = ({ index, children }) => {
-  const {
-    InvoiceStore,
-    setInvoiceStore,
-    setShowStore,
-    StepStore,
-    setStepStore,
-  } = useStore();
-  const [Cantidad, setCantidad] = useState(1);
-  const [_1000, set_1000] = useState(false);
-  const handlerIncrement = () => {
-    setCantidad(Cantidad + 1);
-  };
-  let D1000 = useDelay(300, _1000);
-  const handlerDecrement = () => {
-    Cantidad === 1 && (setInvoiceStore.removeItem(index), set_1000(true));
-    setCantidad(Cantidad - 1);
-    InvoiceStore.length === 0 && setShowStore(false);
-  };
-  return (
-    <div
-      className="ProductList"
-      style={{
-        animation: Cantidad === 0 && 'itemsStore .3s reverse forwards',
-        display: D1000 ? 'none' : 'flex',
-        cursor: StepStore < 2 && 'pointer',
-        background: `url(${children.producto.cover})`,
-      }}
-      onClick={() => {
-        StepStore === 1 && setStepStore(0);
-      }}
-    >
-      <div
-        className="ControlCantidad"
-        style={{ display: StepStore > 0 ? 'none' : 'flex' }}
-      >
-        <div className="ItemCantidadContainer">
-          <label
-            className="ItemCantidad"
-            style={{ animation: `rotate 0.${Cantidad}s` }}
-          >
-            x{Cantidad}
-          </label>
-        </div>
-        <div onClick={handlerIncrement} />
-        <div onClick={handlerDecrement} />
-      </div>
-    </div>
-  );
-};
-//  ---------------------------------------------------------     ////////
-//  ---------------------------------------------------------    /////////
-//  ---------------------------------------------------------  ////  /////
-//  ---------------------------------------------------------        /////
-//  ---------------------------------------------------------        /////
-//  ---------------------------------------------------------        /////
-//  ---------------------------------------------------------        /////
-//  ---------------------------------------------------------        /////
-//  ---------------------------------------------------------        /////
+//            <--================================================================================================ [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]
+//            <--================================================================================================ [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]
+//             --------=====================================---------------------  [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]  -----------------------------
+//            <--================================================================================================ [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]
+//            <--================================================================================================ [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]
+
+//            <--=========================================================== [ TIENDA|PRODUCTS|TOP|FIRSTCOMPONENT ]
+//             -----------------------------  [ TIENDA|PRODUCTS|TOP|FIRSTCOMPONENT ]  -----------------------------
+//            <--=========================================================== [ TIENDA|PRODUCTS|TOP|FIRSTCOMPONENT ]
 const FirstStepStore = ({ children }) => {
   const { StepStore, setStepStore } = useStore();
   const [urlComprobante, seturlComprobante] = useState('');
@@ -318,15 +266,11 @@ const FirstStepStore = ({ children }) => {
     </div>
   );
 };
-//  ---------------------------------------------------------      ///////
-//  ---------------------------------------------------------    //////////
-//  ---------------------------------------------------------  ////   /////
-//  ---------------------------------------------------------          /////
-//  ---------------------------------------------------------         /////
-//  ---------------------------------------------------------        /////
-//  ---------------------------------------------------------       /////
-//  ---------------------------------------------------------     ////////////
-//  ---------------------------------------------------------    /////////////
+
+//            <--=========================================================== [ TIENDA|PRODUCTS|TOP|FIRSTCOMPONENT ]
+//             -----------------------------  [ TIENDA|PRODUCTS|TOP|FIRSTCOMPONENT ]  -----------------------------
+//            <--=========================================================== [ TIENDA|PRODUCTS|TOP|FIRSTCOMPONENT ]
+
 const SecondStepStore = ({ codigo = 'asd2' }) => {
   const { setStepStore } = useStore();
   const [CanSubmit, setCanSubmit] = useState(true);
@@ -414,11 +358,70 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
     </div>
   );
 };
-//            <--=========================================================== [ ADMIN COMPONENT ]
-//            <--=========================================================== [ ADMIN COMPONENT ]
-//             -----------------------------  [ ADMIN COMPONENT ]  -----------------------------
-//            <--=========================================================== [ ADMIN COMPONENT ]
-//            <--=========================================================== [ ADMIN COMPONENT ]
+//            <--================================================================================================ [ TIENDA|PRODUCTOS|BOT-COMPONENT ]
+//            <--================================================================================================ [ TIENDA|PRODUCTOS|BOT-COMPONENT ]
+//             --------=====================================---------------------  [ TIENDA|PRODUCTOS|BOT-COMPONENT ]  -----------------------------
+//            <--================================================================================================ [ TIENDA|PRODUCTOS|BOT-COMPONENT ]
+//            <--================================================================================================ [ TIENDA|PRODUCTOS|BOT-COMPONENT ]
+
+const ProductList = ({ index, children }) => {
+  const {
+    InvoiceStore,
+    setInvoiceStore,
+    setShowStore,
+    StepStore,
+    setStepStore,
+  } = useStore();
+  const [Cantidad, setCantidad] = useState(1);
+  const [_1000, set_1000] = useState(false);
+  const handlerIncrement = () => {
+    setCantidad(Cantidad + 1);
+  };
+  let D1000 = useDelay(300, _1000);
+  const handlerDecrement = () => {
+    Cantidad === 1 && (setInvoiceStore.removeItem(index), set_1000(true));
+    setCantidad(Cantidad - 1);
+    InvoiceStore.length === 0 && setShowStore(false);
+  };
+  return (
+    <div
+      className="ProductList"
+      style={{
+        animation: Cantidad === 0 && 'itemsStore .3s reverse forwards',
+        display: D1000 ? 'none' : 'flex',
+        cursor: StepStore < 2 && 'pointer',
+        background: `url(${children.producto.cover})`,
+      }}
+      onClick={() => {
+        StepStore === 1 && setStepStore(0);
+      }}
+    >
+      <div
+        className="ControlCantidad"
+        style={{ display: StepStore > 0 ? 'none' : 'flex' }}
+      >
+        <div className="ItemCantidadContainer">
+          <label
+            className="ItemCantidad"
+            style={{ animation: `rotate 0.${Cantidad}s` }}
+          >
+            x{Cantidad}
+          </label>
+        </div>
+        <div onClick={handlerIncrement} />
+        <div onClick={handlerDecrement} />
+      </div>
+    </div>
+  );
+};
+
+//                        <--************************************************************************************************ [ TIENDA|COMPONENTE|ADMIN ]
+//                 <--************************************************************************************************** [ TIENDA|COMPONENTE|ADMIN ]
+//            <--************************************************************************************************** [ TIENDA|COMPONENTE|ADMIN ]
+//         <===                                                        [ TIENDA|COMPONENTE|ADMIN ]
+//            <--************************************************************************************************** [ TIENDA|COMPONENTE|ADMIN ]
+//                 <--************************************************************************************************** [ TIENDA|COMPONENTE|ADMIN ]
+//                        <--************************************************************************************************ [ TIENDA|COMPONENTE|ADMIN ]
 
 export function StoreAdmin({ children }) {
   const [State, setState] = useState();
