@@ -64,24 +64,8 @@ export function StoreClient({ Yape }) {
   //             -----------------------------  [ Boton Top ]  -----------------------------
   //            <--=========================================================== [ Boton Top ]
   const handlerButtonStore = (e) => {
-    switch (StepStore) {
-      case 0:
-        setStepStore(StepStore + 1);
-        socket.emit('store-init', 'Nuevo Cliente');
-        break;
-      case 1:
-        // se abre ventana de adjuntar comprobante
-        // se valida que tenga datos
-        // se envia el comprobante
-        socket.emit('store-comprobante', 'Nuevo Comprobante');
-        // se espera una respuesta
-        break;
-      case 2:
-        setStepStore(StepStore + 1);
-        break;
-      default:
-        break;
-    }
+    setStepStore(StepStore + 1);
+    socket.emit('store-init', 'Nuevo Cliente');
   };
   return (
     <Controls top>
@@ -290,8 +274,12 @@ const FirstStepStore = ({ children }) => {
   const [ComprobanteData, setComprobanteData] = useState();
   let refStoreCompobanteInput = useRef();
   const handlerComprobanteInput = (e) => {
-    setStepStore(StepStore + 1);
+    // se abre ventana de adjuntar comprobante
+    // se valida que tenga datos
+    // se envia el comprobante
     socket.emit('store-comprobante', 'Nuevo Comprobante');
+
+    // se espera una respuesta
   };
 
   return (
