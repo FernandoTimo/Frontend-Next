@@ -419,11 +419,13 @@ a {
   opacity: 0;
 }
 .YapeInfoAdd span {
+  display: none;
   align-self: flex-start;
   margin-top: 2.5vh;
   margin-left: 2vh;
 }
 .YapeInfoVoucher span {
+  display: none;
   margin-top: 2.5vh;
   margin-right: 0.5vh;
   align-self: flex-end;
@@ -565,6 +567,10 @@ a {
   .SecondStepStoreFormContainer {
     width: 100%;
     overflow: hidden;
+  }
+  .YapeInfoAdd span,
+  .YapeInfoVoucher span {
+    display: flex;
   }
 }
 /* Code Store */
