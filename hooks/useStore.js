@@ -53,17 +53,20 @@ export function StoreClient({ Yape }) {
   const [Codigo, setCodigo] = useState('');
   //            <--=========================================================== [ Sockets Effect ]
   useEffect(() => {
+    //                             2 ==>
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
       console.log('Comprobante Recivido en el Server');
       setStepStore(3);
     });
+    //                             2 ==>
     socket.on('store-comprobante_validado', (StoreCodigo) => {
       setCodigo(StoreCodigo);
       setStepStore(2);
     });
   }, []);
   //            <--=========================================================== [ Handlers]
+  //                                   1 ==>
   const handlerButtonStore = (e) => {
     setStepStore(StepStore + 1);
     socket.emit('store-init', 'Nuevo Cliente');
@@ -71,9 +74,8 @@ export function StoreClient({ Yape }) {
   //            <===   *************************** [ JSX COMPONENT = Client ] *************************** [  JSX COMPONENT = Client ]
   return (
     <Controls top>
-      {/*                   1 = JSX Component */}
+      {/*                                            (1) JSX [ AYUDA = Container [~] ] */}
       <div className="Help">
-        {/*                   2 = JSX Container */}
         <div
           className="HelpContainer"
           style={{ display: isHelp ? 'flex' : 'none' }}
@@ -81,21 +83,15 @@ export function StoreClient({ Yape }) {
           ¿No sé pagar con Yape!
         </div>
       </div>
+      {/*                                            (1) JSX [ TIENDA = Container principal [~] ] */}
       <div className="Store">
-        {/*                   2 = JSX Container */}
         {ShowStore && (
           <>
-            {/*//                        <--************************************************************************************************ [ Store CONTAINER ]
-            //                 <--************************************************************************************************** [ Store CONTAINER ]
-            //            <--************************************************************************************************** [ Store CONTAINER ]
-            //         <===                                                        [ Store CONTAINER ]
-            //            <--************************************************************************************************** [ Store CONTAINER ]
-            //                 <--************************************************************************************************** [ Store CONTAINER ]
-            //                        <--************************************************************************************************ [ Store CONTAINER ]*/}
-
+            {/*                                                         (2) JSX [ TIENDA - Cabezera = Container [!] ] */}
             <div className="StoreHeaderContainer">
               {StepStore < 2 && (
                 <>
+                  {/*                                                                (3) JSX [ TIENDA - Cabezera - PrecioTotal = Label [~ Steps: 0, 1] ] */}
                   <label
                     className={`StoreButtonCheckProductsCounter ${
                       StepStore === 1 && 'YapeInfoTitle'
@@ -154,15 +150,8 @@ export function StoreClient({ Yape }) {
                   </div>
                 </label>
               )}
-              {/*                               <--=============== Label TOP ===============-->    */}
             </div>
-            {/*//                        <--************************************************************************************************ [ Store CONTAINER ]
-            //                 <--************************************************************************************************** [ Store CONTAINER ]
-            //            <--************************************************************************************************** [ Store CONTAINER ]
-            //         <===                                                        [ Store CONTAINER ]
-            //            <--************************************************************************************************** [ Store CONTAINER ]
-            //                 <--************************************************************************************************** [ Store CONTAINER ]
-            //                        <--************************************************************************************************ [ Store CONTAINER ]*/}
+            {/*                                                         2 JSX [ Cuadro de Productos - TIENDA = Container ] */}
             <div className="StoreContainer">
               <Content center flex={1}>
                 {/*                                <--=============== StepsStoreComponents ===============-->                                */}
