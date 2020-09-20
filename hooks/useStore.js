@@ -270,7 +270,7 @@ const FirstStepStore = ({ children }) => {
               }}
             >
               <img alt="Add" src="assets/Add.png" className="AddIcon" />
-              <span>Añadir más</span>
+              <span className="SpanIcon">Añadir más</span>
             </label>
             <label
               className="YapeInfoVoucher"
@@ -283,7 +283,7 @@ const FirstStepStore = ({ children }) => {
                 src="assets/Comprobante.png"
                 className="CompobanteIcon"
               />
-              <span>Adjuntar Voucher</span>
+              <span className="SpanIcon">Adjuntar Voucher</span>
             </label>
           </div>
           <input
