@@ -125,9 +125,9 @@ a {
 .TotalPriceStore {
   font-size: 1.5vh;
   font-weight: 700;
-  background: #000;
+  background: #2f2f2f;
   color: #fafafa;
-  padding: 0.1vh 0.8vh;
+  padding: 0.1vh 1vh;
   border-radius: 0.5vh 0.5vh 0 0;
   display: flex;
   justify-content: center;
@@ -229,10 +229,10 @@ a {
   border-radius: 1vh;
 }
 .StoreListReduced {
-  border-top: 0.6vh solid #000;
-  border-left: 0.6vh solid #000;
-  border-right: 0.6vh solid #000;
-  background: #000 !important;
+  border-top: 0.6vh solid #2f2f2f;
+  border-left: 0.6vh solid #2f2f2f;
+  border-right: 0.6vh solid #2f2f2f;
+  background: #2f2f2f !important;
   cursor: pointer;
 }
 .ProductList {
@@ -384,10 +384,10 @@ a {
 .SwitchStepsContainer {
   display: flex;
   height: 6vh;
-  border: 0.2vh solid #000;
 }
 .YapeInfoAdd,
 .YapeInfoVoucher {
+  padding: 0.3vh;
   flex: 1;
   height: 4vh;
   border: none;
@@ -398,16 +398,22 @@ a {
   align-self: flex-end;
   width: 20vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  font-weight: 600;
 }
 .YapeInfoAdd:hover,
 .YapeInfoVoucher:hover {
   opacity: 0.8;
+  filter: grayscale(0.2) saturate(3);
 }
 .YapeInfoAdd {
+  transition: 0s;
   justify-content: flex-start;
+  color: #8d8d8d;
+  padding-left: 4vh;
 }
 .YapeInfoVoucher {
+  color: #2282ff;
   justify-content: flex-end;
 }
 .YapeInfoComprobanteImg {
