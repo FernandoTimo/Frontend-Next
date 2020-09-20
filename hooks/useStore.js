@@ -48,7 +48,7 @@ export function StoreClient({ Yape }) {
     setIsStore,
   } = useStore(Yape);
 
-  //            <--=========================================================== [ States ]
+  //            <--=========================================================== [ useStates ]
   const [isHelp, setisHelp] = useState(false);
   const [Codigo, setCodigo] = useState('');
   //            <--=========================================================== [ Sockets Effect ]
@@ -71,7 +71,7 @@ export function StoreClient({ Yape }) {
     setStepStore(StepStore + 1);
     socket.emit('store-init', 'Nuevo Cliente');
   };
-  //            <===   *************************** [ JSX COMPONENT = Client ] *************************** [  JSX COMPONENT = Client ]
+  //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|CLIENTE ]
   return (
     <Controls top>
       {/*                                         (1) JSX [ AYUDA = Container [~ isHelp] ] */}
@@ -204,11 +204,14 @@ export function StoreClient({ Yape }) {
 //             -----------------------------  [ TIENDA|PRODUCTS|TOP|FIRSTCOMPONENT ]  -----------------------------
 //            <--=========================================================== [ TIENDA|PRODUCTS|TOP|FIRSTCOMPONENT ]
 const FirstStepStore = ({ children }) => {
+  //            <--=========================================================== [ useStates ]
   const { StepStore, setStepStore } = useStore();
   const [urlComprobante, seturlComprobante] = useState('');
-  // ----------------------------- <--=============== Input type File ===============--> -----------------------------
   const [ComprobanteData, setComprobanteData] = useState();
+  //            <--=========================================================== [ useRefs ]
   let refStoreCompobanteInput = useRef();
+  //            <--=========================================================== [ Handlers ]
+  //                                   1 ==>
   const handlerComprobanteInput = (e) => {
     // se abre ventana de adjuntar comprobante
     // se valida que tenga datos
@@ -220,11 +223,12 @@ const FirstStepStore = ({ children }) => {
     setStepStore(2);
     // se espera una respuesta
   };
-
+  //            <==************************************************************************************ [ JSX COMPONENT = FIRST-COMPONENT ]
   return (
     <div className="YapeInfoContainer">
       {urlComprobante ? (
         <>
+          {/*                                         (1) JSX [ FIRST|IMG === Comprobante [~ urlComprobante] ] */}
           <img
             alt="Comprobante Yape"
             src={urlComprobante}
@@ -234,6 +238,7 @@ const FirstStepStore = ({ children }) => {
         </>
       ) : (
         <>
+          {/*                                         (1) JSX [ FIRST|YAPE === Payment-Info [~ urlComprobante] ] */}
           <p className="YapeInfoNumero">{children.numero}</p>
           <p className="YapeInfoNombre">{children.nombre}</p>
           <button
@@ -278,13 +283,15 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
     e.preventDefault();
     CanSubmit ? setStepStore(5) : alert('POr favor llena todos los espacios');
   };
-
+  //            <==************************************************************************************ [ JSX COMPONENT = SECOND-COMPONENT ]
   return (
     <div className="SecondStepStore">
       {/* <div className="SecondStepStoreTitle">¡Gracias por tu preferencia!</div> */}
+      {/*                                         (1) JSX [ TIENDA === Mensaje [!] ] */}
       <div className="SecondStepStoreMessage">
         Por favor, brindanos la siguiente información
       </div>
+      {/*                                         (1) JSX [ TIENDA === Form [~ Steps] ] */}
       <div className="SecondStepStoreFormContainer">
         <form className="SecondStepStoreForm" onSubmit={handlerSubmit}>
           <button className={`SecondStepStoreSubmit`}>
@@ -340,6 +347,7 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
           </div>
         </form>
       </div>
+      {/*                                         (1) JSX [ TIENDA === Verified-Sale-Code [~ verified] ] */}
       <div className="SecondStepStoreCodeContainer">
         <div className="SecondStepStoreCode">
           <label>Código</label>
@@ -383,6 +391,7 @@ const ProductList = ({ index, children }) => {
     setCantidad(Cantidad - 1);
     InvoiceStore.length === 0 && setShowStore(false);
   };
+  //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|CLIENTE|PRODUCTS|BOT-PRODUCTLIST ]
   return (
     <div
       className="ProductList"
@@ -424,7 +433,9 @@ const ProductList = ({ index, children }) => {
 //                        <--************************************************************************************************ [ TIENDA|COMPONENTE|ADMIN ]
 
 export function StoreAdmin({ children }) {
+  //            <--=========================================================== [ useStates ]
   const [State, setState] = useState();
+  //            <--=========================================================== [ Sockets Effect ]
   useEffect(() => {
     socket.on('store-comprobante_recivido', (comprobante) => {
       console.log(comprobante);
@@ -434,25 +445,18 @@ export function StoreAdmin({ children }) {
       console.log(codigo);
     });
   }, []);
+  //            <--=========================================================== [ Handlers ]
+  //                                   1 ==>
   const handlerComprobanteValidador = () => {
     socket.emit('store-comprobante_validado', 'X8S5DQ');
   };
+  //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|ADMIN ]
   return (
     <div className="StoreVerifyOrdersContainer">
-      {/*/            <--================================================================================================ [ Store HEADER Controls Activity ]
-      //            <--================================================================================================ [ Store HEADER Controls Activity ]
-      //             --------=====================================---------------------  [ Store HEADER Controls Activity ]  -----------------------------
-      //            <--================================================================================================ [ Store HEADER Controls Activity ]
-      //            <--================================================================================================ [ Store HEADER Controls Activity ]*/}
       <div className="VerifyOrdersControlContainer">
         {State}
         <StoreCardOrderVerify />
       </div>
-      {/*/            <--================================================================================================ [ Store FOOTER Controls Activity ]
-      //            <--================================================================================================ [ Store FOOTER Controls Activity ]
-      //             --------=====================================---------------------  [ Store FOOTER Controls Activity ]  -----------------------------
-      //            <--================================================================================================ [ Store FOOTER Controls Activity ]
-      //            <--================================================================================================ [ Store FOOTER Controls Activity ]*/}
       <div className="VerifyOrdersActivityContainer">
         <div>
           <label>An</label>
@@ -468,11 +472,11 @@ export function StoreAdmin({ children }) {
   );
 }
 
-//            <--================================================================================================ [ Card Verify Component ]
-//            <--================================================================================================ [ Card Verify Component ]
-//             --------=====================================---------------------  [ Card Verify Component ]  -----------------------------
-//            <--================================================================================================ [ Card Verify Component ]
-//            <--================================================================================================ [ Card Verify Component ]
+//            <--================================================================================================ [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]
+//            <--================================================================================================ [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]
+//             --------=====================================---------------------  [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]  -----------------------------
+//            <--================================================================================================ [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]
+//            <--================================================================================================ [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]
 const StoreCardOrderVerify = () => {
   return (
     <div>
