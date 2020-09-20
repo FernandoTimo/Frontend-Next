@@ -240,7 +240,7 @@ const FirstStepStore = ({ children }) => {
             <label className="h4">¡Gracias por tu preferencia!</label>
             <label className="n2">
               {/* Enviando Comprobante: Esto no tardará mas de 5min */}
-              {'Recivimos tu comprobante.'}
+              {'Recibimos tu comprobante.'}
             </label>
           </div>
         </div>

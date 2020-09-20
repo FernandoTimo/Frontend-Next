@@ -16,7 +16,7 @@ export default function Index() {
       <Header_Main />
       <Body>
         <StoreClient Yape={{ numero: '966682190', nombre: 'Captivant' }} />
-        <Section size={1}>
+        <Section size={3}>
           <Content center flex={0.5}>
             <Content center flex={0.5}>
               <h3>0 = Yape Init</h3>
