@@ -68,7 +68,7 @@ export function StoreClient({ Yape }) {
     setStepStore(StepStore + 1);
     socket.emit('store-init', 'Nuevo Cliente');
   };
-  //            <===   *************************** [  JSX Component = Client ] *************************** [  JSX Component = Client ]
+  //            <===   *************************** [ JSX COMPONENT = Client ] *************************** [  JSX COMPONENT = Client ]
   return (
     <Controls top>
       <div className="Help">
