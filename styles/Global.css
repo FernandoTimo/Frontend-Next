@@ -389,7 +389,7 @@ a {
 .YapeInfoVoucher {
   padding: 0.3vh;
   flex: 1;
-  height: 4vh;
+  height: 5vh;
   border: none;
   font-size: 1.4vh;
   background: transparent;
@@ -398,22 +398,32 @@ a {
   align-self: flex-end;
   width: 20vh;
   display: flex;
-  align-items: flex-end;
   font-weight: 600;
+  flex-direction: column;
 }
 .YapeInfoAdd:hover,
 .YapeInfoVoucher:hover {
   opacity: 0.8;
   filter: grayscale(0.2) saturate(3);
 }
+.AddIcon {
+  height: 2.5vh;
+  align-self: flex-start;
+}
+.CompobanteIcon {
+  align-self: flex-end;
+  height: 2.5vh;
+}
 .YapeInfoAdd {
   transition: 0s;
-  justify-content: flex-start;
   color: #8d8d8d;
 }
 .YapeInfoVoucher {
   color: #2282ff;
-  justify-content: flex-end;
+}
+.YapeInfoVoucher span {
+  color: #2282ff;
+  align-self: flex-end;
 }
 .YapeInfoComprobanteImg {
   height: 2vh;
