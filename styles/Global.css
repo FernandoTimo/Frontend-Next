@@ -59,13 +59,55 @@ a {
   position: absolute;
   pointer-events: visible;
   width: 15vh;
-  margin-top: -13vh;
+  margin-top: -10vh;
   z-index: 1;
   display: flex;
   justify-content: center;
   /* place-content: center; */
   /* place-items: center; */
   align-items: flex-end;
+}
+.StoreButton {
+  width: 10vh;
+  height: 4.5vh;
+  border: none;
+  border-radius: 1vh;
+  color: #000000;
+  border: 0.3vh solid #600b72;
+  box-shadow: 0 0 1vh #faa9, inset 0 0 0.5vh #faa9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  flex-direction: column;
+  z-index: 1;
+  background: #fff;
+  cursor: pointer;
+}
+.StoreButtonCheckProductsCounter {
+  position: absolute;
+  padding: 0.4vh 0.8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3vh;
+  font-weight: 700;
+  color: #000;
+  background: #fafafa;
+  border: 0.3vh solid #1a1a1a;
+  box-shadow: 0 0 1vh #0001, inset 0 0 0.5vh #0002;
+  border-radius: 0.8vh;
+  margin-bottom: 2.8vh;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 2;
+}
+.StoreButtonStateLabelMid {
+  opacity: 0;
+  animation: amanecer 0.8s 0.3s forwards;
+  cursor: pointer;
+  color: #600b72;
+  padding-top: 1vh;
 }
 .StoreContainer {
   display: flex;
@@ -90,48 +132,6 @@ a {
 /* .StoreButton:hover {
   transform: scale(0.9);
 } */
-.StoreButton {
-  width: 10vh;
-  height: 5vh;
-  border: none;
-  border-radius: 1vh;
-  color: #000000;
-  border: 0.3vh solid #600b72;
-  box-shadow: 0 0 1vh #faa9, inset 0 0 0.5vh #faa9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-  flex-direction: column;
-  z-index: 1;
-  background: #fff;
-  cursor: pointer;
-}
-.StoreButtonStateLabelMid {
-  opacity: 0;
-  animation: amanecer 0.8s 0.3s forwards;
-  cursor: pointer;
-  color: #600b72;
-  padding-top: 0.5vh;
-}
-.StoreButtonCheckProductsCounter {
-  position: absolute;
-  padding: 0.4vh 0.8vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3vh;
-  font-weight: 700;
-  color: #000;
-  background: #fafafa;
-  border: 0.3vh solid #1a1a1a;
-  box-shadow: 0 0 1vh #0001, inset 0 0 0.5vh #0002;
-  border-radius: 0.8vh;
-  margin-bottom: 3.3vh;
-  transition: 0.3s;
-  cursor: pointer;
-  z-index: 2;
-}
 .YapeStep {
   /* background: linear-gradient(45deg, #a105d4, #600b72); */
   background: #fafafa;

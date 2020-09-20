@@ -112,7 +112,7 @@ export function StoreClient({ Yape }) {
                         pointerEvents: StepStore < 3 ? 'visible' : 'none',
                       }}
                     >
-                      <h2 className="h6 StoreButtonStateLabelMid">
+                      <h2 className="h8 StoreButtonStateLabelMid">
                         S/{InvoiceStore.total}
                       </h2>
                     </button>
