@@ -394,7 +394,7 @@ a {
   font-size: 1.4vh;
   background: transparent;
   cursor: pointer;
-  transition: 0s;
+  transition: 0.3s;
   align-self: flex-end;
   width: 20vh;
   display: flex;
@@ -405,6 +405,9 @@ a {
 .YapeInfoVoucher:hover {
   opacity: 0.8;
   filter: grayscale(0.2) saturate(3);
+}
+.YapeInfoVoucher:hover > span {
+  opacity: 1;
 }
 .AddIcon {
   height: 2.5vh;
@@ -418,12 +421,16 @@ a {
   transition: 0s;
   color: #8d8d8d;
 }
+.YapeInfoAdd span {
+  opacity: 0;
+}
 .YapeInfoVoucher {
   color: #2282ff;
 }
 .YapeInfoVoucher span {
   color: #2282ff;
   align-self: flex-end;
+  opacity: 0;
 }
 .YapeInfoComprobanteImg {
   height: 2vh;
