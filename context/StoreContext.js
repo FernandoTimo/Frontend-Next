@@ -57,7 +57,7 @@ export const StoreContextProvider = ({ children }) => {
         producto: {
           _id: '46sad1v8we411f6a5',
           cover:
-            'https://instagram.faqp2-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/119116454_189674869217927_7047784010468374661_n.jpg?_nc_ht=instagram.faqp2-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=n3skGTyw1n0AX-Lft7s&_nc_tp=15&oh=7a8515001e0f40db5e3f26cc73b8662d&oe=5F8E58B3',
+            'https://instagram.faqp2-2.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/119069827_144475513993840_4126164594597294050_n.jpg?_nc_ht=instagram.faqp2-2.fna.fbcdn.net&_nc_cat=104&_nc_ohc=7KRRdtI7_aAAX-OMGxf&_nc_tp=15&oh=7ce57a395737044c73e06c20fd458443&oe=5F912746',
         },
         cantidad: 1,
         precio: 6.2,
