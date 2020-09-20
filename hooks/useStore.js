@@ -6,7 +6,6 @@ import {
   Spinner_Rainbow,
   Rainbow,
 } from 'components/Resources/Timoideas';
-import { useSockets } from './useSockets';
 import useDelay from './useDelay';
 import { socket } from 'sockets/socket';
 export const useStore = (Yape) => {
