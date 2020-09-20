@@ -63,8 +63,6 @@ a {
   z-index: 1;
   display: flex;
   justify-content: center;
-  /* place-content: center; */
-  /* place-items: center; */
   align-items: flex-end;
 }
 .YapeInit {
@@ -74,10 +72,9 @@ a {
   justify-content: center;
   align-items: center;
   font-size: 1.3vh;
-  font-weight: 700;
-  color: #000;
-  background: #fafafa;
-  border: 0.3vh solid #1a1a1a;
+  font-weight: 900;
+  color: #ffbd09;
+  background: linear-gradient(#6f0d9c, #4d0e6b);
   box-shadow: 0 0 1vh #0001, inset 0 0 0.5vh #0002;
   border-radius: 0.8vh;
   margin-bottom: 2.8vh;
@@ -145,7 +142,6 @@ a {
   height: 4.5vh;
   border: none;
   border-radius: 1vh;
-  border: 0.3vh solid #fafafa;
   box-shadow: 0 0 1vh #0003, inset 0 0 0.5vh #0003;
   display: flex;
   justify-content: center;
@@ -153,15 +149,19 @@ a {
   outline: none;
   flex-direction: column;
   z-index: 1;
-  background: #1a1a1a;
+  background: #fafafa;
   cursor: pointer;
+}
+.StoreButtonStateLabelMid:hover {
+  opacity: 0.7 !important;
+  text-shadow: 0 0 0.1vh #6f0d9caa;
 }
 .StoreButtonStateLabelMid {
   opacity: 0;
   animation: amanecer 0.8s 0.3s forwards;
   cursor: pointer;
-  color: #fafafa;
-  padding-top: 1vh;
+  color: #6f0d9c;
+  padding-top: 1.5vh;
 }
 .StoreContainer {
   display: flex;
@@ -232,10 +232,10 @@ a {
   border-radius: 1vh;
 }
 .StoreListReduced {
-  border-top: 0.6vh solid #2f2f2f;
-  border-left: 0.6vh solid #2f2f2f;
-  border-right: 0.6vh solid #2f2f2f;
-  background: #2f2f2f !important;
+  border-top: 0.6vh solid #000;
+  border-left: 0.6vh solid #000;
+  border-right: 0.6vh solid #000;
+  background: #000 !important;
   cursor: pointer;
 }
 .ProductList {
@@ -302,6 +302,9 @@ a {
   text-shadow: 0 0 1vh #0005;
   background: #000;
   border-radius: 0.3vh 0.3vh 0 0;
+}
+.DecrementContainer {
+  background: linear-gradient(to top, #000a, transparent);
 }
 /* Steps */
 

@@ -102,7 +102,7 @@ export function StoreClient({ Yape }) {
                       setStepStore(0);
                     }}
                   >
-                    {StepStore === 0 ? 'Yapear' : 'S/' + InvoiceStore.total}
+                    {StepStore === 0 ? '¡YAPEA!' : 'S/' + InvoiceStore.total}
                   </label>
                   {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
                   {StepStore === 0 && (
@@ -114,7 +114,7 @@ export function StoreClient({ Yape }) {
                       }}
                     >
                       <h2 className="h8 StoreButtonStateLabelMid">
-                        S/{InvoiceStore.total}
+                        {InvoiceStore.total}
                       </h2>
                     </button>
                   )}
@@ -178,7 +178,7 @@ export function StoreClient({ Yape }) {
                 {/*                                               (3) JSX [ PRODUCTLIST|BOT === Productos [!] ] */}
                 <Content
                   className={`StoreList ${
-                    StepStore === 1 && 'StoreListReduced'
+                    StepStore >= 1 && 'StoreListReduced'
                   }`}
                   row
                   flex={1}
@@ -448,7 +448,7 @@ const ProductList = ({ index, children }) => {
           </label>
         </div>
         <div onClick={handlerIncrement} />
-        <div onClick={handlerDecrement} />
+        <div className="DecrementContainer" onClick={handlerDecrement} />
       </div>
     </div>
   );
