@@ -87,12 +87,12 @@ export function StoreClient({ Yape }) {
       <div className="Store">
         {ShowStore && (
           <>
-            {/*                                            (2) JSX [ TIENDA|CABECERA === Container [! Steps] ] */}
+            {/*                                            (2) JSX [ CABECERA === Container [! Steps] ] */}
             <div className="StoreHeaderContainer">
-              {/*                                               (3) JSX [ TIENDA|CABECERA === Yapear-Precio [~ Steps: 0,1] ] */}
+              {/*                                               (3) JSX [ CABECERA === Yapear-Precio [~ Steps: 0,1] ] */}
               {StepStore < 2 && (
                 <>
-                  {/*                                                  (4) JSX [ TIENDA|CABECERA === Precio [~ Steps: 0, 1] ] */}
+                  {/*                                                  (4) JSX [ CABECERA === Precio [~ Steps: 0, 1] ] */}
                   <label
                     className={`StoreButtonCheckProductsCounter ${
                       StepStore === 1 && 'YapeInfoTitle'
@@ -105,7 +105,7 @@ export function StoreClient({ Yape }) {
                   >
                     S/{InvoiceStore.total}
                   </label>
-                  {/*                                                  (4) JSX [ TIENDA|CABECERA === Yapear [~ Steps: 0] ]*/}
+                  {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
                   {StepStore === 0 && (
                     <button
                       className="StoreButton"
@@ -121,11 +121,11 @@ export function StoreClient({ Yape }) {
                   )}
                 </>
               )}
-              {/*                                               (3) JSX [ TIENDA|CABECERA === Check-Steps [~ Steps>0] ] */}
+              {/*                                               (3) JSX [ CABECERA === Check-Steps [~ Steps>0] ] */}
               {StepStore > 0 && (
                 <label className="StoreButtonStateLabelTop">
                   <div className="StoreButtonCheckContainer">
-                    {/*                                                  (4) JSX [ TIENDA|CABECERA|CHECKS === First-Step [~] ] */}
+                    {/*                                                  (4) JSX [ CHECKS === First-Step [~] ] */}
                     {StepStore === 2 && <Spinner_Rainbow />}
                     <img
                       alt="Check"
@@ -138,7 +138,7 @@ export function StoreClient({ Yape }) {
                         opacity: 0.8,
                       }}
                     />
-                    {/*                                                  (4) JSX [ TIENDA|CABECERA|CHECKS === Second-Step [~] ] */}
+                    {/*                                                  (4) JSX [ CHECKS === Second-Step [~] ] */}
                     {StepStore === 5 && <Spinner_Rainbow />}
                     <img
                       alt="Check"
