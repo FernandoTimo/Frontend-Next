@@ -67,6 +67,7 @@ export function StoreClient({ Yape }) {
     switch (StepStore) {
       case 0:
         setStepStore(StepStore + 1);
+        socket.emit('store-init', 'Nuevo Cliente');
         break;
       case 1:
         break;
