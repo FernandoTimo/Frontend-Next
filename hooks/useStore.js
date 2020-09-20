@@ -269,7 +269,8 @@ const FirstStepStore = ({ children }) => {
                 setStepStore(0);
               }}
             >
-              Agregar +
+              <img alt="Add" src="assets/Add.png" className="AddIcon" />
+              <span>Añadir más</span>
             </label>
             <label
               className="YapeInfoVoucher"
@@ -277,7 +278,12 @@ const FirstStepStore = ({ children }) => {
                 refStoreCompobanteInput.current.click();
               }}
             >
-              Adjuntar Voucher
+              <img
+                alt="Add"
+                src="assets/Comprobante.png"
+                className="CompobanteIcon"
+              />
+              <span>Adjuntar Voucher</span>
             </label>
           </div>
           <input
