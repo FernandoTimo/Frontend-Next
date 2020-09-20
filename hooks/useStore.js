@@ -126,7 +126,7 @@ export function StoreClient({ Yape }) {
                   <div
                     className="StoreButtonCheckContainer"
                     style={{
-                      gap: (StepStore === 2 || StepStore === 5) && '0.1vh',
+                      gap: (StepStore === 2 || StepStore >= 5) && '0.1vh',
                     }}
                   >
                     {/*                                                  (4) JSX [ CHECKS === First-Step [~] ] */}
