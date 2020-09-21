@@ -370,7 +370,7 @@ const SecondStepStore = () => {
       {/*                                         (1) JSX [ TIENDA === Mensaje [!] ] */}
       <div className="SecondStepStoreMessage">
         {StepStore === 6
-          ? 'Felicidades'
+          ? 'Felicidades, tu compra se realizó exitosamente'
           : 'Por favor, brindanos la siguiente información'}
       </div>
       {/*                                         (1) JSX [ TIENDA === Form [~ Steps] ] */}
