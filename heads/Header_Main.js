@@ -5,11 +5,11 @@ export function Header_Main() {
   const messages = [
     'Compra Iniciada',
     'Adjuntar Comprobante',
-    'Enviando Comprobante...',
-    'Comprobante Recivido',
-    'Llena tus datos',
+    '',
+    '',
+    '',
     'Enviando datos',
-    'Compra Finalizada',
+    '¡Felicidades!',
   ];
   return (
     <Head>
