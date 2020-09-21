@@ -556,6 +556,12 @@ export function StoreAdmin({ children }) {
 //            <--================================================================================================ [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]
 //            <--================================================================================================ [ TIENDA|ADMIN|STORE|CARD-SALE-VERIFY ]
 const StoreCardOrderVerify = () => {
+  const [State, setState] = useState('Fernando');
+  useEffect(() => {
+    socket.on('client-form-data', (data) => {
+      setState(data);
+    });
+  }, []);
   const handlerComprobanteValidador = () => {
     socket.emit('store-comprobante_validado', 'X8S5DQ');
   };
@@ -567,7 +573,7 @@ const StoreCardOrderVerify = () => {
             className="h12 StoreCardOrderVerifyContainerTitle"
             style={{ color: '#fafafa !important' }}
           >
-            Fernando
+            {State}
           </label>
         </Rainbow>
 
