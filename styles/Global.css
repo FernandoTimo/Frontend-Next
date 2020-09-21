@@ -238,6 +238,14 @@ a {
   background: #000 !important;
   cursor: pointer;
 }
+.StoreListReducedRecived {
+  border-top: 0.6vh solid #00f891;
+  border-left: 0.6vh solid #00f891;
+  border-right: 0.6vh solid #00f891;
+  background: #00f891 !important;
+  cursor: pointer;
+}
+
 .ProductList {
   display: flex;
   flex: 1;

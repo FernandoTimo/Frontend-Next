@@ -8,6 +8,7 @@ import {
 } from 'components/Resources/Timoideas';
 import useDelay from './useDelay';
 import { socket } from 'sockets/socket';
+
 export const useStore = () => {
   const {
     InvoiceStore,
@@ -52,16 +53,18 @@ export function StoreClient({ Yape }) {
   const [isHelp, setisHelp] = useState(false);
   const [Codigo, setCodigo] = useState('');
   const [Recivied, setRecivied] = useState(false);
+  //            <--=========================================================== [ useRefs ]
+  const RefAudio = useRef();
   //            <--=========================================================== [ Sockets Effect ]
-
   useEffect(() => {
     //                             2 ==>
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
+      RefAudio.current.play();
       setRecivied(true);
-      setTimeout(() => {
-        setStepStore(3);
-      }, 8000);
+      // setTimeout(() => {
+      //   setStepStore(3);
+      // }, 90000);
     });
     //                             2 ==>
     socket.on('store-comprobante_validado', (StoreCodigo) => {
@@ -71,13 +74,14 @@ export function StoreClient({ Yape }) {
   }, []);
   //            <--=========================================================== [ Handlers]
   //                                   1 ==>
-  const handlerButtonStore = (e) => {
+  const handlerButtonStore = () => {
     setStepStore(StepStore + 1);
     socket.emit('store-init', 'Nuevo Cliente');
   };
   //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|CLIENTE ]
   return (
     <Controls top>
+      <audio src="assets/pristine.mp3" ref={RefAudio}></audio>
       {/*                                         (1) JSX [ AYUDA = Container [~ isHelp] ] */}
       <div className="Help">
         <div
@@ -187,7 +191,9 @@ export function StoreClient({ Yape }) {
                 {/*                                               (3) JSX [ PRODUCTLIST|BOT === Productos [!] ] */}
                 <Content
                   className={`StoreList ${
-                    StepStore >= 1 && 'StoreListReduced'
+                    StepStore >= 1 && Recivied
+                      ? 'StoreListReducedRecived'
+                      : 'StoreListReduced'
                   }`}
                   row
                   flex={1}
@@ -254,9 +260,24 @@ const FirstStepStore = ({ Recivied, children }) => {
           <div className="StepTwoMessage">
             <label className="h4">¡Gracias por tu preferencia!</label>
             <label className="n2">
-              {Recivied
-                ? 'Acabamos de recibir tu comprobante.'
-                : `Enviando Comprobante: Esto no tardará mas de 5min `}
+              {Recivied ? (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 0,
+                  }}
+                >
+                  <b className="n5">
+                    Perfecto, acabamos de recibir tu comprobante.
+                  </b>
+                  <b className="h4">
+                    Ahora por favor necesitamos los siguientes datos
+                  </b>
+                </div>
+              ) : (
+                `Enviando Comprobante: Esto no tardará mas de 5min `
+              )}
             </label>
           </div>
         </div>
