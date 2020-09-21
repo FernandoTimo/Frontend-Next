@@ -102,31 +102,31 @@ export const StoreContextProvider = ({ children }) => {
   }, []);
   //            <--=========================================================== [ Handler Functions ]
   //                                   1 ==> setListStore
-  const addItem = (index) => {
-    setInvoice({ type: 'PRODUCTS' });
+  const addProduct = (product) => {
+    setInvoice({ type: 'ADD_PRODUCT', product });
     let currentList = InvoiceStore;
     currentList.splice(index, 1);
     setInvoice(currentList.length > 0 ? currentList : []);
   };
-  const removeItem = (index) => {
+  const removeProduct = (index) => {
     setInvoice({ type: 'PRODUCTS' });
     let currentList = InvoiceStore;
     currentList.splice(index, 1);
     setInvoice(currentList.length > 0 ? currentList : []);
   };
   const setListStore = {
-    addItem,
-    removeItem,
+    addProduct,
+    removeProduct,
   };
-  //                             2 ==> ShowStore
+  //                                    2 ==> ShowStore
   const setShowStore = () => {
     setToggleStore(!ShowStore);
   };
-  //                      3 ==> SetIsStore
+  //                                    3 ==> SetIsStore
   const setIsStore = (value) => {
     setinStore(typeof value === Boolean ? value : !isStore);
   };
-  //                4 ==> SetStepStore
+  //                                    4 ==> SetStepStore
   const setStepStore = (step) => {
     localStorage.Step = step;
     setStep(step);
