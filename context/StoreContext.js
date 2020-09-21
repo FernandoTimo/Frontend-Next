@@ -2,14 +2,15 @@ import { createContext, useState, useEffect, useReducer } from 'react';
 const Context = createContext();
 
 //            <--=========================================================== [ Reducer Handler ]
-//             -----------------------------  [ Reducer Handler ]  -----------------------------
-//            <--=========================================================== [ Reducer Handler ]
 const InvoiceReducer = (state, action) => {
   switch (action.type) {
-    case 'PRODUCTS':
+    case 'ADD_PRODUCT':
       return {
         ...state,
+        productos,
       };
+    case 'REMOVE_PRODUCT':
+      return 'asd';
     case 'INFORMACION':
       const { usuario, comprobante, telefono, direccion, turno } = action;
       return {
@@ -24,11 +25,6 @@ const InvoiceReducer = (state, action) => {
       return state;
   }
 };
-//            <--=========================================================== [ StoreContextProviderComponent ]
-//            <--=========================================================== [ StoreContextProviderComponent ]
-//             -----------------------------  [ StoreContextProviderComponent ]  -----------------------------
-//            <--=========================================================== [ StoreContextProviderComponent ]
-//            <--=========================================================== [ StoreContextProviderComponent ]
 export const StoreContextProvider = ({ children }) => {
   const [InvoiceStore, setInvoice] = useReducer(InvoiceReducer, {
     total: '15.20',
@@ -85,24 +81,11 @@ export const StoreContextProvider = ({ children }) => {
       },
     ],
   });
+  //            <--=========================================================== [ States ]
   const [isStore, setinStore] = useState(true);
   const [ShowStore, setToggleStore] = useState(true);
   const [StepStore, setStep] = useState(0);
-  // ----------------------------- <--=============== Remove ===============--> -----------------------------
-  const removeItem = (index) => {
-    if (InvoiceStore.productos.length < 1) {
-      setShowStore(false);
-    }
-    let currentList = InvoiceStore;
-    currentList.splice(index, 1);
-    setInvoice(currentList.length > 0 ? currentList : []);
-  };
-  const setListStore = {
-    removeItem,
-  };
-  //            <--=========================================================== [ UseEffect ]
-  //             -----------------------------  [ UseEffect ]  -----------------------------
-  //            <--=========================================================== [ UseEffect ]
+  //            <--=========================================================== [ UseEffects ]
   const handleWindowVisibility = () => {
     document.hidden && setStep(Number(localStorage.Step));
   };
@@ -117,16 +100,33 @@ export const StoreContextProvider = ({ children }) => {
       document.removeEventListener('visibilitychange', handleWindowVisibility);
     };
   }, []);
-  //            <--=========================================================== [ ShowStore ]
-  //             -----------------------------  [ ShowStore ]  -----------------------------
-  //            <--=========================================================== [ ShowStore ]
+  //            <--=========================================================== [ Handler Functions ]
+  //                                   1 ==> setListStore
+  const addItem = (index) => {
+    setInvoice({ type: 'PRODUCTS' });
+    let currentList = InvoiceStore;
+    currentList.splice(index, 1);
+    setInvoice(currentList.length > 0 ? currentList : []);
+  };
+  const removeItem = (index) => {
+    setInvoice({ type: 'PRODUCTS' });
+    let currentList = InvoiceStore;
+    currentList.splice(index, 1);
+    setInvoice(currentList.length > 0 ? currentList : []);
+  };
+  const setListStore = {
+    addItem,
+    removeItem,
+  };
+  //                             2 ==> ShowStore
   const setShowStore = () => {
     setToggleStore(!ShowStore);
   };
-
+  //                      3 ==> SetIsStore
   const setIsStore = (value) => {
     setinStore(typeof value === Boolean ? value : !isStore);
   };
+  //                4 ==> SetStepStore
   const setStepStore = (step) => {
     localStorage.Step = step;
     setStep(step);
