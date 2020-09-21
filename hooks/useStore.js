@@ -65,9 +65,13 @@ export function StoreClient({ Yape }) {
       setTimeout(() => {
         setStepStore(3);
       }, 10000);
+      return () => {
+        clearTimeout();
+      };
     });
     //                             2 ==>
     socket.on('store-comprobante_validado', (StoreCodigo) => {
+      RefAudio.current.play();
       setCodigo(StoreCodigo);
       setStepStore(6);
     });
@@ -191,9 +195,8 @@ export function StoreClient({ Yape }) {
                 {/*                                               (3) JSX [ PRODUCTLIST|BOT === Productos [!] ] */}
                 <Content
                   className={`StoreList ${
-                    StepStore >= 1 && Recivied
-                      ? 'StoreListReducedRecived'
-                      : 'StoreListReduced'
+                    StepStore >= 1 &&
+                    (Recivied ? 'StoreListReducedRecived' : 'StoreListReduced')
                   }`}
                   row
                   flex={1}
@@ -270,7 +273,8 @@ const FirstStepStore = ({ Recivied, children }) => {
                 >
                   <b className="n5">Acabamos de recibir tu comprobante.</b>
                   <b className="h4">
-                    Ahora por favor necesitamos los siguientes datos
+                    Ahora por favor necesitamos que completes los siguientes
+                    datos...
                   </b>
                 </div>
               ) : (
