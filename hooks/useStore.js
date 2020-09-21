@@ -374,7 +374,7 @@ const SecondStepStore = () => {
           : 'Por favor, brindanos la siguiente información'}
       </div>
       {/*                                         (1) JSX [ TIENDA === Form [~ Steps] ] */}
-      {StepStore < 6 && (
+      {StepStore === 4 && (
         <div className="SecondStepStoreFormContainer">
           <form className="SecondStepStoreForm" onSubmit={handlerSubmit}>
             <button className={`SecondStepStoreSubmit`}>
@@ -433,7 +433,7 @@ const SecondStepStore = () => {
       )}
 
       {/*                                         (1) JSX [ TIENDA === Verified-Sale-Code [~ verified] ] */}
-      {StepStore === 6 && (
+      {StepStore > 4 && (
         <div className="SecondStepStoreCodeContainer">
           <div className="SecondStepStoreCode">
             <label>Código</label>
@@ -444,7 +444,7 @@ const SecondStepStore = () => {
                   {Codigo.toUpperCase()}
                 </label>
               ) : (
-                <Spinner_Rainbow />
+                'Se generará automaticamente un codigo en 2min'
               )}
             </span>
           </div>

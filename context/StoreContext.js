@@ -111,9 +111,7 @@ export const StoreContextProvider = ({ children }) => {
       setToggleStore(true);
     }
     // Step ? setStep(0)
-    localStorage.Step
-      ? setStep(Number(localStorage.Step))
-      : (localStorage.Step = 0);
+    localStorage.Step ? setStep(0) : (localStorage.Step = 0);
     document.addEventListener('visibilitychange', handleWindowVisibility);
     return () => {
       document.removeEventListener('visibilitychange', handleWindowVisibility);
