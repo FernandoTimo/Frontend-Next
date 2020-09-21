@@ -338,12 +338,19 @@ const FirstStepStore = ({ Recivied, children }) => {
 //            <--=========================================================== [ FIRSTCOMPONENT ]
 
 const SecondStepStore = ({ codigo = 'asd2' }) => {
-  const { setStepStore } = useStore();
-  const [CanSubmit, setCanSubmit] = useState(true);
+  const { StepStore, setStepStore } = useStore();
+  const [Nombre, setNombre] = useState('');
+  const [CanSubmit, setCanSubmit] = useState(false);
   const handlerSubmit = (e) => {
     e.preventDefault();
-    CanSubmit ? setStepStore(5) : alert('POr favor llena todos los espacios');
+    CanSubmit ? setStepStore(5) : alert('Por favor llena todos los espacios');
   };
+  const handlerChange = (e) => {
+    setNombre(e.target.value);
+  };
+  if (Nombre !== '') {
+    setCanSubmit(true);
+  }
   //            <==************************************************************************************ [ JSX COMPONENT = SECOND-COMPONENT ]
   return (
     <div className="SecondStepStore">
@@ -353,77 +360,82 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
         Por favor, brindanos la siguiente información
       </div>
       {/*                                         (1) JSX [ TIENDA === Form [~ Steps] ] */}
-      <div className="SecondStepStoreFormContainer">
-        <form className="SecondStepStoreForm" onSubmit={handlerSubmit}>
-          <button className={`SecondStepStoreSubmit`}>
-            <img
-              alt="Ok"
-              // onMouseOver={() => alert('asd')}
-              style={{
-                pointerEvents: CanSubmit ? 'visible' : 'none',
-                filter: CanSubmit ? 'grayScale(0)' : 'grayScale(1)',
-              }}
-              src="assets/Submit.png"
-            />
-          </button>
-          <div>
+      {StepStore < 6 && (
+        <div className="SecondStepStoreFormContainer">
+          <form className="SecondStepStoreForm" onSubmit={handlerSubmit}>
+            <button className={`SecondStepStoreSubmit`}>
+              <img
+                alt="Ok"
+                // onMouseOver={() => alert('asd')}
+                style={{
+                  pointerEvents: CanSubmit ? 'visible' : 'none',
+                  filter: CanSubmit ? 'grayScale(0)' : 'grayScale(1)',
+                }}
+                src="assets/Submit.png"
+              />
+            </button>
             <div>
-              <input type="text" />
-              <label>Nombre</label>
+              <div>
+                <input type="text" onChange={handlerChange} />
+                <label>Nombre</label>
+              </div>
+              <div>
+                <input type="text" />
+                <label>Teléfono</label>
+              </div>
             </div>
             <div>
-              <input type="text" />
-              <label>Teléfono</label>
-            </div>
-          </div>
-          <div>
-            <div>
-              <input type="text" />
-              <label>Hoy 15</label>
-            </div>
-            <div>
-              <input type="text" />
-              <label>10:30 am</label>
-            </div>
-          </div>
-          <div>
-            <div>
-              <input type="text" />
-              <label>Ciudad</label>
+              <div>
+                <input type="text" />
+                <label>Hoy 15</label>
+              </div>
+              <div>
+                <input type="text" />
+                <label>10:30 am</label>
+              </div>
             </div>
             <div>
-              <input type="text" />
-              <label>Distrito</label>
+              <div>
+                <input type="text" />
+                <label>Ciudad</label>
+              </div>
+              <div>
+                <input type="text" />
+                <label>Distrito</label>
+              </div>
             </div>
-          </div>
-          <div>
             <div>
-              <input type="text" />
-              <label>Calle</label>
+              <div>
+                <input type="text" />
+                <label>Calle</label>
+              </div>
+              <div>
+                <input type="text" />
+                <label>Numero</label>
+              </div>
             </div>
-            <div>
-              <input type="text" />
-              <label>Numero</label>
-            </div>
-          </div>
-        </form>
-      </div>
-      {/*                                         (1) JSX [ TIENDA === Verified-Sale-Code [~ verified] ] */}
-      <div className="SecondStepStoreCodeContainer">
-        <div className="SecondStepStoreCode">
-          <label>Código</label>
-          <b>:</b>
-          <span>
-            {codigo ? (
-              <label className="SecondStepStoreCodeValue">
-                {codigo.toUpperCase()}
-              </label>
-            ) : (
-              <Spinner_Rainbow />
-            )}
-          </span>
+          </form>
         </div>
-      </div>
+      )}
+
+      {/*                                         (1) JSX [ TIENDA === Verified-Sale-Code [~ verified] ] */}
+      {StepStore === 6 && (
+        <div className="SecondStepStoreCodeContainer">
+          <div className="SecondStepStoreCode">
+            <label>Código</label>
+            <b>:</b>
+            <span>
+              {codigo ? (
+                <label className="SecondStepStoreCodeValue">
+                  {codigo.toUpperCase()}
+                </label>
+              ) : (
+                <Spinner_Rainbow />
+              )}
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
