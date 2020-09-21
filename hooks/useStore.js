@@ -333,14 +333,21 @@ const FirstStepStore = ({ Recivied, children }) => {
   );
 };
 
-//            <--=========================================================== [ FIRSTCOMPONENT ]
-//             -----------------------------  [ FIRSTCOMPONENT ]  -----------------------------
-//            <--=========================================================== [ FIRSTCOMPONENT ]
+//            <--=========================================================== [ SECONDCOMPONENT ]
+//             -----------------------------  [ SECONDCOMPONENT ]  -----------------------------
+//            <--=========================================================== [ SECONDCOMPONENT ]
 
-const SecondStepStore = ({ codigo = 'asd2' }) => {
+const SecondStepStore = () => {
   const { StepStore, setStepStore } = useStore();
   const [Nombre, setNombre] = useState('');
   const [CanSubmit, setCanSubmit] = useState(false);
+  const [Codigo, setCodigo] = useState();
+  useEffect(() => {
+    socket.on('store-comprobante_validado', (StoreCodigo) => {
+      setCodigo(StoreCodigo);
+      setStepStore(6);
+    });
+  });
   const handlerSubmit = (e) => {
     e.preventDefault();
     if (CanSubmit) {
@@ -362,7 +369,9 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
       {/* <div className="SecondStepStoreTitle">¡Gracias por tu preferencia!</div> */}
       {/*                                         (1) JSX [ TIENDA === Mensaje [!] ] */}
       <div className="SecondStepStoreMessage">
-        Por favor, brindanos la siguiente información
+        {StepStore === 6
+          ? 'Felicidades'
+          : 'Por favor, brindanos la siguiente información'}
       </div>
       {/*                                         (1) JSX [ TIENDA === Form [~ Steps] ] */}
       {StepStore < 6 && (
@@ -430,9 +439,9 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
             <label>Código</label>
             <b>:</b>
             <span>
-              {codigo ? (
+              {Codigo ? (
                 <label className="SecondStepStoreCodeValue">
-                  {codigo.toUpperCase()}
+                  {Codigo.toUpperCase()}
                 </label>
               ) : (
                 <Spinner_Rainbow />
