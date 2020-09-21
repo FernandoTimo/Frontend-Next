@@ -343,14 +343,19 @@ const SecondStepStore = ({ codigo = 'asd2' }) => {
   const [CanSubmit, setCanSubmit] = useState(false);
   const handlerSubmit = (e) => {
     e.preventDefault();
-    CanSubmit ? setStepStore(5) : alert('Por favor llena todos los espacios');
+    if (CanSubmit) {
+      socket.emit('form-data', Nombre);
+      setStepStore(5);
+    } else {
+      alert('Por favor llena todos los espacios');
+    }
   };
   const handlerChange = (e) => {
     setNombre(e.target.value);
+    if (Nombre !== '') {
+      setCanSubmit(true);
+    }
   };
-  if (Nombre !== '') {
-    setCanSubmit(true);
-  }
   //            <==************************************************************************************ [ JSX COMPONENT = SECOND-COMPONENT ]
   return (
     <div className="SecondStepStore">
