@@ -51,14 +51,17 @@ export function StoreClient({ Yape }) {
   //            <--=========================================================== [ useStates ]
   const [isHelp, setisHelp] = useState(false);
   const [Codigo, setCodigo] = useState('');
+  const [Recivied, setRecivied] = useState(false);
   //            <--=========================================================== [ Sockets Effect ]
 
   useEffect(() => {
     //                             2 ==>
     socket.on('store-comprobante_recivido', (ComprobanteTimestamp) => {
       console.log(ComprobanteTimestamp);
-      console.log('Comprobante Recivido en el Server');
-      setStepStore(3);
+      setRecivied(true);
+      setTimeout(() => {
+        setStepStore(3);
+      }, 8000);
     });
     //                             2 ==>
     socket.on('store-comprobante_validado', (StoreCodigo) => {
@@ -130,14 +133,20 @@ export function StoreClient({ Yape }) {
                     }}
                   >
                     {/*                                                  (4) JSX [ CHECKS === First-Step [~] ] */}
-                    {StepStore === 2 && <Spinner_Rainbow size={2.3} />}
+                    {StepStore === 2 && !Recivied && (
+                      <Spinner_Rainbow size={2.3} />
+                    )}
                     <img
                       alt="Check"
                       className="StoreButtonCheck"
                       src="assets/Check.png"
                       style={{
-                        display: StepStore === 2 ? 'none' : 'flex',
-                        height: (StepStore === 1 || StepStore === 6) && '2.3vh',
+                        display: StepStore === 2 && !Recivied ? 'none' : 'flex',
+                        height:
+                          (StepStore === 1 ||
+                            StepStore === 6 ||
+                            StepStore === 2) &&
+                          '2.3vh',
                         filter: StepStore > 1 && 'grayScale(0)',
                         opacity: 0.8,
                       }}
@@ -170,7 +179,7 @@ export function StoreClient({ Yape }) {
                 >
                   {StepStore === 0 && <div></div>}
                   {(StepStore === 1 || StepStore === 2) && (
-                    <FirstStepStore>{Yape}</FirstStepStore>
+                    <FirstStepStore Recivied={Recivied}>{Yape}</FirstStepStore>
                   )}
                   {StepStore === 3 && <SecondStepStore />}
                   {StepStore > 3 && <SecondStepStore codigo={Codigo} />}
@@ -209,7 +218,7 @@ export function StoreClient({ Yape }) {
 //            <--=========================================================== [ FIRSTCOMPONENT ]
 //             -----------------------------  [ FIRSTCOMPONENT ]  -----------------------------
 //            <--=========================================================== [ FIRSTCOMPONENT ]
-const FirstStepStore = ({ children }) => {
+const FirstStepStore = ({ Recivied, children }) => {
   //            <--=========================================================== [ useStates ]
   const { StepStore, setStepStore } = useStore();
   const [urlComprobante, seturlComprobante] = useState('');
@@ -245,8 +254,9 @@ const FirstStepStore = ({ children }) => {
           <div className="StepTwoMessage">
             <label className="h4">¡Gracias por tu preferencia!</label>
             <label className="n2">
-              {/* Enviando Comprobante: Esto no tardará mas de 5min */}
-              {'Recibimos tu comprobante.'}
+              {Recivied
+                ? 'Acabamos de recibir tu comprobante.'
+                : `Enviando Comprobante: Esto no tardará mas de 5min `}
             </label>
           </div>
         </div>
