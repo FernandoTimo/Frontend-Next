@@ -62,14 +62,15 @@ export function StoreClient({ Yape }) {
       console.log(ComprobanteTimestamp);
       RefAudio.current.play();
       setRecivied(true);
+      setStepStore(3);
       setTimeout(() => {
-        setStepStore(3);
-      }, 10000);
+        setStepStore(4);
+      }, 6000);
       return () => {
         clearTimeout();
       };
     });
-    //                             2 ==>
+    //                             3 ==>
     socket.on('store-comprobante_validado', (StoreCodigo) => {
       RefAudio.current.play();
       setCodigo(StoreCodigo);
@@ -278,7 +279,7 @@ const FirstStepStore = ({ Recivied, children }) => {
                   </b>
                 </div>
               ) : (
-                `Enviando Comprobante: Esto no tardará mas de 5min `
+                `Enviando Comprobante: Esto no tardará más de 5min `
               )}
             </label>
           </div>
