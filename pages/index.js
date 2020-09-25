@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useDevice } from 'hooks/useDevice';
 import useScroll from 'hooks/useScroll';
-import { StoreClient, StoreAdmin } from 'hooks/useStore';
+import { StoreClient, StoreAdmin, useStore } from 'hooks/useStore';
 export default function Index() {
   useEffect(() => {
     setTimeout(function () {
@@ -19,6 +19,14 @@ export default function Index() {
       }
     }, 1000);
   }, []);
+  const { InvoiceStore, setInvoiceStore } = useStore();
+
+  let asd = {
+    _id: '46sad1v8we411f6a5',
+    cover:
+      'https://instagram.faqp2-2.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/118643918_184506266418940_2231398615849041907_n.jpg?_nc_ht=instagram.faqp2-2.fna.fbcdn.net&_nc_cat=104&_nc_ohc=Ux0iWVhkmjMAX_2W8zC&_nc_tp=15&oh=234703c007ca5859b1c643573c3c2c2c&oe=5F8FE2FC',
+    precio: 1.2,
+  };
   return (
     <>
       <Header_Main />
@@ -33,7 +41,15 @@ export default function Index() {
               <h3>1 ✅ = Recivido en server</h3>
               <h3>2... = LlenarDatos</h3>
               <h3>2 = EnviarDatos</h3>
-              <h3>2 ✅ = Codigo Recivido</h3>
+              <h3>2 ✅ = Codigo Recivido</h3>b
+              <button
+                onClick={() => {
+                  console.log(InvoiceStore);
+                }}
+              >
+                Items
+              </button>
+              <button onClick={() => setInvoiceStore.addProduct(asd)}>1</button>
             </Content>
           </Content>
         </Section>

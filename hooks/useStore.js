@@ -53,6 +53,7 @@ export function StoreClient({ Yape }) {
   const [isHelp, setisHelp] = useState(false);
   const [Codigo, setCodigo] = useState('');
   const [Recivied, setRecivied] = useState(false);
+  const [InvoiceTotal, setInvoiceTotal] = useState(InvoiceStore.total);
   //            <--=========================================================== [ useRefs ]
   const RefAudio = useRef();
   //            <--=========================================================== [ Sockets Effect ]
@@ -79,10 +80,15 @@ export function StoreClient({ Yape }) {
   }, []);
   //            <--=========================================================== [ Handlers]
   //                                   1 ==>
+  const setTotalGlobal = (value) => {
+    setIvoiceTotal(IvoiceTotal + value);
+  };
+  //                                   1 ==>
   const handlerButtonStore = () => {
     setStepStore(StepStore + 1);
     socket.emit('store-init', 'Nuevo Cliente');
   };
+
   //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|CLIENTE ]
   return (
     <Controls top>
@@ -114,7 +120,7 @@ export function StoreClient({ Yape }) {
                       setStepStore(0);
                     }}
                   >
-                    {StepStore === 0 ? '¡YAPEA!' : 'S/' + InvoiceStore.total}
+                    {StepStore === 0 ? '¡YAPEA!' : 'S/' + InvoiceTotal}
                   </label>
                   {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
                   {StepStore === 0 && (
@@ -126,7 +132,7 @@ export function StoreClient({ Yape }) {
                       }}
                     >
                       <h2 className="h8 StoreButtonStateLabelMid">
-                        {InvoiceStore.total}
+                        {InvoiceTotal}
                       </h2>
                     </button>
                   )}
@@ -204,11 +210,15 @@ export function StoreClient({ Yape }) {
                   onClick={() => setStepStore(0)}
                   style={{ pointerEvents: StepStore < 2 ? 'visible' : 'none' }}
                 >
-                  {InvoiceStore.productos.map((ItemList, index) => (
-                    <ProductList key={index} index={index}>
-                      {ItemList}
-                    </ProductList>
-                  ))}
+                  {InvoiceStore.productos &&
+                    InvoiceStore.productos.map((ItemList) => (
+                      <Product
+                        key={ItemList.producto._id}
+                        setTotalGlobal={setInvoiceTotal}
+                      >
+                        {ItemList}
+                      </Product>
+                    ))}
                 </Content>
               </Content>
             </div>
@@ -248,6 +258,7 @@ const FirstStepStore = ({ Recivied, children }) => {
     setStepStore(2);
     // se espera una respuesta
   };
+
   //            <==************************************************************************************ [ JSX COMPONENT = FIRST-COMPONENT ]
   return (
     <div className="YapeInfoContainer">
@@ -455,13 +466,13 @@ const SecondStepStore = () => {
     </div>
   );
 };
-//            <--================================================================================================ [ TIENDA|PRODUCTOS|BOT-COMPONENT ]
-//            <--================================================================================================ [ TIENDA|PRODUCTOS|BOT-COMPONENT ]
-//             --------=====================================---------------------  [ TIENDA|PRODUCTOS|BOT-COMPONENT ]  -----------------------------
-//            <--================================================================================================ [ TIENDA|PRODUCTOS|BOT-COMPONENT ]
-//            <--================================================================================================ [ TIENDA|PRODUCTOS|BOT-COMPONENT ]
+//            <--================================================================================================ [ PRODUCTO ]
+//            <--================================================================================================ [ PRODUCTO ]
+//             --------=====================================---------------------  [ PRODUCTO ]  -----------------------------
+//            <--================================================================================================ [ PRODUCTO ]
+//            <--================================================================================================ [ PRODUCTO ]
 
-const ProductList = ({ index, children }) => {
+const Product = ({ setTotalGlobal, children }) => {
   const {
     InvoiceStore,
     setInvoiceStore,
@@ -470,23 +481,35 @@ const ProductList = ({ index, children }) => {
     setStepStore,
   } = useStore();
   const [Cantidad, setCantidad] = useState(1);
+  const [Total, setTotal] = useState(children.producto.precio);
   const [_1000, set_1000] = useState(false);
+
+  let id = children.producto._id;
+  let precio = children.producto.precio;
+  let cantidad = Cantidad;
+
   const handlerIncrement = () => {
     setCantidad(Cantidad + 1);
+    setTotal(Total + precio);
+    setTotalGlobal(precio);
+    // setInvoiceStore.addProduct({ id, precio, cantidad });
   };
-  let D1000 = useDelay(300, _1000);
   const handlerDecrement = () => {
-    Cantidad === 1 && (setInvoiceStore.removeItem(index), set_1000(true));
-    setCantidad(Cantidad - 1);
-    InvoiceStore.length === 0 && setShowStore(false);
+    if (Cantidad > 1) {
+      setInvoiceStore.restProduct({ id, cantidad });
+      setCantidad(Cantidad - 1);
+    } else {
+      set_1000(true);
+      setInvoiceStore.removeProduct({ id, precio, cantidad });
+    }
   };
+
   //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|CLIENTE|PRODUCTS|BOT-PRODUCTLIST ]
   return (
     <div
       className="ProductList"
       style={{
-        animation: Cantidad === 0 && 'itemsStore .3s reverse forwards',
-        display: D1000 ? 'none' : 'flex',
+        animation: _1000 && 'itemsStore .3s reverse forwards',
         cursor: StepStore < 2 && 'pointer',
         background: `url('${children.producto.cover}')`,
         backgroundSize: 'cover',
