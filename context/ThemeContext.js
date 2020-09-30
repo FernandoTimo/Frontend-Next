@@ -1,11 +1,11 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Context = React.createContext({});
 
 export function ThemeContextProvider({ children }) {
   useEffect(() => {
-    if (!!localStorage.Theme === false) {
-      localStorage.Theme = 'Light';
+    if (localStorage.Theme === false) {
+      localStorage.Theme = 'Dark';
     }
   }, []);
 
