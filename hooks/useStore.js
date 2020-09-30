@@ -85,7 +85,7 @@ export function StoreClient({ Yape }) {
   };
   //                                   1 ==>
   const handlerButtonStore = () => {
-    setStepStore(StepStore + 1);
+    setStepStore(1);
     socket.emit('store-init', 'Nuevo Cliente');
   };
 
@@ -110,33 +110,24 @@ export function StoreClient({ Yape }) {
             <div className="StoreHeaderContainer">
               {/*                                               (3) JSX [ CABECERA === Yapear-Precio [~ Steps: 0,1] ] */}
               {StepStore < 2 && (
-                <>
+                <div
+                  className="FirstStepHeadContainer"
+                  onClick={handlerButtonStore}
+                >
                   {/*                                                  (4) JSX [ CABECERA === Precio [~ Steps: 0, 1] ] */}
+                  {StepStore === 0 && (
+                    <label className="YapearButtom">{'¡YAPEAR!'}</label>
+                  )}
                   <label
-                    className={`YapeInit ${
-                      StepStore === 1 && 'TotalPriceStore'
+                    className={`TotalPriceBefore ${
+                      StepStore === 1 && 'TotalPriceAfter'
                     }`}
-                    onClick={() => {
-                      setStepStore(0);
-                    }}
                   >
-                    {StepStore === 0 ? '¡YAPEAR!' : 'S/' + InvoiceTotal}
+                    {/* {'S/' + InvoiceTotal} */}
+                    {'S/' + '15.20'}
                   </label>
                   {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
-                  {StepStore === 0 && (
-                    <button
-                      className="StoreButton"
-                      onClick={handlerButtonStore}
-                      style={{
-                        pointerEvents: StepStore < 3 ? 'visible' : 'none',
-                      }}
-                    >
-                      <h2 className="h8 StoreButtonStateLabelMid">
-                        {InvoiceTotal}
-                      </h2>
-                    </button>
-                  )}
-                </>
+                </div>
               )}
               {/*                                               (3) JSX [ CABECERA === Check-Steps [~ Steps>0] ] */}
               {StepStore > 0 && (
