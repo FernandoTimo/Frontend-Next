@@ -232,17 +232,17 @@ a {
   border-radius: 1vh;
 }
 .StoreListReduced {
-  border-top: 0.6vh solid #000;
-  border-left: 0.6vh solid #000;
-  border-right: 0.6vh solid #000;
-  background: #000 !important;
+  border-top: 0.6vh solid #f3f3f3;
+  border-left: 0.6vh solid #f3f3f3;
+  border-right: 0.6vh solid #f3f3f3;
+  background: #f3f3f3 !important;
   cursor: pointer;
 }
 .StoreListReducedRecived {
-  border-top: 0.6vh solid #00f891;
-  border-left: 0.6vh solid #00f891;
-  border-right: 0.6vh solid #00f891;
-  background: #00f891 !important;
+  border-top: 0.6vh solid #f0f0f0;
+  border-left: 0.6vh solid #f0f0f0;
+  border-right: 0.6vh solid #f0f0f0;
+  background: #f0f0f0 !important;
   cursor: pointer;
 }
 
