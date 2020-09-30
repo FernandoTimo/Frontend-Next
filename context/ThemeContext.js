@@ -1,14 +1,16 @@
+import useLocalStorage from 'hooks/useLocalStorage';
 import { useState, useEffect } from 'react';
 
 const Context = React.createContext({});
 
 export function ThemeContextProvider({ children }) {
+  //            <--=========================================================== [ useEffects ]
   useEffect(() => {
     if (localStorage.Theme === false) {
-      localStorage.Theme = 'Dark';
+      localStorage.Theme = 'Light';
     }
   }, []);
-
+  //            <--=========================================================== [ Light Theme Palette ]
   const Light = {
     _00: '#ffffff',
     _01: '#fafafa',
@@ -32,6 +34,7 @@ export function ThemeContextProvider({ children }) {
     _19: '#070707',
     _20: '#000000',
   };
+  //            <--=========================================================== [ Dark Theme Palette ]
   const Dark = {
     _00: '#000000',
     _01: '#070707',
@@ -55,18 +58,20 @@ export function ThemeContextProvider({ children }) {
     _19: '#fafafa',
     _20: '#ffffff',
   };
-  const [Theme, setMode] = useState(Light);
-  const [isTheme, setIsTheme] = useState(true);
+  //            <--=========================================================== [ useLocalStorage ]
+  const LocalTheme = useLocalStorage('Theme');
+  //            <--=========================================================== [ useStates ]
+  const [Theme, setMode] = useState(LocalTheme === 'Light' ? Light : Dark);
+  //            <--=========================================================== [ Handler Functions ]
   const setTheme = () => {
     isTheme
       ? ((localStorage.Theme = 'Dark'), setMode(Dark), setIsTheme(false))
       : ((localStorage.Theme = 'Light'), setMode(Light), setIsTheme(true));
-    console.log(localStorage.Theme);
   };
+
+  //            <==***************************************************************************** [ JSX COMPONENT = THEME ]
   return (
-    <Context.Provider value={{ Theme, setTheme, isTheme }}>
-      {children}
-    </Context.Provider>
+    <Context.Provider value={{ Theme, setTheme }}>{children}</Context.Provider>
   );
 }
 
