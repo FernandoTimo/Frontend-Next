@@ -10,10 +10,9 @@ import ThemeContext from 'context/ThemeContext';
  * @returns {{Theme: Colores[], setTheme: Function, isTheme: Boolean}} {Theme, setTheme, isTheme}
  */
 export const useTheme = () => {
-  const { Theme, setTheme, isTheme } = useContext(ThemeContext);
+  const { Theme, setTheme } = useContext(ThemeContext);
   return {
     Theme,
     setTheme,
-    isTheme,
   };
 };
