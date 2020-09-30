@@ -120,7 +120,7 @@ export function StoreClient({ Yape }) {
                       setStepStore(0);
                     }}
                   >
-                    {StepStore === 0 ? '¡YAPEA!' : 'S/' + InvoiceTotal}
+                    {StepStore === 0 ? '¡YAPEAR!' : 'S/' + InvoiceTotal}
                   </label>
                   {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
                   {StepStore === 0 && (

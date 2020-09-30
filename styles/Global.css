@@ -59,7 +59,7 @@ a {
   position: absolute;
   pointer-events: visible;
   width: 15vh;
-  margin-top: -10vh;
+  margin-top: -12vh;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -74,9 +74,9 @@ a {
   font-size: 1.3vh;
   font-weight: 900;
   color: #ffbd09;
-  background: linear-gradient(#6f0d9c, #4d0e6b);
+  background: #6f0d9c;
   box-shadow: 0 0 1vh #0001, inset 0 0 0.5vh #0002;
-  border-radius: 0.8vh;
+  border-radius: 0.3vh;
   margin-bottom: 2.8vh;
   transition: 0.3s ease-out;
   cursor: pointer;
@@ -138,30 +138,29 @@ a {
   z-index: -3;
 }
 .StoreButton {
-  width: 10vh;
-  height: 4.5vh;
+  height: 2.5vh;
   border: none;
-  border-radius: 1vh;
-  box-shadow: 0 0 1vh #0003, inset 0 0 0.5vh #0003;
+  border-radius: 0.2vh;
+  box-shadow: 0 0 1vh #0001;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
   flex-direction: column;
   z-index: 1;
-  background: #fafafa;
+  background: #000;
   cursor: pointer;
-}
-.StoreButtonStateLabelMid:hover {
-  opacity: 0.7 !important;
-  text-shadow: 0 0 0.1vh #6f0d9caa;
 }
 .StoreButtonStateLabelMid {
   opacity: 0;
   animation: amanecer 0.8s 0.3s forwards;
   cursor: pointer;
-  color: #6f0d9c;
+  color: #fff;
   padding-top: 1.5vh;
+}
+.StoreButtonStateLabelMid:hover {
+  opacity: 0.7 !important;
+  text-shadow: 0 0 0.1vh #6f0d9caa;
 }
 .StoreContainer {
   display: flex;
