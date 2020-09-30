@@ -4,12 +4,6 @@ import { useState, useEffect } from 'react';
 const Context = React.createContext({});
 
 export function ThemeContextProvider({ children }) {
-  //            <--=========================================================== [ useEffects ]
-  useEffect(() => {
-    if (localStorage.Theme === false) {
-      localStorage.Theme = 'Light';
-    }
-  }, []);
   //            <--=========================================================== [ Light Theme Palette ]
   const Light = {
     _00: '#ffffff',
@@ -59,14 +53,21 @@ export function ThemeContextProvider({ children }) {
     _20: '#ffffff',
   };
   //            <--=========================================================== [ useLocalStorage ]
-  const LocalTheme = useLocalStorage('Theme');
   //            <--=========================================================== [ useStates ]
-  const [Theme, setMode] = useState(LocalTheme === 'Light' ? Light : Dark);
+  const [Theme, setMode] = useState(Dark);
+  //            <--=========================================================== [ useEffects ]
+  useEffect(() => {
+    if (!localStorage.Theme) {
+      localStorage.Theme = 'Light';
+    }
+
+    localStorage.Theme === 'Light' ? setMode(Light) : setMode(Dark);
+  }, []);
   //            <--=========================================================== [ Handler Functions ]
   const setTheme = () => {
-    isTheme
-      ? ((localStorage.Theme = 'Dark'), setMode(Dark), setIsTheme(false))
-      : ((localStorage.Theme = 'Light'), setMode(Light), setIsTheme(true));
+    localStorage.Theme === 'Light'
+      ? ((localStorage.Theme = 'Dark'), setMode(Dark))
+      : ((localStorage.Theme = 'Light'), setMode(Light));
   };
 
   //            <==***************************************************************************** [ JSX COMPONENT = THEME ]
