@@ -231,6 +231,7 @@ a {
   flex: 1;
   display: none;
   overflow: hidden;
+  transition: all 0.2s ease-in-out;
 }
 .StoreList {
   display: flex;
