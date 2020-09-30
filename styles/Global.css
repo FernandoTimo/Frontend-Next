@@ -66,7 +66,6 @@ a {
   align-items: flex-end;
 }
 .FirstStepHeadContainer {
-  border: 0.2vh solid #000;
   display: flex;
   align-items: center;
 }
@@ -82,10 +81,34 @@ a {
   background: #6f0d9c;
   box-shadow: 0 0 1vh #0001, inset 0 0 0.5vh #0002;
   border-radius: 0.3vh;
-  left: 0;
   transition: 0.3s ease-out;
   cursor: pointer;
   z-index: 2;
+  opacity: 0;
+  animation: Header_0L 0.5s 0.3s forwards;
+}
+@keyframes Header_0L {
+  0% {
+    left: 1.8vh;
+    opacity: 0.1;
+  }
+  40% {
+    left: 1.8vh;
+  }
+  100% {
+    left: 0.8vh;
+    opacity: 1;
+  }
+}
+@keyframes Header_0R {
+  0% {
+    right: 2vh;
+    opacity: 0.1;
+  }
+  100% {
+    right: 0.5vh;
+    opacity: 1;
+  }
 }
 .TotalPriceBefore {
   position: absolute;
@@ -104,29 +127,18 @@ a {
   font-weight: 700;
   color: #fafafa;
   opacity: 0;
-  animation: amanecer 0.8s 0.3s forwards;
+  animation: Header_0R 0.2s 0.5s forwards;
   padding: 0.3vh 0.8vh;
 }
 .TotalPriceAfter {
   font-size: 1.5vh;
-  font-weight: 700;
-  color: #fafafa;
-  background: #2f2f2f;
-  padding: 0.1vh 1vh;
   border-radius: 0.5vh 0.5vh 0 0;
   display: flex;
-  right: 0;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: -6.5vh;
-  border: none;
-  height: 2vh;
-  z-index: -3;
+  right: 4vh;
+  margin-bottom: -10.5vh;
   opacity: 0;
   animation: amanecer 0.8s 0.3s forwards;
-  cursor: pointer;
-  color: #fff;
-  padding: 0.3vh 0.1vh;
+  pointer-events: none;
 }
 /* ------- */
 .StoreButtonCheckContainer {

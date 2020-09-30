@@ -109,19 +109,18 @@ export function StoreClient({ Yape }) {
             {/*                                            (2) JSX [ CABECERA === Container [! Steps] ] */}
             <div className="StoreHeaderContainer">
               {/*                                               (3) JSX [ CABECERA === Yapear-Precio [~ Steps: 0,1] ] */}
-              {StepStore < 2 && (
+              {StepStore === 0 && (
                 <div
                   className="FirstStepHeadContainer"
                   onClick={handlerButtonStore}
                 >
                   {/*                                                  (4) JSX [ CABECERA === Precio [~ Steps: 0, 1] ] */}
-                  {StepStore === 0 && (
-                    <label className="YapearButtom">{'¡YAPEAR!'}</label>
-                  )}
+
+                  <label className="YapearButtom">{'¡YAPEAR!'}</label>
                   <label
-                    className={`TotalPriceBefore ${
-                      StepStore === 1 && 'TotalPriceAfter'
-                    }`}
+                    // ${StepStore === 1 && 'TotalPriceAfter'}
+                    className={`TotalPriceBefore 
+                    `}
                   >
                     {/* {'S/' + InvoiceTotal} */}
                     {'S/' + '15.20'}
@@ -184,7 +183,7 @@ export function StoreClient({ Yape }) {
                   className="StoreStep"
                 >
                   {StepStore === 0 && <div></div>}
-                  {(StepStore === 1 || StepStore === 2) && (
+                  {(StepStore === 1 || StepStore === 2 || StepStore === 3) && (
                     <FirstStepStore Recivied={Recivied}>{Yape}</FirstStepStore>
                   )}
                   {StepStore === 3 && <SecondStepStore />}
@@ -193,7 +192,7 @@ export function StoreClient({ Yape }) {
                 {/*                                               (3) JSX [ PRODUCTLIST|BOT === Productos [!] ] */}
                 <Content
                   className={`StoreList ${
-                    StepStore >= 1 &&
+                    StepStore > 1 &&
                     (Recivied ? 'StoreListReducedRecived' : 'StoreListReduced')
                   }`}
                   row
