@@ -213,7 +213,7 @@ export function StoreClient({ Yape }) {
                   {InvoiceStore.productos &&
                     InvoiceStore.productos.map((ItemList) => (
                       <Product
-                        key={ItemList.producto._id}
+                        key={ItemList._id}
                         setTotalGlobal={setInvoiceTotal}
                       >
                         {ItemList}
@@ -229,11 +229,11 @@ export function StoreClient({ Yape }) {
   );
 }
 
-//            <--================================================================================================ [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]
-//            <--================================================================================================ [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]
-//             --------=====================================---------------------  [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]  -----------------------------
-//            <--================================================================================================ [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]
-//            <--================================================================================================ [ TIENDA|PRODUCTOS|TOP-COMPONENTS ]
+//            <--================================================================================================ [ PRODUCTOS|TOP-COMPONENTS ]
+//            <--================================================================================================ [ PRODUCTOS|TOP-COMPONENTS ]
+//             --------=====================================---------------------  [ PRODUCTOS|TOP-COMPONENTS ]  -----------------------------
+//            <--================================================================================================ [ PRODUCTOS|TOP-COMPONENTS ]
+//            <--================================================================================================ [ PRODUCTOS|TOP-COMPONENTS ]
 
 //            <--=========================================================== [ FIRSTCOMPONENT ]
 //             -----------------------------  [ FIRSTCOMPONENT ]  -----------------------------
@@ -481,11 +481,11 @@ const Product = ({ setTotalGlobal, children }) => {
     setStepStore,
   } = useStore();
   const [Cantidad, setCantidad] = useState(1);
-  const [Total, setTotal] = useState(children.producto.precio);
+  const [Total, setTotal] = useState(children.precio);
   const [_1000, set_1000] = useState(false);
 
-  let id = children.producto._id;
-  let precio = children.producto.precio;
+  let id = children._id;
+  let precio = children.precio;
   let cantidad = Cantidad;
 
   const handlerIncrement = () => {
@@ -511,7 +511,7 @@ const Product = ({ setTotalGlobal, children }) => {
       style={{
         animation: _1000 && 'itemsStore .3s reverse forwards',
         cursor: StepStore < 2 && 'pointer',
-        background: `url('${children.producto.cover}')`,
+        background: `url('${children.cover}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
