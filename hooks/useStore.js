@@ -40,14 +40,7 @@ export const useStore = () => {
 //                        <--************************************************************************************************ [ COMPONENTE|CLIENTE ]
 export function StoreClient({ Yape }) {
   //            <--=========================================================== [ Hooks ]
-  const {
-    InvoiceStore,
-    ShowStore,
-    StepStore,
-    setStepStore,
-    isStore,
-    setIsStore,
-  } = useStore(Yape);
+  const { InvoiceStore, ShowStore, StepStore, setStepStore } = useStore(Yape);
 
   //            <--=========================================================== [ useStates ]
   const [isHelp, setisHelp] = useState(false);
@@ -88,6 +81,10 @@ export function StoreClient({ Yape }) {
     const handlerButtonStore = () => {
       setStepStore(1);
       socket.emit('store-init', 'Nuevo Cliente');
+    };
+    //                                   1 ==>
+    const handlerHelp = () => {
+      setisHelp(true);
     };
     //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|CLIENTE ]
     return (
