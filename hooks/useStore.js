@@ -79,6 +79,8 @@ export function StoreClient({ Yape }) {
     });
   }, []);
   //            <--=========================================================== [ Handlers]
+  {
+    
   //                                   1 ==>
   const setTotalGlobal = (value) => {
     setIvoiceTotal(IvoiceTotal + value);
@@ -88,7 +90,6 @@ export function StoreClient({ Yape }) {
     setStepStore(1);
     socket.emit('store-init', 'Nuevo Cliente');
   };
-
   //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|CLIENTE ]
   return (
     <Controls top>
