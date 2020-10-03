@@ -80,146 +80,154 @@ export function StoreClient({ Yape }) {
   }, []);
   //            <--=========================================================== [ Handlers]
   {
-    
-  //                                   1 ==>
-  const setTotalGlobal = (value) => {
-    setIvoiceTotal(IvoiceTotal + value);
-  };
-  //                                   1 ==>
-  const handlerButtonStore = () => {
-    setStepStore(1);
-    socket.emit('store-init', 'Nuevo Cliente');
-  };
-  //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|CLIENTE ]
-  return (
-    <Controls top>
-      <audio src="assets/pristine.mp3" ref={RefAudio}></audio>
-      {/*                                         (1) JSX [ AYUDA = Container [~ isHelp] ] */}
-      <div className="Help">
-        <div
-          className="HelpContainer"
-          style={{ display: isHelp ? 'flex' : 'none' }}
-        >
-          ¿No sé pagar con Yape!
+    //                                   1 ==>
+    const setTotalGlobal = (value) => {
+      setIvoiceTotal(IvoiceTotal + value);
+    };
+    //                                   1 ==>
+    const handlerButtonStore = () => {
+      setStepStore(1);
+      socket.emit('store-init', 'Nuevo Cliente');
+    };
+    //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|CLIENTE ]
+    return (
+      <Controls top>
+        <audio src="assets/pristine.mp3" ref={RefAudio}></audio>
+        {/*                                         (1) JSX [ AYUDA = Container [~ isHelp] ] */}
+        <div className="Help">
+          <div
+            className="HelpContainer"
+            style={{ display: isHelp ? 'flex' : 'none' }}
+          >
+            ¿No sé pagar con Yape!
+          </div>
         </div>
-      </div>
-      {/*                                         (1) JSX [ TIENDA === Container principal [~ showStore] ] */}
-      <div className="Store">
-        {ShowStore && (
-          <>
-            {/*                                            (2) JSX [ CABECERA === Container [! Steps] ] */}
-            <div className="StoreHeaderContainer">
-              {/*                                               (3) JSX [ CABECERA === Yapear-Precio [~ Steps: 0,1] ] */}
-              {StepStore === 0 && (
-                <div
-                  className="FirstStepHeadContainer"
-                  onClick={handlerButtonStore}
-                >
-                  {/*                                                  (4) JSX [ CABECERA === Precio [~ Steps: 0, 1] ] */}
-
-                  <label className="YapearButtom">{'¡YAPEAR!'}</label>
-                  <label
-                    // ${StepStore === 1 && 'TotalPriceAfter'}
-                    className={`TotalPriceBefore 
-                    `}
-                  >
-                    {/* {'S/' + InvoiceTotal} */}
-                    {'S/' + '15.20'}
-                  </label>
-                  {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
-                </div>
-              )}
-              {/*                                               (3) JSX [ CABECERA === Check-Steps [~ Steps>0] ] */}
-              {StepStore > 0 && (
-                <label className="StoreButtonStateLabelTop">
+        {/*                                         (1) JSX [ TIENDA === Container principal [~ showStore] ] */}
+        <div className="Store">
+          {ShowStore && (
+            <>
+              {/*                                            (2) JSX [ CABECERA === Container [! Steps] ] */}
+              <div className="StoreHeaderContainer">
+                {/*                                               (3) JSX [ CABECERA === Yapear-Precio [~ Steps: 0,1] ] */}
+                {StepStore === 0 && (
                   <div
-                    className="StoreButtonCheckContainer"
+                    className="FirstStepHeadContainer"
+                    onClick={handlerButtonStore}
+                  >
+                    {/*                                                  (4) JSX [ CABECERA === Precio [~ Steps: 0, 1] ] */}
+
+                    <label className="YapearButtom">{'¡YAPEAR!'}</label>
+                    <label
+                      // ${StepStore === 1 && 'TotalPriceAfter'}
+                      className={`TotalPriceBefore 
+                    `}
+                    >
+                      {/* {'S/' + InvoiceTotal} */}
+                      {'S/' + '15.20'}
+                    </label>
+                    {/*                                                  (4) JSX [ CABECERA === Yapear [~ Steps: 0] ]*/}
+                  </div>
+                )}
+                {/*                                               (3) JSX [ CABECERA === Check-Steps [~ Steps>0] ] */}
+                {StepStore > 0 && (
+                  <label className="StoreButtonStateLabelTop">
+                    <div
+                      className="StoreButtonCheckContainer"
+                      style={{
+                        gap: (StepStore === 2 || StepStore >= 5) && '0.1vh',
+                      }}
+                    >
+                      {/*                                                  (4) JSX [ CHECKS === First-Step [~] ] */}
+                      {StepStore === 2 && !Recivied && (
+                        <Spinner_Rainbow size={2.3} />
+                      )}
+                      <img
+                        alt="Check"
+                        className="StoreButtonCheck"
+                        src="assets/Check.png"
+                        style={{
+                          display:
+                            StepStore === 2 && !Recivied ? 'none' : 'flex',
+                          height:
+                            (StepStore === 1 ||
+                              StepStore === 6 ||
+                              StepStore === 2) &&
+                            '2.3vh',
+                          filter: StepStore > 1 && 'grayScale(0)',
+                          opacity: 0.8,
+                        }}
+                      />
+                      {/*                                                  (4) JSX [ CHECKS === Second-Step [~] ] */}
+                      {StepStore === 5 && <Spinner_Rainbow size={2.3} />}
+                      <img
+                        alt="Check"
+                        className="StoreButtonCheck"
+                        src="assets/Check.png"
+                        style={{
+                          display: StepStore === 5 ? 'none' : 'flex',
+                          height: StepStore >= 3 && '2.3vh',
+                          filter: StepStore > 3 && 'grayScale(0)',
+                          opacity: StepStore > 2 && 0.8,
+                        }}
+                      />
+                    </div>
+                  </label>
+                )}
+              </div>
+              {/*                                            (2) JSX [ PRODUCTOS = Container [! Siempre] ] */}
+              <div className="StoreContainer">
+                <Content center flex={1}>
+                  {/*                                               (3) JSX [ PRODUCTLIST|TOP === Componentes-Indicaciones [~Steps] ] */}
+                  <Content
+                    flex={StepStore === 0 ? 0.1 : 9}
+                    center
+                    className="StoreStep"
+                  >
+                    {StepStore === 0 && <div></div>}
+                    {(StepStore === 1 ||
+                      StepStore === 2 ||
+                      StepStore === 3) && (
+                      <FirstStepStore Recivied={Recivied}>
+                        {Yape}
+                      </FirstStepStore>
+                    )}
+                    {StepStore === 3 && <SecondStepStore />}
+                    {StepStore > 3 && <SecondStepStore codigo={Codigo} />}
+                  </Content>
+                  {/*                                               (3) JSX [ PRODUCTLIST|BOT === Productos [!] ] */}
+                  <Content
+                    className={`StoreList ${
+                      StepStore > 1 &&
+                      (Recivied
+                        ? 'StoreListReducedRecived'
+                        : 'StoreListReduced')
+                    }`}
+                    row
+                    flex={1}
+                    onClick={() => setStepStore(0)}
                     style={{
-                      gap: (StepStore === 2 || StepStore >= 5) && '0.1vh',
+                      pointerEvents: StepStore < 2 ? 'visible' : 'none',
                     }}
                   >
-                    {/*                                                  (4) JSX [ CHECKS === First-Step [~] ] */}
-                    {StepStore === 2 && !Recivied && (
-                      <Spinner_Rainbow size={2.3} />
-                    )}
-                    <img
-                      alt="Check"
-                      className="StoreButtonCheck"
-                      src="assets/Check.png"
-                      style={{
-                        display: StepStore === 2 && !Recivied ? 'none' : 'flex',
-                        height:
-                          (StepStore === 1 ||
-                            StepStore === 6 ||
-                            StepStore === 2) &&
-                          '2.3vh',
-                        filter: StepStore > 1 && 'grayScale(0)',
-                        opacity: 0.8,
-                      }}
-                    />
-                    {/*                                                  (4) JSX [ CHECKS === Second-Step [~] ] */}
-                    {StepStore === 5 && <Spinner_Rainbow size={2.3} />}
-                    <img
-                      alt="Check"
-                      className="StoreButtonCheck"
-                      src="assets/Check.png"
-                      style={{
-                        display: StepStore === 5 ? 'none' : 'flex',
-                        height: StepStore >= 3 && '2.3vh',
-                        filter: StepStore > 3 && 'grayScale(0)',
-                        opacity: StepStore > 2 && 0.8,
-                      }}
-                    />
-                  </div>
-                </label>
-              )}
-            </div>
-            {/*                                            (2) JSX [ PRODUCTOS = Container [! Siempre] ] */}
-            <div className="StoreContainer">
-              <Content center flex={1}>
-                {/*                                               (3) JSX [ PRODUCTLIST|TOP === Componentes-Indicaciones [~Steps] ] */}
-                <Content
-                  flex={StepStore === 0 ? 0.1 : 9}
-                  center
-                  className="StoreStep"
-                >
-                  {StepStore === 0 && <div></div>}
-                  {(StepStore === 1 || StepStore === 2 || StepStore === 3) && (
-                    <FirstStepStore Recivied={Recivied}>{Yape}</FirstStepStore>
-                  )}
-                  {StepStore === 3 && <SecondStepStore />}
-                  {StepStore > 3 && <SecondStepStore codigo={Codigo} />}
+                    {InvoiceStore.productos &&
+                      InvoiceStore.productos.map((ItemList) => (
+                        <Product
+                          key={ItemList._id}
+                          setTotalGlobal={setInvoiceTotal}
+                        >
+                          {ItemList}
+                        </Product>
+                      ))}
+                  </Content>
                 </Content>
-                {/*                                               (3) JSX [ PRODUCTLIST|BOT === Productos [!] ] */}
-                <Content
-                  className={`StoreList ${
-                    StepStore > 1 &&
-                    (Recivied ? 'StoreListReducedRecived' : 'StoreListReduced')
-                  }`}
-                  row
-                  flex={1}
-                  onClick={() => setStepStore(0)}
-                  style={{ pointerEvents: StepStore < 2 ? 'visible' : 'none' }}
-                >
-                  {InvoiceStore.productos &&
-                    InvoiceStore.productos.map((ItemList) => (
-                      <Product
-                        key={ItemList._id}
-                        setTotalGlobal={setInvoiceTotal}
-                      >
-                        {ItemList}
-                      </Product>
-                    ))}
-                </Content>
-              </Content>
-            </div>
-          </>
-        )}
-      </div>
-    </Controls>
-  );
+              </div>
+            </>
+          )}
+        </div>
+      </Controls>
+    );
+  }
 }
-
 //            <--================================================================================================ [ PRODUCTOS|TOP-COMPONENTS ]
 //            <--================================================================================================ [ PRODUCTOS|TOP-COMPONENTS ]
 //             --------=====================================---------------------  [ PRODUCTOS|TOP-COMPONENTS ]  -----------------------------
@@ -528,7 +536,6 @@ const Product = ({ setTotalGlobal, children }) => {
     </div>
   );
 };
-
 //                        <--************************************************************************************************ [ COMPONENTE|ADMIN ]
 //                 <--************************************************************************************************** [ COMPONENTE|ADMIN ]
 //            <--************************************************************************************************** [ COMPONENTE|ADMIN ]
