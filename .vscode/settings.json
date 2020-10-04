@@ -1,3 +1,20 @@
 {
-  "workbench.colorTheme": "Slack Theme Dark Mode"
+  "workbench.colorTheme": "Slack Theme Dark Mode",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#41f7c5",
+    "activityBar.activeBorder": "#d066f9",
+    "activityBar.background": "#41f7c5",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#d066f9",
+    "activityBarBadge.foreground": "#15202b",
+    "statusBar.background": "#10f5b6",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#08ca94",
+    "titleBar.activeBackground": "#10f5b6",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#10f5b699",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#10f5b6"
 }

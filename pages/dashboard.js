@@ -22,63 +22,7 @@ export default function Dashboard() {
             center
             flex={1}
           >
-            <div className={styleDashboard.BrandContainer}>Logo</div>
-            <Content center flex={10} row>
-              <Content center row flex={1}>
-                <div className={styleDashboard.Dashboard}>
-                  <div className={styleDashboard.DashboardContent}>
-                    {(Active === -1 && <div>Stories</div>) ||
-                      (Active === 0 && (
-                        <Content s center flex={1}>
-                          <div className={styleDashboard.VerifyOrdersContainer}>
-                            <StoreAdmin />
-                          </div>
-                        </Content>
-                      )) ||
-                      (Active === 1 && (
-                        <Content s center flex={1}>
-                          <Content s center flex={10}></Content>
-                          <Content s center flex={1}>
-                            <button>Agregar un nuevo Producto</button>
-                          </Content>
-                        </Content>
-                      ))}
-                  </div>
-                </div>
-              </Content>
-            </Content>
-            <Content center row flex={1}>
-              <div
-                className={styleDashboard.DashboardNavigation}
-                style={{ marginLeft: `${Active * 2}0%` }}
-              />
-              <div className={styleDashboard.DashboardNavigationControls}>
-                <div
-                  className={styleDashboard.ControlsStories}
-                  onClick={() => {
-                    setActive(-1);
-                  }}
-                >
-                  Stories
-                </div>
-                <div
-                  className={styleDashboard.ControlsStore}
-                  onClick={() => {
-                    setActive(0);
-                  }}
-                >
-                  Store
-                </div>
-                <div
-                  className={styleDashboard.ControlsStock}
-                  onClick={() => {
-                    setActive(1);
-                  }}
-                >
-                  Stock
-                </div>
-              </div>
-            </Content>
+            <StoreAdmin />
           </Content>
         </Section>
       </Body>

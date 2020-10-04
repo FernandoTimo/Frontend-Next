@@ -554,6 +554,7 @@ export function StoreAdmin({ children }) {
       console.log(codigo);
     });
   }, []);
+  const [OrdersSimulate, setOrdersSimulate] = useState();
   //            <--=========================================================== [ Handlers ]
   //                                   1 ==>
 
