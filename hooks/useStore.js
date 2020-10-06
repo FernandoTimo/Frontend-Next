@@ -543,7 +543,7 @@ const Product = ({ setTotalGlobal, children }) => {
 
 export function StoreAdmin({ children }) {
   //            <--=========================================================== [ useStates ]
-  const [State, setState] = useState();
+  const [OrdersSimulate, setOrdersSimulate] = useState([]);
   //            <--=========================================================== [ Sockets Effect ]
   useEffect(() => {
     socket.on('store-comprobante_recivido', (comprobante) => {
@@ -554,20 +554,35 @@ export function StoreAdmin({ children }) {
       console.log(codigo);
     });
   }, []);
-  const [OrdersSimulate, setOrdersSimulate] = useState();
   //            <--=========================================================== [ Handlers ]
   //                                   1 ==>
-
+  const handlerOrdersSimulate = () => {
+    let arr = OrdersSimulate;
+    arr.push('sa');
+    setOrdersSimulate(arr);
+    console.log(OrdersSimulate);
+  };
   //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|ADMIN ]
   return (
     <div className="StoreVerifyOrdersContainer">
-      <div className="VerifyOrdersControlContainer">
-        {State}
-        <StoreCardOrderVerify />
+      <div
+        className="VerifyOrdersControlContainer"
+        style={{
+          display: 'grid',
+          gridTemplateColumns:
+            OrdersSimulate.length <= 4
+              ? `repeat(${OrdersSimulate.length}, 1fr)`
+              : 'repeat(4, 1fr)',
+          gridTemplateRows: OrdersSimulate.length <= 4 ? '1fr' : '1fr 1fr',
+        }}
+      >
+        {OrdersSimulate.map((_, index) => (
+          <StoreCardOrderVerify key={index} />
+        ))}
       </div>
       <div className="VerifyOrdersActivityContainer">
         <div>
-          <label>An</label>
+          <label onClick={handlerOrdersSimulate}>An</label>
         </div>
         <div>
           <label>Va</label>
@@ -596,7 +611,7 @@ const StoreCardOrderVerify = () => {
     socket.emit('store-comprobante_validado', 'X8S5DQ');
   };
   return (
-    <div>
+    <div className="CardOrderVerifyContainer">
       <div className="StoreCardOrderVerifyContainer">
         <Rainbow>
           <label

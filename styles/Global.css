@@ -696,11 +696,18 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  border: 0.2vh solid #f0f;
+}
+.CardOrderVerifyContainer {
+  border: 0.2vh solid #000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .StoreCardOrderVerifyContainer {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
