@@ -1,16 +1,5 @@
-import { useStore } from 'hooks/useStore';
 import Head from 'next/head';
 export function Header_Main() {
-  const { StepStore } = useStore();
-  const messages = [
-    'Compra Iniciada',
-    'Adjuntar Comprobante',
-    '',
-    '',
-    '',
-    'Enviando datos',
-    '¡Felicidades!',
-  ];
   return (
     <Head>
       <link rel="icon" href="icons/favicon.ico" />
