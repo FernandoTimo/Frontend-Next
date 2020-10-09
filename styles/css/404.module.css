@@ -28,7 +28,7 @@
 .PathCode path {
   background: #0effaf;
   color: #022;
-  padding: 0.2vh 0.3vh;
+  padding: 0.2vh 0.8vh;
   border-radius: 0.5vh;
 }
 .PathCode::selection {
