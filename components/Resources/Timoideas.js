@@ -411,6 +411,7 @@ const Router = () => {
   );
 };
 import { NavigationContextProvider } from 'context/NavigationContext';
+import useLocalStorage from 'hooks/useLocalStorage';
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
   const handleNavigate = (e) => {
@@ -425,7 +426,8 @@ export const Navigation = () => {
       document.removeEventListener('keydown', handleNavigate);
     };
   }, [Navigate]);
-  const { setTheme, isTheme } = useTheme();
+  const { setTheme } = useTheme();
+  const Theme = useLocalStorage('Theme');
   return (
     <NavigationContextProvider>
       <div className="NavigationContainer">
@@ -435,7 +437,7 @@ export const Navigation = () => {
           aria-label="Durazno"
           onClick={setTheme}
         >
-          {isTheme ? '🌖' : '🌒'}
+          {Theme === 'Light' ? '🌖' : '🌒'}
         </span>
         {Navigate && <Router />}
       </div>
@@ -486,7 +488,7 @@ export function Spinner_Rainbow({ size = 1.5, speed = 0.3 }) {
       style={{
         width: size + 'vh',
         height: size + 'vh',
-        boxShadow: `0 0 ${Math.round(size / 15)}vh #0003,       
+        boxShadow: `0 0 ${Math.round(size / 15)}vh #0003,
            inset 0 0 ${Math.round(size / 35)}vh #0004`,
         border: `${size / 60}vh solid #fafafa`,
         animationDuration: `${speed}s`,
@@ -495,7 +497,7 @@ export function Spinner_Rainbow({ size = 1.5, speed = 0.3 }) {
       <span
         style={{
           border: `${size / 60}vh solid #fafafa`,
-          boxShadow: `0 0 ${Math.round(size / 15)}vh #0003,       
+          boxShadow: `0 0 ${Math.round(size / 15)}vh #0003,
            inset 0 0 ${Math.round(size / 35)}vh #0004`,
           border: `${size / 60}vh solid #fafafa`,
         }}

@@ -14,10 +14,10 @@ export default function useLocalStorage(key, value) {
   }
   useEffect(() => {
     if (!value) {
-      setStorageValue(window.localStorage.getItem(key));
+      setStorageValue(localStorage.getItem(key));
     } else {
-      window.localStorage.setItem(key, value);
-      setStorageValue(window.localStorage.getItem(key));
+      localStorage.setItem(key, value);
+      setStorageValue(localStorage.getItem(key));
     }
   }, [key, value]);
   return StorageValue;
