@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect, useLayoutEffect } from 'react';
-import { route } from 'next/dist/next-server/server/router';
+import { createContext, useState, useEffect } from 'react';
 const Context = createContext();
 export const NavigationContextProvider = ({ children }) => {
   let routesHistory = [];
