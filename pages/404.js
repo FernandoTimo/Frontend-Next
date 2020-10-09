@@ -1,11 +1,9 @@
 import { Section, Content } from '../components/Resources/Timoideas';
 import styleError from '../styles/css/404.module.css';
 import { Header_Error } from 'heads/Header_Error';
-import { useTheme } from 'hooks/useTheme';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 export default function NotFound() {
-  const { Theme } = useTheme();
   const { asPath } = useRouter();
   return (
     <>

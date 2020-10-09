@@ -1,8 +1,5 @@
-import useLocalStorage from 'hooks/useLocalStorage';
 import { useState, useEffect } from 'react';
-
 const Context = React.createContext({});
-
 export function ThemeContextProvider({ children }) {
   //            <--=========================================================== [ Light Theme Palette ]
   const Light = {
@@ -52,16 +49,13 @@ export function ThemeContextProvider({ children }) {
     _19: '#fafafa',
     _20: '#ffffff',
   };
-  //            <--=========================================================== [ useLocalStorage ]
   //            <--=========================================================== [ useStates ]
   const [Theme, setMode] = useState(Dark);
   //            <--=========================================================== [ useEffects ]
   useEffect(() => {
-    if (!localStorage.Theme) {
-      localStorage.Theme = 'Light';
-    }
-
-    localStorage.Theme === 'Light' ? setMode(Light) : setMode(Dark);
+    localStorage.Theme && localStorage.Theme === 'Light'
+      ? setMode(Light)
+      : setMode(Dark);
   }, []);
   //            <--=========================================================== [ Handler Functions ]
   const setTheme = () => {

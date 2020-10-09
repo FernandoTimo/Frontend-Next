@@ -311,16 +311,15 @@ export function Boton_1({ children }) {
 
 // --- Navigation
 import NavigationContext from 'context/NavigationContext';
-const Router = () => {
+const Router = ({ setNavigation }) => {
   const { setRoutes } = useContext(NavigationContext);
   const { Theme } = useTheme();
   const RutaRef = useRef();
   const router = useRouter();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const newRoute = RutaRef.current.value.replace(' ', '/');
+    router.push(newRoute);
     setRoutes(newRoute);
-    router.push('/' + newRoute);
   };
   const replaceSpaces = (e) => {
     e.target.value = e.target.value.replace(' ', '/');
@@ -362,10 +361,10 @@ const Router = () => {
               type="text"
               className="RouteInput"
               style={{
-                border: `0.3vh solid ${Theme._20}`,
+                border: `0.3vh solid #0effaf`,
                 color: Theme._20,
                 background: Theme._00,
-                boxShadow: `inset 0 0 1vh ${Theme._01}`,
+                boxShadow: `inset 0 0 1vh #0effaf`,
               }}
               placeholder=" "
               ref={RutaRef}
@@ -386,14 +385,12 @@ const Router = () => {
                       <div
                         className="RouterBox"
                         onContextMenu={ClearHitoryItem}
+                        onClick={setNavigation}
                         style={{
-                          background: WantToClear ? 'transparent' : Theme._00,
-                          color: Theme._20,
+                          background: WantToClear && 'transparent',
                           opacity: WantToClear ? '.7' : '1',
                           transform: WantToClear ? 'scale(.9)' : null,
-                          border: WantToClear
-                            ? `0.2vh dotted ${Theme._20}`
-                            : `0.3vh solid ${Theme._20}`,
+                          border: WantToClear && `0.3vh solid ${Theme._20}`,
                           fontWeight: WantToClear ? '100' : '700',
                           display: ClearHistory ? 'none' : 'flex',
                         }}
@@ -411,35 +408,33 @@ const Router = () => {
   );
 };
 import { NavigationContextProvider } from 'context/NavigationContext';
-import useLocalStorage from 'hooks/useLocalStorage';
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
+  const { Theme, setTheme } = useTheme();
   const handleNavigate = (e) => {
     if (e.ctrlKey === true && e.keyCode === 32) {
       setNavigate(!Navigate);
     }
   };
   useEffect(() => {
+    setNavigate(false);
+  }, []);
+  useEffect(() => {
     document.addEventListener('keydown', handleNavigate);
-
     return () => {
       document.removeEventListener('keydown', handleNavigate);
     };
   }, [Navigate]);
-  const { setTheme } = useTheme();
-  const Theme = useLocalStorage('Theme');
+  const setNavigation = () => {
+    setNavigate(false);
+  };
   return (
     <NavigationContextProvider>
       <div className="NavigationContainer">
-        <span
-          role="img"
-          className="NavigationLabel"
-          aria-label="Durazno"
-          onClick={setTheme}
-        >
-          {Theme === 'Light' ? '🌖' : '🌒'}
+        <span className="NavigationLabel" onClick={setTheme}>
+          {Theme._00 === '#ffffff' ? '🌖' : '🌒'}
         </span>
-        {Navigate && <Router />}
+        {Navigate && <Router setNavigation={setNavigation} />}
       </div>
     </NavigationContextProvider>
   );

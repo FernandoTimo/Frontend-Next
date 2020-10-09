@@ -700,7 +700,6 @@ a:hover {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  border: 0.2vh solid #f0f;
 }
 .CardOrderVerifyContainer {
   border: 0.2vh solid #000;

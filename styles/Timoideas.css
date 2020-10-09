@@ -231,19 +231,20 @@
   position: relative;
   width: 95%;
   height: 5vh;
-  border-radius: 1vh;
   display: flex;
   justify-content: center;
   align-items: center;
   pointer-events: visible;
-  flex-direction: column;
   margin: 0.5vh;
   transition: 0.1s;
+  background: #022;
+  padding: 1vh 1vh;
+  border-radius: 1vh;
+  color: #0effaf;
+  margin: 1vh;
 }
 .RouterBox:hover {
-  margin: 0.2vh;
-  transform: scale(1.05);
-  background: #00dd93 !important;
+  text-shadow: 0 0 1vh #0effaf;
 }
 .RouterBox:active {
   opacity: 0.5;
