@@ -6,7 +6,7 @@ export function Header_Main() {
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="mobile-web-app-capable" content="yes"></meta>
-      <title>localhost:3000</title>
+      <title>Frontend</title>
       <meta name="description" content="" />
     </Head>
   );
