@@ -1,31 +1,36 @@
-.Title {
-  font-size: 5vh;
-  pointer-events: none;
-}
-.Path {
-  font-weight: 100;
-  width: 45vh;
-  height: 5vh;
-  border-radius: 1vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.2s;
-  cursor: not-allowed;
-  tab-size: 1vh;
-}
-
 .Back {
-  margin-top: 2vh;
-  font-size: 4vh;
+  color: #fff !important;
+  font-size: 1.3vh;
   cursor: pointer;
   transition: 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 20vh;
+  bottom: 5vh;
+  border-radius: 1vh;
+  padding: 1vh 2vh;
+  background: #348cff;
+  box-shadow: 0 0 1vh #348cff88;
+  transition: 0.1s;
 }
 .Back:hover {
-  font-size: 4.3vh;
+  font-size: 1.4vh;
+}
+.PathCode {
+  background: #022;
+  padding: 1vh 1vh;
+  border-radius: 1vh;
+  cursor: default;
+  color: #0effaf;
+  margin: 1vh;
+}
+.PathCode path {
+  background: #0effaf;
+  color: #022;
+  padding: 0.2vh 0.3vh;
+  border-radius: 0.5vh;
+}
+.PathCode::selection {
+  background: #0effaf55 !important;
 }
