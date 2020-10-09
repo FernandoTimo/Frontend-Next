@@ -15,8 +15,11 @@ body {
 }
 a {
   text-decoration: none;
-  color: #fa0;
+  color: #fb1;
   font-weight: 700;
+}
+a:hover {
+  color: #fa0;
 }
 /* Store - useStore*/
 .Help {
