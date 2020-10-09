@@ -1,56 +1,20 @@
-.IconPrincipalContainer {
-  width: 15vw;
-  height: 15vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
+.Title {
+  font-size: 5vh;
+  margin: 0;
 }
-.IconPrincipal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-self: flex-start;
-}
-.ImgLogo {
-  height: 15vh;
-}
-.LoginContainer {
-  align-self: flex-end;
-  width: 50vh;
-  height: 8vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.LoginBtn {
-  flex: 1;
-  width: 6vw;
-  height: 6vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.LoginBtn button {
-  color: #fafafa;
-  height: 4vh;
-  width: 10vh;
-  border: none;
+.PathCode {
+  background: #022;
+  padding: 0.5vh 1vh;
   border-radius: 0.5vh;
+  cursor: default;
+  color: #0effaf;
+  margin: 1vh;
 }
-
-.LoginBtn button:nth-child(0) {
-  justify-self: flex-end;
-  background: #a19292;
+.PathCode::selection {
+  background: #0effaf55 !important;
 }
-.LoginBtn button:nth-child(1) {
-  justify-self: flex-end;
-  background: #000;
-}
-.Carrousela {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200vw;
+.WelcomeMessage {
+  font-size: 2.5vh;
+  font-weight: 700;
   margin: 1vh;
 }
