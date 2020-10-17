@@ -58,16 +58,6 @@ export function ThemeContextProvider({ children }) {
     _18: '#f3f3f3',
     _19: '#fafafa',
     _20: '#ffffff',
-    primario: '#515A47',
-    secundario: '#D7BE82',
-    terceario: '#755C1B',
-    botones: '#7A4419',
-    bordes: '#400406',
-    color_principal: '#266DD3',
-    color_secundario: '#344055',
-    color_terceario: '#888098',
-    color_alternativo: '#CFB3CD',
-    contraste: '#DFC2F2',
   };
   //            <--=========================================================== [ useStates ]
   const [Theme, setMode] = useState(Dark);
