@@ -24,6 +24,16 @@ export function ThemeContextProvider({ children }) {
     _18: '#0f0f0f',
     _19: '#070707',
     _20: '#000000',
+    primario: '#987284',
+    secundario: '#75B9BE',
+    terceario: '#D0D6B5',
+    botones: '#F9B5AC',
+    bordes: '#EE7674',
+    color_principal: '#F5E6E8',
+    color_secundario: '#D5C6E0',
+    color_terceario: '#AAA1C8',
+    color_alternativo: '#967AA1',
+    contraste: '#192A51',
   };
   //            <--=========================================================== [ Dark Theme Palette ]
   const Dark = {
@@ -48,6 +58,16 @@ export function ThemeContextProvider({ children }) {
     _18: '#f3f3f3',
     _19: '#fafafa',
     _20: '#ffffff',
+    primario: '#515A47',
+    secundario: '#D7BE82',
+    terceario: '#755C1B',
+    botones: '#7A4419',
+    bordes: '#400406',
+    color_principal: '#266DD3',
+    color_secundario: '#344055',
+    color_terceario: '#888098',
+    color_alternativo: '#CFB3CD',
+    contraste: '#DFC2F2',
   };
   //            <--=========================================================== [ useStates ]
   const [Theme, setMode] = useState(Dark);
