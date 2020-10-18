@@ -1,6 +1,7 @@
 .Title {
   font-size: 5vh;
   margin: 0;
+  text-align: center;
 }
 .PathCode {
   background: #022;
@@ -9,12 +10,15 @@
   cursor: default;
   color: #0effaf;
   margin: 1vh;
+  text-align: center;
 }
 .PathCode::selection {
   background: #0effaf55 !important;
+  text-align: center;
 }
 .WelcomeMessage {
   font-size: 2.5vh;
   font-weight: 700;
   margin: 1vh;
+  text-align: center;
 }
