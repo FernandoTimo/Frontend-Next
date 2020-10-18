@@ -1,9 +1,12 @@
- > ### Frontend
-___
- # Esqueleto para Node.js-React y Next (*ES6+*)
- 
- #### Requiere
-* Node.js ***v14+***          [Descargar version actualizada](https://nodejs.org/es/ "Descargar Node.js")
+> ### Frontend
+
+---
+
+# Esqueleto para Node.js-React y Next (_ES6+_)
+
+#### Requiere
+
+- Node.js **_v14+_** [Descargar version actualizada](https://nodejs.org/es/ 'Descargar Node.js')
 
 ### Uso
 
@@ -23,4 +26,8 @@ ___
 
 `npm run dev`
 
--------
+---
+
+- Puedes visitar http://localhost:3000
+
+  ![Frontend](https://i.ibb.co/hgZCTSN/Frontend-Sockets.jpg)
