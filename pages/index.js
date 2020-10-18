@@ -6,12 +6,21 @@ import { socket } from 'sockets/socket';
 import fetch from 'node-fetch';
 export default function Index() {
   const [serverSockets, setserverSockets] = useState();
+  const [messages, setmessages] = useState({ messages: [] });
   useEffect(() => {
     socket.on('server', (server) => {
       setserverSockets(server);
     });
+    socket.on('saludo', (saludo) => {
+      let message = messages.messages;
+      message.push(saludo);
+      setmessages({ messages: message });
+    });
     fetch('http://localhost:4000/products', { method: 'post' });
   }, []);
+  const handlerSocketChat = () => {
+    socket.emit('saludar', { message: 'Hola a todos!' });
+  };
   return (
     <>
       <Header_Main />
@@ -33,6 +42,25 @@ export default function Index() {
                 <code className={styleIndex.PathCode}>
                   {serverSockets.path}
                 </code>
+                <div className={styleIndex.SendersContainer}>
+                  <button
+                    onClick={handlerSocketChat}
+                    className={styleIndex.Sender}
+                  >
+                    Saludar a Todos
+                  </button>
+                </div>
+                {messages.messages.length > 0 &&
+                  messages.messages.map((message) => (
+                    <div>
+                      <label className={styleIndex.SocketID}>
+                        {message.id}:{' '}
+                      </label>
+                      <label className={styleIndex.SocketMessage}>
+                        {message.message}
+                      </label>
+                    </div>
+                  ))}
               </>
             )}
           </Content>
