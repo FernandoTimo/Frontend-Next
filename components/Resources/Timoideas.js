@@ -65,24 +65,6 @@ export function Content({
   );
 }
 
-// ---             === ===   Header    === ===
-
-// export function Header () {
-//   return (
-//     <div className={styleDeveloperMode.ContainerH}>
-//       <Link href="/">
-//         <div className={styleDeveloperMode.LogoContainer}>
-//           <img
-//             alt="Timoideas"
-//             src="/images/image.png"
-//             className={styleDeveloperMode.Logo}
-//           />
-//         </div>
-//       </Link>
-//     </div>
-//   );
-// };
-
 export function Header({ bg, padding, height, children, center }) {
   return (
     <header
