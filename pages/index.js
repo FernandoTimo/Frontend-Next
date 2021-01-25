@@ -1,4 +1,4 @@
-import styleIndex from 'styles/css/Index.module.css';
+import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
 import { Body, Section, Content } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
@@ -27,10 +27,10 @@ export default function Index() {
       <Body>
         <Section size={1}>
           <Content center flex={0.5}>
-            <h1 className={styleIndex.Title}>Frontend</h1>
+            <h1 className={style.Title}>Frontend</h1>
             {serverSockets && (
               <>
-                <label className={styleIndex.WelcomeMessage}>
+                <label className={style.WelcomeMessage}>
                   {serverSockets.message}
                 </label>
                 <a
@@ -39,24 +39,17 @@ export default function Index() {
                 >
                   https://github.com/FernandoTimo/Backend-Express
                 </a>
-                <code className={styleIndex.PathCode}>
-                  {serverSockets.path}
-                </code>
-                <div className={styleIndex.SendersContainer}>
-                  <button
-                    onClick={handlerSocketChat}
-                    className={styleIndex.Sender}
-                  >
+                <code className={style.PathCode}>{serverSockets.path}</code>
+                <div className={style.SendersContainer}>
+                  <button onClick={handlerSocketChat} className={style.Sender}>
                     Saludar a Todos
                   </button>
                 </div>
                 {messages.messages.length > 0 &&
                   messages.messages.map((message) => (
                     <div>
-                      <label className={styleIndex.SocketID}>
-                        {message.id}:{' '}
-                      </label>
-                      <label className={styleIndex.SocketMessage}>
+                      <label className={style.SocketID}>{message.id}: </label>
+                      <label className={style.SocketMessage}>
                         {message.message}
                       </label>
                     </div>
