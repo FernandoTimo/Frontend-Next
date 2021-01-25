@@ -16,7 +16,9 @@ export default function Index() {
       message.push(saludo);
       setmessages({ messages: message });
     });
-    fetch('http://localhost:4000/products', { method: 'post' });
+    fetch('http://localhost:4000/products', { method: 'post' }).catch((err) =>
+      console.warn(err)
+    );
   }, []);
   const handlerSocketChat = () => {
     socket.emit('saludar', { message: 'Hola a todos!' });
