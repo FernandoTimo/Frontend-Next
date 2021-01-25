@@ -15,7 +15,10 @@
   transition: 0.1s;
 }
 .Back:hover {
-  font-size: 1.4vh;
+  box-shadow: inset 0 0 1.5vh #0003, 0 0 1vh #348cff;
+}
+.Back:active {
+  filter: grayscale(1);
 }
 .PathCode {
   background: #022;
