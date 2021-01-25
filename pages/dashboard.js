@@ -7,9 +7,7 @@ export default function Dashboard() {
       <Header_Main />
       <Body>
         <Section size={1}>
-          <Content center flex={1}>
-            Dashboard
-          </Content>
+          <h1>Dashboard</h1>
         </Section>
       </Body>
     </>
