@@ -32,8 +32,7 @@
   background: transparent;
 }
 ::-webkit-scrollbar-track {
-  /* background: #0003; */
-  filter: invert(1);
+  background: #fff;
   border-radius: 0.5vh;
 }
 ::-webkit-scrollbar-thumb {

@@ -25,9 +25,6 @@
   justify-content: center;
   align-items: center;
 }
-.Section::-webkit-scrollbar-thumb {
-  background: #000;
-}
 .Content {
   background: #000;
   width: 100%;

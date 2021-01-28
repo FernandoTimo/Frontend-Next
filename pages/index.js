@@ -60,6 +60,9 @@ export default function Index() {
             )}
           </Content>
         </Section>
+        <Section bg size={1}>
+          Reproductor
+        </Section>
       </Body>
     </>
   );
