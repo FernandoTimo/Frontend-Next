@@ -1,6 +1,6 @@
 import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
-import { Body, Section, Content } from 'components/Resources/Timoideas';
+import { Body, Section, Content, Video } from 'components/Resources/Timoideas';
 import { useEffect, useState } from 'react';
 import { socket } from 'sockets/socket';
 import fetch from 'node-fetch';
@@ -61,7 +61,7 @@ export default function Index() {
           </Content>
         </Section>
         <Section bg size={1}>
-          Reproductor
+          <Video src="asd"></Video>
         </Section>
       </Body>
     </>

@@ -508,10 +508,85 @@ export function Rainbow({
     </div>
   );
 }
-//                        <--************************************************************************************************ [ Containers ]
-//                 <--************************************************************************************************** [ Containers ]
-//            <--************************************************************************************************** [ Containers ]
-//         <===                                                        [ Containers ]
-//            <--************************************************************************************************** [ Containers ]
-//                 <--************************************************************************************************** [ Containers ]
-//                        <--************************************************************************************************ [ Containers ]
+//                        <--************************************************************************************************ [ REPRODUCTOR DE VIDEO ]
+//                 <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
+//            <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
+//         <===                                                        [ REPRODUCTOR DE VIDEO ]
+//            <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
+//                 <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
+//                        <--************************************************************************************************ [ REPRODUCTOR DE VIDEO ]
+
+export function Video({
+  src,
+  cover,
+  className,
+  width,
+  height,
+  radius,
+  autoPlay = false,
+}) {
+  return (
+    <div
+      className="VideoContainer"
+      style={{
+        borderRadius: radius ? radius : '1vh',
+        height: height ? height + 'vh' : '18vh',
+        width: width ? width + 'vh' : '32vh',
+      }}
+    >
+      <div
+        className="ControlsContainer"
+        style={{
+          borderRadius: radius ? radius : '1vh',
+          height: height ? height + 'vh' : '18vh',
+          width: width ? width + 'vh' : '32vh',
+        }}
+      >
+        <div className="ControlesContainerTop">
+          <div className="ControlesSettingsContainer">
+            <img
+              alt="Settings"
+              src="icons/Settings.png"
+              className="SettingsIcon"
+            />
+          </div>
+          <div className="ControlesVolumenContainer">
+            <div className="ControlesVolumen">
+              <div className="ControlesVolumenBarra">
+                <label>98%</label>
+              </div>
+            </div>
+          </div>
+          <div className="ControlesFullScreenContainer">
+            <img
+              alt="Settings"
+              src="icons/FullScreen.png"
+              className="FullScreenIcon"
+            />
+          </div>
+        </div>
+        <div className="ControlesContainerMid">
+          <div className="ControlesContainerTiempo">
+            <img alt="Atras" src="icons/Tiempo.png" />
+          </div>
+          <div className="ControlesContainerTiempo">
+            <img alt="Atras" src="icons/Tiempo.png" />
+          </div>
+        </div>
+        <div className="ControlesContainerBot">
+          <div className="ControlesContainerDuracionContainer">
+            <div className="ControlesVistaPreviaConainer"></div>
+            <div className="ControlesContainerDuracion">19:32 / 24:12</div>
+          </div>
+          <div className="ControlesContainerLineaContainer">
+            <img
+              alt="Marker"
+              src="icons/TimeMarker.png"
+              className="MarkerIcon"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

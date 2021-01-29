@@ -643,3 +643,152 @@
 //                 <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
 //                        <--************************************************************************************************ [ REPRODUCTOR DE VIDEO ]
 */
+
+.VideoContainer {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ControlsContainer {
+  background: #0008;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ControlesContainerTop {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.ControlesSettingsContainer,
+.ControlesFullScreenContainer {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.SettingsIcon,
+.FullScreenIcon {
+  width: 2vh;
+  cursor: pointer;
+  pointer-events: visible;
+  opacity: 0.9;
+}
+.SettingsIcon:hover,
+.FullScreenIcon:hover {
+  opacity: 1;
+}
+.ControlesVolumenContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 4;
+}
+.ControlesVolumen {
+  height: 1vh;
+  background: #0003;
+  width: 15vh;
+  border-radius: 0.8vh;
+  opacity: 0.9;
+  cursor: pointer;
+  pointer-events: visible;
+  padding: 0.1vh 0.15vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ControlesVolumenBarra {
+  width: 80%;
+  border-radius: 0.5vh;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ControlesVolumenBarra label {
+  color: #555;
+  text-shadow: 0 0 0.2vh #0008;
+  font-size: 1.4vh;
+  font-weight: 700;
+  opacity: 0;
+}
+
+.ControlesVolumen:hover {
+  opacity: 1;
+}
+.ControlesContainerMid {
+  flex: 2;
+  width: 100%;
+  display: flex;
+}
+.ControlesContainerTiempo {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1vh;
+  opacity: 0;
+}
+.ControlesContainerTiempo img {
+  width: 2vh;
+}
+.ControlesContainerTiempo:nth-child(2) {
+  align-self: start;
+  transform: scaleX(-1);
+}
+.ControlesContainerBot {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.ControlesContainerDuracionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+.ControlesVistaPreviaConainer {
+  position: absolute;
+  width: 8vh;
+  height: 4.5vh;
+  background: #fff;
+  border-radius: 0.5vh;
+  margin-bottom: 7vh;
+}
+.ControlesContainerDuracion {
+  flex: 1;
+  color: #fff;
+  border-radius: 0.3vh;
+  padding: 0.3vh 0.7vh;
+  font-size: 1.3vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+}
+.ControlesContainerLineaContainer {
+  height: 100%;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.MarkerIcon {
+  width: 1vh;
+  z-index: 1;
+}
