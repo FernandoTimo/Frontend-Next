@@ -525,6 +525,13 @@ export function Video({
   radius,
   autoPlay = false,
 }) {
+  const [isFullScreen, setisFullScreen] = useState(false);
+  let VideoMediaRef = useRef(null);
+  const toggleFullScreen = () => {
+    isFullScreen
+      ? (document.exitFullscreen(), setisFullScreen(false))
+      : (VideoMediaRef.current.requestFullscreen(), setisFullScreen(true));
+  };
   return (
     <div
       className="VideoContainer"
@@ -541,6 +548,7 @@ export function Video({
           height: height ? height + 'vh' : '18vh',
           width: width ? width + 'vh' : '32vh',
         }}
+        ref={VideoMediaRef}
       >
         <div className="ControlesContainerTop">
           <div className="ControlesSettingsContainer">
@@ -557,7 +565,10 @@ export function Video({
               </div>
             </div>
           </div>
-          <div className="ControlesFullScreenContainer">
+          <div
+            className="ControlesFullScreenContainer"
+            onClick={toggleFullScreen}
+          >
             <img
               alt="Settings"
               src="icons/FullScreen.png"

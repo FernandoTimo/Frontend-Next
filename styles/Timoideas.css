@@ -670,18 +670,25 @@
   flex: 1;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  pointer-events: visible;
+  cursor: pointer;
+  padding: 4%;
+}
+.ControlesFullScreenContainer {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.ControlesSettingsContainer {
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .SettingsIcon,
 .FullScreenIcon {
   width: 2vh;
-  cursor: pointer;
-  pointer-events: visible;
-  opacity: 0.9;
+  opacity: 0.7;
 }
-.SettingsIcon:hover,
-.FullScreenIcon:hover {
+.ControlesSettingsContainer:hover > .SettingsIcon,
+.ControlesFullScreenContainer:hover > .FullScreenIcon {
   opacity: 1;
 }
 .ControlesVolumenContainer {
@@ -689,19 +696,28 @@
   justify-content: center;
   align-items: center;
   flex: 4;
+  pointer-events: visible;
+  cursor: pointer;
+  height: 100%;
+}
+.ControlesVolumenContainer:hover > .ControlesVolumen {
+  opacity: 1 !important;
+  margin-top: -2vh;
 }
 .ControlesVolumen {
+  margin-top: -6vh;
   height: 1vh;
+  opacity: 0 !important;
   background: #0003;
   width: 15vh;
   border-radius: 0.8vh;
   opacity: 0.9;
   cursor: pointer;
-  pointer-events: visible;
   padding: 0.1vh 0.15vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  transition: 0.5s;
 }
 .ControlesVolumenBarra {
   width: 80%;
@@ -713,15 +729,12 @@
   align-items: center;
 }
 .ControlesVolumenBarra label {
+  pointer-events: none;
   color: #555;
   text-shadow: 0 0 0.2vh #0008;
   font-size: 1.4vh;
   font-weight: 700;
   opacity: 0;
-}
-
-.ControlesVolumen:hover {
-  opacity: 1;
 }
 .ControlesContainerMid {
   flex: 2;
@@ -791,4 +804,12 @@
 .MarkerIcon {
   width: 1vh;
   z-index: 1;
+}
+.FullScreen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 0;
+  height: 100vh;
+  width: 100vh;
 }
