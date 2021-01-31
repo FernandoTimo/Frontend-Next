@@ -60,7 +60,7 @@ export default function Index() {
             )}
           </Content>
         </Section>
-        <Section bg size={1}>
+        <Section size={1}>
           <Video src="asd"></Video>
         </Section>
       </Body>

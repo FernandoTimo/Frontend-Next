@@ -528,6 +528,7 @@ export function Video({
   const [isFullScreen, setisFullScreen] = useState(false);
   const [isControls, setisControls] = useState(false);
   const [isSettings, setisSettings] = useState(false);
+  const [TimeLinePosition, setTimeLinePosition] = useState(0);
   let VideoMediaRef = useRef(null);
   const toggleFullScreen = () => {
     isFullScreen
@@ -558,15 +559,28 @@ export function Video({
         onMouseEnter={() => setisControls(!isControls)}
         onMouseLeave={() => setisControls(!isControls)}
       >
-        <div className="ControlesContainerTop">
+        <div
+          className="ControlesContainerTop"
+          style={{
+            background: 'linear-gradient(#0008, transparent)',
+          }}
+        >
           <div className="ControlesSettingsContainer" onClick={toggleSettings}>
             <img
               alt="Settings"
               src="icons/Settings.png"
               className="SettingsIcon"
+              style={{
+                transform: isSettings ? 'rotate(0deg)' : 'rotate(-90deg)',
+                width: isSettings ? '3vh' : '2vh',
+                opacity: isSettings ? 1 : 0.5,
+              }}
             />
           </div>
-          <div className="ControlesVolumenContainer">
+          <div
+            className="ControlesVolumenContainer"
+            style={{ pointerEvents: isSettings ? 'none' : 'visible' }}
+          >
             <div className="ControlesVolumen">
               <div className="ControlesVolumenBarra">
                 <label>98%</label>
@@ -576,6 +590,10 @@ export function Video({
           <div
             className="ControlesFullScreenContainer"
             onClick={toggleFullScreen}
+            style={{
+              opacity: isSettings ? 0 : 1,
+              pointerEvents: isSettings ? 'none' : 'visible',
+            }}
           >
             <img
               alt="Settings"
@@ -594,15 +612,26 @@ export function Video({
                 width: isSettings ? '70%' : '65%',
               }}
             >
-              <div className="SettingsIcons">
+              <div
+                className="SettingsIcons"
+                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
+              >
                 <img alt="Imagen Alternativa" src="icons/Calidad_720.png" />
                 <label>Calidad</label>
               </div>
-              <a href={'icons/Download.png'} download className="SettingsIcons">
+              <a
+                href={'icons/Download.png'}
+                download
+                className="SettingsIcons"
+                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
+              >
                 <img alt="Imagen Alternativa" src="icons/Download.png" />
                 <label>Descargar</label>
               </a>
-              <div className="SettingsIcons">
+              <div
+                className="SettingsIcons"
+                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
+              >
                 <img alt="Imagen Alternativa" src="icons/Subtitulos_eng.png" />
                 <label>Subtítulos</label>
               </div>
@@ -612,17 +641,32 @@ export function Video({
             <img alt="Atras" src="icons/Tiempo.png" />
           </div>
         </div>
-        <div className="ControlesContainerBot">
-          <div className="ControlesContainerDuracionContainer">
+        <div
+          className="ControlesContainerBot"
+          style={{
+            opacity: isSettings ? 0 : 1,
+            background: 'linear-gradient(transparent, #0008)',
+          }}
+          onMouseMove={(e) => {
+            setTimeLinePosition(
+              e.clientX - e.target.getBoundingClientRect().left
+            );
+          }}
+        >
+          <div className="ControlesDuracionContainer">
             <div className="ControlesVistaPreviaConainer"></div>
             <div className="ControlesContainerDuracion">19:32 / 24:12</div>
           </div>
-          <div className="ControlesContainerLineaContainer">
-            <img
-              alt="Marker"
-              src="icons/TimeMarker.png"
-              className="MarkerIcon"
-            />
+          <div className="ControlesLineaContainer">
+            <div className="MarkerIconContainer">
+              <img
+                alt="Marker"
+                src="icons/TimeMarker.png"
+                className="MarkerIcon"
+                style={{ marginLeft: TimeLinePosition + 'px' }}
+              />
+            </div>
+            <div className="TimeLineVideoContainer"></div>
           </div>
         </div>
       </div>

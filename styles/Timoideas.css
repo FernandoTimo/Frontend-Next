@@ -195,7 +195,6 @@
   padding-top: 2vh;
   font-size: 2.5vh;
   pointer-events: visible;
-  transition: 0s;
   border: none;
   transition: 0.1s;
 }
@@ -673,6 +672,7 @@
   pointer-events: visible;
   cursor: pointer;
   padding: 4%;
+  transition: 0.3s;
 }
 .ControlesFullScreenContainer {
   justify-content: flex-end;
@@ -686,11 +686,11 @@
 .FullScreenIcon {
   width: 2vh;
   opacity: 0.7;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 .ControlesSettingsContainer:hover > .SettingsIcon,
 .ControlesFullScreenContainer:hover > .FullScreenIcon {
-  opacity: 1;
+  opacity: 1 !important;
 }
 .ControlesVolumenContainer {
   display: flex;
@@ -719,6 +719,7 @@
   justify-content: flex-start;
   align-items: center;
   transition: 0.5s;
+  padding: 0;
 }
 .ControlesVolumenBarra {
   width: 80%;
@@ -760,18 +761,24 @@
   align-items: center;
   margin-top: -4vh;
   transition: 0.3s;
+  z-index: 1;
+  gap: 1vh;
 }
 .SettingsIcons {
+  transition: 0.2s;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: visible;
   cursor: pointer;
   width: auto;
   height: auto;
   flex-direction: column;
   gap: 0.5vh;
+  background: #0008;
+  padding: 1vh;
+  border-radius: 1vh;
+  min-width: 5vh;
 }
 .SettingsIcons label {
   font-size: 1.2vh;
@@ -779,14 +786,18 @@
   opacity: 0.4;
   transition: 0.4s;
   color: #fff;
+  pointer-events: none;
 }
 .SettingsIcons img {
   width: 4vh;
-  opacity: 0.5;
-  transition: 0.2s;
+  opacity: 0.7;
 }
-.SettingsIcons img:hover,
-.SettingsIcons img:hover ~ label {
+.SettingsIcons:hover {
+  background: #222d;
+  box-shadow: 0 0 1vh #0005;
+}
+.SettingsIcons:hover img,
+.SettingsIcons:hover img ~ label {
   opacity: 1;
 }
 /* .SettingsOn {
@@ -826,14 +837,18 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: 0.3s;
+  pointer-events: visible;
+  cursor: none;
 }
-.ControlesContainerDuracionContainer {
+.ControlesDuracionContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 .ControlesVistaPreviaConainer {
   position: absolute;
@@ -846,28 +861,43 @@
 }
 .ControlesContainerDuracion {
   flex: 1;
-  color: #fffa;
+  color: #fff;
   border-radius: 0.3vh;
   padding: 0.3vh 0.7vh;
   font-size: 1.3vh;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   font-weight: 800;
 }
-.ControlesContainerLineaContainer {
+.ControlesLineaContainer {
   height: 100%;
-  flex: 1;
+  flex: 2;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 0.3vh;
+}
+.ControlesContainerBot:hover > .ControlesLineaContainer .MarkerIconContainer {
+  opacity: 1;
+}
+.MarkerIconContainer {
+  flex: 5;
+  width: 100%;
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  transition: 0.2s;
 }
 .MarkerIcon {
   width: 1vh;
-  z-index: 1;
+  transform: translate3d(1vh, 2vh);
+  margin-left: 1vh;
 }
+
 .FullScreen {
   position: fixed;
   left: 0;
@@ -885,6 +915,12 @@
   overflow: hidden;
 }
 .VideoReal {
-  object-fit: cover;
-  height: 100%;
+  object-fit: cover !important;
+  width: 100%;
+}
+.TimeLineVideoContainer {
+  max-height: 5px;
+  background: #ff2a4e;
+  width: 100%;
+  flex: 1;
 }
