@@ -29,5 +29,6 @@
 ---
 
 - Puedes visitar http://localhost:3000
+  (**El mensaje de bienvenida se mostrará solo si tienes levantado el servidor de express creado con esta plantilla :**)
 
   ![Frontend](https://i.ibb.co/hgZCTSN/Frontend-Sockets.jpg)
