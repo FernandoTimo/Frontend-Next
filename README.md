@@ -29,6 +29,6 @@
 ---
 
 - Puedes visitar http://localhost:3000
-- **El mensaje de bienvenida solo se mostrará si levantaste el servidor de Express creado con esta plantilla https://github.com/FernandoTimo/Backend-Express **)
+- **El mensaje de bienvenida solo se mostrará si levantaste el servidor de Express creado con esta plantilla: https://github.com/FernandoTimo/Backend-Express**
 
   ![Frontend](https://i.ibb.co/hgZCTSN/Frontend-Sockets.jpg)
