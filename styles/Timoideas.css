@@ -80,6 +80,7 @@
   pointer-events: none;
   display: flex;
   justify-content: center;
+  transition: 0.2s;
 }
 /*                        <--************************************************************************************************ [ NAVEGACIÓN ]
 //                 <--************************************************************************************************** [ NAVEGACIÓN ]
@@ -686,6 +687,7 @@
 .FullScreenIcon {
   width: 2vh;
   opacity: 0.7;
+  transition: 0.2s;
 }
 .ControlesSettingsContainer:hover > .SettingsIcon,
 .ControlesFullScreenContainer:hover > .FullScreenIcon {
@@ -740,22 +742,83 @@
   flex: 2;
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.ControlesSettingsMenuContainer {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ControlesSettingsMenu {
+  width: 70%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -4vh;
+  transition: 0.3s;
+}
+.SettingsIcons {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: visible;
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  gap: 0.5vh;
+}
+.SettingsIcons label {
+  font-size: 1.2vh;
+  font-weight: 700;
+  opacity: 0.4;
+  transition: 0.4s;
+  color: #fff;
+}
+.SettingsIcons img {
+  width: 4vh;
+  opacity: 0.5;
+  transition: 0.2s;
+}
+.SettingsIcons img:hover,
+.SettingsIcons img:hover ~ label {
+  opacity: 1;
+}
+/* .SettingsOn {
+  animation: settings 0.5s forwards;
+}
+.SettingsOff {
+  animation: settings 0.5s forwards reverse;
+}
+@keyframes settings {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+} */
 .ControlesContainerTiempo {
   display: flex;
-  flex: 1;
-  height: 100%;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 0 1vh;
+  background: #fff2;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
   opacity: 0;
+  position: absolute;
 }
 .ControlesContainerTiempo img {
   width: 2vh;
-}
-.ControlesContainerTiempo:nth-child(2) {
-  align-self: start;
-  transform: scaleX(-1);
 }
 .ControlesContainerBot {
   flex: 1;
@@ -780,10 +843,11 @@
   background: #fff;
   border-radius: 0.5vh;
   margin-bottom: 7vh;
+  opacity: 0;
 }
 .ControlesContainerDuracion {
   flex: 1;
-  color: #fff;
+  color: #fffa;
   border-radius: 0.3vh;
   padding: 0.3vh 0.7vh;
   font-size: 1.3vh;

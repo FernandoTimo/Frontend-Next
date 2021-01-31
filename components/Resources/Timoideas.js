@@ -526,11 +526,16 @@ export function Video({
   autoPlay = false,
 }) {
   const [isFullScreen, setisFullScreen] = useState(false);
+  const [isControls, setisControls] = useState(false);
+  const [isSettings, setisSettings] = useState(false);
   let VideoMediaRef = useRef(null);
   const toggleFullScreen = () => {
     isFullScreen
       ? (document.exitFullscreen(), setisFullScreen(false))
       : (VideoMediaRef.current.requestFullscreen(), setisFullScreen(true));
+  };
+  const toggleSettings = () => {
+    setisSettings(!isSettings);
   };
   return (
     <div
@@ -547,11 +552,14 @@ export function Video({
           borderRadius: radius ? radius : '1vh',
           height: height ? height + 'vh' : '18vh',
           width: width ? width + 'vh' : '32vh',
+          opacity: isControls ? 1 : 0,
         }}
+        onMouseEnter={() => setisControls(!isControls)}
+        onMouseLeave={() => setisControls(!isControls)}
         ref={VideoMediaRef}
       >
         <div className="ControlesContainerTop">
-          <div className="ControlesSettingsContainer">
+          <div className="ControlesSettingsContainer" onClick={toggleSettings}>
             <img
               alt="Settings"
               src="icons/Settings.png"
@@ -577,8 +585,28 @@ export function Video({
           </div>
         </div>
         <div className="ControlesContainerMid">
-          <div className="ControlesContainerTiempo">
-            <img alt="Atras" src="icons/Tiempo.png" />
+          <div className="ControlesSettingsMenuContainer">
+            <div
+              className="ControlesSettingsMenu"
+              style={{
+                marginTop: isSettings ? '0' : '-2vh',
+                opacity: isSettings ? 1 : 0,
+                width: isSettings ? '70%' : '65%',
+              }}
+            >
+              <div className="SettingsIcons">
+                <img alt="Imagen Alternativa" src="icons/Calidad_720.png" />
+                <label>Calidad</label>
+              </div>
+              <a href={'icons/Download.png'} download className="SettingsIcons">
+                <img alt="Imagen Alternativa" src="icons/Download.png" />
+                <label>Descargar</label>
+              </a>
+              <div className="SettingsIcons">
+                <img alt="Imagen Alternativa" src="icons/Subtitulos_eng.png" />
+                <label>Subtítulos</label>
+              </div>
+            </div>
           </div>
           <div className="ControlesContainerTiempo">
             <img alt="Atras" src="icons/Tiempo.png" />
