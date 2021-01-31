@@ -542,8 +542,8 @@ export function Video({
       className="VideoContainer"
       style={{
         borderRadius: radius ? radius : '1vh',
-        height: height ? height + 'vh' : '18vh',
-        width: width ? width + 'vh' : '32vh',
+        height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
+        width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
       }}
       ref={VideoMediaRef}
     >
@@ -551,8 +551,8 @@ export function Video({
         className="VideoControlsContainer"
         style={{
           borderRadius: radius ? radius : '1vh',
-          height: height ? height + 'vh' : '18vh',
-          width: width ? width + 'vh' : '32vh',
+          height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
+          width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
           opacity: isControls ? 1 : 0,
         }}
         onMouseEnter={() => setisControls(!isControls)}
@@ -630,8 +630,8 @@ export function Video({
         className="VideoMediaContainer"
         style={{
           borderRadius: radius ? radius : '1vh',
-          height: height ? height + 'vh' : '18vh',
-          width: width ? width + 'vh' : '32vh',
+          height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
+          width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
         }}
       >
         <video src="videos/Video.mp4" className="VideoReal" autoPlay />
