@@ -545,9 +545,10 @@ export function Video({
         height: height ? height + 'vh' : '18vh',
         width: width ? width + 'vh' : '32vh',
       }}
+      ref={VideoMediaRef}
     >
       <div
-        className="ControlsContainer"
+        className="VideoControlsContainer"
         style={{
           borderRadius: radius ? radius : '1vh',
           height: height ? height + 'vh' : '18vh',
@@ -556,7 +557,6 @@ export function Video({
         }}
         onMouseEnter={() => setisControls(!isControls)}
         onMouseLeave={() => setisControls(!isControls)}
-        ref={VideoMediaRef}
       >
         <div className="ControlesContainerTop">
           <div className="ControlesSettingsContainer" onClick={toggleSettings}>
@@ -625,6 +625,16 @@ export function Video({
             />
           </div>
         </div>
+      </div>
+      <div
+        className="VideoMediaContainer"
+        style={{
+          borderRadius: radius ? radius : '1vh',
+          height: height ? height + 'vh' : '18vh',
+          width: width ? width + 'vh' : '32vh',
+        }}
+      >
+        <video src="videos/Video.mp4" className="VideoReal" autoPlay />
       </div>
     </div>
   );

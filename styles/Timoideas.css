@@ -80,7 +80,6 @@
   pointer-events: none;
   display: flex;
   justify-content: center;
-  transition: 0.2s;
 }
 /*                        <--************************************************************************************************ [ NAVEGACIÓN ]
 //                 <--************************************************************************************************** [ NAVEGACIÓN ]
@@ -651,14 +650,14 @@
   justify-content: center;
   align-items: center;
 }
-.ControlsContainer {
-  background: #0008;
+.VideoControlsContainer {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  transition: 0.2s;
 }
 .ControlesContainerTop {
   flex: 1;
@@ -876,4 +875,15 @@
   border-radius: 0;
   height: 100vh;
   width: 100vh;
+}
+.VideoMediaContainer {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+.VideoReal {
+  object-fit: cover;
 }
