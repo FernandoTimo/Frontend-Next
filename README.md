@@ -12,7 +12,7 @@
 
 1. #### Clona este repositorio:
 
-`git clone https://github.com/FernandoTimo/Setup-Express NombreDeMiAplicacion`
+`git clone https://github.com/FernandoTimo/Frontend-Next NombreDeMiAplicacion`
 
 2. #### Ubícate en el directorio:
 
@@ -29,6 +29,6 @@
 ---
 
 - Puedes visitar http://localhost:3000
-  (**El mensaje de bienvenida se mostrará solo si tienes levantado el servidor de express creado con esta plantilla :**)
+- (**El mensaje de bienvenida solo se mostrará si levantaste el servidor de Express creado con esta plantilla https://github.com/FernandoTimo/Backend-Express:**)
 
   ![Frontend](https://i.ibb.co/hgZCTSN/Frontend-Sockets.jpg)
