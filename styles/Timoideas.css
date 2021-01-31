@@ -849,6 +849,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
+  transition: 0.2s;
 }
 .ControlesVistaPreviaConainer {
   position: absolute;
@@ -880,6 +881,9 @@
   align-items: center;
   flex-direction: column;
   gap: 0.3vh;
+}
+.ControlesContainerBot:hover > .ControlesDuracionContainer {
+  opacity: 0;
 }
 .ControlesContainerBot:hover > .ControlesLineaContainer .MarkerIconContainer {
   opacity: 1;
