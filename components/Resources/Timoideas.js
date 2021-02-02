@@ -606,6 +606,7 @@ export function Video({
         </div>
         <div
           className="ControlesContainerMid"
+          onDoubleClick={toggleFullScreen}
           onClick={() => {
             isRunning
               ? (VideoRef.current.pause(), setisRunning(!isRunning))
