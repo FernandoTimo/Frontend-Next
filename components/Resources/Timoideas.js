@@ -525,11 +525,13 @@ export function Video({
   radius,
   autoPlay = false,
 }) {
+  const [isRunning, setisRunning] = useState(autoPlay);
   const [isFullScreen, setisFullScreen] = useState(false);
   const [isControls, setisControls] = useState(false);
   const [isSettings, setisSettings] = useState(false);
   const [TimeLinePosition, setTimeLinePosition] = useState(0);
   let VideoMediaRef = useRef(null);
+  let VideoRef = useRef(null);
   const toggleFullScreen = () => {
     isFullScreen
       ? (document.exitFullscreen(), setisFullScreen(false))
@@ -602,7 +604,14 @@ export function Video({
             />
           </div>
         </div>
-        <div className="ControlesContainerMid">
+        <div
+          className="ControlesContainerMid"
+          onClick={() => {
+            isRunning
+              ? (VideoRef.current.pause(), setisRunning(!isRunning))
+              : (VideoRef.current.play(), setisRunning(!isRunning));
+          }}
+        >
           <div className="ControlesSettingsMenuContainer">
             <div
               className="ControlesSettingsMenu"
@@ -637,9 +646,15 @@ export function Video({
               </div>
             </div>
           </div>
-          <div className="ControlesContainerTiempo">
-            <img alt="Atras" src="icons/Tiempo.png" />
-          </div>
+          {isRunning ? (
+            <div className="ControlesContainerMediaStates">
+              <img alt="Atras" src="icons/Pause.png" />
+            </div>
+          ) : (
+            <div className="ControlesContainerMediaState">
+              <img alt="Atras" src="icons/Play.png" />
+            </div>
+          )}
         </div>
         <div
           className="ControlesContainerBot"
@@ -647,17 +662,19 @@ export function Video({
             opacity: isSettings ? 0 : 1,
             background: 'linear-gradient(transparent, #0008)',
           }}
-          onMouseMove={(e) => {
-            setTimeLinePosition(
-              e.clientX - e.target.getBoundingClientRect().left
-            );
-          }}
         >
           <div className="ControlesDuracionContainer">
             <div className="ControlesVistaPreviaConainer"></div>
-            <div className="ControlesContainerDuracion">19:32 / 24:12</div>
+            <label className="ControlesDuracion">19:32 / 24:12</label>
           </div>
-          <div className="ControlesLineaContainer">
+          <div
+            className="ControlesLineaContainer"
+            onMouseMove={(e) => {
+              setTimeLinePosition(
+                e.clientX - e.target.getBoundingClientRect().left
+              );
+            }}
+          >
             <div className="MarkerIconContainer">
               <img
                 alt="Marker"
@@ -678,7 +695,12 @@ export function Video({
           width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
         }}
       >
-        <video src="videos/Video.mp4" className="VideoReal" autoPlay />
+        <video
+          src="videos/Video.mp4"
+          className="VideoReal"
+          autoPlay={autoPlay}
+          ref={VideoRef}
+        />
       </div>
     </div>
   );
