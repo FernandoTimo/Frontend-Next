@@ -708,18 +708,15 @@
 .ControlesVolumen {
   margin-top: -6vh;
   height: 1vh;
-  opacity: 0 !important;
+  opacity: 0;
   background: #0003;
-  width: 15vh;
+  background: #fa0;
+  min-width: 15vh;
   border-radius: 0.8vh;
-  opacity: 0.9;
   cursor: pointer;
-  padding: 0.1vh 0.15vh;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   transition: 0.5s;
-  padding: 0;
 }
 .ControlesVolumenBarra {
   width: 80%;
@@ -732,7 +729,7 @@
 }
 .ControlesVolumenBarra label {
   pointer-events: none;
-  color: #555;
+  color: #000;
   text-shadow: 0 0 0.2vh #0008;
   font-size: 1.4vh;
   font-weight: 700;

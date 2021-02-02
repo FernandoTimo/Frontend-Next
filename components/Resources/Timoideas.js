@@ -530,6 +530,7 @@ export function Video({
   const [isControls, setisControls] = useState(false);
   const [isSettings, setisSettings] = useState(false);
   const [TimeLinePosition, setTimeLinePosition] = useState(0);
+  const [VolumenPosition, setVolumenPosition] = useState(0);
   let VideoMediaRef = useRef(null);
   let VideoRef = useRef(null);
   const toggleFullScreen = () => {
@@ -540,6 +541,9 @@ export function Video({
   const toggleSettings = () => {
     setisSettings(!isSettings);
   };
+  useEffect(() => {
+    VideoRef.current.volume = 1;
+  }, []);
   return (
     <div
       className="VideoContainer"
@@ -583,8 +587,24 @@ export function Video({
             className="ControlesVolumenContainer"
             style={{ pointerEvents: isSettings ? 'none' : 'visible' }}
           >
-            <div className="ControlesVolumen">
-              <div className="ControlesVolumenBarra">
+            <div
+              className="ControlesVolumen"
+              onMouseMove={(e) => {
+                console.log(e.offsetWidth);
+                console.log(e.clientX - e.target.getBoundingClientRect().left);
+                setVolumenPosition(
+                  e.clientX - e.target.getBoundingClientRect().left
+                );
+                VideoRef.current.volume =
+                  Math.floor(
+                    e.clientX - e.target.getBoundingClientRect().left
+                  ) / 100;
+              }}
+            >
+              <div
+                className="ControlesVolumenBarra"
+                style={{ width: VolumenPosition + 'px' }}
+              >
                 <label>98%</label>
               </div>
             </div>
