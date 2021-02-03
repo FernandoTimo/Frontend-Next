@@ -553,6 +553,16 @@ export function Video({
         width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
       }}
       ref={VideoMediaRef}
+      onMouseLeave={() => {
+        setisControls(false);
+      }}
+      onMouseMove={() => {
+        !isControls && setisControls(true);
+        let timer = setTimeout(() => {
+          setisControls(false);
+        }, 1000);
+        clearTimeout(timer);
+      }}
     >
       <div
         className="VideoControlsContainer"
@@ -561,14 +571,15 @@ export function Video({
           height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
           width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
           opacity: isControls ? 1 : 0,
+          cursor: isControls ? 'pointer' : 'none',
         }}
-        onMouseEnter={() => setisControls(!isControls)}
-        onMouseLeave={() => setisControls(!isControls)}
       >
         <div
           className="ControlesContainerTop"
           style={{
-            background: 'linear-gradient(#0008, transparent)',
+            background: isControls
+              ? 'linear-gradient(#0008, transparent)'
+              : 'transparent',
           }}
         >
           <div className="ControlesSettingsContainer" onClick={toggleSettings}>
@@ -599,6 +610,10 @@ export function Video({
                   Math.floor(
                     e.clientX - e.target.getBoundingClientRect().left
                   ) / 100;
+              }}
+              style={{
+                width: isFullScreen ? '40vh' : '15vh',
+                height: isFullScreen ? '3vh' : '1vh',
               }}
             >
               <div
@@ -681,7 +696,9 @@ export function Video({
           className="ControlesContainerBot"
           style={{
             opacity: isSettings ? 0 : 1,
-            background: 'linear-gradient(transparent, #0008)',
+            background: isControls
+              ? 'linear-gradient(transparent, #0008)'
+              : 'transparent',
           }}
         >
           <div className="ControlesDuracionContainer">

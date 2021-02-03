@@ -703,16 +703,13 @@
 }
 .ControlesVolumenContainer:hover > .ControlesVolumen {
   opacity: 1 !important;
-  margin-top: -2vh;
+  margin-top: 0;
 }
 .ControlesVolumen {
-  margin-top: -6vh;
-  height: 1vh;
+  margin-top: -10vh;
   opacity: 0;
   background: #0003;
-  background: #fa0;
-  min-width: 15vh;
-  border-radius: 0.8vh;
+  border-radius: 1vh;
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
@@ -722,7 +719,7 @@
   width: 80%;
   border-radius: 0.5vh;
   height: 100%;
-  background: #fff;
+  background: #fffa;
   display: flex;
   justify-content: center;
   align-items: center;
