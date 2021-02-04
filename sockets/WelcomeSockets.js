@@ -1,5 +1,4 @@
 import { socket } from 'sockets/socket';
-import fetch from 'node-fetch';
 
 export default function WelcomeSockets(setserverSockets, setmessages) {
   try {
@@ -11,7 +10,13 @@ export default function WelcomeSockets(setserverSockets, setmessages) {
       message.push(saludo);
       setmessages({ messages: message });
     });
-    fetch('http://localhost:4000/products', { method: 'post' });
+  } catch ({ message }) {
+    console.warn(message);
+  }
+}
+export function handlerSocketChat() {
+  try {
+    socket.emit('saludar', { message: 'Hola a todos!' });
   } catch ({ message }) {
     console.warn(message);
   }

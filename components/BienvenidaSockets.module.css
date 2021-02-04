@@ -45,3 +45,9 @@
   font-weight: 500;
   color: #f55;
 }
+.Sugerencia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

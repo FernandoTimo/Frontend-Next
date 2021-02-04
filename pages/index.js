@@ -2,6 +2,7 @@ import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
 import { Body, Section, Content } from 'components/Resources/Timoideas';
 import BienvenidaSockets from 'components/BienvenidaSockets';
+import { useEffect } from 'react';
 export default function Index() {
   return (
     <>
