@@ -1,0 +1,6 @@
+**/.vscode/
+/node_modules
+.next
+.vercel
+.git
+desktop.ini

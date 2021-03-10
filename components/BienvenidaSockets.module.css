@@ -1,0 +1,53 @@
+.PathCode {
+  background: #022;
+  padding: 0.5vh 1vh;
+  border-radius: 0.5vh;
+  cursor: default;
+  color: #0effaf;
+  margin: 1vh;
+  text-align: center;
+}
+.PathCode::selection {
+  background: #0effaf55 !important;
+  text-align: center;
+}
+.WelcomeMessage {
+  font-size: 2.5vh;
+  font-weight: 700;
+  margin: 1vh;
+  text-align: center;
+}
+.Sender {
+  padding: 0.5vh 1vh;
+  margin: 0.5vh 1vh;
+  background: linear-gradient(#0e9fff, #0086df);
+  border-radius: 0.5vh;
+  border: 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5vh;
+  outline: 0;
+  transition: 0.1s;
+  margin: 2vh;
+}
+.Sender:hover {
+  opacity: 0.8;
+}
+.Sender:active {
+  opacity: 1;
+}
+.SocketID {
+  font-size: 1.5vh;
+  font-weight: 700;
+}
+.SocketMessage {
+  font-size: 1.3vh;
+  font-weight: 500;
+  color: #f55;
+}
+.Sugerencia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

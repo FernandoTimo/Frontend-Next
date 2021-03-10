@@ -1,0 +1,39 @@
+.Back {
+  color: #fff !important;
+  font-size: 1.3vh;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 5vh;
+  border-radius: 1vh;
+  padding: 1vh 2vh;
+  background: #348cff;
+  box-shadow: 0 0 1vh #348cff88;
+  transition: 0.1s;
+}
+.Back:hover {
+  box-shadow: inset 0 0 1.5vh #0003, 0 0 1vh #348cff;
+}
+.Back:active {
+  filter: grayscale(1);
+}
+.PathCode {
+  background: #022;
+  padding: 1vh 1vh;
+  border-radius: 1vh;
+  cursor: default;
+  color: #0effaf;
+  margin: 1vh;
+}
+.PathCode path {
+  background: #0effaf;
+  color: #022;
+  padding: 0.2vh 0.8vh;
+  border-radius: 0.5vh;
+}
+.PathCode::selection {
+  background: #0effaf55 !important;
+}

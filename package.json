@@ -1,0 +1,20 @@
+{
+  "name": "next",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "FernandoTimo",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "next": "^10.0.8",
+    "node-fetch": "^2.6.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "socket.io-client": "^4.0.0",
+    "swr": "^0.5.1"
+  }
+}

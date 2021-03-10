@@ -1,0 +1,954 @@
+/*                        <--************************************************************************************************ [ CONTENEDORES ]
+//                 <--************************************************************************************************** [ CONTENEDORES ]
+//            <--************************************************************************************************** [ CONTENEDORES ]
+//         <===                                                        [ CONTENEDORES ]
+//            <--************************************************************************************************** [ CONTENEDORES ]
+//                 <--************************************************************************************************** [ CONTENEDORES ]
+//                        <--************************************************************************************************ [ CONTENEDORES ]
+*/
+* {
+  box-sizing: border-box;
+}
+.c {
+  justify-content: center;
+  align-items: center;
+}
+.Body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.Section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Content {
+  background: #000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.Header {
+  display: flex;
+  position: fixed;
+  align-self: flex-start;
+  width: 100vw;
+}
+.Footer {
+  display: flex;
+  position: absolute;
+  align-self: flex-end;
+  width: 100vw;
+}
+/*                        <--************************************************************************************************ [ MODALES ]
+//                 <--************************************************************************************************** [ MODALES ]
+//            <--************************************************************************************************** [ MODALES ]
+//         <===                                                        [ MODALES ]
+//            <--************************************************************************************************** [ MODALES ]
+//                 <--************************************************************************************************** [ MODALES ]
+//                        <--************************************************************************************************ [ MODALES ]
+*/
+.ModalsContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+}
+.ModalContainer {
+  pointer-events: visible;
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+}
+.ControlsContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: transparent;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+/*                        <--************************************************************************************************ [ NAVEGACIÓN ]
+//                 <--************************************************************************************************** [ NAVEGACIÓN ]
+//            <--************************************************************************************************** [ NAVEGACIÓN ]
+//         <===                                                        [ NAVEGACIÓN ]
+//            <--************************************************************************************************** [ NAVEGACIÓN ]
+//                 <--************************************************************************************************** [ NAVEGACIÓN ]
+//                        <--************************************************************************************************ [ NAVEGACIÓN ]
+*/
+
+.NavigationContainer {
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  justify-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.NavigationLabel {
+  pointer-events: visible;
+  position: fixed;
+  cursor: pointer;
+  font-size: 2vh;
+  transition: 0.2s ease-out;
+  z-index: 2;
+  margin: 2vh 3vh;
+}
+.NavigationLabel:hover {
+  transform: scale(1.05);
+}
+/* ----- */
+.NavigateContainer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00000001;
+  animation: nav 0.3s forwards;
+  align-self: center;
+  justify-self: center;
+  transform-origin: center;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(1vh);
+  flex-direction: column;
+}
+@keyframes nav {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+/* --- */
+.HostNameRouter {
+  pointer-events: visible;
+  cursor: pointer;
+  margin-bottom: 6vh;
+  position: absolute;
+  z-index: 1;
+  width: 4.5vh;
+  font-weight: 400;
+  font-size: 1.5vh;
+  padding: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1vh;
+  transition: 0.1s;
+}
+.HostNameRouter:hover {
+  transform: scale(0.98);
+  font-size: 1.6vh;
+}
+.HostNameRouter:hover ~ .RouteInput {
+  transform: scale(0.98);
+}
+.HostNameRouter:hover > .RouterBox {
+  transform: scale(0.98);
+}
+.HostNameRouter:active ~ .RouteInput {
+  transform: scale(0.96);
+}
+.HostNameRouter:active {
+  transform: scale(0.96);
+}
+.HostNameRouter::selection {
+  background: transparent;
+}
+.RouterInputContainer {
+  border-radius: 1vh;
+  width: 50vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.RouteInput {
+  justify-self: flex-end;
+  width: 100%;
+  height: 8vh;
+  border-radius: 1vh;
+  text-align: center;
+  outline: none;
+  font-weight: 600;
+  padding: 0.5vh 0;
+  padding-top: 2vh;
+  font-size: 2.5vh;
+  pointer-events: visible;
+  border: none;
+  transition: 0.1s;
+}
+.RouterContainer {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  max-height: 70vh;
+  width: 50vh;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  pointer-events: visible;
+}
+.RouterContainer::-webkit-scrollbar {
+  display: none;
+}
+.RouterBoxContainer {
+  margin-top: 1vh;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 48vh;
+  border-radius: 1vh;
+}
+.RouterBoxContainer a {
+  width: 100%;
+}
+.RouterBox {
+  position: relative;
+  width: 95%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: visible;
+  margin: 0.5vh;
+  transition: 0.1s;
+  background: #022;
+  padding: 1vh 1vh;
+  border-radius: 1vh;
+  color: #0effaf;
+  margin: 1vh;
+}
+.RouterBox:hover {
+  text-shadow: 0 0 1vh #0effaf;
+}
+.RouterBox:active {
+  opacity: 0.5;
+  /* display: none; */
+}
+/* .RouteContainer::-webkit-scrollbar {
+  display: none;
+} */
+
+/*                        <--************************************************************************************************ [ CARDS ]
+//                 <--************************************************************************************************** [ CARDS ]
+//            <--************************************************************************************************** [ CARDS ]
+//         <===                                                        [ CARDS ]
+//            <--************************************************************************************************** [ CARDS ]
+//                 <--************************************************************************************************** [ CARDS ]
+//                        <--************************************************************************************************ [ CARDS ]
+*/
+
+.Card {
+  min-width: 30vw;
+  min-height: 40vh;
+  max-width: 95vw;
+  max-height: 90vh;
+  border-radius: 0.5vh;
+  background: #fff;
+  box-shadow: 0 0 1vh #ededed, inset 0.5vh 0.5vh 1vh #fff,
+    -0.2vh -0.2vh 1vh #fafafa;
+  display: flex;
+  margin: 1vh;
+}
+
+.Form {
+  box-sizing: border-box;
+  align-self: center;
+  justify-self: center;
+  width: 26vh;
+  height: auto;
+  margin: 1vh;
+  padding: 1vh;
+  max-height: 80vh;
+  border: 0.2vh solid springgreen;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+.TitleFormContainer {
+  margin: 1vh;
+  margin-bottom: 2vh;
+  box-sizing: border-box;
+  background: #111;
+  height: 4vh;
+  width: auto;
+  padding: 0 1.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5vh;
+  pointer-events: none;
+}
+.TitleForm {
+  font-size: 1.8vh;
+  color: #fafafa;
+}
+/*                        <--************************************************************************************************ [ INPUTS ]
+//                 <--************************************************************************************************** [ INPUTS ]
+//            <--************************************************************************************************** [ INPUTS ]
+//         <===                                                        [ INPUTS ]
+//            <--************************************************************************************************** [ INPUTS ]
+//                 <--************************************************************************************************** [ INPUTS ]
+//                        <--************************************************************************************************ [ INPUTS ]
+*/
+.input_1 {
+  box-sizing: content-box;
+  display: flex;
+  justify-content: center;
+  height: 5vh;
+  /* background: #000; */
+  width: 15vw;
+  padding: 0 1vw;
+  border-radius: 1vh;
+  overflow: hidden;
+  margin-top: 1.5vh;
+}
+.input_1 label {
+  position: absolute;
+  padding: 0 0.5vw;
+  border-radius: 0.5vh;
+  pointer-events: none;
+  align-self: center;
+  background: transparent;
+  font-size: 1.8vh;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s ease-in;
+}
+.input_1 input {
+  background: transparent;
+}
+.input_1 input:focus ~ label {
+  margin-top: -1vh;
+  background: #232323;
+  color: #fafafa;
+  font-size: 1.5vh;
+}
+.input_1 input:focus:invalid ~ label {
+  background: #ff7272;
+  color: #fafafa;
+  font-size: 1.2vh;
+}
+.input_1 input:valid ~ label {
+  background: #00e78e;
+  color: #fafafa;
+  font-size: 1.2vh;
+  align-self: start;
+}
+
+.input_1 input:focus ~ span {
+  width: 10vw;
+  height: 0.3vh;
+  position: absolute;
+  opacity: 1;
+}
+.input_1 input:focus:invalid ~ span {
+  background: #ff7272;
+  opacity: 1;
+}
+.input_1 input:valid ~ span {
+  background: #00e78e;
+  opacity: 1;
+}
+.input_1 input::-webkit-inner-spin-button {
+  appearance: none;
+}
+.input_1 input:focus ~ span {
+  width: 8vw;
+  height: 0.3vh;
+  margin-top: 0;
+}
+.input_1 input {
+  position: relative;
+  text-align: center;
+  align-self: flex-end;
+  min-width: 80%;
+  width: auto;
+  height: 3.5vh;
+  border: none;
+  outline: none;
+  font-size: 1.5vh;
+  font-weight: 600;
+  transition: 0.3s;
+  text-transform: capitalize;
+  top: -0.4vh;
+}
+.input_1 input:focus {
+  font-size: 1.8vh;
+  background: transparent;
+}
+.input_1 span {
+  margin-top: -0.5vh;
+  align-self: flex-end;
+  pointer-events: none;
+  position: absolute;
+  height: 0.2vh;
+  width: 6vw;
+  background: #555;
+  z-index: 2;
+  transition: 0.2s;
+}
+/*
+                        <--************************************************************************************************ [ BOTONOES ]
+//                 <--************************************************************************************************** [ BOTONOES ]
+//            <--************************************************************************************************** [ BOTONOES ]
+//         <===                                                        [ BOTONOES ]
+//            <--************************************************************************************************** [ BOTONOES ]
+//                 <--************************************************************************************************** [ BOTONOES ]
+//                        <--************************************************************************************************ [ BOTONOES ]
+*/
+/* -------------------------------------------------------- */
+.Boton_1 {
+  margin: 1vh;
+  margin-top: 3vh;
+  min-width: 10vh;
+  min-height: 4vh;
+  width: auto;
+  height: 2vh;
+  background: #000;
+  border-radius: 0.2vh;
+  border: none;
+  box-shadow: 0 0 1vh #ddd;
+  outline: none;
+  transition: 0.1s;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0 1vw;
+}
+.Boton_1:hover {
+  transform: scale(1.01);
+}
+.Boton_1:active {
+  box-shadow: 0 0 2vh #bbb;
+  transform: scale(0.99);
+}
+.Boton_1 div {
+  color: #fafafa;
+  font-weight: 600;
+  pointer-events: none;
+  font-size: 1.5vh;
+}
+.Boton_1 span {
+  position: absolute;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+@keyframes riples {
+  0% {
+    opacity: 0.4;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 50vh;
+    height: 50vh;
+  }
+}
+/*
+                        <--************************************************************************************************ [ SPINNERS ]
+//                 <--************************************************************************************************** [ SPINNERS ]
+//            <--************************************************************************************************** [ SPINNERS ]
+//         <===                                                        [ SPINNERS ]
+//            <--************************************************************************************************** [ SPINNERS ]
+//                 <--************************************************************************************************** [ SPINNERS ]
+//                        <--************************************************************************************************ [ SPINNERS ]
+*/
+
+.SpinerContainer {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 7vh;
+  height: 7vh;
+  grid-template-rows: 1fr 1fr;
+  box-sizing: content-box;
+  animation: rotate linear infinite;
+  border-radius: 50%;
+}
+.Cabeza {
+  width: 7vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -0.4vh;
+  align-items: center;
+}
+.Falda {
+  position: relative;
+  top: -0.5vh;
+  width: 7vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 0.6vh;
+}
+.Elementos {
+  width: 3.3vh;
+  height: 3.3vh;
+  border-radius: 50%;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*--------------------------------------------------------------------------------------------------*/
+.SpinnerRainbowContainer {
+  background: linear-gradient(
+    #fc5,
+    #f70,
+    #f35,
+    #d633ff,
+    #8422aa,
+    #23a,
+    #18a,
+    #6fc,
+    #df5
+  );
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotate linear infinite;
+  /* filter: saturate(2); */
+}
+.SpinnerRainbowContainer span {
+  width: 60%;
+  height: 60%;
+  background: #fff;
+  border-radius: 50%;
+}
+/*
+                        <--************************************************************************************************ [ CARROUSEL ]
+//                 <--************************************************************************************************** [ CARROUSEL ]
+//            <--************************************************************************************************** [ CARROUSEL ]
+//         <===                                                        [ CARROUSEL ]
+//            <--************************************************************************************************** [ CARROUSEL ]
+//                 <--************************************************************************************************** [ CARROUSEL ]
+//                        <--************************************************************************************************ [ CARROUSEL ]
+*/
+.CarrouselContainer {
+  /* max-width: 100%; */
+  width: 50vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  flex-direction: row;
+}
+.Carrousel {
+  width: 500vw;
+  overflow-x: scroll;
+  height: 100%;
+  display: flex;
+  background: #ff6565;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+/* ClassNames */
+
+.RainbowContainer {
+  background: linear-gradient(to right, #ff61ab, #ff6d6d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  animation: ramanecer 0.8s 0.8s forwards;
+}
+.RainbowContainer:hover {
+  filter: brightness(0.7);
+}
+.Rainbow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 1vh #000;
+  filter: brightness(0.7);
+
+  /* border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to left, #00c853, #b2ff59);
+  border-radius: 1vh; */
+}
+@keyframes ramanecer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* .Rainbow * {
+  cursor: pointer;
+  background: linear-gradient(45deg, red, orange);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  display: block;
+} */
+/*
+//                        <--************************************************************************************************ [ REPRODUCTOR DE VIDEO ]
+//                 <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
+//            <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
+//         <===                                                        [ REPRODUCTOR DE VIDEO ]
+//            <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
+//                 <--************************************************************************************************** [ REPRODUCTOR DE VIDEO ]
+//                        <--************************************************************************************************ [ REPRODUCTOR DE VIDEO ]
+*/
+
+.VideoContainer {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.VideoControlsContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  transition: 0.2s;
+}
+.ControlesContainerTop {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.ControlesSettingsContainer,
+.ControlesFullScreenContainer {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  pointer-events: visible;
+  cursor: pointer;
+  padding: 4%;
+  transition: 0.3s;
+}
+.ControlesFullScreenContainer {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.ControlesSettingsContainer {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.SettingsIcon,
+.FullScreenIcon {
+  width: 2vh;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+.ControlesSettingsContainer:hover > .SettingsIcon,
+.ControlesFullScreenContainer:hover > .FullScreenIcon {
+  opacity: 1 !important;
+}
+.ControlesVolumenContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 4;
+  pointer-events: visible;
+  cursor: pointer;
+  height: 100%;
+}
+.ControlesVolumenContainer:hover > .ControlesVolumen {
+  opacity: 1 !important;
+  margin-top: 0;
+}
+.ControlesVolumen {
+  margin-top: -10vh;
+  opacity: 0;
+  background: #0003;
+  border-radius: 1vh;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  transition: 0.5s;
+}
+.ControlesVolumenBarra {
+  width: 80%;
+  border-radius: 0.5vh;
+  height: 100%;
+  background: #fffa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ControlesVolumenBarra label {
+  pointer-events: none;
+  color: #000;
+  text-shadow: 0 0 0.2vh #0008;
+  font-size: 1.4vh;
+  font-weight: 700;
+  opacity: 0;
+}
+.ControlesContainerMid {
+  flex: 3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ControlesSettingsMenuContainer {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ControlesSettingsMenu {
+  width: 70%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -4vh;
+  transition: 0.3s;
+  z-index: 1;
+  gap: 1vh;
+}
+.SettingsIcons {
+  transition: 0.2s;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  gap: 0.5vh;
+  background: #0008;
+  padding: 1vh;
+  border-radius: 1vh;
+  min-width: 5vh;
+}
+.SettingsIcons label {
+  font-size: 1.2vh;
+  font-weight: 700;
+  opacity: 0.4;
+  transition: 0.4s;
+  color: #fff;
+  pointer-events: none;
+}
+.SettingsIcons img {
+  width: 4vh;
+  opacity: 0.7;
+}
+.SettingsIcons:hover {
+  background: #222d;
+  box-shadow: 0 0 1vh #0005;
+}
+.SettingsIcons:hover img,
+.SettingsIcons:hover img ~ label {
+  opacity: 1;
+}
+/* .SettingsOn {
+  animation: settings 0.5s forwards;
+}
+.SettingsOff {
+  animation: settings 0.5s forwards reverse;
+}
+@keyframes settings {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+} */
+.ControlesContainerMediaState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1vh;
+  background: #0008;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  position: absolute;
+  animation: mediastate 1s forwards;
+}
+.ControlesContainerMediaStates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1vh;
+  background: #0008;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  position: absolute;
+  animation: mediastate 1s forwards;
+}
+@keyframes mediastate {
+  0% {
+    width: 3vh;
+    height: 3vh;
+    opacity: 0;
+  }
+  80% {
+    width: 5vh;
+    height: 5vh;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.ControlesContainerMediaState img {
+  width: 1.8vh;
+}
+.ControlesContainerBot {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.3s;
+  pointer-events: none;
+}
+.ControlesDuracionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  transition: 0.2s;
+}
+.ControlesVistaPreviaConainer {
+  position: absolute;
+  width: 8vh;
+  height: 4.5vh;
+  background: #fff;
+  border-radius: 0.5vh;
+  margin-bottom: 7vh;
+  opacity: 0;
+}
+.ControlesDuracion {
+  text-align: center;
+  flex: 1;
+  background: #2228;
+  color: #fff5;
+  border-radius: 0.3vh;
+  padding: 0.3vh 0.7vh;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  position: absolute;
+  margin-top: 4vh;
+}
+.ControlesLineaContainer {
+  cursor: none;
+  height: 100%;
+  flex: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.3vh;
+  pointer-events: visible;
+}
+.ControlesLineaContainer:hover ~ .ControlesDuracion {
+  opacity: 0;
+}
+.ControlesLineaContainer:hover > .MarkerIconContainer {
+  opacity: 1;
+}
+.MarkerIconContainer {
+  flex: 5;
+  width: 100%;
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  transition: 0.2s;
+  pointer-events: none;
+}
+.MarkerIcon {
+  pointer-events: none;
+  width: 1vh;
+  transform: translate3d(1vh, 2vh);
+  margin-left: 1vh;
+}
+
+.FullScreen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 0;
+  height: 100vh;
+  width: 100vh;
+}
+.VideoMediaContainer {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+.VideoReal {
+  object-fit: cover !important;
+  width: 100%;
+}
+.TimeLineVideoContainer {
+  max-height: 5px;
+  background: #ff0932;
+  width: 100%;
+  flex: 1;
+}
