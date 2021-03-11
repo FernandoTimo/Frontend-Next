@@ -102,33 +102,28 @@ export function Controls({ top = 1, row = 'column', children }) {
 }
 
 export function Modal({
-  background = '#3335',
+  bg = 'var(--c02)',
   transition = 0,
   blur = 0,
   center,
+  active = [true, () => {}],
   children,
-  active = [
-    true,
-    () => {
-      console.log('Modal desactived');
-    },
-  ],
 }) {
   const [show, setShow] = useState(active[0]);
+  const [ChildrenSizes, setChildrenSizes] = useState([]);
+  const Refs = useRef();
   useEffect(() => {
     setShow(active[0]);
   }, [active[0]]);
+  useEffect(() => {
+    setChildrenSizes([Refs.current.clientWidth, Refs.current.clientHeight]);
+  }, []);
   const CerrarModal = (e) => {
     if (e.target.className === 'ModalContainer') {
       setShow(false);
       active[1]();
     }
   };
-  const Refs = useRef();
-  const [ChildrenSizes, setChildrenSizes] = useState([]);
-  useEffect(() => {
-    setChildrenSizes([Refs.current.clientWidth, Refs.current.clientHeight]);
-  }, []);
   return (
     <div
       className='ModalEmpty'
@@ -142,14 +137,14 @@ export function Modal({
         onClick={CerrarModal}
         tabIndex='0'
         style={{
-          width: show ? '100vw' : '100%',
-          height: show ? '100vh' : '100%',
-          opacity: show ? '1' : '0',
-          pointerEvents: show ? 'visible' : 'none',
-          justifyContent: center ? 'center' : 'flexStart',
-          alignItems: center ? 'center' : 'flexStart',
-          background: background,
+          background: bg,
+          opacity: show && '1',
+          width: show && '100vw',
+          height: show && '100vh',
+          alignItems: center && 'center',
+          justifyContent: center && 'center',
           backdropFilter: `blur(${blur / 3}vh)`,
+          pointerEvents: show && 'visible',
           transition: transition + 's',
         }}
         ref={Refs}
