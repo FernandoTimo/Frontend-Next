@@ -1,7 +1,7 @@
-import style from "styles/css/Index.module.css";
-import { Header_Main } from "heads/Header_Main";
-import { Body, Section, Content } from "components/Resources/Timoideas";
-import BienvenidaSockets from "components/BienvenidaSockets";
+import style from 'styles/css/Index.module.css';
+import { Header_Main } from 'heads/Header_Main';
+import { Body, Section, Content } from 'components/Resources/Timoideas';
+import BienvenidaSockets from 'components/BienvenidaSockets';
 export default function Index() {
   return (
     <>
