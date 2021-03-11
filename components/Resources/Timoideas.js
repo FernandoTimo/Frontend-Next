@@ -1,17 +1,17 @@
-import { useState, useEffect, Children, cloneElement, useRef } from "react";
-import Link from "next/link";
-import { useContext } from "react";
-import { useTheme } from "hooks/useTheme";
-import { useRouter } from "next/router";
+import { useState, useEffect, Children, cloneElement, useRef } from 'react';
+import Link from 'next/link';
+import { useContext } from 'react';
+import { useTheme } from 'hooks/useTheme';
+import { useRouter } from 'next/router';
 
 const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
-  return "#" + hexadecimal;
+  return '#' + hexadecimal;
 };
 // --- Global
 export function Body({ bg, children }) {
   return (
-    <div className="Body" style={{ background: bg ? randomBG() : "#fafafa" }}>
+    <div className='Body' style={{ background: bg ? randomBG() : 'var(_00_)' }}>
       {children}
     </div>
   );
@@ -20,11 +20,11 @@ export function Section({ bg, children, size }) {
   const { Theme } = useTheme();
   return (
     <section
-      className="Section"
+      className='Section'
       style={{
-        background: bg ? randomBG() : Theme._00_,
-        color: Theme._20_,
-        height: size ? `${size}00vh` : "100vh",
+        background: bg ? randomBG() : 'var(_00_)',
+        color: 'var(_20_)',
+        height: size ? `${size}00vh` : '100vh',
       }}
     >
       {children}
@@ -46,15 +46,15 @@ export function Content({
   // if (!children) {
   //   console.warn('<Content></Content> sin contenido');
   // }
-  let clases = `Content ${!!center ? "c" : ""} ${!!className ? className : ""}`;
+  let clases = `Content ${!!center ? 'c' : ''} ${!!className ? className : ''}`;
   return (
     <div
       className={clases}
       style={{
         color: Theme._20,
-        padding: padding ? padding + "vh" : 0,
-        flexDirection: row ? "row" : "column",
-        background: bg ? randomBG() : "transparent",
+        padding: padding ? padding + 'vh' : 0,
+        flexDirection: row ? 'row' : 'column',
+        background: bg ? randomBG() : 'var(_00_)',
         flex: flex || 1,
         ...style,
       }}
@@ -68,13 +68,13 @@ export function Content({
 export function Header({ bg, padding, height, children, center }) {
   return (
     <header
-      className="Header"
+      className='Header'
       style={{
-        justifyContent: center ? "center" : "start",
-        alignItems: center ? "center" : "start",
-        padding: padding ? padding / 2 + "vh" : 0,
-        height: height ? height + "vh" : "5vh",
-        background: bg ? randomBG() : "#fafafa",
+        justifyContent: center ? 'center' : 'start',
+        alignItems: center ? 'center' : 'start',
+        padding: padding ? padding / 2 + 'vh' : 0,
+        height: height ? height + 'vh' : '5vh',
+        background: bg ? randomBG() : 'var(_00_)',
       }}
     >
       {children}
@@ -86,23 +86,23 @@ export function Header({ bg, padding, height, children, center }) {
 export function Footer({ bg, padding, height, children, center }) {
   return (
     <footer
-      className="Footer"
+      className='Footer'
       style={{
-        justifyContent: center ? "center" : "start",
-        alignItems: center ? "center" : "start",
-        padding: padding ? padding / 2 + "vh" : 0,
-        height: height ? height + "vh" : "5vh",
-        background: bg ? randomBG() : Theme_00_,
+        justifyContent: center ? 'center' : 'start',
+        alignItems: center ? 'center' : 'start',
+        padding: padding ? padding / 2 + 'vh' : 0,
+        height: height ? height + 'vh' : '5vh',
+        background: bg ? randomBG() : 'var(_00_)',
       }}
     >
       {children}
     </footer>
   );
 }
-export function Controls({ top, row = "column", children }) {
+export function Controls({ top, row = 'column', children }) {
   return (
     <div
-      className="ControlsContainer"
+      className='ControlsContainer'
       style={{ zIndex: top ? 2 : 1, flexDirection: row }}
     >
       {children}
@@ -111,7 +111,7 @@ export function Controls({ top, row = "column", children }) {
 }
 
 export function Modal({
-  background = "#3335",
+  background = '#3335',
   transition = 0,
   blur = 0,
   center,
@@ -119,7 +119,7 @@ export function Modal({
   active = [
     true,
     () => {
-      console.log("Modal desactived");
+      console.log('Modal desactived');
     },
   ],
 }) {
@@ -128,7 +128,7 @@ export function Modal({
     setShow(active[0]);
   }, [active[0]]);
   const CerrarModal = (e) => {
-    if (e.target.className === "ModalContainer") {
+    if (e.target.className === 'ModalContainer') {
       setShow(false);
       active[1]();
     }
@@ -140,26 +140,26 @@ export function Modal({
   }, []);
   return (
     <div
-      className="ModalEmpty"
+      className='ModalEmpty'
       style={{
         width: ChildrenSizes[0],
         height: ChildrenSizes[1],
       }}
     >
       <div
-        className="ModalContainer"
+        className='ModalContainer'
         onClick={CerrarModal}
-        tabIndex="0"
+        tabIndex='0'
         style={{
-          width: show ? "100vw" : "100%",
-          height: show ? "100vh" : "100%",
-          opacity: show ? "1" : "0",
-          pointerEvents: show ? "visible" : "none",
-          justifyContent: center ? "center" : "flexStart",
-          alignItems: center ? "center" : "flexStart",
+          width: show ? '100vw' : '100%',
+          height: show ? '100vh' : '100%',
+          opacity: show ? '1' : '0',
+          pointerEvents: show ? 'visible' : 'none',
+          justifyContent: center ? 'center' : 'flexStart',
+          alignItems: center ? 'center' : 'flexStart',
           background: background,
           backdropFilter: `blur(${blur / 3}vh)`,
-          transition: transition + "s",
+          transition: transition + 's',
         }}
         ref={Refs}
       >
@@ -198,16 +198,16 @@ export function Carrousel({ bg, speed, width, height, children }) {
 
   return (
     <div
-      className="CarrouselContainer"
+      className='CarrouselContainer'
       // onWheel={handleScroll}
       // ref={CarrouselContainerRef}
     >
       <div
-        className="Carrousel"
+        className='Carrousel'
         style={{
-          width: width ? width : "auto",
-          height: height ? height : "auto",
-          background: bg ? randomBG() : "#fafafa",
+          width: width ? width : 'auto',
+          height: height ? height : 'auto',
+          background: bg ? randomBG() : '#fafafa',
         }}
         // ref={CarrouselRef}
       >
@@ -218,7 +218,7 @@ export function Carrousel({ bg, speed, width, height, children }) {
 }
 export function Card({ bg, children }) {
   return (
-    <div className="Card" style={{ background: bg ? randomBG() : "#fafafa" }}>
+    <div className='Card' style={{ background: bg ? randomBG() : '#fafafa' }}>
       {children}
     </div>
   );
@@ -249,9 +249,9 @@ export function Form({ title, children }) {
     }
   });
   return (
-    <form className="Form" onSubmit={handleSubmit}>
-      <div className="TitleFormContainer">
-        <h1 className="TitleForm">{title || "Formulario"}</h1>
+    <form className='Form' onSubmit={handleSubmit}>
+      <div className='TitleFormContainer'>
+        <h1 className='TitleForm'>{title || 'Formulario'}</h1>
       </div>
       {childs}
     </form>
@@ -263,13 +263,13 @@ export function Input_1({ func, type, children, required }) {
   const objKey = type;
 
   let nombre;
-  if (type === "username" || type === "name") {
+  if (type === 'username' || type === 'name') {
     nombre = type;
-    type = "text";
+    type = 'text';
   }
-  if (type === "edad" || type === "tel") {
+  if (type === 'edad' || type === 'tel') {
     nombre = type;
-    type = "number";
+    type = 'number';
   }
 
   const handleChange = (e) => {
@@ -278,12 +278,12 @@ export function Input_1({ func, type, children, required }) {
     console.log(objKey);
   };
   return (
-    <div className="input_1">
+    <div className='input_1'>
       <input
-        type={type ? type : "text"}
-        spellCheck="false"
+        type={type ? type : 'text'}
+        spellCheck='false'
         required={required ? false : true}
-        name={nombre || "input"}
+        name={nombre || 'input'}
         onChange={handleChange}
       />
       <span></span>
@@ -306,11 +306,11 @@ export function Boton_1({ children }) {
   };
   return (
     <>
-      <button className="Boton_1" onClick={createRiple}>
+      <button className='Boton_1' onClick={createRiple}>
         <div>{children}</div>
         {click ? (
           <span
-            style={{ left: X, top: Y, animation: "riples .8s linear forwards" }}
+            style={{ left: X, top: Y, animation: 'riples .8s linear forwards' }}
           ></span>
         ) : null}
       </button>
@@ -318,19 +318,19 @@ export function Boton_1({ children }) {
   );
 }
 
-import NavigationContext from "context/NavigationContext";
+import NavigationContext from 'context/NavigationContext';
 const Router = ({ setNavigation }) => {
   const { setRoutes } = useContext(NavigationContext);
   const { Theme } = useTheme();
   const RutaRef = useRef();
   const router = useRouter();
   const handleSubmit = () => {
-    const newRoute = RutaRef.current.value.replace(" ", "/");
+    const newRoute = RutaRef.current.value.replace(' ', '/');
     router.push(newRoute);
     setRoutes(newRoute);
   };
   const replaceSpaces = (e) => {
-    e.target.value = e.target.value.replace(" ", "/");
+    e.target.value = e.target.value.replace(' ', '/');
   };
   const [WantToClear, setWantToClear] = useState(false);
   const [ClearHistory, setClearHistory] = useState(false);
@@ -347,18 +347,18 @@ const Router = ({ setNavigation }) => {
     // ocultar item on click y delete del historial
   };
   return (
-    <div className="NavigationContainer">
-      <div className="NavigateContainer">
+    <div className='NavigationContainer'>
+      <div className='NavigateContainer'>
         <Content center flex={1}>
-          <form className="RouterInputContainer" onSubmit={handleSubmit}>
+          <form className='RouterInputContainer' onSubmit={handleSubmit}>
             <label
-              itemRef="route"
+              itemRef='route'
               style={{
                 color: Theme._00,
                 background: Theme._20,
-                transition: "0.1 s",
+                transition: '0.1 s',
               }}
-              className="HostNameRouter"
+              className='HostNameRouter'
               onClick={clearRoutesHistory}
               onMouseOver={handleHistory}
               onMouseLeave={handleHistory}
@@ -366,17 +366,17 @@ const Router = ({ setNavigation }) => {
               🌴
             </label>
             <input
-              type="text"
-              className="RouteInput"
+              type='text'
+              className='RouteInput'
               style={{
                 border: `0.3vh solid #0effaf`,
                 color: Theme._20,
                 background: Theme._00,
                 boxShadow: `inset 0 0 1vh #0effaf`,
               }}
-              placeholder=" "
+              placeholder=' '
               ref={RutaRef}
-              spellCheck="false"
+              spellCheck='false'
               autoFocus
               onChange={replaceSpaces}
             />
@@ -384,23 +384,23 @@ const Router = ({ setNavigation }) => {
           </form>
         </Content>
         <Content flex={5}>
-          <div className="RouterContainer">
-            <div className="RouterBoxContainer">
+          <div className='RouterContainer'>
+            <div className='RouterBoxContainer'>
               {!!localStorage.Routes !== false &&
-                localStorage.Routes.split(",").map((route, index) => (
+                localStorage.Routes.split(',').map((route, index) => (
                   <Link href={route} key={index}>
                     <a>
                       <div
-                        className="RouterBox"
+                        className='RouterBox'
                         onContextMenu={ClearHitoryItem}
                         onClick={setNavigation}
                         style={{
-                          background: WantToClear && "transparent",
-                          opacity: WantToClear ? ".7" : "1",
-                          transform: WantToClear ? "scale(.9)" : null,
+                          background: WantToClear && 'transparent',
+                          opacity: WantToClear ? '.7' : '1',
+                          transform: WantToClear ? 'scale(.9)' : null,
                           border: WantToClear && `0.3vh solid ${Theme._20}`,
-                          fontWeight: WantToClear ? "100" : "700",
-                          display: ClearHistory ? "none" : "flex",
+                          fontWeight: WantToClear ? '100' : '700',
+                          display: ClearHistory ? 'none' : 'flex',
                         }}
                       >
                         {route}
@@ -415,7 +415,7 @@ const Router = ({ setNavigation }) => {
     </div>
   );
 };
-import { NavigationContextProvider } from "context/NavigationContext";
+import { NavigationContextProvider } from 'context/NavigationContext';
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
   const { Theme, setTheme } = useTheme();
@@ -428,9 +428,9 @@ export const Navigation = () => {
     setNavigate(false);
   }, []);
   useEffect(() => {
-    document.addEventListener("keydown", handleNavigate);
+    document.addEventListener('keydown', handleNavigate);
     return () => {
-      document.removeEventListener("keydown", handleNavigate);
+      document.removeEventListener('keydown', handleNavigate);
     };
   }, [Navigate]);
   const setNavigation = () => {
@@ -438,7 +438,7 @@ export const Navigation = () => {
   };
   return (
     <NavigationContextProvider>
-      <div className="NavigationContainer">
+      <div className='NavigationContainer'>
         <Themeas />
         {Navigate && <Router setNavigation={setNavigation} />}
       </div>
@@ -446,15 +446,14 @@ export const Navigation = () => {
   );
 };
 
-import Ligth from "public/theme/Ligth.json";
-import Dark from "public/theme/Dark.json";
+import Ligth from 'public/theme/Ligth.json';
+import Dark from 'public/theme/Dark.json';
 
 export function Themeas() {
   const getCurrentTheme = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
   useEffect(() => {
     console.log(getCurrentTheme());
-    console.log(window.noFunca);
     return;
   }, []);
   const [Theme, setTheme] = useState(false);
@@ -468,8 +467,8 @@ export function Themeas() {
     });
   };
   return (
-    <span className="NavigationLabel" onClick={onClick}>
-      {Theme === "light" ? "🌖" : "🌒"}
+    <span className='NavigationLabel' onClick={onClick}>
+      {Theme === 'light' ? '🌖' : '🌒'}
     </span>
   );
 }
@@ -489,7 +488,7 @@ export function Spinner_Trino({ speed, size, background }) {
   const { Theme } = useTheme();
   const Elemento = (
     <div
-      className="Elementos"
+      className='Elementos'
       style={{
         background: background || Theme._20,
         // transform: `scale(8)`,
@@ -498,14 +497,14 @@ export function Spinner_Trino({ speed, size, background }) {
   );
   return (
     <div
-      className="SpinnerContainer"
+      className='SpinnerContainer'
       style={{
-        animationDuration: speed ? `${speed}s` : "1s",
+        animationDuration: speed ? `${speed}s` : '1s',
         // transform: `scale(8)`,
       }}
     >
-      <div className="Cabeza">{Elemento}</div>
-      <div className="Falda">
+      <div className='Cabeza'>{Elemento}</div>
+      <div className='Falda'>
         {Elemento}
         {Elemento}
       </div>
@@ -515,10 +514,10 @@ export function Spinner_Trino({ speed, size, background }) {
 export function Spinner_Rainbow({ size = 1.5, speed = 0.3 }) {
   return (
     <div
-      className="SpinnerRainbowContainer"
+      className='SpinnerRainbowContainer'
       style={{
-        width: size + "vh",
-        height: size + "vh",
+        width: size + 'vh',
+        height: size + 'vh',
         boxShadow: `0 0 ${Math.round(size / 15)}vh #0003,
            inset 0 0 ${Math.round(size / 35)}vh #0004`,
         border: `${size / 60}vh solid #fafafa`,
@@ -537,19 +536,19 @@ export function Spinner_Rainbow({ size = 1.5, speed = 0.3 }) {
   );
 }
 export function Rainbow({
-  padding = ".5vh 2vh",
+  padding = '.5vh 2vh',
   size = 0.2,
-  bg = "#1a1a1a",
+  bg = '#1a1a1a',
   border = 1,
   children,
 }) {
   return (
     <div
-      className="RainbowContainer"
+      className='RainbowContainer'
       style={{ padding: `${size}vh ${size}vh`, borderRadius: `${border}vh` }}
     >
       <div
-        className="Rainbow"
+        className='Rainbow'
         style={{
           padding: padding,
           background: bg,
@@ -599,11 +598,11 @@ export function Video({
   }, []);
   return (
     <div
-      className="VideoContainer"
+      className='VideoContainer'
       style={{
-        borderRadius: radius ? radius : "1vh",
-        height: height ? height + "vh" : isFullScreen ? "100%" : "18vh",
-        width: width ? width + "vh" : isFullScreen ? "100%" : "32vh",
+        borderRadius: radius ? radius : '1vh',
+        height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
+        width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
       }}
       ref={VideoMediaRef}
       onMouseLeave={() => {
@@ -618,41 +617,41 @@ export function Video({
       }}
     >
       <div
-        className="VideoControlsContainer"
+        className='VideoControlsContainer'
         style={{
-          borderRadius: radius ? radius : "1vh",
-          height: height ? height + "vh" : isFullScreen ? "100%" : "18vh",
-          width: width ? width + "vh" : isFullScreen ? "100%" : "32vh",
+          borderRadius: radius ? radius : '1vh',
+          height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
+          width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
           opacity: isControls ? 1 : 0,
-          cursor: isControls ? "pointer" : "none",
+          cursor: isControls ? 'pointer' : 'none',
         }}
       >
         <div
-          className="ControlesContainerTop"
+          className='ControlesContainerTop'
           style={{
             background: isControls
-              ? "linear-gradient(#0008, transparent)"
-              : "transparent",
+              ? 'linear-gradient(#0008, transparent)'
+              : 'transparent',
           }}
         >
-          <div className="ControlesSettingsContainer" onClick={toggleSettings}>
+          <div className='ControlesSettingsContainer' onClick={toggleSettings}>
             <img
-              alt="Settings"
-              src="icons/Settings.png"
-              className="SettingsIcon"
+              alt='Settings'
+              src='icons/Settings.png'
+              className='SettingsIcon'
               style={{
-                transform: isSettings ? "rotate(0deg)" : "rotate(-90deg)",
-                width: isSettings ? "3vh" : "2vh",
+                transform: isSettings ? 'rotate(0deg)' : 'rotate(-90deg)',
+                width: isSettings ? '3vh' : '2vh',
                 opacity: isSettings ? 1 : 0.5,
               }}
             />
           </div>
           <div
-            className="ControlesVolumenContainer"
-            style={{ pointerEvents: isSettings ? "none" : "visible" }}
+            className='ControlesVolumenContainer'
+            style={{ pointerEvents: isSettings ? 'none' : 'visible' }}
           >
             <div
-              className="ControlesVolumen"
+              className='ControlesVolumen'
               onMouseMove={(e) => {
                 console.log(e.offsetWidth);
                 console.log(e.clientX - e.target.getBoundingClientRect().left);
@@ -665,35 +664,35 @@ export function Video({
                   ) / 100;
               }}
               style={{
-                width: isFullScreen ? "40vh" : "15vh",
-                height: isFullScreen ? "3vh" : "1vh",
+                width: isFullScreen ? '40vh' : '15vh',
+                height: isFullScreen ? '3vh' : '1vh',
               }}
             >
               <div
-                className="ControlesVolumenBarra"
-                style={{ width: VolumenPosition + "px" }}
+                className='ControlesVolumenBarra'
+                style={{ width: VolumenPosition + 'px' }}
               >
                 <label>98%</label>
               </div>
             </div>
           </div>
           <div
-            className="ControlesFullScreenContainer"
+            className='ControlesFullScreenContainer'
             onClick={toggleFullScreen}
             style={{
               opacity: isSettings ? 0 : 1,
-              pointerEvents: isSettings ? "none" : "visible",
+              pointerEvents: isSettings ? 'none' : 'visible',
             }}
           >
             <img
-              alt="Settings"
-              src="icons/FullScreen.png"
-              className="FullScreenIcon"
+              alt='Settings'
+              src='icons/FullScreen.png'
+              className='FullScreenIcon'
             />
           </div>
         </div>
         <div
-          className="ControlesContainerMid"
+          className='ControlesContainerMid'
           onDoubleClick={toggleFullScreen}
           onClick={() => {
             isRunning
@@ -701,94 +700,94 @@ export function Video({
               : (VideoRef.current.play(), setisRunning(!isRunning));
           }}
         >
-          <div className="ControlesSettingsMenuContainer">
+          <div className='ControlesSettingsMenuContainer'>
             <div
-              className="ControlesSettingsMenu"
+              className='ControlesSettingsMenu'
               style={{
-                marginTop: isSettings ? "0" : "-2vh",
+                marginTop: isSettings ? '0' : '-2vh',
                 opacity: isSettings ? 1 : 0,
-                width: isSettings ? "70%" : "65%",
+                width: isSettings ? '70%' : '65%',
               }}
             >
               <div
-                className="SettingsIcons"
-                style={{ pointerEvents: isSettings ? "visible" : "none" }}
+                className='SettingsIcons'
+                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
               >
-                <img alt="Imagen Alternativa" src="icons/Calidad_720.png" />
+                <img alt='Imagen Alternativa' src='icons/Calidad_720.png' />
                 <label>Calidad</label>
               </div>
               <a
-                href={"icons/Download.png"}
+                href={'icons/Download.png'}
                 download
-                className="SettingsIcons"
-                style={{ pointerEvents: isSettings ? "visible" : "none" }}
+                className='SettingsIcons'
+                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
               >
-                <img alt="Imagen Alternativa" src="icons/Download.png" />
+                <img alt='Imagen Alternativa' src='icons/Download.png' />
                 <label>Descargar</label>
               </a>
               <div
-                className="SettingsIcons"
-                style={{ pointerEvents: isSettings ? "visible" : "none" }}
+                className='SettingsIcons'
+                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
               >
-                <img alt="Imagen Alternativa" src="icons/Subtitulos_eng.png" />
+                <img alt='Imagen Alternativa' src='icons/Subtitulos_eng.png' />
                 <label>Subtítulos</label>
               </div>
             </div>
           </div>
           {isRunning ? (
-            <div className="ControlesContainerMediaStates">
-              <img alt="Atras" src="icons/Pause.png" />
+            <div className='ControlesContainerMediaStates'>
+              <img alt='Atras' src='icons/Pause.png' />
             </div>
           ) : (
-            <div className="ControlesContainerMediaState">
-              <img alt="Atras" src="icons/Play.png" />
+            <div className='ControlesContainerMediaState'>
+              <img alt='Atras' src='icons/Play.png' />
             </div>
           )}
         </div>
         <div
-          className="ControlesContainerBot"
+          className='ControlesContainerBot'
           style={{
             opacity: isSettings ? 0 : 1,
             background: isControls
-              ? "linear-gradient(transparent, #0008)"
-              : "transparent",
+              ? 'linear-gradient(transparent, #0008)'
+              : 'transparent',
           }}
         >
-          <div className="ControlesDuracionContainer">
-            <div className="ControlesVistaPreviaConainer"></div>
-            <label className="ControlesDuracion">19:32 / 24:12</label>
+          <div className='ControlesDuracionContainer'>
+            <div className='ControlesVistaPreviaConainer'></div>
+            <label className='ControlesDuracion'>19:32 / 24:12</label>
           </div>
           <div
-            className="ControlesLineaContainer"
+            className='ControlesLineaContainer'
             onMouseMove={(e) => {
               setTimeLinePosition(
                 e.clientX - e.target.getBoundingClientRect().left
               );
             }}
           >
-            <div className="MarkerIconContainer">
+            <div className='MarkerIconContainer'>
               <img
-                alt="Marker"
-                src="icons/TimeMarker.png"
-                className="MarkerIcon"
-                style={{ marginLeft: TimeLinePosition + "px" }}
+                alt='Marker'
+                src='icons/TimeMarker.png'
+                className='MarkerIcon'
+                style={{ marginLeft: TimeLinePosition + 'px' }}
               />
             </div>
-            <div className="TimeLineVideoContainer"></div>
+            <div className='TimeLineVideoContainer'></div>
           </div>
         </div>
       </div>
       <div
-        className="VideoMediaContainer"
+        className='VideoMediaContainer'
         style={{
-          borderRadius: radius ? radius : "1vh",
-          height: height ? height + "vh" : isFullScreen ? "100%" : "18vh",
-          width: width ? width + "vh" : isFullScreen ? "100%" : "32vh",
+          borderRadius: radius ? radius : '1vh',
+          height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
+          width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
         }}
       >
         <video
-          src="videos/Video.mp4"
-          className="VideoReal"
+          src='videos/Video.mp4'
+          className='VideoReal'
           autoPlay={autoPlay}
           ref={VideoRef}
         />
@@ -796,18 +795,18 @@ export function Video({
     </div>
   );
 }
-export function Poligon({ children, size = "10vh", sides = 8, bg }) {
+export function Poligon({ children, size = '10vh', sides = 8, bg }) {
   return (
-    <div className="PoligonoContainer" style={{ width: size, height: size }}>
+    <div className='PoligonoContainer' style={{ width: size, height: size }}>
       <div
-        className="Poligono"
+        className='Poligono'
         style={{
           width: size,
           height: size,
           background: bg || randomBG(),
         }}
       >
-        <div className="PoligonoContent">{children}</div>
+        <div className='PoligonoContent'>{children}</div>
       </div>
     </div>
   );
@@ -822,23 +821,23 @@ export function Animation({
   // animate = false,
   width = 100,
   height = 100,
-  script = "script/Losa.js",
-  id = "2367616E571929429CB3B8A1959D9915",
+  script = 'script/Losa.js',
+  id = '2367616E571929429CB3B8A1959D9915',
 }) {
   // console.log(typeof dasdwq);
   return (
     <div
-      className="AnimationContainer"
-      id="animation_container"
+      className='AnimationContainer'
+      id='animation_container'
       // ref={ContainerRef}
     >
       <canvas
-        id="canvas"
+        id='canvas'
         // ref={CanvasRef} width="500"
         height={height}
       ></canvas>
       <div
-        id="dom_overlay_container"
+        id='dom_overlay_container'
         // ref={OverlayRef}
         style={{ width: `${width}px`, height: `${height}px` }}
       ></div>
