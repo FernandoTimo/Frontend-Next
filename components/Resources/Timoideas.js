@@ -16,7 +16,7 @@ export function Body({ bg, children }) {
     </div>
   );
 }
-export function Section({ bg, children, size }) {
+export function Section({ bg, size, children }) {
   return (
     <section
       className='Section'
