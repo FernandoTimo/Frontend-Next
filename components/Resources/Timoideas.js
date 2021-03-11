@@ -74,8 +74,6 @@ export function Header({ bg, height, center, children }) {
     </header>
   );
 }
-// ---             === ===   Header    === ===
-
 export function Footer({ bg, height, center, children }) {
   return (
     <footer
@@ -91,11 +89,12 @@ export function Footer({ bg, height, center, children }) {
     </footer>
   );
 }
-export function Controls({ top, row = 'column', children }) {
+
+export function Controls({ top = 1, row = 'column', children }) {
   return (
     <div
       className='ControlsContainer'
-      style={{ zIndex: top ? 2 : 1, flexDirection: row }}
+      style={{ zIndex: top, flexDirection: row }}
     >
       {children}
     </div>
