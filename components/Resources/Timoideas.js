@@ -31,28 +31,26 @@ export function Section({ bg, size, children }) {
 }
 export function Content({
   bg,
+  pd,
   row,
   flex,
-  center,
-  padding,
-  children,
-  className,
+  center = '',
+  className = '',
   onClick,
-  style,
+  children,
 }) {
   // if (!children) {
   //   console.warn('<Content></Content> sin contenido');
   // }
-  let clases = `Content ${!!center ? 'c' : ''} ${!!className ? className : ''}`;
+  let clases = `Content${center && ' c'}${className && ' ' + className}`;
   return (
     <div
       className={clases}
       style={{
-        padding: padding ? padding + 'vh' : 0,
-        flexDirection: row ? 'row' : 'column',
+        padding: pd && pd + 'vh',
+        flexDirection: row & 'row',
         background: bg && randomBG(),
         flex: flex || 1,
-        ...style,
       }}
       onClick={onClick}
     >

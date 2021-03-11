@@ -8,7 +8,7 @@ export default function Index() {
       <Header_Main />
       <Body>
         <Section size={1}>
-          <Content center flex={0.5}>
+          <Content flex={0.5}>
             <h1 className={style.Title}>Frontend</h1>
             <BienvenidaSockets />
           </Content>
