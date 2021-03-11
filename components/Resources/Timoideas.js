@@ -17,7 +17,6 @@ export function Body({ bg, children }) {
   );
 }
 export function Section({ bg, children, size }) {
-  const { Theme } = useTheme();
   return (
     <section
       className='Section'
@@ -42,7 +41,6 @@ export function Content({
   onClick,
   style,
 }) {
-  const { Theme } = useTheme();
   // if (!children) {
   //   console.warn('<Content></Content> sin contenido');
   // }
@@ -51,7 +49,6 @@ export function Content({
     <div
       className={clases}
       style={{
-        color: Theme._20,
         padding: padding ? padding + 'vh' : 0,
         flexDirection: row ? 'row' : 'column',
         background: bg ? randomBG() : 'var(_00_)',
@@ -468,7 +465,7 @@ export function Themeas() {
   };
   return (
     <span className='NavigationLabel' onClick={onClick}>
-      {Theme === 'light' ? '🌖' : '🌒'}
+      {Theme ? '🌖' : '🌒'}
     </span>
   );
 }
