@@ -1,17 +1,17 @@
-import { useState, useEffect, Children, cloneElement, useRef } from 'react';
-import Link from 'next/link';
-import { useContext } from 'react';
-import { useTheme } from 'hooks/useTheme';
-import { useRouter } from 'next/router';
+import { useState, useEffect, Children, cloneElement, useRef } from "react";
+import Link from "next/link";
+import { useContext } from "react";
+import { useTheme } from "hooks/useTheme";
+import { useRouter } from "next/router";
 
 const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
-  return '#' + hexadecimal;
+  return "#" + hexadecimal;
 };
 // --- Global
 export function Body({ bg, children }) {
   return (
-    <div className="Body" style={{ background: bg ? randomBG() : '#fafafa' }}>
+    <div className="Body" style={{ background: bg ? randomBG() : "#fafafa" }}>
       {children}
     </div>
   );
@@ -22,9 +22,9 @@ export function Section({ bg, children, size }) {
     <section
       className="Section"
       style={{
-        background: bg ? randomBG() : Theme._00,
-        color: Theme._20,
-        height: size ? `${size}00vh` : '100vh',
+        background: bg ? randomBG() : Theme._00_,
+        color: Theme._20_,
+        height: size ? `${size}00vh` : "100vh",
       }}
     >
       {children}
@@ -46,15 +46,15 @@ export function Content({
   // if (!children) {
   //   console.warn('<Content></Content> sin contenido');
   // }
-  let clases = `Content ${!!center ? 'c' : ''} ${!!className ? className : ''}`;
+  let clases = `Content ${!!center ? "c" : ""} ${!!className ? className : ""}`;
   return (
     <div
       className={clases}
       style={{
         color: Theme._20,
-        padding: padding ? padding + 'vh' : 0,
-        flexDirection: row ? 'row' : 'column',
-        background: bg ? randomBG() : 'transparent',
+        padding: padding ? padding + "vh" : 0,
+        flexDirection: row ? "row" : "column",
+        background: bg ? randomBG() : "transparent",
         flex: flex || 1,
         ...style,
       }}
@@ -70,11 +70,11 @@ export function Header({ bg, padding, height, children, center }) {
     <header
       className="Header"
       style={{
-        justifyContent: center ? 'center' : 'start',
-        alignItems: center ? 'center' : 'start',
-        padding: padding ? padding / 2 + 'vh' : 0,
-        height: height ? height + 'vh' : '5vh',
-        background: bg ? randomBG() : '#fafafa',
+        justifyContent: center ? "center" : "start",
+        alignItems: center ? "center" : "start",
+        padding: padding ? padding / 2 + "vh" : 0,
+        height: height ? height + "vh" : "5vh",
+        background: bg ? randomBG() : "#fafafa",
       }}
     >
       {children}
@@ -88,22 +88,18 @@ export function Footer({ bg, padding, height, children, center }) {
     <footer
       className="Footer"
       style={{
-        justifyContent: center ? 'center' : 'start',
-        alignItems: center ? 'center' : 'start',
-        padding: padding ? padding / 2 + 'vh' : 0,
-        height: height ? height + 'vh' : '5vh',
-        background: bg ? randomBG() : '#fafafa',
+        justifyContent: center ? "center" : "start",
+        alignItems: center ? "center" : "start",
+        padding: padding ? padding / 2 + "vh" : 0,
+        height: height ? height + "vh" : "5vh",
+        background: bg ? randomBG() : Theme_00_,
       }}
     >
       {children}
     </footer>
   );
 }
-
-export function Modals({ children }) {
-  return <div className="ModalsContainer">{children}</div>;
-}
-export function Controls({ top, row = 'column', children }) {
+export function Controls({ top, row = "column", children }) {
   return (
     <div
       className="ControlsContainer"
@@ -114,30 +110,61 @@ export function Controls({ top, row = 'column', children }) {
   );
 }
 
-export function Modal({ background, blur, center, children, active }) {
-  const [show, setShow] = useState(true);
+export function Modal({
+  background = "#3335",
+  transition = 0,
+  blur = 0,
+  center,
+  children,
+  active = [
+    true,
+    () => {
+      console.log("Modal desactived");
+    },
+  ],
+}) {
+  const [show, setShow] = useState(active[0]);
   useEffect(() => {
-    setShow(active);
-  }, [active]);
+    setShow(active[0]);
+  }, [active[0]]);
   const CerrarModal = (e) => {
-    console.log(e.target.className);
-    if (e.target.className === 'ModalContainer') setShow(false);
+    if (e.target.className === "ModalContainer") {
+      setShow(false);
+      active[1]();
+    }
   };
-
+  const Refs = useRef();
+  const [ChildrenSizes, setChildrenSizes] = useState([]);
+  useEffect(() => {
+    setChildrenSizes([Refs.current.clientWidth, Refs.current.clientHeight]);
+  }, []);
   return (
     <div
-      className="ModalContainer"
-      onClick={CerrarModal}
-      tabIndex="0"
+      className="ModalEmpty"
       style={{
-        display: show ? 'flex' : 'none',
-        justifyContent: center ? 'center' : 'flexStart',
-        alignItems: center ? 'center' : 'flexStart',
-        background: background || '#3335',
-        backdropFilter: `blur(${blur ? blur / 3 : 0}vh)`,
+        width: ChildrenSizes[0],
+        height: ChildrenSizes[1],
       }}
     >
-      {children}
+      <div
+        className="ModalContainer"
+        onClick={CerrarModal}
+        tabIndex="0"
+        style={{
+          width: show ? "100vw" : "100%",
+          height: show ? "100vh" : "100%",
+          opacity: show ? "1" : "0",
+          pointerEvents: show ? "visible" : "none",
+          justifyContent: center ? "center" : "flexStart",
+          alignItems: center ? "center" : "flexStart",
+          background: background,
+          backdropFilter: `blur(${blur / 3}vh)`,
+          transition: transition + "s",
+        }}
+        ref={Refs}
+      >
+        {children}
+      </div>
     </div>
   );
 }
@@ -178,9 +205,9 @@ export function Carrousel({ bg, speed, width, height, children }) {
       <div
         className="Carrousel"
         style={{
-          width: width ? width : 'auto',
-          height: height ? height : 'auto',
-          background: bg ? randomBG() : '#fafafa',
+          width: width ? width : "auto",
+          height: height ? height : "auto",
+          background: bg ? randomBG() : "#fafafa",
         }}
         // ref={CarrouselRef}
       >
@@ -191,7 +218,7 @@ export function Carrousel({ bg, speed, width, height, children }) {
 }
 export function Card({ bg, children }) {
   return (
-    <div className="Card" style={{ background: bg ? randomBG() : '#fafafa' }}>
+    <div className="Card" style={{ background: bg ? randomBG() : "#fafafa" }}>
       {children}
     </div>
   );
@@ -224,7 +251,7 @@ export function Form({ title, children }) {
   return (
     <form className="Form" onSubmit={handleSubmit}>
       <div className="TitleFormContainer">
-        <h1 className="TitleForm">{title || 'Formulario'}</h1>
+        <h1 className="TitleForm">{title || "Formulario"}</h1>
       </div>
       {childs}
     </form>
@@ -236,13 +263,13 @@ export function Input_1({ func, type, children, required }) {
   const objKey = type;
 
   let nombre;
-  if (type === 'username' || type === 'name') {
+  if (type === "username" || type === "name") {
     nombre = type;
-    type = 'text';
+    type = "text";
   }
-  if (type === 'edad' || type === 'tel') {
+  if (type === "edad" || type === "tel") {
     nombre = type;
-    type = 'number';
+    type = "number";
   }
 
   const handleChange = (e) => {
@@ -253,10 +280,10 @@ export function Input_1({ func, type, children, required }) {
   return (
     <div className="input_1">
       <input
-        type={type ? type : 'text'}
+        type={type ? type : "text"}
         spellCheck="false"
         required={required ? false : true}
-        name={nombre || 'input'}
+        name={nombre || "input"}
         onChange={handleChange}
       />
       <span></span>
@@ -283,7 +310,7 @@ export function Boton_1({ children }) {
         <div>{children}</div>
         {click ? (
           <span
-            style={{ left: X, top: Y, animation: 'riples .8s linear forwards' }}
+            style={{ left: X, top: Y, animation: "riples .8s linear forwards" }}
           ></span>
         ) : null}
       </button>
@@ -291,19 +318,19 @@ export function Boton_1({ children }) {
   );
 }
 
-import NavigationContext from 'context/NavigationContext';
+import NavigationContext from "context/NavigationContext";
 const Router = ({ setNavigation }) => {
   const { setRoutes } = useContext(NavigationContext);
   const { Theme } = useTheme();
   const RutaRef = useRef();
   const router = useRouter();
   const handleSubmit = () => {
-    const newRoute = RutaRef.current.value.replace(' ', '/');
+    const newRoute = RutaRef.current.value.replace(" ", "/");
     router.push(newRoute);
     setRoutes(newRoute);
   };
   const replaceSpaces = (e) => {
-    e.target.value = e.target.value.replace(' ', '/');
+    e.target.value = e.target.value.replace(" ", "/");
   };
   const [WantToClear, setWantToClear] = useState(false);
   const [ClearHistory, setClearHistory] = useState(false);
@@ -329,7 +356,7 @@ const Router = ({ setNavigation }) => {
               style={{
                 color: Theme._00,
                 background: Theme._20,
-                transition: '0.1 s',
+                transition: "0.1 s",
               }}
               className="HostNameRouter"
               onClick={clearRoutesHistory}
@@ -360,7 +387,7 @@ const Router = ({ setNavigation }) => {
           <div className="RouterContainer">
             <div className="RouterBoxContainer">
               {!!localStorage.Routes !== false &&
-                localStorage.Routes.split(',').map((route, index) => (
+                localStorage.Routes.split(",").map((route, index) => (
                   <Link href={route} key={index}>
                     <a>
                       <div
@@ -368,12 +395,12 @@ const Router = ({ setNavigation }) => {
                         onContextMenu={ClearHitoryItem}
                         onClick={setNavigation}
                         style={{
-                          background: WantToClear && 'transparent',
-                          opacity: WantToClear ? '.7' : '1',
-                          transform: WantToClear ? 'scale(.9)' : null,
+                          background: WantToClear && "transparent",
+                          opacity: WantToClear ? ".7" : "1",
+                          transform: WantToClear ? "scale(.9)" : null,
                           border: WantToClear && `0.3vh solid ${Theme._20}`,
-                          fontWeight: WantToClear ? '100' : '700',
-                          display: ClearHistory ? 'none' : 'flex',
+                          fontWeight: WantToClear ? "100" : "700",
+                          display: ClearHistory ? "none" : "flex",
                         }}
                       >
                         {route}
@@ -388,7 +415,7 @@ const Router = ({ setNavigation }) => {
     </div>
   );
 };
-import { NavigationContextProvider } from 'context/NavigationContext';
+import { NavigationContextProvider } from "context/NavigationContext";
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
   const { Theme, setTheme } = useTheme();
@@ -401,9 +428,9 @@ export const Navigation = () => {
     setNavigate(false);
   }, []);
   useEffect(() => {
-    document.addEventListener('keydown', handleNavigate);
+    document.addEventListener("keydown", handleNavigate);
     return () => {
-      document.removeEventListener('keydown', handleNavigate);
+      document.removeEventListener("keydown", handleNavigate);
     };
   }, [Navigate]);
   const setNavigation = () => {
@@ -412,14 +439,40 @@ export const Navigation = () => {
   return (
     <NavigationContextProvider>
       <div className="NavigationContainer">
-        <span className="NavigationLabel" onClick={setTheme}>
-          {Theme._00 === '#ffffff' ? '🌖' : '🌒'}
-        </span>
+        <Themeas />
         {Navigate && <Router setNavigation={setNavigation} />}
       </div>
     </NavigationContextProvider>
   );
 };
+
+import Ligth from "public/theme/Ligth.json";
+import Dark from "public/theme/Dark.json";
+
+export function Themeas() {
+  const getCurrentTheme = () =>
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+  useEffect(() => {
+    console.log(getCurrentTheme());
+    console.log(window.noFunca);
+    return;
+  }, []);
+  const [Theme, setTheme] = useState(false);
+  const onClick = () => {
+    setTheme(!Theme);
+    Object.keys(Theme ? Ligth : Dark).map((key) => {
+      document.documentElement.style.setProperty(
+        key,
+        Theme ? Ligth[key] : Dark[key]
+      );
+    });
+  };
+  return (
+    <span className="NavigationLabel" onClick={onClick}>
+      {Theme === "light" ? "🌖" : "🌒"}
+    </span>
+  );
+}
 export default Navigation;
 // verificar si la ruta ya esta en el arreglo andes de grergar a la lsita de Routues
 // Agregar autocompletado
@@ -447,7 +500,7 @@ export function Spinner_Trino({ speed, size, background }) {
     <div
       className="SpinnerContainer"
       style={{
-        animationDuration: speed ? `${speed}s` : '1s',
+        animationDuration: speed ? `${speed}s` : "1s",
         // transform: `scale(8)`,
       }}
     >
@@ -464,8 +517,8 @@ export function Spinner_Rainbow({ size = 1.5, speed = 0.3 }) {
     <div
       className="SpinnerRainbowContainer"
       style={{
-        width: size + 'vh',
-        height: size + 'vh',
+        width: size + "vh",
+        height: size + "vh",
         boxShadow: `0 0 ${Math.round(size / 15)}vh #0003,
            inset 0 0 ${Math.round(size / 35)}vh #0004`,
         border: `${size / 60}vh solid #fafafa`,
@@ -484,9 +537,9 @@ export function Spinner_Rainbow({ size = 1.5, speed = 0.3 }) {
   );
 }
 export function Rainbow({
-  padding = '.5vh 2vh',
+  padding = ".5vh 2vh",
   size = 0.2,
-  bg = '#1a1a1a',
+  bg = "#1a1a1a",
   border = 1,
   children,
 }) {
@@ -548,9 +601,9 @@ export function Video({
     <div
       className="VideoContainer"
       style={{
-        borderRadius: radius ? radius : '1vh',
-        height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
-        width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
+        borderRadius: radius ? radius : "1vh",
+        height: height ? height + "vh" : isFullScreen ? "100%" : "18vh",
+        width: width ? width + "vh" : isFullScreen ? "100%" : "32vh",
       }}
       ref={VideoMediaRef}
       onMouseLeave={() => {
@@ -567,19 +620,19 @@ export function Video({
       <div
         className="VideoControlsContainer"
         style={{
-          borderRadius: radius ? radius : '1vh',
-          height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
-          width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
+          borderRadius: radius ? radius : "1vh",
+          height: height ? height + "vh" : isFullScreen ? "100%" : "18vh",
+          width: width ? width + "vh" : isFullScreen ? "100%" : "32vh",
           opacity: isControls ? 1 : 0,
-          cursor: isControls ? 'pointer' : 'none',
+          cursor: isControls ? "pointer" : "none",
         }}
       >
         <div
           className="ControlesContainerTop"
           style={{
             background: isControls
-              ? 'linear-gradient(#0008, transparent)'
-              : 'transparent',
+              ? "linear-gradient(#0008, transparent)"
+              : "transparent",
           }}
         >
           <div className="ControlesSettingsContainer" onClick={toggleSettings}>
@@ -588,15 +641,15 @@ export function Video({
               src="icons/Settings.png"
               className="SettingsIcon"
               style={{
-                transform: isSettings ? 'rotate(0deg)' : 'rotate(-90deg)',
-                width: isSettings ? '3vh' : '2vh',
+                transform: isSettings ? "rotate(0deg)" : "rotate(-90deg)",
+                width: isSettings ? "3vh" : "2vh",
                 opacity: isSettings ? 1 : 0.5,
               }}
             />
           </div>
           <div
             className="ControlesVolumenContainer"
-            style={{ pointerEvents: isSettings ? 'none' : 'visible' }}
+            style={{ pointerEvents: isSettings ? "none" : "visible" }}
           >
             <div
               className="ControlesVolumen"
@@ -612,13 +665,13 @@ export function Video({
                   ) / 100;
               }}
               style={{
-                width: isFullScreen ? '40vh' : '15vh',
-                height: isFullScreen ? '3vh' : '1vh',
+                width: isFullScreen ? "40vh" : "15vh",
+                height: isFullScreen ? "3vh" : "1vh",
               }}
             >
               <div
                 className="ControlesVolumenBarra"
-                style={{ width: VolumenPosition + 'px' }}
+                style={{ width: VolumenPosition + "px" }}
               >
                 <label>98%</label>
               </div>
@@ -629,7 +682,7 @@ export function Video({
             onClick={toggleFullScreen}
             style={{
               opacity: isSettings ? 0 : 1,
-              pointerEvents: isSettings ? 'none' : 'visible',
+              pointerEvents: isSettings ? "none" : "visible",
             }}
           >
             <img
@@ -652,30 +705,30 @@ export function Video({
             <div
               className="ControlesSettingsMenu"
               style={{
-                marginTop: isSettings ? '0' : '-2vh',
+                marginTop: isSettings ? "0" : "-2vh",
                 opacity: isSettings ? 1 : 0,
-                width: isSettings ? '70%' : '65%',
+                width: isSettings ? "70%" : "65%",
               }}
             >
               <div
                 className="SettingsIcons"
-                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
+                style={{ pointerEvents: isSettings ? "visible" : "none" }}
               >
                 <img alt="Imagen Alternativa" src="icons/Calidad_720.png" />
                 <label>Calidad</label>
               </div>
               <a
-                href={'icons/Download.png'}
+                href={"icons/Download.png"}
                 download
                 className="SettingsIcons"
-                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
+                style={{ pointerEvents: isSettings ? "visible" : "none" }}
               >
                 <img alt="Imagen Alternativa" src="icons/Download.png" />
                 <label>Descargar</label>
               </a>
               <div
                 className="SettingsIcons"
-                style={{ pointerEvents: isSettings ? 'visible' : 'none' }}
+                style={{ pointerEvents: isSettings ? "visible" : "none" }}
               >
                 <img alt="Imagen Alternativa" src="icons/Subtitulos_eng.png" />
                 <label>Subtítulos</label>
@@ -697,8 +750,8 @@ export function Video({
           style={{
             opacity: isSettings ? 0 : 1,
             background: isControls
-              ? 'linear-gradient(transparent, #0008)'
-              : 'transparent',
+              ? "linear-gradient(transparent, #0008)"
+              : "transparent",
           }}
         >
           <div className="ControlesDuracionContainer">
@@ -718,7 +771,7 @@ export function Video({
                 alt="Marker"
                 src="icons/TimeMarker.png"
                 className="MarkerIcon"
-                style={{ marginLeft: TimeLinePosition + 'px' }}
+                style={{ marginLeft: TimeLinePosition + "px" }}
               />
             </div>
             <div className="TimeLineVideoContainer"></div>
@@ -728,9 +781,9 @@ export function Video({
       <div
         className="VideoMediaContainer"
         style={{
-          borderRadius: radius ? radius : '1vh',
-          height: height ? height + 'vh' : isFullScreen ? '100%' : '18vh',
-          width: width ? width + 'vh' : isFullScreen ? '100%' : '32vh',
+          borderRadius: radius ? radius : "1vh",
+          height: height ? height + "vh" : isFullScreen ? "100%" : "18vh",
+          width: width ? width + "vh" : isFullScreen ? "100%" : "32vh",
         }}
       >
         <video
@@ -740,6 +793,56 @@ export function Video({
           ref={VideoRef}
         />
       </div>
+    </div>
+  );
+}
+export function Poligon({ children, size = "10vh", sides = 8, bg }) {
+  return (
+    <div className="PoligonoContainer" style={{ width: size, height: size }}>
+      <div
+        className="Poligono"
+        style={{
+          width: size,
+          height: size,
+          background: bg || randomBG(),
+        }}
+      >
+        <div className="PoligonoContent">{children}</div>
+      </div>
+    </div>
+  );
+}
+//            <--=========================================================== [ Animacion ]
+//             -----------------------------  [ Animacion ]  -----------------------------
+//            <--=========================================================== [ Animacion ]
+// import dasdwq from './createjs';
+// import Aniwer from './Losa';
+export function Animation({
+  children,
+  // animate = false,
+  width = 100,
+  height = 100,
+  script = "script/Losa.js",
+  id = "2367616E571929429CB3B8A1959D9915",
+}) {
+  // console.log(typeof dasdwq);
+  return (
+    <div
+      className="AnimationContainer"
+      id="animation_container"
+      // ref={ContainerRef}
+    >
+      <canvas
+        id="canvas"
+        // ref={CanvasRef} width="500"
+        height={height}
+      ></canvas>
+      <div
+        id="dom_overlay_container"
+        // ref={OverlayRef}
+        style={{ width: `${width}px`, height: `${height}px` }}
+      ></div>
+      {children}
     </div>
   );
 }
