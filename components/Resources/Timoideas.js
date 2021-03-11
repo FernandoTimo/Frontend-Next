@@ -59,16 +59,15 @@ export function Content({
   );
 }
 
-export function Header({ bg, padding, height, children, center }) {
+export function Header({ bg, height, center, children }) {
   return (
     <header
       className='Header'
       style={{
-        justifyContent: center ? 'center' : 'start',
-        alignItems: center ? 'center' : 'start',
-        padding: padding ? padding / 2 + 'vh' : 0,
-        height: height ? height + 'vh' : '5vh',
-        background: bg ? randomBG() : 'var(_00_)',
+        justifyContent: center && 'center',
+        alignItems: center && 'center',
+        height: height && height + 'vh',
+        background: bg && randomBG(),
       }}
     >
       {children}
@@ -77,16 +76,15 @@ export function Header({ bg, padding, height, children, center }) {
 }
 // ---             === ===   Header    === ===
 
-export function Footer({ bg, padding, height, children, center }) {
+export function Footer({ bg, height, center, children }) {
   return (
     <footer
       className='Footer'
       style={{
-        justifyContent: center ? 'center' : 'start',
-        alignItems: center ? 'center' : 'start',
-        padding: padding ? padding / 2 + 'vh' : 0,
-        height: height ? height + 'vh' : '5vh',
-        background: bg ? randomBG() : 'var(_00_)',
+        justifyContent: center && 'center',
+        alignItems: center && 'center',
+        height: height & (height + 'vh'),
+        background: bg && randomBG(),
       }}
     >
       {children}

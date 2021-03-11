@@ -40,12 +40,14 @@
   position: fixed;
   align-self: flex-start;
   width: 100vw;
+  height: 5vh;
 }
 .Footer {
   display: flex;
   position: absolute;
   align-self: flex-end;
   width: 100vw;
+  height: 5vh;
 }
 /*                        <--************************************************************************************************ [ MODALES ]
 //                 <--************************************************************************************************** [ MODALES ]
