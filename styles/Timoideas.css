@@ -41,6 +41,7 @@
   align-self: flex-start;
   width: 100vw;
   height: 5vh;
+  background: var(--c00);
 }
 .Footer {
   display: flex;
@@ -48,6 +49,7 @@
   align-self: flex-end;
   width: 100vw;
   height: 5vh;
+  background: var(--c00);
 }
 /*                        <--************************************************************************************************ [ MODALES ]
 //                 <--************************************************************************************************** [ MODALES ]
