@@ -21,9 +21,8 @@ export function Section({ bg, children, size }) {
     <section
       className='Section'
       style={{
-        background: bg ? randomBG() : 'var(_00_)',
-        color: 'var(_20_)',
-        height: size ? `${size}00vh` : '100vh',
+        background: bg && randomBG(),
+        height: size && `${size}00vh`,
       }}
     >
       {children}
@@ -51,7 +50,7 @@ export function Content({
       style={{
         padding: padding ? padding + 'vh' : 0,
         flexDirection: row ? 'row' : 'column',
-        background: bg ? randomBG() : 'var(_00_)',
+        background: bg && randomBG(),
         flex: flex || 1,
         ...style,
       }}
