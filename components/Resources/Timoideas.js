@@ -8,10 +8,9 @@ const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
   return '#' + hexadecimal;
 };
-// --- Global
 export function Body({ bg, children }) {
   return (
-    <div className='Body' style={{ background: bg ? randomBG() : 'var(_00_)' }}>
+    <div className='Body' style={{ background: bg && randomBG() }}>
       {children}
     </div>
   );
@@ -257,7 +256,6 @@ export function Input_1({ func, type, children, required }) {
     nombre = type;
     type = 'number';
   }
-
   const handleChange = (e) => {
     setobjValue(e.target.value);
     console.log(objValue);

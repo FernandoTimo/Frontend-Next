@@ -7,8 +7,11 @@
 }
 .Body {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .Section {
   width: 100vw;
