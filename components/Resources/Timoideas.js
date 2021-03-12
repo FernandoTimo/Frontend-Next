@@ -35,7 +35,6 @@ export function Content({
   flex,
   center = '',
   className = '',
-  onClick,
   children,
 }) {
   // if (!children) {
@@ -51,7 +50,6 @@ export function Content({
         background: bg && randomBG(),
         flex: flex || 1,
       }}
-      onClick={onClick}
     >
       {children}
     </div>
