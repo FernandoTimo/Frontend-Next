@@ -97,13 +97,12 @@ export function Controls({ top = 1, row = 'column', children }) {
     </div>
   );
 }
-
 export function Modal({
   bg = 'var(--c02)',
   transition = 0,
   blur = 0,
   center,
-  active = [true, () => {}],
+  active = [true, () => {}, true],
   children,
 }) {
   const [show, setShow] = useState(active[0]);
@@ -116,38 +115,38 @@ export function Modal({
     setChildrenSizes([Refs.current.clientWidth, Refs.current.clientHeight]);
   }, []);
   const CerrarModal = (e) => {
-    if (e.target.className === 'ModalContainer') {
+    if (e.target.className === 'ModalContainer' && active[2]) {
       setShow(false);
       active[1]();
     }
   };
   return (
+    // <div
+    //   className='ModalEmpty'
+    //   style={{
+    //     width: ChildrenSizes[0],
+    //     height: ChildrenSizes[1],
+    //   }}
+    // >
     <div
-      className='ModalEmpty'
+      className='ModalContainer'
+      onClick={CerrarModal}
+      tabIndex='0'
       style={{
-        width: ChildrenSizes[0],
-        height: ChildrenSizes[1],
+        background: bg,
+        opacity: show && '1',
+        width: show && '100vw',
+        height: show && '100vh',
+        alignItems: center && 'center',
+        justifyContent: center && 'center',
+        backdropFilter: `blur(${blur / 3}vh)`,
+        pointerEvents: show && 'visible',
+        transition: transition + 's',
       }}
+      ref={Refs}
     >
-      <div
-        className='ModalContainer'
-        onClick={CerrarModal}
-        tabIndex='0'
-        style={{
-          background: bg,
-          opacity: show && '1',
-          width: show && '100vw',
-          height: show && '100vh',
-          alignItems: center && 'center',
-          justifyContent: center && 'center',
-          backdropFilter: `blur(${blur / 3}vh)`,
-          pointerEvents: show && 'visible',
-          transition: transition + 's',
-        }}
-        ref={Refs}
-      >
-        {children}
-      </div>
+      {children}
+      {/* </div> */}
     </div>
   );
 }
