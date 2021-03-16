@@ -65,7 +65,17 @@
   opacity: 0;
   pointer-events: none;
 }
-
+.ColorPicker {
+  width: 30vh;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--c20);
+  border-radius: 2vh;
+  color: var(--c00);
+  transition: 0.3s;
+}
 /*                        <--************************************************************************************************ [ NAVEGACIÓN ]
 //                 <--************************************************************************************************** [ NAVEGACIÓN ]
 //            <--************************************************************************************************** [ NAVEGACIÓN ]

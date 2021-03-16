@@ -150,6 +150,9 @@ export function Modal({
     </div>
   );
 }
+export function ColorPicker({ position }) {
+  return <div className='ColorPicker'>{position}</div>;
+}
 export function Carrousel({ bg, speed, width, height, children }) {
   // const [Slider, setSlider] = useState(0);
   // const CarrouselContainerRef = useRef();
