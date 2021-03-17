@@ -28,6 +28,7 @@
   box-sizing: border-box;
 }
 .c {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -91,6 +92,7 @@
   opacity: 0;
   pointer-events: none;
 }
+/*  */
 .ColorPicker {
   width: 30vh;
   height: 30vh;
@@ -103,6 +105,7 @@
   transition: 0.3s;
   overflow: hidden;
   box-shadow: 0 0 1vh #3333;
+  position: absolute;
 }
 .ColorPickerContainer {
   width: 90%;
