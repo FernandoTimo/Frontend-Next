@@ -11,23 +11,23 @@ export default function useLocalStorage(key, value = '') {
       '⚡ useLocalStorage => Proporciona un valor de tipo string como parámetro, ejemplo: useLocalStorage("Theme") ⚡'
     );
   }
-  const [State, setState] = useState('');
+  const [Value, setValue] = useState('');
   // Esteblece valores de inicio
   useEffect(() => {
     // La key no existe en el localStorage
     if (!!!localStorage[key]) {
       localStorage[key] = value;
-      setState(value);
+      setValue(value);
     }
     // La key existe en el localStorage
     else {
-      setState(localStorage[key]);
+      setValue(localStorage[key]);
     }
   }, []);
   // Cambia el valor del localStorage
   useEffect(() => {
-    localStorage[key] = State;
-  }, [State]);
+    localStorage[key] = Value;
+  }, [Value]);
 
-  return [State, setState];
+  return [Value, setValue];
 }
