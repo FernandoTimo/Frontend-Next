@@ -175,6 +175,19 @@
 //                        <--************************************************************************************************ [ NAVEGACIÓN ]
 */
 
+.ThemeContainer {
+  width: 10vh;
+  height: 10vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.ThemeContainer span {
+  pointer-events: visible;
+  cursor: pointer;
+}
 .NavigationContainer {
   z-index: 2;
   display: flex;
@@ -185,18 +198,6 @@
   position: fixed;
   pointer-events: none;
   box-sizing: border-box;
-}
-.NavigationLabel {
-  pointer-events: visible;
-  position: fixed;
-  cursor: pointer;
-  font-size: 2vh;
-  transition: 0.2s ease-out;
-  z-index: 2;
-  margin: 2vh 3vh;
-}
-.NavigationLabel:hover {
-  transform: scale(1.05);
 }
 /* ----- */
 .NavigateContainer {

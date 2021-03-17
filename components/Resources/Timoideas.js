@@ -492,32 +492,40 @@ import Ligth from 'public/theme/Ligth.json';
 import Dark from 'public/theme/Dark.json';
 import useLocalStorage from 'hooks/useLocalStorage';
 export function Theme() {
-  let localTheme = useLocalStorage('Theme');
-  const [Theme, setTheme] = useState(localTheme === 'Dark' ? true : false);
-  let TemaActual = Theme ? Dark : Ligth;
+  let [CurrentTheme, setCurrentTheme] = useLocalStorage('Theme', 'Dark');
   useEffect(() => {
-    Object.keys(TemaActual).map((key) => {
-      document.documentElement.style.setProperty(key, TemaActual[key]);
+    !!!localStorage.Theme
+      ? setSystem()
+      : setRoot(CurrentTheme === 'Dark' ? Dark : Ligth);
+  }, [CurrentTheme]);
+  const setRoot = (obj) => {
+    Object.keys(obj).map((key) => {
+      document.documentElement.style.setProperty(key, obj[key]);
     });
-  }, [localTheme]);
-  const getCurrentTheme = () =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
-  useEffect(() => {
-    // console.log(getCurrentTheme());
-    return;
-  }, []);
-  const onClick = () => {
-    // TemaActual = !Theme ? Dark : Ligth;
-    // Object.keys(TemaActual).map((key) => {
-    //   document.documentElement.style.setProperty(key, TemaActual[key]);
-    // });
-    // setTheme(!Theme);
-    // localStorage.setItem('Theme', Theme ? 'Dark' : 'Ligth');
+  };
+  const setDark = () => {
+    setCurrentTheme('Dark');
+    setRoot(Dark);
+  };
+  const setLigth = () => {
+    setCurrentTheme('Ligth');
+    setRoot(Ligth);
+  };
+  const setSystem = () => {
+    let sysPref = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (e) => {
+      e.matches ? setDark() : setLigth();
+    };
+    sysPref.removeEventListener('change', handler);
+    sysPref.addEventListener('change', handler);
+    handler(sysPref);
   };
   return (
-    <span className='NavigationLabel' onClick={onClick}>
-      {Theme ? '🌖' : '🌒'}
-    </span>
+    <div className='ThemeContainer'>
+      <span onClick={setSystem}>💻</span>
+      <span onClick={setLigth}>🌖</span>
+      <span onClick={setDark}>🌒</span>
+    </div>
   );
 }
 export default Navigation;
