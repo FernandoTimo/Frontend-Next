@@ -1,2 +1,2 @@
 ## Core Changes 
- - New
+ - New useLocalStorage Hook
