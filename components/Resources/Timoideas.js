@@ -1,8 +1,14 @@
-import { useState, useEffect, Children, cloneElement, useRef } from 'react';
+import {
+  useState,
+  useEffect,
+  Children,
+  cloneElement,
+  useRef,
+  useLayoutEffect,
+} from 'react';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
-useTheme;
 const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
   return '#' + hexadecimal;
@@ -475,7 +481,7 @@ export const Navigation = () => {
   return (
     <NavigationContextProvider>
       <div className='NavigationContainer'>
-        <Themeas />
+        <Theme />
         {Navigate && <Router setNavigation={setNavigation} />}
       </div>
     </NavigationContextProvider>
@@ -484,23 +490,30 @@ export const Navigation = () => {
 
 import Ligth from 'public/theme/Ligth.json';
 import Dark from 'public/theme/Dark.json';
-
-export function Themeas() {
+import useLocalStorage from 'hooks/useLocalStorage';
+export function Theme() {
+  let localTheme = useLocalStorage('Theme');
+  const [Theme, setTheme] = useState(localTheme === 'Dark' ? true : false);
+  let TemaActual = Theme ? Dark : Ligth;
+  useEffect(() => {
+    Object.keys(TemaActual).map((key) => {
+      document.documentElement.style.setProperty(key, TemaActual[key]);
+    });
+  }, [localTheme]);
   const getCurrentTheme = () =>
     window.matchMedia('(prefers-color-scheme: dark)').matches;
   useEffect(() => {
-    console.log(getCurrentTheme());
+    // console.log(getCurrentTheme());
     return;
   }, []);
-  const [Theme, setTheme] = useState(false);
+
   const onClick = () => {
-    setTheme(!Theme);
-    Object.keys(Theme ? Ligth : Dark).map((key) => {
-      document.documentElement.style.setProperty(
-        key,
-        Theme ? Ligth[key] : Dark[key]
-      );
+    TemaActual = !Theme ? Dark : Ligth;
+    Object.keys(TemaActual).map((key) => {
+      document.documentElement.style.setProperty(key, TemaActual[key]);
     });
+    setTheme(!Theme);
+    localStorage.setItem('Theme', Theme ? 'Dark' : 'Ligth');
   };
   return (
     <span className='NavigationLabel' onClick={onClick}>
@@ -520,13 +533,12 @@ export default Navigation;
 //                 <--************************************************************************************************** [ Spinners ]
 //                        <--************************************************************************************************ [ Spinners ]
 
-export function Spinner_Trino({ speed, size, background }) {
-  const { Theme } = useTheme();
+export function Spinner_Trino({ speed, size, background = '#fafafa' }) {
   const Elemento = (
     <div
       className='Elementos'
       style={{
-        background: background || Theme._20,
+        background: background,
         // transform: `scale(8)`,
       }}
     />
