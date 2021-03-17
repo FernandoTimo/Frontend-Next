@@ -24,7 +24,9 @@ export default function Index() {
               position={'0 0 0 0'}
               active={[ShowColorPicker, toggleColorPicker, false]}
             ></ColorPicker>
-            <h1 className={style.Title}>Picker</h1>
+            <button className={style.Title} onClick={toggleColorPicker}>
+              Picker
+            </button>
             {/* <BienvenidaSockets /> */}
           </Content>
         </Section>
