@@ -166,10 +166,28 @@ export function ColorPicker({
         style={{
           opacity: active[0] ? 1 : 0,
           pointerEvents: active[0] ? 'visible' : 'none',
+          marginTop: position[0] + 'vh',
+          marginRight: position[1] + 'vh',
+          marginBottom: position[2] + 'vh',
+          marginLeft: position[3] + 'vh',
         }}
       >
         <div className='ColorPickerContainer'>
           <div className='CurrentColorContainer'>
+            <div
+              className='CurrentColorColor'
+              style={{ background: '#' + CurrentColor }}
+              onMouseDown={(e) => {
+                setCurrentXPosition(
+                  e.clientX - e.target.getBoundingClientRect().left
+                );
+                setCurrentYPosition(
+                  e.clientY - e.target.getBoundingClientRect().top
+                );
+              }}
+            ></div>
+            <div className='CurrentColorSaturation'></div>
+            <div className='CurrentColorBrightness'></div>
             <div
               className='CurrentColorPreview'
               onDrag={(e) => {
@@ -188,20 +206,6 @@ export function ColorPicker({
             >
               <span style={{ background: '#' + CurrentColor }} />
             </div>
-            <div
-              className='CurrentColorColor'
-              style={{ background: '#' + CurrentColor }}
-              onMouseDown={(e) => {
-                setCurrentXPosition(
-                  e.clientX - e.target.getBoundingClientRect().left
-                );
-                setCurrentYPosition(
-                  e.clientY - e.target.getBoundingClientRect().top
-                );
-              }}
-            ></div>
-            <div className='CurrentColorSaturation'></div>
-            <div className='CurrentColorBrightness'></div>
           </div>
         </div>
       </div>

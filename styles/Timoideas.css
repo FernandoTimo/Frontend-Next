@@ -106,6 +106,7 @@
   overflow: hidden;
   box-shadow: 0 0 1vh #3333;
   position: absolute;
+  margin: 0;
 }
 .ColorPickerContainer {
   width: 90%;
@@ -134,7 +135,8 @@
   position: absolute;
   z-index: 1;
   cursor: grab;
-  /* margin: -2vh; */
+  opacity: 0;
+  transition: 0.2s;
 }
 .CurrentColorPreview span {
   width: 2vh;
@@ -142,6 +144,10 @@
   border-radius: 50%;
   pointer-events: none;
   box-shadow: inset 0 0 0.5vh #3333;
+}
+.CurrentColorColor:hover ~ .CurrentColorPreview,
+.CurrentColorPreview:hover {
+  opacity: 1;
 }
 .CurrentColorColor,
 .CurrentColorBrightness,
