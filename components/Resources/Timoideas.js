@@ -151,7 +151,52 @@ export function Modal({
   );
 }
 export function ColorPicker({ position }) {
-  return <div className='ColorPicker'>{position}</div>;
+  const [CurrentColor, setCurrentColor] = useState('FA0');
+  const [CurrentXPosition, setCurrentXPosition] = useState(0);
+  const [CurrentYPosition, setCurrentYPosition] = useState(0);
+  return (
+    <div className='ColorPicker'>
+      <div className='ColorPickerContainer'>
+        <div className='CurrentColorContainer'>
+          <div
+            className='CurrentColorPreview'
+            // onDrag={(e) => {
+            //   setCurrentXPosition(
+            //     e.clientX - e.target.getBoundingClientRect().left
+            //   );
+            //   setCurrentYPosition(
+            //     e.clientY - e.target.getBoundingClientRect().top
+            //   );
+            // }}
+            // style={
+            //   {
+            //     // transform: `translate3d(${CurrentXPosition}px, ${CurrentYPosition}px, 2)`,
+            //     // left: CurrentXPosition + 'px',
+            //     // top: CurrentYPosition + 'px',
+            //     // background: '#fa0',
+            //   }
+            // }
+          >
+            <span style={{ background: '#' + CurrentColor }} />
+          </div>
+          <div
+            className='CurrentColorColor'
+            style={{ background: '#' + CurrentColor }}
+            onClick={(e) => {
+              setCurrentXPosition(
+                e.clientX - e.target.getBoundingClientRect().left
+              );
+              setCurrentYPosition(
+                e.clientY - e.target.getBoundingClientRect().top
+              );
+            }}
+          ></div>
+          <div className='CurrentColorSaturation'></div>
+          <div className='CurrentColorBrightness'></div>
+        </div>
+      </div>
+    </div>
+  );
 }
 export function Carrousel({ bg, speed, width, height, children }) {
   // const [Slider, setSlider] = useState(0);
