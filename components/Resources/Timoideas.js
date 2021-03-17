@@ -506,14 +506,13 @@ export function Theme() {
     // console.log(getCurrentTheme());
     return;
   }, []);
-
   const onClick = () => {
-    TemaActual = !Theme ? Dark : Ligth;
-    Object.keys(TemaActual).map((key) => {
-      document.documentElement.style.setProperty(key, TemaActual[key]);
-    });
-    setTheme(!Theme);
-    localStorage.setItem('Theme', Theme ? 'Dark' : 'Ligth');
+    // TemaActual = !Theme ? Dark : Ligth;
+    // Object.keys(TemaActual).map((key) => {
+    //   document.documentElement.style.setProperty(key, TemaActual[key]);
+    // });
+    // setTheme(!Theme);
+    // localStorage.setItem('Theme', Theme ? 'Dark' : 'Ligth');
   };
   return (
     <span className='NavigationLabel' onClick={onClick}>

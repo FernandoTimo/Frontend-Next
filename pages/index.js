@@ -6,7 +6,6 @@ import {
   Content,
   ColorPicker,
 } from 'components/Resources/Timoideas';
-import BienvenidaSockets from 'components/BienvenidaSockets';
 import { useState } from 'react';
 
 export default function Index() {
@@ -28,7 +27,6 @@ export default function Index() {
                 Picker
               </button>
             </ColorPicker>
-            {/* <BienvenidaSockets /> */}
           </Content>
         </Section>
       </Body>

@@ -4,9 +4,9 @@ import WelcomeSockets, { handlerSocketChat } from 'sockets/WelcomeSockets';
 function BienvenidaSockets() {
   const [serverSockets, setserverSockets] = useState();
   const [messages, setmessages] = useState({ messages: [] });
-  useEffect(() => {
-    WelcomeSockets(setserverSockets, setmessages);
-  }, []);
+  // useEffect(() => {
+  //   WelcomeSockets(setserverSockets, setmessages);
+  // }, []);
   handlerSocketChat();
   return (
     <div className={style.BienvenidaSockets}>
@@ -16,8 +16,8 @@ function BienvenidaSockets() {
             {serverSockets.message}
           </label>
           <a
-            href="https://github.com/FernandoTimo/Backend-Express"
-            target="_blank"
+            href='https://github.com/FernandoTimo/Backend-Express'
+            target='_blank'
           >
             https://github.com/FernandoTimo/Backend-Express
           </a>
@@ -42,8 +42,8 @@ function BienvenidaSockets() {
             Puedes habilitarlos usando este template de Backend:
           </label>
           <a
-            href="https://github.com/FernandoTimo/Backend-Express"
-            target="_blank"
+            href='https://github.com/FernandoTimo/Backend-Express'
+            target='_blank'
           >
             https://github.com/FernandoTimo/Backend-Express
           </a>
