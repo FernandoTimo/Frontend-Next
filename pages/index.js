@@ -21,12 +21,13 @@ export default function Index() {
         <Section size={1}>
           <Content center flex={0.5}>
             <ColorPicker
-              position={'0 0 0 0'}
+              position={[0, 0, 0, 0]}
               active={[ShowColorPicker, toggleColorPicker, false]}
-            ></ColorPicker>
-            <button className={style.Title} onClick={toggleColorPicker}>
-              Picker
-            </button>
+            >
+              <button className={style.Title} onClick={toggleColorPicker}>
+                Picker
+              </button>
+            </ColorPicker>
             {/* <BienvenidaSockets /> */}
           </Content>
         </Section>
