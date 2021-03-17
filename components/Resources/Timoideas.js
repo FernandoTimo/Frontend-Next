@@ -1,9 +1,8 @@
 import { useState, useEffect, Children, cloneElement, useRef } from 'react';
 import Link from 'next/link';
 import { useContext } from 'react';
-import { useTheme } from 'hooks/useTheme';
 import { useRouter } from 'next/router';
-
+useTheme;
 const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
   return '#' + hexadecimal;
@@ -364,7 +363,6 @@ export function Boton_1({ children }) {
 import NavigationContext from 'context/NavigationContext';
 const Router = ({ setNavigation }) => {
   const { setRoutes } = useContext(NavigationContext);
-  const { Theme } = useTheme();
   const RutaRef = useRef();
   const router = useRouter();
   const handleSubmit = () => {
@@ -397,8 +395,6 @@ const Router = ({ setNavigation }) => {
             <label
               itemRef='route'
               style={{
-                color: Theme._00,
-                background: Theme._20,
                 transition: '0.1 s',
               }}
               className='HostNameRouter'
@@ -413,8 +409,6 @@ const Router = ({ setNavigation }) => {
               className='RouteInput'
               style={{
                 border: `0.3vh solid #0effaf`,
-                color: Theme._20,
-                background: Theme._00,
                 boxShadow: `inset 0 0 1vh #0effaf`,
               }}
               placeholder=' '
@@ -441,7 +435,7 @@ const Router = ({ setNavigation }) => {
                           background: WantToClear && 'transparent',
                           opacity: WantToClear ? '.7' : '1',
                           transform: WantToClear ? 'scale(.9)' : null,
-                          border: WantToClear && `0.3vh solid ${Theme._20}`,
+                          border: WantToClear && `0.3vh solid #fafafa`,
                           fontWeight: WantToClear ? '100' : '700',
                           display: ClearHistory ? 'none' : 'flex',
                         }}
@@ -461,7 +455,6 @@ const Router = ({ setNavigation }) => {
 import { NavigationContextProvider } from 'context/NavigationContext';
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
-  const { Theme, setTheme } = useTheme();
   const handleNavigate = (e) => {
     if (e.ctrlKey === true && e.keyCode === 32) {
       setNavigate(!Navigate);
