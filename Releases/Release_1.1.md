@@ -1,3 +1,2 @@
-useLocalStorage
 # Core Changes 
-	useLocalStorage
+	 - useLocalStorage
