@@ -150,46 +150,59 @@ export function Modal({
     </div>
   );
 }
-export function ColorPicker({ position, active = [false, () => {}, true] }) {
+export function ColorPicker({
+  position = [0, 0, 0, 0],
+  active = [false, () => {}, true],
+  children,
+}) {
   const [CurrentColor, setCurrentColor] = useState('FA0');
   const [CurrentXPosition, setCurrentXPosition] = useState(0);
   const [CurrentYPosition, setCurrentYPosition] = useState(0);
   return (
-    <div className='ColorPicker' style={{ opacity: active[0] ? 1 : 0 }}>
-      <div className='ColorPickerContainer'>
-        <div className='CurrentColorContainer'>
-          <div
-            className='CurrentColorPreview'
-            onDrag={(e) => {
-              setCurrentXPosition(
-                e.clientX - e.target.getBoundingClientRect().left
-              );
-              setCurrentYPosition(
-                e.clientY - e.target.getBoundingClientRect().top
-              );
-            }}
-            style={{
-              transform: `translate3d(${CurrentXPosition}px, ${CurrentYPosition}px, 0px)`,
-              // left: CurrentXPosition + 'px',
-              // top: CurrentYPosition + 'px',
-            }}
-          >
-            <span style={{ background: '#' + CurrentColor }} />
+    <div className='c'>
+      {children}
+      <div
+        className='ColorPicker'
+        style={{
+          opacity: active[0] ? 1 : 0,
+          pointerEvents: active[0] ? 'visible' : 'none',
+        }}
+      >
+        <div className='ColorPickerContainer'>
+          <div className='CurrentColorContainer'>
+            <div
+              className='CurrentColorPreview'
+              onDrag={(e) => {
+                setCurrentXPosition(
+                  e.clientX - e.target.getBoundingClientRect().left
+                );
+                setCurrentYPosition(
+                  e.clientY - e.target.getBoundingClientRect().top
+                );
+              }}
+              style={{
+                transform: `translate3d(${CurrentXPosition}px, ${CurrentYPosition}px, 0px)`,
+                // left: CurrentXPosition + 'px',
+                // top: CurrentYPosition + 'px',
+              }}
+            >
+              <span style={{ background: '#' + CurrentColor }} />
+            </div>
+            <div
+              className='CurrentColorColor'
+              style={{ background: '#' + CurrentColor }}
+              onMouseDown={(e) => {
+                setCurrentXPosition(
+                  e.clientX - e.target.getBoundingClientRect().left
+                );
+                setCurrentYPosition(
+                  e.clientY - e.target.getBoundingClientRect().top
+                );
+              }}
+            ></div>
+            <div className='CurrentColorSaturation'></div>
+            <div className='CurrentColorBrightness'></div>
           </div>
-          <div
-            className='CurrentColorColor'
-            style={{ background: '#' + CurrentColor }}
-            onMouseDown={(e) => {
-              setCurrentXPosition(
-                e.clientX - e.target.getBoundingClientRect().left
-              );
-              setCurrentYPosition(
-                e.clientY - e.target.getBoundingClientRect().top
-              );
-            }}
-          ></div>
-          <div className='CurrentColorSaturation'></div>
-          <div className='CurrentColorBrightness'></div>
         </div>
       </div>
     </div>
