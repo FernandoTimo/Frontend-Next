@@ -5,12 +5,24 @@ import { useState, useEffect } from 'react';
  * @param {number} [min] Valor inicial del contador 🔥 default value = 0
  * @param {boolean} [start]  🔥 default value = true
  */
-export default function useCounter(max, min = 0, start = true) {
+export default function useCounter(
+  max,
+  min = 0,
+  start = true,
+  speed = 14,
+  increment = (max - min) / (14 * max.toString().length)
+) {
   const [Counter, setCounter] = useState(min);
-  const increment = (max - min) / (14 * max.toString().length);
-  if (!max) {
+  if (
+    !max ||
+    typeof max !== 'number' ||
+    typeof min !== 'number' ||
+    typeof start !== 'boolean' ||
+    typeof speed !== 'number' ||
+    typeof increment !== 'number'
+  ) {
     throw new Error(
-      '⚡ useCounter => Proporcionar un valor de tipo number como parámetro, ejemplo: useCounter(4286) ⚡'
+      '⚡ useCounter => Proporcionar valores válidos: (number, number, boolean, number, number) como parámetros, ejemplo completo: useCounter(4286, 0, true, 14, increment) ⚡'
     );
   }
   useEffect(() => {
@@ -25,7 +37,7 @@ export default function useCounter(max, min = 0, start = true) {
               : Counter +
                   (increment < max - Counter ? increment : max - Counter)
           );
-        }, 14);
+        }, speed);
       }
       return () => {
         clearInterval(currentCounter);
