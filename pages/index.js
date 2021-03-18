@@ -1,32 +1,19 @@
 import style from 'styles/css/Index.module.css';
 import { Header_Main } from 'heads/Header_Main';
-import {
-  Body,
-  Section,
-  Content,
-  ColorPicker,
-} from 'components/Resources/Timoideas';
-import { useState } from 'react';
+import { Body, Section, Content } from 'components/Resources/Timoideas';
+import useCounter from 'hooks/useCounter';
+// import BienvenidaSockets from 'components/BienvenidaSockets';
 
 export default function Index() {
-  const [ShowColorPicker, setShowColorPicker] = useState(false);
-  const toggleColorPicker = () => {
-    setShowColorPicker(!ShowColorPicker);
-  };
+  let Number = useCounter(554, 0, true);
   return (
     <>
       <Header_Main />
       <Body>
         <Section size={1}>
           <Content center flex={0.5}>
-            <ColorPicker
-              position={[-40, 0, 0, 0]}
-              active={[ShowColorPicker, toggleColorPicker, false]}
-            >
-              <button className={style.Title} onClick={toggleColorPicker}>
-                Picker
-              </button>
-            </ColorPicker>
+            <h1>{Number}</h1>
+            {/* <BienvenidaSockets /> */}
           </Content>
         </Section>
       </Body>
