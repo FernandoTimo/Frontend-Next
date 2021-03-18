@@ -22,7 +22,7 @@ export default function useCounter(
     typeof increment !== 'number'
   ) {
     throw new Error(
-      '⚡ useCounter => Proporcionar valores válidos: (number, number, boolean, number, number) como parámetros, ejemplo completo: useCounter(4286, 0, true, 14, increment) ⚡'
+      '⚡ useCounter => Proporcionar valores válidos: (number, number, boolean, number, number) como parámetros, ejemplo completo: useCounter(4286, 0, true, 14, 14) ⚡'
     );
   }
   useEffect(() => {
