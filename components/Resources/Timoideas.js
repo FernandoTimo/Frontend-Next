@@ -928,10 +928,8 @@ export function Emergente({
   // Hanldler click into emergent
   useEffect(() => {
     const handlerClick = (e) => {
-      console.log(e.target, 'clase');
       if (e.target.className === 'FullScreen' && active[2]) {
         active[1]();
-        console.log('hola mundo');
       }
     };
     active[2] && window.addEventListener('click', handlerClick);
