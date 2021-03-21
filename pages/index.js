@@ -17,7 +17,7 @@ export default function Index() {
         <Section size={1}>
           <Content center flex={0.5}>
             <Emergente child={<Prueba />}>
-              <div>Hola</div>
+              <div className={style.Emergente}>Hola</div>
             </Emergente>
             {/* <h1 className={style.Title}>Frontend</h1>
             <BienvenidaSockets /> */}

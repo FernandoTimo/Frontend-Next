@@ -1012,9 +1012,26 @@
   width: 100%;
   flex: 1;
 }
+/* Emergente */
+
+.EmergenteContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #ff0932; */
+  margin: 1vh;
+  padding: 1vh;
+  position: relative;
+}
+.EmergenteChild {
+  position: absolute;
+}
 .Emergente {
-  width: 15vh;
-  height: 15vh;
+  width: 5vh;
+  height: 5vh;
   position: absolute;
   background: #fa0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

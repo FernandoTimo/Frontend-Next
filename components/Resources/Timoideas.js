@@ -911,8 +911,22 @@ export function Timoideas() {
     </div>
   );
 }
-export function Emergente({ child, children }) {
-  const parent = cloneElement(children, { className: 'Emergente' });
+export function Emergente({
+  top = 2,
+  right = 0,
+  bottom = 0,
+  left = 0,
+  child,
+  children: parent,
+}) {
+  let hei;
+  const ChildRef = useRef();
+  useEffect(() => {
+    hei = ChildRef.current.clientHeight;
+    const width = ChildRef.current.clientWidth;
+    top = hei + top;
+    left = width + left;
+  }, []);
   useEffect(() => {
     const handlerClick = (e) => {
       console.log(e.target.className);
@@ -924,7 +938,9 @@ export function Emergente({ child, children }) {
   }, []);
   return (
     <div className='EmergenteContainer'>
-      {child}
+      <div className='EmergenteChild' ref={ChildRef} style={{ top: '-2vh' }}>
+        {child}
+      </div>
       {parent}
     </div>
   );

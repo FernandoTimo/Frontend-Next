@@ -1,4 +1,15 @@
 .Title {
-	font-size: 2vh;
-	text-align: center;
+  font-size: 2vh;
+  text-align: center;
+}
+.Child {
+  height: 5vh;
+  background: var(--c20);
+  color: var(--c00);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+  padding: 0 2vh;
 }
