@@ -911,3 +911,7 @@ export function Timoideas() {
     </div>
   );
 }
+export function Emergente({ children }) {
+  const asd = cloneElement(children, { className: 'Emergente' });
+  return <div className=''>{asd}</div>;
+}

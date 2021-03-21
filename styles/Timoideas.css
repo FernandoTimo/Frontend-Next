@@ -1012,3 +1012,9 @@
   width: 100%;
   flex: 1;
 }
+.Emergente {
+  width: 15vh;
+  height: 15vh;
+  position: absolute;
+  background: #fa0;
+}
