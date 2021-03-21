@@ -39,7 +39,7 @@ function BienvenidaSockets() {
         <div className={style.Sugerencia}>
           <label className={style.PathCode}>Sockets desconectados</label>
           <label className={style.WelcomeMessage}>
-            Puedes habilitarlos usando este template de Backend:
+            Puedes habilitarlos usando este template como Backend:
           </label>
           <a
             href='https://github.com/FernandoTimo/Backend-Express'
