@@ -912,36 +912,58 @@ export function Timoideas() {
   );
 }
 export function Emergente({
-  top = 2,
-  right = 0,
-  bottom = 0,
-  left = 0,
+  position = [],
+  active = [true, () => {}, true],
   child,
   children: parent,
 }) {
-  let hei;
+  // Setting clild sizes
+  const [Width, setWidth] = useState();
+  const [Height, setHeight] = useState();
   const ChildRef = useRef();
   useEffect(() => {
-    hei = ChildRef.current.clientHeight;
-    const width = ChildRef.current.clientWidth;
-    top = hei + top;
-    left = width + left;
+    setWidth(ChildRef.current.clientWidth);
+    setHeight(ChildRef.current.clientHeight);
   }, []);
+  // Hanldler click into emergent
   useEffect(() => {
     const handlerClick = (e) => {
-      console.log(e.target.className);
+      console.log(e.target, 'clase');
+      if (e.target.className === 'FullScreen' && active[2]) {
+        active[1]();
+        console.log('hola mundo');
+      }
     };
-    window.addEventListener('click', handlerClick);
+    active[2] && window.addEventListener('click', handlerClick);
     return () => {
       window.removeEventListener('click', handlerClick);
     };
-  }, []);
+  }, [active[1]]);
+
   return (
     <div className='EmergenteContainer'>
-      <div className='EmergenteChild' ref={ChildRef} style={{ top: '-2vh' }}>
+      <div
+        className='EmergenteChild'
+        ref={ChildRef}
+        style={{
+          opacity: active[0] ? 1 : 0,
+          pointerEvents: active[0] ? 'visible' : 'none',
+          top: position[0] && `calc(${-position[0]}vh + ${-Height}px)`,
+          right: position[1] && `calc(${-position[1]}vh + ${-Width}px)`,
+          bottom: position[2] && `calc(${-position[2]}vh + ${-Height}px)`,
+          left: position[3] && `calc(${-position[3]}vh + ${-Width}px)`,
+        }}
+      >
         {child}
       </div>
-      {parent}
+      <div className='EmergenteParent'>{parent}</div>
+      <div
+        className='FullScreen'
+        style={{
+          pointerEvents: active[2] ? 'visible' : 'none',
+          display: active[0] ? 'flex' : 'none',
+        }}
+      ></div>
     </div>
   );
 }

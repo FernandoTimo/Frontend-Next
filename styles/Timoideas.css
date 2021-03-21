@@ -1018,20 +1018,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: #ff0932; */
-  margin: 1vh;
-  padding: 1vh;
   position: relative;
 }
 .EmergenteChild {
   position: absolute;
+  z-index: 1;
 }
-.Emergente {
-  width: 5vh;
-  height: 5vh;
-  position: absolute;
-  background: #fa0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.EmergenteParent {
+  z-index: 1;
+}
+.FullScreen {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
