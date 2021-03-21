@@ -911,7 +911,21 @@ export function Timoideas() {
     </div>
   );
 }
-export function Emergente({ children }) {
-  const asd = cloneElement(children, { className: 'Emergente' });
-  return <div className=''>{asd}</div>;
+export function Emergente({ child, children }) {
+  const parent = cloneElement(children, { className: 'Emergente' });
+  useEffect(() => {
+    const handlerClick = (e) => {
+      console.log(e.target.className);
+    };
+    window.addEventListener('click', handlerClick);
+    return () => {
+      window.removeEventListener('click', handlerClick);
+    };
+  }, []);
+  return (
+    <div className='EmergenteContainer'>
+      {child}
+      {parent}
+    </div>
+  );
 }
