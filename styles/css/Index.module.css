@@ -6,12 +6,12 @@
 .Emergente {
   width: 15vh;
   height: 15vh;
-  background: #fa0;
+  background: #dfa;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2.9vh;
   line-height: 2.9vh;
   font-weight: 700;
-  color: #f00;
+  color: #000;
 }
