@@ -40,6 +40,7 @@ export function Content({
   flex,
   center = '',
   className = '',
+  style = {},
   children,
 }) {
   // if (!children) {
@@ -50,6 +51,7 @@ export function Content({
     <div
       className={clases}
       style={{
+        ...style,
         padding: pd && pd + 'vh',
         flexDirection: row & 'row',
         background: bg && randomBG(),
@@ -902,7 +904,7 @@ export function Animation({
 }
 export function Timoideas() {
   return (
-    <div className='Timodieas'>
+    <div className='Timoideas'>
       <img
         alt='Timoideas Logo'
         className='TimoideasLogo'
