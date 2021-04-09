@@ -1,6 +1,6 @@
-import style from './BienvenidaSockets.module.css';
+import style from './SocketsSaludo.module.css';
 import { useEffect, useState } from 'react';
-import WelcomeSockets, { handlerSocketChat } from 'sockets/WelcomeSockets';
+import WelcomeSockets, { handlerSocketChat } from 'sockets/Saludo.socket';
 function BienvenidaSockets() {
   const [serverSockets, setserverSockets] = useState();
   const [messages, setmessages] = useState({ messages: [] });
