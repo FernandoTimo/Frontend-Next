@@ -4,10 +4,15 @@ import WelcomeSockets, { handlerSocketChat } from 'sockets/WelcomeSockets';
 function BienvenidaSockets() {
   const [serverSockets, setserverSockets] = useState();
   const [messages, setmessages] = useState({ messages: [] });
-  // useEffect(() => {
-  //   WelcomeSockets(setserverSockets, setmessages);
-  // }, []);
-  handlerSocketChat();
+  const handlerMessages = (saludo) => {
+    let message = messages.messages;
+    message.push(saludo);
+    setmessages({ messages: message });
+  };
+  useEffect(() => {
+    WelcomeSockets(setserverSockets, handlerMessages);
+    handlerSocketChat();
+  }, []);
   return (
     <div className={style.BienvenidaSockets}>
       {serverSockets ? (
