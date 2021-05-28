@@ -2,6 +2,9 @@ html {
   margin: 0;
   padding: 0;
 }
+html::-webkit-scrollbar {
+  display: none;
+}
 /* *:not(body) {
   transition: background 0.5s ease;
 } */

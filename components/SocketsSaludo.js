@@ -20,6 +20,10 @@ function BienvenidaSockets() {
           <label className={style.WelcomeMessage}>
             {serverSockets.message}
           </label>
+          <label>
+            Este mensaje esta siendo enviado desde el backend creado con esta
+            platilla:
+          </label>
           <a
             href='https://github.com/FernandoTimo/Backend-Express'
             target='_blank'
@@ -27,6 +31,7 @@ function BienvenidaSockets() {
             https://github.com/FernandoTimo/Backend-Express
           </a>
           <code className={style.PathCode}>{serverSockets.path}</code>
+          <a href={serverSockets.path}>code</a>
           <div className={style.SendersContainer}>
             <button onClick={handlerSocketChat} className={style.Sender}>
               Saludar a Todos
