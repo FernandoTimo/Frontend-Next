@@ -3,3 +3,58 @@
   margin: 0;
   text-align: center;
 }
+.Carousel {
+  width: 30vh;
+  height: 10vh;
+  border: 0.2vh solid #fa0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+  position: relative;
+}
+.Carousel div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+  font-weight: 700;
+}
+.Left,
+.Rigth {
+  position: absolute;
+  width: 6vh;
+  height: 6vh;
+  border: 0.2vh solid #fa0;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.Left:active {
+  transition: 0.2s;
+  width: 5.5vh;
+  height: 5.5vh;
+}
+.Rigth:active {
+  transition: 0.2s;
+  width: 5.5vh;
+  height: 5.5vh;
+}
+.Left {
+  margin-right: 15vh;
+}
+.Rigth {
+  margin-left: 15vh;
+}
+.Mid {
+  border: 0.2vh solid #fa0;
+  width: 8vh;
+  height: 8vh;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.Mid:active {
+  transition: 0.1s;
+  width: 7.8vh;
+  height: 7.8vh;
+}
