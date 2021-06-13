@@ -24,8 +24,8 @@
 .Left,
 .Rigth {
   position: absolute;
-  width: 6vh;
-  height: 6vh;
+  width: 5vh;
+  height: 5vh;
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -52,7 +52,7 @@
   cursor: pointer;
 }
 .Mid:active {
-  transition: 0.1s;
-  width: 7.8vh;
-  height: 7.8vh;
+  transition: 0s;
+  width: 7.7vh;
+  height: 7.7vh;
 }
