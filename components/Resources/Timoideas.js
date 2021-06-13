@@ -852,7 +852,7 @@ export function Video({
     </div>
   );
 }
-export function Poligon({ children, size = '10vh', sides = 8, bg }) {
+export function Poligon({ children, size = '100%', sides = 8, bg }) {
   return (
     <div className='PoligonoContainer' style={{ width: size, height: size }}>
       <div

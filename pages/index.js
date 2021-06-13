@@ -18,7 +18,6 @@ export default function Index() {
       <Header_Main />
       <Body>
         <Section size={1}>
-          <Poligon></Poligon>
           <Content center flex={0.5}>
             <h1 className={style.Title}>Frontend</h1>
             <div className={style.Carousel}>
@@ -32,7 +31,9 @@ export default function Index() {
                 }}
                 className={A}
               >
-                A
+                <Poligon sides={8} bg={'#fa0'}>
+                  A
+                </Poligon>
               </div>
               <div
                 onClick={() => {
@@ -44,7 +45,7 @@ export default function Index() {
                 }}
                 className={B}
               >
-                <Poligon sides={8} size={'4vh'} bg={'#fa0'}>
+                <Poligon sides={8} bg={'#fa0'}>
                   B
                 </Poligon>
               </div>
@@ -58,7 +59,9 @@ export default function Index() {
                 }}
                 className={C}
               >
-                C
+                <Poligon sides={8} bg={'#fa0'}>
+                  C
+                </Poligon>
               </div>
             </div>
             <BienvenidaSockets />
