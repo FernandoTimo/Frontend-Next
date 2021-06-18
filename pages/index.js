@@ -1,5 +1,5 @@
 import style from 'styles/css/Index.module.css';
-import { Header_Main } from 'heads/Header_Main';
+import Head_Main from 'heads/Header_Main';
 import {
   Body,
   Section,
@@ -15,7 +15,7 @@ export default function Index() {
   const [C, setC] = useState(style.Rigth);
   return (
     <>
-      <Header_Main />
+      <Head_Main />
       <Body>
         <Section size={1}>
           <Content center flex={0.5}>
@@ -45,7 +45,7 @@ export default function Index() {
                 }}
                 className={B}
               >
-                <Poligon sides={8} bg={'#fa0'}>
+                <Poligon sides={8} bg={'#ab1'}>
                   B
                 </Poligon>
               </div>
@@ -59,7 +59,7 @@ export default function Index() {
                 }}
                 className={C}
               >
-                <Poligon sides={8} bg={'#fa0'}>
+                <Poligon sides={8} bg={'#d04'}>
                   C
                 </Poligon>
               </div>
