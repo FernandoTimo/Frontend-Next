@@ -5,3 +5,4 @@
 .git
 desktop.ini
 Releases/
+.env.local
