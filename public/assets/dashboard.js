@@ -1,6 +1,10 @@
 // import styleDashboard from 'styles/css/Dashboard.module.css';
 import { Header_Main } from 'heads/Header_Main';
-import { Section, Body, Content } from 'components/Timoideas/Timoideas';
+import {
+  Section,
+  Body,
+  Content,
+} from 'components/timoideas/Timoideas.components';
 export default function Dashboard() {
   return (
     <>

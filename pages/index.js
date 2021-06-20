@@ -5,8 +5,8 @@ import {
   Section,
   Content,
   Poligon,
-} from 'components/Timoideas/Timoideas';
-import BienvenidaSockets from 'components/SocketsSaludo';
+} from 'components/timoideas/Timoideas.components';
+import BienvenidaSockets from 'components/SocketsSaludo.component';
 import { useState } from 'react';
 
 export default function Index() {
