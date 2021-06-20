@@ -368,7 +368,7 @@ export function Boton_1({ children }) {
   );
 }
 
-import NavigationContext from 'context/NavigationContext';
+import NavigationContext from 'context/Navigation.context';
 const Router = ({ setNavigation }) => {
   const { setRoutes } = useContext(NavigationContext);
   const RutaRef = useRef();
@@ -460,7 +460,7 @@ const Router = ({ setNavigation }) => {
     </div>
   );
 };
-import { NavigationContextProvider } from 'context/NavigationContext';
+import { NavigationContextProvider } from 'context/Navigation.context';
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
   const handleNavigate = (e) => {
