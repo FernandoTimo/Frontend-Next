@@ -492,7 +492,7 @@ export const Navigation = () => {
 
 import Ligth from 'public/theme/Ligth.json';
 import Dark from 'public/theme/Dark.json';
-import useLocalStorage from 'hooks/useLocalStorage';
+import useLocalStorage from 'hooks/useLocalStorage.hook';
 export function Theme() {
   let [CurrentTheme, setCurrentTheme] = useLocalStorage('Theme', 'Dark');
   useEffect(() => {

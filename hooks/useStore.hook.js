@@ -6,7 +6,7 @@ import {
   Spinner_Rainbow,
   Rainbow,
 } from 'components/timoideas/Timoideas.components';
-import useDelay from './useDelay';
+import useDelay from './useDelay.hook';
 import { socket } from 'sockets/Index.socket';
 
 export const useStore = () => {
