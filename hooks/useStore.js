@@ -7,7 +7,7 @@ import {
   Rainbow,
 } from 'components/Resources/Timoideas';
 import useDelay from './useDelay';
-import { socket } from 'sockets/socket';
+import { socket } from 'sockets/Index.socket';
 
 export const useStore = () => {
   const {
@@ -89,31 +89,31 @@ export function StoreClient({ Yape }) {
     //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|CLIENTE ]
     return (
       <Controls top>
-        <audio src="assets/pristine.mp3" ref={RefAudio}></audio>
+        <audio src='assets/pristine.mp3' ref={RefAudio}></audio>
         {/*                                         (1) JSX [ AYUDA = Container [~ isHelp] ] */}
-        <div className="Help">
+        <div className='Help'>
           <div
-            className="HelpContainer"
+            className='HelpContainer'
             style={{ display: isHelp ? 'flex' : 'none' }}
           >
             ¿No sé pagar con Yape!
           </div>
         </div>
         {/*                                         (1) JSX [ TIENDA === Container principal [~ showStore] ] */}
-        <div className="Store">
+        <div className='Store'>
           {ShowStore && (
             <>
               {/*                                            (2) JSX [ CABECERA === Container [! Steps] ] */}
-              <div className="StoreHeaderContainer">
+              <div className='StoreHeaderContainer'>
                 {/*                                               (3) JSX [ CABECERA === Yapear-Precio [~ Steps: 0,1] ] */}
                 {StepStore === 0 && (
                   <div
-                    className="FirstStepHeadContainer"
+                    className='FirstStepHeadContainer'
                     onClick={handlerButtonStore}
                   >
                     {/*                                                  (4) JSX [ CABECERA === Precio [~ Steps: 0, 1] ] */}
 
-                    <label className="YapearButtom">{'¡YAPEAR!'}</label>
+                    <label className='YapearButtom'>{'¡YAPEAR!'}</label>
                     <label
                       // ${StepStore === 1 && 'TotalPriceAfter'}
                       className={`TotalPriceBefore 
@@ -127,9 +127,9 @@ export function StoreClient({ Yape }) {
                 )}
                 {/*                                               (3) JSX [ CABECERA === Check-Steps [~ Steps>0] ] */}
                 {StepStore > 0 && (
-                  <label className="StoreButtonStateLabelTop">
+                  <label className='StoreButtonStateLabelTop'>
                     <div
-                      className="StoreButtonCheckContainer"
+                      className='StoreButtonCheckContainer'
                       style={{
                         gap: (StepStore === 2 || StepStore >= 5) && '0.1vh',
                       }}
@@ -139,9 +139,9 @@ export function StoreClient({ Yape }) {
                         <Spinner_Rainbow size={2.3} />
                       )}
                       <img
-                        alt="Check"
-                        className="StoreButtonCheck"
-                        src="assets/Check.png"
+                        alt='Check'
+                        className='StoreButtonCheck'
+                        src='assets/Check.png'
                         style={{
                           display:
                             StepStore === 2 && !Recivied ? 'none' : 'flex',
@@ -157,9 +157,9 @@ export function StoreClient({ Yape }) {
                       {/*                                                  (4) JSX [ CHECKS === Second-Step [~] ] */}
                       {StepStore === 5 && <Spinner_Rainbow size={2.3} />}
                       <img
-                        alt="Check"
-                        className="StoreButtonCheck"
-                        src="assets/Check.png"
+                        alt='Check'
+                        className='StoreButtonCheck'
+                        src='assets/Check.png'
                         style={{
                           display: StepStore === 5 ? 'none' : 'flex',
                           height: StepStore >= 3 && '2.3vh',
@@ -172,13 +172,13 @@ export function StoreClient({ Yape }) {
                 )}
               </div>
               {/*                                            (2) JSX [ PRODUCTOS = Container [! Siempre] ] */}
-              <div className="StoreContainer">
+              <div className='StoreContainer'>
                 <Content center flex={1}>
                   {/*                                               (3) JSX [ PRODUCTLIST|TOP === Componentes-Indicaciones [~Steps] ] */}
                   <Content
                     flex={StepStore === 0 ? 0.1 : 9}
                     center
-                    className="StoreStep"
+                    className='StoreStep'
                   >
                     {StepStore === 0 && <div></div>}
                     {(StepStore === 1 ||
@@ -257,20 +257,20 @@ const FirstStepStore = ({ Recivied, children }) => {
 
   //            <==************************************************************************************ [ JSX COMPONENT = FIRST-COMPONENT ]
   return (
-    <div className="YapeInfoContainer">
+    <div className='YapeInfoContainer'>
       {urlComprobante ? (
-        <div className="StepTwoState">
+        <div className='StepTwoState'>
           {/*                                         (1) JSX [ FIRST|IMG === Comprobante [~ urlComprobante] ] */}
-          <div className="ComprobanteCard">
+          <div className='ComprobanteCard'>
             <img
-              alt="Comprobante Yape"
+              alt='Comprobante Yape'
               src={urlComprobante}
-              className="YapeInfoComprobanteImg"
+              className='YapeInfoComprobanteImg'
             />
           </div>
-          <div className="StepTwoMessage">
-            <label className="h4">¡Gracias por tu preferencia!</label>
-            <label className="n2">
+          <div className='StepTwoMessage'>
+            <label className='h4'>¡Gracias por tu preferencia!</label>
+            <label className='n2'>
               {Recivied ? (
                 <div
                   style={{
@@ -279,8 +279,8 @@ const FirstStepStore = ({ Recivied, children }) => {
                     padding: 0,
                   }}
                 >
-                  <b className="n5">Acabamos de recibir tu comprobante.</b>
-                  <b className="h4">
+                  <b className='n5'>Acabamos de recibir tu comprobante.</b>
+                  <b className='h4'>
                     Ahora por favor necesitamos que completes los siguientes
                     datos...
                   </b>
@@ -294,44 +294,44 @@ const FirstStepStore = ({ Recivied, children }) => {
       ) : (
         <>
           {/*                                         (1) JSX [ FIRST|YAPE === Payment-Info [~ urlComprobante] ] */}
-          <div className="PaymentInfoContainer">
-            <p className="YapeInfoNumero">{children.numero}</p>
-            <p className="YapeInfoNombre">{children.nombre}</p>
+          <div className='PaymentInfoContainer'>
+            <p className='YapeInfoNumero'>{children.numero}</p>
+            <p className='YapeInfoNombre'>{children.nombre}</p>
             <img
-              alt="Yape"
-              src="assets/YapePayment.png"
-              className="PaymentSvgBackground"
+              alt='Yape'
+              src='assets/YapePayment.png'
+              className='PaymentSvgBackground'
             />
           </div>
-          <div className="SwitchStepsContainer">
+          <div className='SwitchStepsContainer'>
             <label
-              className="YapeInfoAdd"
+              className='YapeInfoAdd'
               onClick={() => {
                 setStepStore(0);
               }}
             >
-              <img alt="Add" src="assets/Add.png" className="AddIcon" />
-              <span className="SpanIcon">Añadir más</span>
+              <img alt='Add' src='assets/Add.png' className='AddIcon' />
+              <span className='SpanIcon'>Añadir más</span>
             </label>
             <label
-              className="YapeInfoVoucher"
+              className='YapeInfoVoucher'
               onClick={() => {
                 refStoreCompobanteInput.current.click();
               }}
             >
               <img
-                alt="Add"
-                src="assets/Comprobante.png"
-                className="CompobanteIcon"
+                alt='Add'
+                src='assets/Comprobante.png'
+                className='CompobanteIcon'
               />
-              <span className="SpanIcon">Adjuntar Voucher</span>
+              <span className='SpanIcon'>Adjuntar Voucher</span>
             </label>
           </div>
           <input
-            name="comprobante"
-            type="file"
-            accept=".png,.jpeg,.jpg"
-            className="StoreCompobanteInput"
+            name='comprobante'
+            type='file'
+            accept='.png,.jpeg,.jpg'
+            className='StoreCompobanteInput'
             ref={refStoreCompobanteInput}
             onChange={handlerComprobanteInput}
           />
@@ -373,10 +373,10 @@ const SecondStepStore = () => {
   };
   //            <==************************************************************************************ [ JSX COMPONENT = SECOND-COMPONENT ]
   return (
-    <div className="SecondStepStore">
+    <div className='SecondStepStore'>
       {/* <div className="SecondStepStoreTitle">¡Gracias por tu preferencia!</div> */}
       {/*                                         (1) JSX [ TIENDA === Mensaje [!] ] */}
-      <div className="SecondStepStoreMessage">
+      <div className='SecondStepStoreMessage'>
         {StepStore === 4 && 'Por favor, brindanos la siguiente información'}
         {StepStore === 5 &&
           'Datos enviados, esperando validacion de tu comprobante'}
@@ -384,56 +384,56 @@ const SecondStepStore = () => {
       </div>
       {/*                                         (1) JSX [ TIENDA === Form [~ Steps] ] */}
       {StepStore === 4 && (
-        <div className="SecondStepStoreFormContainer">
-          <form className="SecondStepStoreForm" onSubmit={handlerSubmit}>
+        <div className='SecondStepStoreFormContainer'>
+          <form className='SecondStepStoreForm' onSubmit={handlerSubmit}>
             <button className={`SecondStepStoreSubmit`}>
               <img
-                alt="Ok"
+                alt='Ok'
                 // onMouseOver={() => alert('asd')}
                 style={{
                   pointerEvents: CanSubmit ? 'visible' : 'none',
                   filter: CanSubmit ? 'grayScale(0)' : 'grayScale(1)',
                 }}
-                src="assets/Submit.png"
+                src='assets/Submit.png'
               />
             </button>
             <div>
               <div>
-                <input type="text" onChange={handlerChange} />
+                <input type='text' onChange={handlerChange} />
                 <label>Nombre</label>
               </div>
               <div>
-                <input type="text" />
+                <input type='text' />
                 <label>Teléfono</label>
               </div>
             </div>
             <div>
               <div>
-                <input type="text" />
+                <input type='text' />
                 <label>Hoy 15</label>
               </div>
               <div>
-                <input type="text" />
+                <input type='text' />
                 <label>10:30 am</label>
               </div>
             </div>
             <div>
               <div>
-                <input type="text" />
+                <input type='text' />
                 <label>Ciudad</label>
               </div>
               <div>
-                <input type="text" />
+                <input type='text' />
                 <label>Distrito</label>
               </div>
             </div>
             <div>
               <div>
-                <input type="text" />
+                <input type='text' />
                 <label>Calle</label>
               </div>
               <div>
-                <input type="text" />
+                <input type='text' />
                 <label>Numero</label>
               </div>
             </div>
@@ -443,13 +443,13 @@ const SecondStepStore = () => {
 
       {/*                                         (1) JSX [ TIENDA === Verified-Sale-Code [~ verified] ] */}
       {StepStore > 4 && (
-        <div className="SecondStepStoreCodeContainer">
-          <div className="SecondStepStoreCode">
+        <div className='SecondStepStoreCodeContainer'>
+          <div className='SecondStepStoreCode'>
             <label>Código</label>
             <b>:</b>
             <span>
               {Codigo ? (
-                <label className="SecondStepStoreCodeValue">
+                <label className='SecondStepStoreCodeValue'>
                   {Codigo.toUpperCase()}
                 </label>
               ) : (
@@ -503,7 +503,7 @@ const Product = ({ setTotalGlobal, children }) => {
   //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|CLIENTE|PRODUCTS|BOT-PRODUCTLIST ]
   return (
     <div
-      className="ProductList"
+      className='ProductList'
       style={{
         animation: _1000 && 'itemsStore .3s reverse forwards',
         cursor: StepStore < 2 && 'pointer',
@@ -516,19 +516,19 @@ const Product = ({ setTotalGlobal, children }) => {
       }}
     >
       <div
-        className="ControlCantidad"
+        className='ControlCantidad'
         style={{ display: StepStore > 0 ? 'none' : 'flex' }}
       >
-        <div className="ItemCantidadContainer">
+        <div className='ItemCantidadContainer'>
           <label
-            className="ItemCantidad"
+            className='ItemCantidad'
             style={{ animation: `rotate 0.${Cantidad}s` }}
           >
             x{Cantidad}
           </label>
         </div>
         <div onClick={handlerIncrement} />
-        <div className="DecrementContainer" onClick={handlerDecrement} />
+        <div className='DecrementContainer' onClick={handlerDecrement} />
       </div>
     </div>
   );
@@ -564,9 +564,9 @@ export function StoreAdmin({ children }) {
   };
   //            <==***************************************************************************** [ JSX COMPONENT = TIENDA|CLIENTE|COMPONENT|ADMIN ]
   return (
-    <div className="StoreVerifyOrdersContainer">
+    <div className='StoreVerifyOrdersContainer'>
       <div
-        className="VerifyOrdersControlContainer"
+        className='VerifyOrdersControlContainer'
         style={{
           display: 'grid',
           gridTemplateColumns:
@@ -580,7 +580,7 @@ export function StoreAdmin({ children }) {
           <StoreCardOrderVerify key={index} />
         ))}
       </div>
-      <div className="VerifyOrdersActivityContainer">
+      <div className='VerifyOrdersActivityContainer'>
         <div>
           <label onClick={handlerOrdersSimulate}>An</label>
         </div>
@@ -611,24 +611,24 @@ const StoreCardOrderVerify = () => {
     socket.emit('store-comprobante_validado', 'X8S5DQ');
   };
   return (
-    <div className="CardOrderVerifyContainer">
-      <div className="StoreCardOrderVerifyContainer">
+    <div className='CardOrderVerifyContainer'>
+      <div className='StoreCardOrderVerifyContainer'>
         <Rainbow>
           <label
-            className="h12 StoreCardOrderVerifyContainerTitle"
+            className='h12 StoreCardOrderVerifyContainerTitle'
             style={{ color: '#fafafa !important' }}
           >
             {State}
           </label>
         </Rainbow>
 
-        <label className="h7">S/14.20</label>
-        <label className="h7">D6R1W</label>
-        <label className="h9">96668218</label>
+        <label className='h7'>S/14.20</label>
+        <label className='h7'>D6R1W</label>
+        <label className='h9'>96668218</label>
         <div>
-          <label className="n6">Paucarpata</label>
-          <label className="n6">Av. Jesus</label>
-          <label className="n6">484</label>
+          <label className='n6'>Paucarpata</label>
+          <label className='n6'>Av. Jesus</label>
+          <label className='n6'>484</label>
         </div>
         <label>Mañana</label>
         <label>hace 2min</label>

@@ -1,4 +1,4 @@
-import { socket } from 'sockets/socket';
+import { socket } from 'sockets/Index.socket';
 
 export default function WelcomeSockets(setserverSockets, setmessages) {
   try {
