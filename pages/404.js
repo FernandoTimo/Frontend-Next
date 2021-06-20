@@ -1,4 +1,4 @@
-import { Section, Content } from '../components/Resources/Timoideas';
+import { Section, Content } from '../components/Timoideas/Timoideas';
 import styleError from '../styles/css/404.module.css';
 import Head_Error from 'heads/Header_Error';
 import { useRouter } from 'next/router';

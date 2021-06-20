@@ -5,7 +5,7 @@ import {
   Section,
   Content,
   Poligon,
-} from 'components/Resources/Timoideas';
+} from 'components/Timoideas/Timoideas';
 import BienvenidaSockets from 'components/SocketsSaludo';
 import { useState } from 'react';
 

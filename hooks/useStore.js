@@ -5,7 +5,7 @@ import {
   Content,
   Spinner_Rainbow,
   Rainbow,
-} from 'components/Resources/Timoideas';
+} from 'components/Timoideas/Timoideas';
 import useDelay from './useDelay';
 import { socket } from 'sockets/Index.socket';
 
