@@ -13,19 +13,19 @@ const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
   return '#' + hexadecimal;
 };
-export function Body({ bg, children }) {
+export function Body({ show, children }) {
   return (
-    <div className='Body' style={{ background: bg && randomBG() }}>
+    <div className='Body' style={{ boxShadow: show && 'var(--show)' }}>
       {children}
     </div>
   );
 }
-export function Section({ bg, size, children }) {
+export function Section({ show, size, children }) {
   return (
     <section
       className='Section'
       style={{
-        background: bg && randomBG(),
+        boxShadow: show && 'var(--show)',
         height: size && `${size}00vh`,
       }}
     >
@@ -34,7 +34,7 @@ export function Section({ bg, size, children }) {
   );
 }
 export function Content({
-  bg,
+  show,
   pd,
   row,
   flex,
@@ -43,9 +43,7 @@ export function Content({
   style = {},
   children,
 }) {
-  // if (!children) {
-  //   console.warn('<Content></Content> sin contenido');
-  // }
+  if (!children) console.warn('<Content></Content> sin contenido');
   let clases = `Content${center && ' c'}${className && ' ' + className}`;
   return (
     <div
@@ -53,8 +51,8 @@ export function Content({
       style={{
         ...style,
         padding: pd && pd + 'vh',
-        flexDirection: row & 'row',
-        background: bg && randomBG(),
+        flexDirection: row && 'row',
+        boxShadow: show && 'var(--show-content)',
         flex: flex || 1,
       }}
     >
@@ -63,30 +61,24 @@ export function Content({
   );
 }
 
-export function Header({ bg, height, center, children }) {
+export function Header({ height = 10, children }) {
   return (
     <header
       className='Header'
       style={{
-        justifyContent: center && 'center',
-        alignItems: center && 'center',
-        height: height && height + 'vh',
-        background: bg && randomBG(),
+        height: height + 'vh',
       }}
     >
       {children}
     </header>
   );
 }
-export function Footer({ bg, height, center, children }) {
+export function Footer({ bg, height = 10, children }) {
   return (
     <footer
       className='Footer'
       style={{
-        justifyContent: center && 'center',
-        alignItems: center && 'center',
-        height: height & (height + 'vh'),
-        background: bg && randomBG(),
+        height: height + 'vh',
       }}
     >
       {children}
@@ -368,7 +360,7 @@ export function Boton_1({ children }) {
   );
 }
 
-import NavigationContext from 'context/Navigation.context';
+import NavigationContext from 'context/NavigationContext';
 const Router = ({ setNavigation }) => {
   const { setRoutes } = useContext(NavigationContext);
   const RutaRef = useRef();
@@ -460,7 +452,7 @@ const Router = ({ setNavigation }) => {
     </div>
   );
 };
-import { NavigationContextProvider } from 'context/Navigation.context';
+import { NavigationContextProvider } from 'context/NavigationContext';
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
   const handleNavigate = (e) => {
@@ -492,25 +484,24 @@ export const Navigation = () => {
 
 import Ligth from 'public/theme/Ligth.json';
 import Dark from 'public/theme/Dark.json';
-import useLocalStorage from 'hooks/useLocalStorage.hook';
+
 export function Theme() {
-  let [CurrentTheme, setCurrentTheme] = useLocalStorage('Theme', 'Dark');
   useEffect(() => {
-    !!!localStorage.Theme
-      ? setSystem()
-      : setRoot(CurrentTheme === 'Dark' ? Dark : Ligth);
-  }, [CurrentTheme]);
+    !!localStorage.Theme
+      ? setRoot(localStorage.Theme === 'Dark' ? Dark : Ligth)
+      : setSystem();
+  }, []);
   const setRoot = (obj) => {
     Object.keys(obj).map((key) => {
       document.documentElement.style.setProperty(key, obj[key]);
     });
   };
   const setDark = () => {
-    setCurrentTheme('Dark');
+    localStorage.Theme = 'Dark';
     setRoot(Dark);
   };
   const setLigth = () => {
-    setCurrentTheme('Ligth');
+    localStorage.Theme = 'Ligth';
     setRoot(Ligth);
   };
   const setSystem = () => {
@@ -852,11 +843,18 @@ export function Video({
     </div>
   );
 }
-export function Poligon({ children, size = '100%', sides = 8, bg }) {
+export function Poligon({
+  children,
+  size = '100%',
+  className = '',
+  sides = 8,
+  bg,
+}) {
+  let clases = `Poligono${className && ' ' + className}`;
   return (
     <div className='PoligonoContainer' style={{ width: size, height: size }}>
       <div
-        className='Poligono'
+        className={clases}
         style={{
           width: size,
           height: size,
@@ -964,6 +962,58 @@ export function Emergente({
           display: active[0] ? 'flex' : 'none',
         }}
       ></div>
+    </div>
+  );
+}
+export function Grid({
+  children,
+  center = '',
+  gap = 0,
+  className = '',
+  rows = [0, 5],
+  columns = [0, 5],
+  show,
+}) {
+  let clases = `Grid${center && ' c'}${className && ' ' + className}`;
+
+  // columns[0] > 0 ? console.log('mayor') : console.log('menor');
+  return (
+    <div
+      className={clases}
+      style={{
+        boxShadow: show && 'var(--show-grid)',
+        gap: gap + 'vh',
+        // gridTemplateColumns: 'repeat(auto-fit, minmax(15vh, 1fr)) !important',
+        // gridTemplateRows: `repeat(${
+        //   rows[0] > 0
+        //     ? `${rows[0]}, 1fr`
+        //     : `auto-fit, minmax(${rows[1]}vh, 1fr)`
+        // })`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+export function Scroll({ children, x, y, className = '', gap, show }) {
+  let clases = `Scroll${className && ' ' + className}`;
+  const refScroll = useRef();
+  return (
+    <div
+      className={clases}
+      style={{
+        boxShadow: show && 'var(--show-scroll)',
+        overflowX: x ? 'scroll' : 'hidden',
+        overflowY: y ? 'scroll' : 'hidden',
+        gap: gap && gap + 'vh',
+      }}
+      ref={refScroll}
+      onWheel={(e) => {
+        e.preventDefault();
+        refScroll.current.scrollLeft += e.deltaY;
+      }}
+    >
+      {children}
     </div>
   );
 }
