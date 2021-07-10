@@ -1,5 +1,5 @@
-import style from 'styles/css/Index.module.css';
-import Head_Main from 'heads/Header_Main';
+import style from 'styles/pages/Index.module.css';
+import Head_Main from 'heads/Main.head';
 import {
   Body,
   Section,
@@ -20,50 +20,6 @@ export default function Index() {
         <Section size={1}>
           <Content center flex={0.5}>
             <h1 className={style.Title}>Frontend</h1>
-            <div className={style.Carousel}>
-              <div
-                onClick={() => {
-                  if (A !== style.Mid) {
-                    B === style.Mid && setB(A);
-                    C === style.Mid && setC(A);
-                    setA(style.Mid);
-                  }
-                }}
-                className={A}
-              >
-                <Poligon sides={8} bg={'#fa0'}>
-                  A
-                </Poligon>
-              </div>
-              <div
-                onClick={() => {
-                  if (B !== style.Mid) {
-                    A === style.Mid && setA(B);
-                    C === style.Mid && setC(B);
-                    setB(style.Mid);
-                  }
-                }}
-                className={B}
-              >
-                <Poligon sides={8} bg={'#ab1'}>
-                  B
-                </Poligon>
-              </div>
-              <div
-                onClick={() => {
-                  if (C !== style.Mid) {
-                    A === style.Mid && setA(C);
-                    B === style.Mid && setB(C);
-                    setC(style.Mid);
-                  }
-                }}
-                className={C}
-              >
-                <Poligon sides={8} bg={'#d04'}>
-                  C
-                </Poligon>
-              </div>
-            </div>
             <BienvenidaSockets />
           </Content>
         </Section>

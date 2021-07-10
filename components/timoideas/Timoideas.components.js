@@ -1,11 +1,4 @@
-import {
-  useState,
-  useEffect,
-  Children,
-  cloneElement,
-  useRef,
-  useLayoutEffect,
-} from 'react';
+import { useState, useEffect, Children, cloneElement, useRef } from 'react';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
@@ -360,7 +353,9 @@ export function Boton_1({ children }) {
   );
 }
 
-import NavigationContext from 'context/NavigationContext';
+import NavigationContext, {
+  NavigationContextProvider,
+} from 'context/Navigation.context';
 const Router = ({ setNavigation }) => {
   const { setRoutes } = useContext(NavigationContext);
   const RutaRef = useRef();
@@ -452,7 +447,6 @@ const Router = ({ setNavigation }) => {
     </div>
   );
 };
-import { NavigationContextProvider } from 'context/NavigationContext';
 export const Navigation = () => {
   const [Navigate, setNavigate] = useState(false);
   const handleNavigate = (e) => {

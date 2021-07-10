@@ -1,6 +1,6 @@
-import { Section, Content } from '../components/timoideas/Timoideas.components';
-import styleError from '../styles/css/404.module.css';
-import Head_Error from 'heads/Header_Error';
+import { Section, Content } from 'components/Timoideas/Timoideas.components';
+import styleError from 'styles/pages/404.module.css';
+import Head_Error from 'heads/Error.head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 export default function NotFound() {
