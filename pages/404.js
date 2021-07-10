@@ -13,6 +13,7 @@ export default function NotFound() {
           <code className={style.PathCode}>
             <path>{asPath}</path> route is not being controlled
           </code>
+
           <Link href='/'>
             <a className={style.Back}>Return to homepage</a>
           </Link>
