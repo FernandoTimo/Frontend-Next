@@ -1,4 +1,11 @@
 {
+  "--gradient-gackground": "linear-gradient(-65deg, #151620, #212238)",
+  "--show-grid": "inset 0 0 3vh #afa8",
+  "--show-content": "inset 0 0 3vh #fa88",
+  "--show-scroll": "inset 0 0 3vh #72a8",
+  "--scroll-track": "#fff2",
+  "--scroll-thumb": "#ddd",
+  "--b1": "#07000c",
   "--c00-": "#0d1117",
   "--c00": "#000000",
   "--c01": "#070707",
