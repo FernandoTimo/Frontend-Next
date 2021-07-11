@@ -2,6 +2,7 @@
   "--gradient-gackground": "linear-gradient(-65deg, #e8e8e8, #ffffff)",
   "--show-grid": "inset 0 0 3vh #afa8",
   "--show-content": "inset 0 0 3vh #fa88",
+  "--show-section": "inset 0 0 3vh #aae",
   "--show-scroll": "inset 0 0 3vh #72a8",
   "--scroll-track": "#0002",
   "--scroll-thumb": "#222",
