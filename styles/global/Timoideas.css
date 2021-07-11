@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  background: var(--c00);
 }
 * {
   box-sizing: border-box;
@@ -21,7 +22,6 @@ html {
   flex-direction: column;
   background: var(--c00);
 }
-
 .Section {
   width: 100vw;
   height: 100vh;
@@ -31,7 +31,6 @@ html {
   background: transparent;
   color: var(--c20);
 }
-
 .Content {
   background: transparent;
   color: var(--c20);

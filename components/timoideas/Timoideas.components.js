@@ -1,7 +1,4 @@
 import { useState, useEffect, Children, cloneElement, useRef } from 'react';
-import Link from 'next/link';
-import { useContext } from 'react';
-import { useRouter } from 'next/router';
 const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
   return '#' + hexadecimal;
@@ -18,8 +15,9 @@ export function Section({ show, size, children }) {
     <section
       className='Section'
       style={{
-        boxShadow: show && 'var(--show)',
-        height: size && `${size}00vh`,
+        boxShadow: show && 'var(--show-section)',
+        height: size ? `${size}00vh` : 'auto',
+        minHeight: size ? `${size}00vh` : '100vh',
       }}
     >
       {children}
