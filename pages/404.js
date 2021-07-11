@@ -1,4 +1,8 @@
-import { Section, Content } from 'components/timoideas/Timoideas.components';
+import {
+  Body,
+  Section,
+  Content,
+} from 'components/timoideas/Timoideas.components';
 import style from 'styles/pages/404.module.css';
 import Head_Error from 'heads/Error.head';
 import { useRouter } from 'next/router';
@@ -8,17 +12,19 @@ export default function NotFound() {
   return (
     <>
       <Head_Error />
-      <Section>
-        <Content center flex={1} padding={0}>
-          <code className={style.PathCode}>
-            <path>{asPath}</path> route is not being controlled
-          </code>
+      <Body>
+        <Section>
+          <Content center flex={1} padding={0}>
+            <code className={style.PathCode}>
+              <path>{asPath}</path> route is not being controlled
+            </code>
 
-          <Link href='/'>
-            <a className={style.Back}>Return to homepage</a>
-          </Link>
-        </Content>
-      </Section>
+            <Link href='/'>
+              <a className={style.Back}>Return to homepage</a>
+            </Link>
+          </Content>
+        </Section>
+      </Body>
     </>
   );
 }
