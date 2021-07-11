@@ -12,7 +12,7 @@ export default function Index() {
     <>
       <Head_Main />
       <Body>
-        <Section size={1}>
+        <Section>
           <Content center flex={0.5}>
             <h1 className={style.Title}>Frontend</h1>
             <BienvenidaSockets />
