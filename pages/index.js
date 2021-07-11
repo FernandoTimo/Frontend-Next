@@ -1,6 +1,10 @@
 import style from 'styles/pages/Index.module.css';
 import Head_Main from 'heads/Main.head';
-import { Body } from 'components/timoideas/Timoideas.components';
+import {
+  Body,
+  Section,
+  Content,
+} from 'components/timoideas/Timoideas.components';
 import BienvenidaSockets from 'components/SocketsSaludo.component';
 
 export default function Index() {
@@ -8,8 +12,12 @@ export default function Index() {
     <>
       <Head_Main />
       <Body>
-        <h1 className={style.Title}>Frontend</h1>
-        <BienvenidaSockets />
+        <Section size={1}>
+          <Content center flex={0.5}>
+            <h1 className={style.Title}>Frontend</h1>
+            <BienvenidaSockets />
+          </Content>
+        </Section>
       </Body>
     </>
   );
