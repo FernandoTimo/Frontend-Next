@@ -5,7 +5,7 @@ import {
   Section,
   Content,
 } from 'components/timoideas/Timoideas.components';
-import BienvenidaSockets from 'components/SocketsSaludo.component';
+import BienvenidaSockets from 'components/sockets/SocketsSaludo.component';
 
 export default function Index() {
   return (
