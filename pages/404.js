@@ -4,7 +4,7 @@ import {
   Content,
 } from 'components/timoideas/Timoideas.components';
 import style from 'styles/pages/404.module.css';
-import Head_Error from 'heads/Error.head';
+import Head_Error from 'heads/error.head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 export default function NotFound() {

@@ -1,5 +1,5 @@
-import style from 'styles/pages/Index.module.css';
-import Head_Main from 'heads/Main.head';
+import style from 'styles/pages/index.module.css';
+import Head_Main from 'heads/main.head';
 import {
   Body,
   Section,
