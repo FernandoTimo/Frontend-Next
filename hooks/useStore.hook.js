@@ -1,4 +1,4 @@
-import StoreContext from 'context/Store.context';
+import StoreContext from 'context/store.context';
 import { useState, useContext, useEffect, useRef } from 'react';
 import {
   Controls,
