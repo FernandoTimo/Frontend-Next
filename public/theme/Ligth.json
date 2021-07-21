@@ -6,6 +6,7 @@
   "--show-scroll": "inset 0 0 3vh #72a8",
   "--scroll-track": "#0002",
   "--scroll-thumb": "#222",
+  "--shadow": "0 1vh 2vh #0002",
   "--c00-": "#c9d1d9",
   "--c00": "#ffffff",
   "--c01": "#fafafa",
