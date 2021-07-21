@@ -1088,15 +1088,16 @@ html {
 }
 .Scroll {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: nowrap;
   width: auto;
   max-width: 100%;
-  height: 100%;
+  height: auto;
   white-space: nowrap;
   overflow: auto !important;
   -webkit-overflow-scrolling: touch;
+}
+.ScrollBarInactive::-webkit-scrollbar {
+  display: none;
 }
 .Scroll > * {
   flex: none;
