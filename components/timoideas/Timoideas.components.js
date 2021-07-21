@@ -621,8 +621,18 @@ export function Grid({
     </div>
   );
 }
-export function Scroll({ children, x, y, className = '', gap, show }) {
-  let clases = `Scroll${className && ' ' + className}`;
+export function Scroll({
+  children,
+  x,
+  y,
+  className = '',
+  gap,
+  show,
+  scrollBar = '',
+}) {
+  let clases = `Scroll${className && ' ' + className}${
+    scrollBar && ' ScrollBarActive'
+  }`;
   const refScroll = useRef();
   return (
     <div
