@@ -2,10 +2,8 @@ html {
   scroll-behavior: smooth;
   background: var(--c00);
 }
-html * {
-  user-select: none;
-}
 * {
+  user-select: none;
   box-sizing: border-box;
 }
 .c {
