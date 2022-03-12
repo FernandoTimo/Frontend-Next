@@ -8,6 +8,7 @@ import {
 import BienvenidaSockets from 'components/sockets/SocketsSaludo.component';
 
 export default function Index() {
+  useRouter;
   return (
     <>
       <Head_Main />
