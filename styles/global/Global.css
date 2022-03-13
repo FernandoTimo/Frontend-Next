@@ -11,6 +11,13 @@ html::-webkit-scrollbar {
 /* *:not(body) {
   transition: background 0.5s ease;
 } */
+* {
+  color: var(--c16);
+}
+svg {
+  width: 100%;
+  height: 100%;
+}
 body {
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
