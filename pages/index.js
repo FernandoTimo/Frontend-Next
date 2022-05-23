@@ -1,5 +1,5 @@
 import style from 'styles/pages/index.module.css';
-import Head_Main from 'heads/main.head';
+import Head from 'heads/main.head';
 import {
   Body,
   Section,
@@ -8,10 +8,9 @@ import {
 import BienvenidaSockets from 'components/sockets/SocketsSaludo.component';
 
 export default function Index() {
-  useState
   return (
     <>
-      <Head_Main />
+      <Head />
       <Body>
         <Section>
           <Content center flex={0.5}>
