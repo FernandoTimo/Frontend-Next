@@ -1,28 +1,68 @@
-.BienvenidaSockets {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.Container {
   flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  padding: 1vh;
 }
+
 .PathCode {
+  padding: 0.2vh 2vh;
+  border-radius: 2vh;
+  gap: 1vh;
+  margin: 1vh;
+  text-align: center;
+  cursor: pointer;
+  background: #001d1d;
+  transition: 0.3s;
+}
+.PathCode:hover {
   background: #022;
-  padding: 0.5vh 1vh;
-  border-radius: 0.5vh;
-  cursor: default;
+}
+.PathCode label {
   color: #0effaf;
-  margin: 1vh;
-  text-align: center;
-}
-.PathCode::selection {
-  background: #0effaf55 !important;
-  text-align: center;
-}
-.WelcomeMessage {
-  font-size: 2.5vh;
+  font-size: 1.6vh;
+  line-height: 1.6vh;
   font-weight: 700;
-  margin: 1vh;
-  text-align: center;
+  pointer-events: none;
 }
+.Conection path {
+  fill: #0effaf;
+}
+.GitHub path {
+  fill: #0e9fff;
+}
+.PopUp {
+  padding: 2vh 0 2vh 0;
+  flex-direction: column;
+  width: 27vh;
+  border-radius: 3vh;
+  gap: 1vh;
+}
+.PopUp label {
+  color: #fafafadd;
+  font-weight: 700;
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+}
+.PopUp a {
+  gap: 1vh;
+  width: 85%;
+  outline: 0.2vh solid #0e9fff;
+  border-radius: 1vh;
+  font-size: 1.7vh;
+  line-height: 1.7vh;
+  transition: 0.3s;
+}
+.PopUp a * {
+  font-weight: 800;
+  color: #0e9fff;
+}
+.PopUp a:hover {
+  text-decoration: none;
+  color: #0e9fff;
+  background: #0e9fff11;
+}
+
 .Sender {
   padding: 0.5vh 1vh;
   margin: 0.5vh 1vh;
@@ -54,10 +94,4 @@
   border-radius: 0.3vh;
   font-weight: 500;
   color: #00ff73;
-}
-.Sugerencia {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }

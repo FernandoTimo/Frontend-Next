@@ -1,23 +1,30 @@
 .Container {
   flex-direction: column;
   margin: 1vh;
-  gap: 1vh;
-}
-.Icon {
-  margin: 1vh;
+  gap: 2vh;
 }
 .Container h1 {
   font-size: 5vh;
   line-height: 5vh;
-  text-align: center;
   color: var(--c20);
   font-weight: 800;
+}
+.Repo {
+  gap: 1vh;
+  border: 0.3vh solid #0e9fff;
+  padding: 0 2vh;
+  border-radius: 1vh;
+  transition: 0.3s;
+}
+.Repo:hover {
+  background: #0e9fff11;
+}
+.GitHub path {
+  fill: #0e9fff;
 }
 .Container h2 {
   font-size: 2vh;
   line-height: 2vh;
-  text-align: center;
-  color: var(--c20);
   font-weight: 800;
-  color: var(--c08);
+  color: #0e9fff;
 }

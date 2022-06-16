@@ -8,6 +8,7 @@ import {
 } from 'components/timoideas/Timoideas.components';
 import BienvenidaSockets from 'components/sockets/SocketsSaludo.component';
 import Timoideas from 'public/svg/global/timoideas.svg';
+import GitHub from 'public/svg/global/github.svg';
 
 export default function Index() {
   return (
@@ -21,10 +22,23 @@ export default function Index() {
                 heigth='5'
                 width='5'
                 icon={<Timoideas />}
-                className={style.Icon}
+                className={style.Timoideas}
               />
               <h1>Timoideas</h1>
-              <h2>NEXT.JS TEMPLATE</h2>
+              <a
+                className={style.Repo}
+                href='https://github.com/FernandoTimo/Backend-Express'
+                target='_blank'
+                type='clean'
+              >
+                <SVG
+                  heigth='3'
+                  width='3'
+                  icon={<GitHub />}
+                  className={style.GitHub}
+                />
+                <h2>Frontend-Next</h2>
+              </a>
             </div>
             <BienvenidaSockets />
           </Content>
