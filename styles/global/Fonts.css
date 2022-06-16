@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Camsi';
+  src: url('/fonts/lato/Lato-Thin.ttf');
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Camsi';
+  src: url('/fonts/lato/Lato-Light.ttf');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Camsi';
+  src: url('/fonts/lato/Lato-Regular.ttf');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Camsi';
+  src: url('/fonts/lato/Lato-Bold.ttf');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Camsi';
+  src: url('/fonts/lato/Lato-Black.ttf');
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
