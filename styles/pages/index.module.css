@@ -1,6 +1,9 @@
 .Container {
   flex-direction: column;
+  margin: 1vh;
   gap: 1vh;
+}
+.Icon {
   margin: 1vh;
 }
 .Container h1 {

@@ -4,8 +4,10 @@ import {
   Body,
   Section,
   Content,
+  SVG,
 } from 'components/timoideas/Timoideas.components';
 import BienvenidaSockets from 'components/sockets/SocketsSaludo.component';
+import Timoideas from 'public/svg/global/timoideas.svg';
 
 export default function Index() {
   return (
@@ -15,6 +17,12 @@ export default function Index() {
         <Section>
           <Content center flex={0.5}>
             <div className={style.Container}>
+              <SVG
+                heigth='5'
+                width='5'
+                icon={<Timoideas />}
+                className={style.Icon}
+              />
               <h1>Timoideas</h1>
               <h2>NEXT.JS TEMPLATE</h2>
             </div>
