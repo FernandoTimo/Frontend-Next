@@ -5,6 +5,9 @@ export default function WelcomeSockets(setserverSockets, setmessages) {
     socket.on('server', (server) => {
       setserverSockets(server);
     });
+    socket.on('disconnect', () => {
+      setserverSockets(false);
+    });
     socket.on('saludo', (saludo) => {
       setmessages(saludo);
     });
