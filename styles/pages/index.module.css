@@ -1,7 +1,13 @@
 .Container {
   flex-direction: column;
+  position: fixed;
   margin: 1vh;
   gap: 2vh;
+  top: 40%;
+  transition: 0.3s;
+}
+.Sockets {
+  top: 10%;
 }
 .Container h1 {
   font-size: 5vh;

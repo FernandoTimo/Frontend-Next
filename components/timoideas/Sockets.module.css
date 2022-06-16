@@ -4,6 +4,62 @@
   bottom: 0;
   padding: 1vh;
 }
+.MensajesContainer {
+  flex-direction: column;
+  gap: 1vh;
+  height: 58vh;
+  justify-content: space-between;
+}
+.Title {
+  position: relative;
+  top: 0;
+  font-size: 1.8vh;
+  line-height: 1.8vh;
+  font-weight: 800;
+  color: var(--c08);
+}
+.Mensajes {
+  flex-direction: column;
+  gap: 1vh;
+}
+.List {
+  width: 35vh;
+  border-radius: 3vh;
+  background: var(--c01);
+  padding: 2vh 0;
+}
+.Bubble {
+  gap: 1vh;
+}
+.Sender {
+  padding: 1vh 2vh;
+  background: #0e9fff;
+  border-radius: 1vh;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.8vh;
+  line-height: 1.8vh;
+  transition: 0.1s;
+}
+.SocketID {
+  font-size: 1.5vh;
+  font-weight: 700;
+}
+.SocketMessage {
+  font-size: 1.7vh;
+  line-height: 1.7vh;
+  background: var(--c00);
+  padding: 1vh 2vh;
+  border-radius: 1vh;
+  font-weight: 800;
+  color: #0086df;
+}
+.Sender:hover {
+  background: #0086df;
+}
+.Sender:active {
+  opacity: 1;
+}
 
 .PathCode {
   padding: 0.2vh 2vh;
@@ -32,17 +88,11 @@
   fill: #0e9fff;
 }
 .PopUp {
-  padding: 2vh 0 2vh 0;
+  padding: 2vh 0 !important;
   flex-direction: column;
   width: 27vh;
   border-radius: 3vh;
   gap: 1vh;
-}
-.PopUp label {
-  color: #fafafadd;
-  font-weight: 700;
-  font-size: 1.5vh;
-  line-height: 1.5vh;
 }
 .PopUp a {
   gap: 1vh;
@@ -53,6 +103,12 @@
   line-height: 1.7vh;
   transition: 0.3s;
 }
+.PopUp label {
+  color: #fafafadd;
+  font-weight: 700;
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+}
 .PopUp a * {
   font-weight: 800;
   color: #0e9fff;
@@ -61,37 +117,4 @@
   text-decoration: none;
   color: #0e9fff;
   background: #0e9fff11;
-}
-
-.Sender {
-  padding: 0.5vh 1vh;
-  margin: 0.5vh 1vh;
-  background: #0e9fff;
-  border-radius: 0.5vh;
-  border: 0;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.5vh;
-  outline: 0;
-  transition: 0.1s;
-  margin: 2vh;
-}
-.Sender:hover {
-  background: #0086df;
-}
-.Sender:active {
-  opacity: 1;
-}
-.SocketID {
-  font-size: 1.5vh;
-  font-weight: 700;
-}
-.SocketMessage {
-  font-size: 1.5vh;
-  line-height: 1.5vh;
-  background: #022;
-  padding: 0.5vh 1vh;
-  border-radius: 0.3vh;
-  font-weight: 500;
-  color: #00ff73;
 }

@@ -695,11 +695,12 @@ export function Scroll({
   }${className && ' ' + className}`;
   const refScroll = useRef();
   const childrenlength = Children.count(children);
-  // useEffect(() => {
-  //   if (childrenlength > 0) {
-  //     refScroll.current.scrollLeft = refScroll.current.scrollWidth;
-  //   }
-  // }, [childrenlength]);
+  useEffect(() => {
+    if (childrenlength > 0) {
+      x && (refScroll.current.scrollLeft = refScroll.current.scrollWidth);
+      y && (refScroll.current.scrollTop = refScroll.current.scrollHeight);
+    }
+  }, [childrenlength]);
   return (
     <div
       className={clases}
