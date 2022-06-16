@@ -1,4 +1,13 @@
-import { useState, useEffect, Children, cloneElement, useRef } from 'react';
+import {
+  useState,
+  useEffect,
+  Children,
+  cloneElement,
+  useRef,
+  useCallback,
+  isValidElement,
+  useLayoutEffect,
+} from 'react';
 const randomBG = () => {
   let hexadecimal = Math.random().toString(16).slice(2, 8);
   return '#' + hexadecimal;
@@ -88,58 +97,52 @@ export function Controls({ top = 1, row = 'column', children }) {
   );
 }
 export function Modal({
-  bg = 'var(--c02)',
-  transition = 0,
-  blur = 0,
-  center,
-  active = [true, () => {}, true],
+  className = '',
+  show = true,
+  handlerFunction = () => {},
+  closeOnClickOutside = true,
+  closeOnEsc = true,
+  portal = '__next',
   children,
 }) {
-  const [show, setShow] = useState(active[0]);
-  const [ChildrenSizes, setChildrenSizes] = useState([]);
-  const Refs = useRef();
   useEffect(() => {
-    setShow(active[0]);
-  }, [active[0]]);
-  useEffect(() => {
-    setChildrenSizes([Refs.current.clientWidth, Refs.current.clientHeight]);
+    const handleKeyDown = (e) => {
+      if (closeOnEsc && e.key === 'Escape') {
+        handlerFunction(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
-  const CerrarModal = (e) => {
-    if (e.target.className === 'ModalContainer' && active[2]) {
-      setShow(false);
-      active[1]();
-    }
-  };
-  return (
-    // <div
-    //   className='ModalEmpty'
-    //   style={{
-    //     width: ChildrenSizes[0],
-    //     height: ChildrenSizes[1],
-    //   }}
-    // >
-    <div
-      className='ModalContainer'
-      onClick={CerrarModal}
-      tabIndex='0'
-      style={{
-        background: bg,
-        opacity: show && '1',
-        width: show && '100vw',
-        height: show && '100vh',
-        alignItems: center && 'center',
-        justifyContent: center && 'center',
-        backdropFilter: `blur(${blur / 3}vh)`,
-        pointerEvents: show && 'visible',
-        transition: transition + 's',
-      }}
-      ref={Refs}
-    >
-      {children}
-      {/* </div> */}
-    </div>
-  );
+  // Mount on client side
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, [show]);
+
+  const clases = `ModalContainer ${className && ' ' + className}`;
+
+  return mounted && show
+    ? reactDom.createPortal(
+        <div
+          className={clases}
+          onClick={(e) => {
+            if (e.target === e.currentTarget && closeOnClickOutside) {
+              handlerFunction(!show);
+            }
+          }}
+          style={{ pointerEvents: closeOnClickOutside ? 'auto' : 'none' }}
+        >
+          {children}
+        </div>,
+        document.getElementById(portal)
+      )
+    : null;
 }
+
 export function ColorPicker({
   position = [0, 0, 0, 0],
   active = [false, () => {}, true],
@@ -202,54 +205,7 @@ export function ColorPicker({
     </div>
   );
 }
-export function Carrousel({ bg, speed, width, height, children }) {
-  // const [Slider, setSlider] = useState(0);
-  // const CarrouselContainerRef = useRef();
-  // const CarrouselRef = useRef();
-  // const [maxScroll, setmaxScroll] = useState();
-  // useEffect(() => {
-  //   var CarrouselCotainerWidth = CarrouselContainerRef.current.clientWidth / 2;
-  //   var CarrouselWidth = CarrouselRef.current.clientWidth / 2;
-  //   // console.log(CarrouselCotainerWidth);
-  //   // console.log(CarrouselWidth);
-  //   setmaxScroll(CarrouselWidth + CarrouselCotainerWidth);
-  // }, []);
-  // const handleScroll = (e) => {
-  //   e.preventDefault();
-  //   let sliderValue = Math.abs(Slider);
-  //   let velocidad = speed ? speed : 350;
-  //   let mordisco = sliderValue > maxScroll - 350 ? maxScroll - sliderValue : 0;
-  //   let movimiento =
-  //     e.deltaY > 0
-  //       ? mordisco === 0
-  //         ? -velocidad
-  //         : -(mordisco + velocidad)
-  //       : mordisco === 0
-  //       ? velocidad
-  //       : mordisco + velocidad;
-  //   movimiento !== 0 && setSlider(Slider + movimiento);
-  // };
 
-  return (
-    <div
-      className='CarrouselContainer'
-      // onWheel={handleScroll}
-      // ref={CarrouselContainerRef}
-    >
-      <div
-        className='Carrousel'
-        style={{
-          width: width ? width : 'auto',
-          height: height ? height : 'auto',
-          background: bg ? randomBG() : '#fafafa',
-        }}
-        // ref={CarrouselRef}
-      >
-        {children}
-      </div>
-    </div>
-  );
-}
 export function Card({ bg, children }) {
   return (
     <div className='Card' style={{ background: bg ? randomBG() : '#fafafa' }}>
@@ -348,6 +304,48 @@ export function Boton_1({ children }) {
         ) : null}
       </button>
     </>
+  );
+}
+
+import Ligth from 'public/theme/Ligth.json';
+import Dark from 'public/theme/Dark.json';
+import useCounter from 'hooks/useCounter.hook';
+import reactDom from 'react-dom';
+
+export function Theme() {
+  useEffect(() => {
+    !!localStorage.Theme
+      ? setRoot(localStorage.Theme === 'Dark' ? Dark : Ligth)
+      : setSystem();
+  }, []);
+  const setRoot = (obj) => {
+    Object.keys(obj).map((key) => {
+      document.documentElement.style.setProperty(key, obj[key]);
+    });
+  };
+  const setDark = () => {
+    localStorage.Theme = 'Dark';
+    setRoot(Dark);
+  };
+  const setLigth = () => {
+    localStorage.Theme = 'Ligth';
+    setRoot(Ligth);
+  };
+  const setSystem = () => {
+    let sysPref = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (e) => {
+      e.matches ? setDark() : setLigth();
+    };
+    sysPref.removeEventListener('change', handler);
+    sysPref.addEventListener('change', handler);
+    handler(sysPref);
+  };
+  return (
+    <div className='ThemeContainer'>
+      <span onClick={setSystem}>💻</span>
+      <span onClick={setLigth}>🌖</span>
+      <span onClick={setDark}>🌒</span>
+    </div>
   );
 }
 //            <--************************************************************************************************** [ Spinners ]
@@ -498,56 +496,157 @@ export function Timoideas() {
   );
 }
 export function Emergente({
-  position = [],
-  active = [true, () => {}, true],
+  position = ['top', 'left'],
+  translate = ['0vh', '0vh'],
   child,
-  children: parent,
+  className = '',
+  id = '',
+  group = '',
+  closeOnEsc = false,
+  closeOnClickOutside = false,
+  openOnHover = false,
+
+  children,
 }) {
-  // Setting clild sizes
-  const [Width, setWidth] = useState();
-  const [Height, setHeight] = useState();
-  const ChildRef = useRef();
-  useEffect(() => {
-    setWidth(ChildRef.current.clientWidth);
-    setHeight(ChildRef.current.clientHeight);
+  const target_group = `target_emergente_${group}`;
+  const [EmergenteState, setEmergenteState] = useState(false);
+  const toggleEmergenteState = useCallback((e) => {
+    if (e.target.attributes.role?.value === 'prevent') return;
+    else {
+      setEmergenteState((state) => {
+        group && (localStorage.target_emergente = state ? '' : group);
+        id && (localStorage[target_group] = state ? '' : id);
+        return !state;
+      });
+    }
   }, []);
-  // Hanldler click into emergent
+
+  const refEmergente = useRef(null);
   useEffect(() => {
-    const handlerClick = (e) => {
-      if (e.target.className === 'FullScreen' && active[2]) {
-        active[1]();
+    // console.log(
+    //   'target_emergente',
+    //   localStorage.target_emergente,
+    //   group,
+    //   localStorage.target_emergente === group
+    // );
+    // console.log('target_group', localStorage[target_group] === id);
+    // localStorage.target_emergente === group && setEmergenteState(true);
+    // close on escape
+    const handleKeyDown = (e) => {
+      if (closeOnEsc && e.key === 'Escape') {
+        setEmergenteState(false);
       }
     };
-    active[2] && window.addEventListener('click', handlerClick);
+    // close on click outside
+    const handleClick = (e) => {
+      if (
+        closeOnClickOutside &&
+        refEmergente.current &&
+        !refEmergente.current.contains(e.className)
+      ) {
+        setEmergenteState(false);
+      }
+    };
+    // window.addEventListener('click', handleClick);
+    window.addEventListener('keydown', handleKeyDown);
+
+    localStorage[target_group] === id && setEmergenteState(true);
+    return () => {
+      window.removeEventListener('click', handleClick);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+  useEffect(() => {
+    const handlerClick = (e) => {
+      if (
+        localStorage[target_group] !== id &&
+        e.target.attributes.role?.value !== 'prevent'
+      ) {
+        setEmergenteState(false);
+      }
+      if (e.target.attributes.role?.value === 'close') {
+        localStorage[target_group] = '';
+        setEmergenteState(false);
+      }
+    };
+    EmergenteState && window.addEventListener('click', handlerClick);
     return () => {
       window.removeEventListener('click', handlerClick);
     };
-  }, [active[1]]);
+  }, [EmergenteState]);
+
+  const childrenWithProps = Children.map(children, (child) => {
+    if (isValidElement(child)) {
+      return cloneElement(child, {
+        onClick: (e) => {
+          toggleEmergenteState(e);
+          child.props.onClick && child.props.onClick(e);
+        },
+        onMouseOver: openOnHover
+          ? () => {
+              setEmergenteState(true);
+            }
+          : undefined,
+        onMouseLeave: openOnHover
+          ? () => {
+              setEmergenteState(false);
+            }
+          : undefined,
+      });
+    }
+  });
+  const isCenterX = translate[1] === 'center';
+  const isCenterY = translate[0] === 'center';
+
+  const VerticalTranslate = isCenterY
+    ? '50%'
+    : EmergenteState
+    ? `${translate[0]}`
+    : `calc(${translate[0]} + 1vh)`;
+
+  const HorizontalTranslate = isCenterX
+    ? '50%'
+    : EmergenteState
+    ? `${translate[1]}`
+    : `calc(${translate[1]} + 1vh)`;
 
   return (
-    <div className='EmergenteContainer'>
+    <div
+      className={className}
+      style={{ position: 'relative' }}
+      ref={refEmergente}
+    >
       <div
-        className='EmergenteChild'
-        ref={ChildRef}
+        className='Emergente'
         style={{
-          opacity: active[0] ? 1 : 0,
-          pointerEvents: active[0] ? 'visible' : 'none',
-          top: position[0] && `calc(${-position[0]}vh + ${-Height}px)`,
-          right: position[1] && `calc(${-position[1]}vh + ${-Width}px)`,
-          bottom: position[2] && `calc(${-position[2]}vh + ${-Height}px)`,
-          left: position[3] && `calc(${-position[3]}vh + ${-Width}px)`,
+          opacity: EmergenteState ? 1 : 0,
+          pointerEvents: EmergenteState ? 'visible' : 'none',
+          transform: `translate(${
+            isCenterX
+              ? position[1] === 'left'
+                ? '-50%'
+                : '50%'
+              : position[1] === 'left'
+              ? '-100%'
+              : '100%'
+          }, ${
+            isCenterY
+              ? position[0] === 'top'
+                ? '-50%'
+                : '50%'
+              : position[0] === 'top'
+              ? '-100%'
+              : '100%'
+          }) scale(${EmergenteState ? 1 : 0.95})`,
+          top: position[0] === 'top' ? VerticalTranslate : null,
+          right: position[1] === 'right' ? HorizontalTranslate : null,
+          bottom: position[0] === 'bottom' ? VerticalTranslate : null,
+          left: position[1] === 'left' ? HorizontalTranslate : null,
         }}
       >
         {child}
       </div>
-      <div className='EmergenteParent'>{parent}</div>
-      <div
-        className='FullScreen'
-        style={{
-          pointerEvents: active[2] ? 'visible' : 'none',
-          display: active[0] ? 'flex' : 'none',
-        }}
-      ></div>
+      {childrenWithProps}
     </div>
   );
 }
@@ -583,33 +682,180 @@ export function Grid({
 }
 export function Scroll({
   children,
-  x,
-  y,
+  x = '',
+  y = '',
+  size = ['5vh', '10vh'],
   className = '',
   gap,
   show,
-  scrollBar = '',
+  scrollBar = false,
 }) {
-  let clases = `Scroll${className && ' ' + className}${
-    scrollBar && ' ScrollBarActive'
-  }`;
+  let clases = `Scroll ${
+    scrollBar ? ' ScrollBarActive' : ' ScrollBarInactive'
+  }${className && ' ' + className}`;
   const refScroll = useRef();
+  const childrenlength = Children.count(children);
+  // useEffect(() => {
+  //   if (childrenlength > 0) {
+  //     refScroll.current.scrollLeft = refScroll.current.scrollWidth;
+  //   }
+  // }, [childrenlength]);
   return (
     <div
       className={clases}
       style={{
-        boxShadow: show && 'var(--show-scroll)',
-        overflowX: x ? 'scroll' : 'hidden',
-        overflowY: y ? 'scroll' : 'hidden',
+        outline: show && '1px solid #aae',
+        overflowX: x ? 'scroll' : 'auto',
+        overflowY: y ? 'scroll' : 'auto',
         gap: gap && gap + 'vh',
+        flexDirection: x ? 'row' : 'column',
+        minWidth: x && size[0],
+        maxWidth: x && size[1],
+        minHeight: y && size[0],
+        maxHeight: y && size[1],
       }}
       ref={refScroll}
       onWheel={(e) => {
-        e.preventDefault();
-        refScroll.current.scrollLeft += e.deltaY;
+        // e.preventDefault();
+        // scroll to right and stop another scroll
+        if (x) {
+          refScroll.current.scrollLeft += e.deltaY / 4;
+          e.stopPropagation();
+        }
+        // x && (refScroll.current.scrollLeft += e.deltaY / 4);
       }}
     >
       {children}
     </div>
   );
+}
+export function SVG({
+  width = 5,
+  height = 5,
+  icon,
+  className = '',
+  onClick = () => {},
+  onContextMenu = () => {},
+}) {
+  let clases = `SVGIcon${className && ' ' + className}`;
+  return (
+    <div
+      className={clases}
+      onClick={onClick}
+      onContextMenu={onContextMenu}
+      style={{
+        width: width + 'vh',
+        height: height + 'vh',
+      }}
+    >
+      {icon}
+    </div>
+  );
+}
+export function Masonry({ gap = 1, children, className = '', columns = 5 }) {
+  const clases = `Masonry${className && ' ' + className}`;
+  const [ChildrenArray, setChildrenArray] = useState([]);
+  const [columnsNumber, setColumnsNumber] = useState(columns);
+  const [ReadyToRender, setReadyToRender] = useState(false);
+  useLayoutEffect(() => {
+    console.log(window.innerWidth, window.innerHeight);
+    if (
+      (navigator.userAgent && navigator.userAgentData.mobile) ||
+      (window.innerWidth <= 600 && window.innerHeight <= 800)
+    ) {
+      const handlerResize = () => {
+        setColumnsNumber(
+          window.matchMedia('(orientation: landscape)').matches ? 5 : 2
+        );
+      };
+      handlerResize();
+      window.addEventListener('resize', handlerResize);
+    } else {
+      const handlerResize = () => {
+        setColumnsNumber(
+          (window.matchMedia('(min-width: 1600px)').matches && 5) ||
+            (window.matchMedia('(min-width: 1200px)').matches && 4) ||
+            (window.matchMedia('(min-width: 992px)').matches && 3) ||
+            (window.matchMedia('(min-width: 768px)').matches && 3) ||
+            (window.matchMedia('(min-width: 576px)').matches && 2) ||
+            (window.matchMedia('(min-width: 0px)').matches && 1)
+        );
+      };
+      handlerResize();
+      window.addEventListener('resize', handlerResize);
+    }
+    setReadyToRender(true);
+    return () => {
+      window.removeEventListener('resize', handlerResize);
+    };
+  }, [columns]);
+
+  useEffect(() => {
+    ReadyToRender &&
+      setChildrenArray(() => {
+        // push into array the childrens in order to colums
+        let childrens = [];
+        Children.map(children, (child) => {
+          if (isValidElement(child)) {
+            childrens.push(child);
+          }
+        });
+        // create array of arrays with the childrens
+        let childrensArray = [];
+        for (let i = 0; i < columnsNumber; i++) {
+          childrensArray.push([]);
+        }
+        // push the childrens into the array of arrays
+        childrens.forEach((child, index) => {
+          childrensArray[index % columnsNumber].push(child);
+        });
+        return childrensArray;
+      });
+    return () => {};
+  }, [ReadyToRender, columnsNumber]);
+
+  return (
+    <div className={clases} style={{ gap: gap + 'vh', padding: gap + 'vh' }}>
+      {ReadyToRender &&
+        ChildrenArray.map((childrenColumn, i) => (
+          <div className='MasonryColumn' style={{ gap: gap + 'vh' }} key={i}>
+            {childrenColumn.map((child) => child)}
+          </div>
+        ))}
+    </div>
+  );
+}
+export function Fixed({ children }) {
+  return <div className='FixedContainer'>{children}</div>;
+}
+export function PopUp({
+  children,
+  size = ['30vh', '30vh'],
+  className = '',
+  bg = 'var(--c00)',
+  shadow = 'var(--shadow)',
+  radius = '3vh',
+  direction = 'bottom',
+}) {
+  let clases = `PopUp${className && ' ' + className}${
+    direction && ' PopUp' + direction
+  }`;
+  return (
+    <div
+      className={clases}
+      style={{
+        width: size[0],
+        height: size[1],
+        background: bg,
+        borderRadius: radius,
+        boxShadow: shadow,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+export function Counter({ number = 0 }) {
+  const Number = useCounter(number, 0, true, 10);
+  return Number;
 }

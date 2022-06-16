@@ -1,6 +1,20 @@
-.Title {
+.Container {
+  flex-direction: column;
+  gap: 1vh;
+  margin: 1vh;
+}
+.Container h1 {
   font-size: 5vh;
-  margin: 0;
+  line-height: 5vh;
   text-align: center;
   color: var(--c20);
+  font-weight: 800;
+}
+.Container h2 {
+  font-size: 2vh;
+  line-height: 2vh;
+  text-align: center;
+  color: var(--c20);
+  font-weight: 800;
+  color: var(--c08);
 }

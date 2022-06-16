@@ -14,7 +14,10 @@ export default function Index() {
       <Body>
         <Section>
           <Content center flex={0.5}>
-            <h1 className={style.Title}>Frontend</h1>
+            <div className={style.Container}>
+              <h1>Timoideas</h1>
+              <h2>NEXT.JS TEMPLATE</h2>
+            </div>
             <BienvenidaSockets />
           </Content>
         </Section>
