@@ -6,7 +6,7 @@ import {
   Content,
   SVG,
 } from 'components/timoideas/Timoideas.components';
-import BienvenidaSockets from 'components/sockets/SocketsSaludo.component';
+import Sockets from 'components/timoideas/Sockets.component';
 import Timoideas from 'public/svg/global/timoideas.svg';
 import GitHub from 'public/svg/global/github.svg';
 
@@ -40,7 +40,7 @@ export default function Index() {
                 <h2>Frontend-Next</h2>
               </a>
             </div>
-            <BienvenidaSockets />
+            <Sockets />
           </Content>
         </Section>
       </Body>

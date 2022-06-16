@@ -1,10 +1,11 @@
-import style from './SocketsSaludo.module.css';
+import style from './Sockets.module.css';
 import { useEffect, useState } from 'react';
 import WelcomeSockets, { handlerSocketChat } from 'sockets/Saludo.socket';
 import OffLine from 'public/svg/global/offline.svg';
 import GitHub from 'public/svg/global/github.svg';
 import { Emergente, SVG } from 'components/timoideas/Timoideas.components';
-function BienvenidaSockets() {
+
+function Sockets() {
   const [serverSockets, setserverSockets] = useState();
   const [messages, setmessages] = useState({ messages: [] });
   const handlerMessages = (saludo) => {
@@ -88,4 +89,4 @@ function BienvenidaSockets() {
     </div>
   );
 }
-export default BienvenidaSockets;
+export default Sockets;
