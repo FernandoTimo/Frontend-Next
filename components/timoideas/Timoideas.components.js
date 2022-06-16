@@ -350,46 +350,6 @@ export function Boton_1({ children }) {
     </>
   );
 }
-
-import Ligth from 'public/theme/Ligth.json';
-import Dark from 'public/theme/Dark.json';
-
-export function Theme() {
-  useEffect(() => {
-    !!localStorage.Theme
-      ? setRoot(localStorage.Theme === 'Dark' ? Dark : Ligth)
-      : setSystem();
-  }, []);
-  const setRoot = (obj) => {
-    Object.keys(obj).map((key) => {
-      document.documentElement.style.setProperty(key, obj[key]);
-    });
-  };
-  const setDark = () => {
-    localStorage.Theme = 'Dark';
-    setRoot(Dark);
-  };
-  const setLigth = () => {
-    localStorage.Theme = 'Ligth';
-    setRoot(Ligth);
-  };
-  const setSystem = () => {
-    let sysPref = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = (e) => {
-      e.matches ? setDark() : setLigth();
-    };
-    sysPref.removeEventListener('change', handler);
-    sysPref.addEventListener('change', handler);
-    handler(sysPref);
-  };
-  return (
-    <div className='ThemeContainer'>
-      <span onClick={setSystem}>💻</span>
-      <span onClick={setLigth}>🌖</span>
-      <span onClick={setDark}>🌒</span>
-    </div>
-  );
-}
 //            <--************************************************************************************************** [ Spinners ]
 //         <===                                                        [ Spinners ]
 //            <--************************************************************************************************** [ Spinners ]

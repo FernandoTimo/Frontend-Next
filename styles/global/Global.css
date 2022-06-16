@@ -1,27 +1,69 @@
+* {
+  color: var(--c16);
+  font-family: 'Camsi';
+  font-weight: 400;
+  letter-spacing: -1px;
+}
 html {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
+:root {
+}
+/* PSEUDO ELEMENTS */
+::selection {
+  background: gold;
+}
+::-webkit-scrollbar {
+  width: 0.5vh;
+  height: 0.5vh;
+  background: transparent;
+}
+::-webkit-scrollbar-track {
+  background: var(--c01);
+  border-radius: 0.5vh;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c20);
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+}
+::-webkit-scrollbar-button {
+  height: 0.5vh;
+  width: 0.5vh;
+  pointer-events: none;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
 html::-webkit-scrollbar {
   display: none;
   opacity: 0;
 }
-/* *:not(body) {
-  transition: background 0.5s ease;
-} */
-* {
-  color: var(--c16);
+div,
+aside,
+label,
+span {
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
 }
 svg {
   width: 100%;
   height: 100%;
+  pointer-events: none;
+}
+svg path {
+  transition: 0.3s;
 }
 body {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
   padding: 0;
   transition: background 0.5s ease;
@@ -34,4 +76,52 @@ a {
 }
 a:hover {
   color: #fa0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  color: var(--c20);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+  font-weight: 600;
+}
+input {
+  border: none;
+  outline: none;
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+  font-weight: 600;
+  color: var(--c12);
+  background: var(--c00);
+  text-transform: capitalize;
+}
+label[type='popup'] {
+  display: flex;
+  width: max-content;
+  text-align: center;
+  background: #0d1117;
+  color: #c9d1d9;
+  padding: 4px 10px 5px 10px;
+  border-radius: 8px;
+  font-size: 1.3vh;
+  line-height: 1.3vh;
+  box-shadow: 0 3px 8px #0113;
+  font-weight: 600;
+  word-break: keep-all;
+  word-wrap: normal !important;
 }
